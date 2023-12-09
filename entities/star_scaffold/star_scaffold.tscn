@@ -1,0 +1,22 @@
+[gd_scene load_steps=8 format=3 uid="uid://cboib6gk2ih2"]
+
+[ext_resource type="Script" path="res://entities/star_scaffold/star_scaffold.gd" id="1_40stf"]
+[ext_resource type="Resource" uid="uid://bawqrs2x5k1ov" path="res://entities/resources/antimatter.tres" id="2_w4o67"]
+[ext_resource type="Resource" uid="uid://criguf1driv4" path="res://entities/resources/base_metal.tres" id="3_fmrqd"]
+[ext_resource type="Resource" uid="uid://i07mt6rgiele" path="res://entities/resources/hydrogen.tres" id="4_ksidh"]
+[ext_resource type="Resource" uid="uid://di8768hxc0pfy" path="res://entities/resources/power.tres" id="5_8n34g"]
+[ext_resource type="Resource" uid="uid://un8y85jvdke1" path="res://entities/resources/precious_metal.tres" id="6_65lbb"]
+[ext_resource type="Resource" uid="uid://bgl3fqja6q28p" path="res://entities/resources/unobtanium.tres" id="7_hiy1i"]
+
+[node name="StarScaffold" type="Node2D"]
+script = ExtResource("1_40stf")
+current_resources = {
+ExtResource("2_w4o67"): 0,
+ExtResource("3_fmrqd"): 0,
+ExtResource("4_ksidh"): 0,
+ExtResource("5_8n34g"): 0,
+ExtResource("6_65lbb"): 0,
+ExtResource("7_hiy1i"): 0
+}
+
+[node name="Sprite2D" type="Sprite2D" parent="."]

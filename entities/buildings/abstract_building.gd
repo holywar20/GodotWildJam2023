@@ -1,16 +1,10 @@
 class_name AbstractBuilding
 extends Node2D
 
-enum Tiers {
-	TIER_1,
-	TIER_2,
-	TIER_3,
-}
-
 
 @export var type: String = ""
 @export var is_active: bool = false
-@export var tier: Tiers = Tiers.TIER_1
+@export var tier: Constants.Tiers = Constants.Tiers.TIER_1
 
 # Build time in base unit of time.
 @export var build_time: int
@@ -32,6 +26,11 @@ enum Tiers {
 
 
 var _is_constructed: bool = false
+var _build_progress: int = 0
+
+
+func _ready() -> void:
+	EventBus.tick.connect(_on_game_tick)
 
 
 func can_be_built_with(resource_bid: Dictionary) -> bool:
@@ -40,3 +39,32 @@ func can_be_built_with(resource_bid: Dictionary) -> bool:
 			return false
 
 	return true
+
+
+func _on_game_tick():
+	if not _is_constructed:
+		_build_progress += 1 * GameTime.scale
+
+		if _build_progress >= build_time:
+			_build_progress = 0
+			_is_constructed = true
+			is_active = true
+			signal_constructed()
+
+		return
+
+	# Report on resource extraction/changes
+	EventBus.resources_extracted.emit(next_extraction())
+
+
+func signal_constructed():
+	if type == Constants.BUILDING_DYSON_SWARM:
+		EventBus.dyson_construction_finished.emit()
+	elif type == Constants.BUILDING_PLANET_CRACKER:
+		EventBus.cracker_construction_finished.emit()
+	else:
+		EventBus.constructed.emit(self)
+
+
+func next_extraction():
+	return produces

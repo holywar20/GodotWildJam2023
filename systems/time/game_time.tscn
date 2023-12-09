@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://d3cq1xfr2ntqj"]
+
+[ext_resource type="Script" path="res://systems/time/game_time.gd" id="1_m3fg4"]
+
+[node name="GameTime" type="Node"]
+script = ExtResource("1_m3fg4")
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
