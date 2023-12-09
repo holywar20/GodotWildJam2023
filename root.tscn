@@ -1,10 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://cnn2083d08byi"]
+[gd_scene load_steps=6 format=3 uid="uid://cnn2083d08byi"]
 
-[ext_resource type="Shader" path="res://entities/celestials/background/StellarBackground.gdshader" id="1_ece8b"]
-[ext_resource type="PackedScene" uid="uid://dvxm6daibl2v1" path="res://entities/celestials/orbitlines/OrbitLines.tscn" id="1_s2yhk"]
-[ext_resource type="PackedScene" uid="uid://qxmseuwkokrh" path="res://entities/celestials/star/StarScene.tscn" id="1_wmdo0"]
+[ext_resource type="Shader" path="res://entities/background/StellarBackground.gdshader" id="1_ece8b"]
+[ext_resource type="PackedScene" uid="uid://dvxm6daibl2v1" path="res://entities/orbitlines/OrbitLines.tscn" id="1_s2yhk"]
+[ext_resource type="PackedScene" uid="uid://qxmseuwkokrh" path="res://entities/star/StarScene.tscn" id="1_wmdo0"]
 [ext_resource type="Environment" uid="uid://n8asi34u4tt8" path="res://enviroment/Enviroment.tres" id="2_qfksb"]
-[ext_resource type="PackedScene" uid="uid://72u3s6yft8ra" path="res://entities/celestials/planet/PlanetScene.tscn" id="4_l1f31"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1y724"]
 shader = ExtResource("1_ece8b")
@@ -42,9 +41,6 @@ offset_bottom = 178.0
 
 [node name="Star" parent="SolarSystem" instance=ExtResource("1_wmdo0")]
 position = Vector2(-2, 0)
-
-[node name="Planet" parent="SolarSystem" instance=ExtResource("4_l1f31")]
-position = Vector2(-210, -67)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("2_qfksb")

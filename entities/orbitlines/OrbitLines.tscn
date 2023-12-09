@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://dvxm6daibl2v1"]
+
+[ext_resource type="Script" path="res://entities/orbitlines/OrbitLines.gd" id="1_5yele"]
+
+[node name="OrbitLines" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -3000.0
+offset_top = -3000.0
+offset_right = 3000.0
+offset_bottom = 3000.0
+mouse_filter = 2
+script = ExtResource("1_5yele")
