@@ -1,0 +1,63 @@
+[gd_scene load_steps=12 format=3 uid="uid://72u3s6yft8ra"]
+
+[ext_resource type="Script" path="res://entities/celestials/planet/PlanetScene.gd" id="1_j4m05"]
+[ext_resource type="Shader" path="res://entities/celestials/planet/NormalClouds.gdshader" id="2_amwbd"]
+[ext_resource type="Shader" path="res://entities/celestials/planet/LandMasses.gdshader" id="3_nqgfy"]
+[ext_resource type="Texture2D" uid="uid://ca30v3plbx7uo" path="res://entities/celestials/planet/p1/00001_Ocean.png" id="4_aocdv"]
+[ext_resource type="Texture2D" uid="uid://drgiac3ok5n3y" path="res://entities/celestials/planet/p1/00001_Ridge.png" id="5_qyg4i"]
+[ext_resource type="Texture2D" uid="uid://d3mgimb177q5a" path="res://entities/celestials/planet/p1/00001_Bump.png" id="6_f4cjq"]
+[ext_resource type="Texture2D" uid="uid://b28t6bdn4wf3g" path="res://entities/celestials/planet/p1/00001_Seed.png" id="7_kiwyn"]
+
+[sub_resource type="Gradient" id="Gradient_fd3tk"]
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_fukln"]
+gradient = SubResource("Gradient_fd3tk")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_71eij"]
+shader = ExtResource("3_nqgfy")
+shader_parameter/starDirection = Vector2(1, 0)
+shader_parameter/starLight = Color(0, 0, 0, 1)
+shader_parameter/starIntensity = 0.5
+shader_parameter/seed = 0.5
+shader_parameter/isMap = false
+shader_parameter/rotationSpeed = 0.1
+shader_parameter/axialTilt = 3.14
+shader_parameter/cityFactor = 0.0
+shader_parameter/hasCrater = false
+shader_parameter/craterOctave = 1
+shader_parameter/hasHydro = false
+shader_parameter/oceanDepth = 0.0
+shader_parameter/oceanColor = Color(0, 0, 1, 1)
+shader_parameter/iceColor = Color(1, 1, 1, 1)
+shader_parameter/iceCap = 0.0
+shader_parameter/heightMap = SubResource("GradientTexture1D_fukln")
+shader_parameter/oceanColorMap = ExtResource("4_aocdv")
+shader_parameter/seedTexture = ExtResource("7_kiwyn")
+shader_parameter/seedBumpMap = ExtResource("6_f4cjq")
+shader_parameter/ridgeBumpMap = ExtResource("5_qyg4i")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_87ht1"]
+shader = ExtResource("2_amwbd")
+shader_parameter/starDirection = Vector2(1, 1)
+shader_parameter/starLight = Color(0, 0, 0, 1)
+shader_parameter/starIntensity = 0.5
+shader_parameter/seed = 0.5
+shader_parameter/axialTilt = 3.14
+shader_parameter/tSpeed = 0.2
+shader_parameter/cloudDensity = null
+shader_parameter/banding = 1.0
+shader_parameter/turbulence = 3
+
+[node name="Planet" type="Node2D"]
+position = Vector2(-2, 0)
+script = ExtResource("1_j4m05")
+
+[node name="Land" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_71eij")
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Clouds" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_87ht1")
+offset_right = 40.0
+offset_bottom = 40.0

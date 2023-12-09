@@ -1,10 +1,10 @@
 [gd_scene load_steps=7 format=3 uid="uid://cnn2083d08byi"]
 
-[ext_resource type="Shader" path="res://celestials/background/StellarBackground.gdshader" id="1_ece8b"]
-[ext_resource type="PackedScene" uid="uid://dvxm6daibl2v1" path="res://celestials/orbitlines/OrbitLines.tscn" id="1_s2yhk"]
-[ext_resource type="PackedScene" uid="uid://qxmseuwkokrh" path="res://celestials/star/StarScene.tscn" id="1_wmdo0"]
+[ext_resource type="Shader" path="res://entities/celestials/background/StellarBackground.gdshader" id="1_ece8b"]
+[ext_resource type="PackedScene" uid="uid://dvxm6daibl2v1" path="res://entities/celestials/orbitlines/OrbitLines.tscn" id="1_s2yhk"]
+[ext_resource type="PackedScene" uid="uid://qxmseuwkokrh" path="res://entities/celestials/star/StarScene.tscn" id="1_wmdo0"]
 [ext_resource type="Environment" uid="uid://n8asi34u4tt8" path="res://enviroment/Enviroment.tres" id="2_qfksb"]
-[ext_resource type="PackedScene" uid="uid://72u3s6yft8ra" path="res://celestials/planet/PlanetScene.tscn" id="4_l1f31"]
+[ext_resource type="PackedScene" uid="uid://72u3s6yft8ra" path="res://entities/celestials/planet/PlanetScene.tscn" id="4_l1f31"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1y724"]
 shader = ExtResource("1_ece8b")
