@@ -1,0 +1,25 @@
+[gd_resource type="Environment" format=3 uid="uid://n8asi34u4tt8"]
+
+[resource]
+background_mode = 3
+background_energy_multiplier = 0.0
+ambient_light_sky_contribution = 0.0
+ambient_light_energy = 0.0
+reflected_light_source = 1
+glow_enabled = true
+glow_levels/1 = 1.0
+glow_levels/3 = 0.0
+glow_levels/5 = 0.0
+glow_levels/6 = 5.0
+glow_normalized = true
+glow_intensity = 1.0
+glow_mix = 0.264
+glow_bloom = 1.0
+glow_blend_mode = 0
+glow_hdr_threshold = 1.2
+glow_hdr_luminance_cap = 1.0
+fog_light_energy = 0.0
+volumetric_fog_emission_energy = 0.0
+volumetric_fog_temporal_reprojection_enabled = false
+volumetric_fog_temporal_reprojection_amount = 0.831
+adjustment_enabled = true
