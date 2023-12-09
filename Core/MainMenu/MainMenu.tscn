@@ -1,0 +1,72 @@
+[gd_scene load_steps=6 format=3 uid="uid://y2bmrsv2yyb2"]
+
+[ext_resource type="Script" path="res://Core/MainMenu/MainMenu.gd" id="1_a5c8r"]
+[ext_resource type="Shader" path="res://Assets/Star/StellarBackground.gdshader" id="1_sly6g"]
+[ext_resource type="PackedScene" uid="uid://s2euu2wxdg45" path="res://SharedUI/Star.tscn" id="3_u60vk"]
+[ext_resource type="PackedScene" uid="uid://ikkofa1dpt0l" path="res://SharedUI/MainMenuButtons/MainMenuButton.tscn" id="4_uph86"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5d5xc"]
+shader = ExtResource("1_sly6g")
+shader_parameter/layers = 4
+shader_parameter/posOffset = Vector2(0, 0)
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_a5c8r")
+
+[node name="Black" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = -216.0
+offset_top = -146.0
+offset_right = 2117.0
+offset_bottom = 1212.0
+color = Color(0, 0, 0, 1)
+
+[node name="Stars" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_5d5xc")
+layout_mode = 2
+offset_left = -266.0
+offset_top = -68.0
+offset_right = 2182.0
+offset_bottom = 1212.0
+
+[node name="HBox" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+alignment = 1
+
+[node name="VBox" type="VBoxContainer" parent="HBox"]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+alignment = 1
+
+[node name="MenuStar" parent="HBox/VBox" instance=ExtResource("3_u60vk")]
+position = Vector2(186, 355)
+
+[node name="Control" type="Control" parent="HBox/VBox"]
+custom_minimum_size = Vector2(0, 500)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBox/VBox"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+text = "STARLIFTER "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NewGame" parent="HBox/VBox" instance=ExtResource("4_uph86")]
+layout_mode = 2
+text = "New Game"
+
+[node name="Quit" parent="HBox/VBox" instance=ExtResource("4_uph86")]
+layout_mode = 2
+text = "Quit"
+
+[connection signal="pressed" from="HBox/VBox/NewGame" to="." method="_on_newGame_pressed"]
+[connection signal="pressed" from="HBox/VBox/Quit" to="." method="_on_quit_pressed"]
