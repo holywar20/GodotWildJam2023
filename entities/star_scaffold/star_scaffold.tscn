@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cboib6gk2ih2"]
+
+[ext_resource type="Script" path="res://entities/star_scaffold/star_scaffold.gd" id="1_40stf"]
+
+[node name="StarScaffold" type="Node2D"]
+script = ExtResource("1_40stf")

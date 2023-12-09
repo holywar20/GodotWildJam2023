@@ -10,7 +10,7 @@ const MAX_RESOURCE_NUMBER = 1000000 # In Gigatons?
 @export var resources_available: Array = []
 
 @export_subgroup("Display Params")
-@export_enum var pid = ( "P1" , "P2" , "P3" , "P4" , "P5" , "P6" )
+@export_enum( "P1" , "P2" , "P3" , "P4" , "P5" , "P6" ) var pid
 
 var _resource_abundance: Dictionary = {}:
 	get = get_resource_abundance

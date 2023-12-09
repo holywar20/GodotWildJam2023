@@ -1,16 +1,10 @@
 class_name AbstractBuilding
 extends Node2D
 
-enum Tiers {
-	TIER_1,
-	TIER_2,
-	TIER_3,
-}
-
 
 @export var type: String = ""
 @export var is_active: bool = false
-@export var tier: Tiers = Tiers.TIER_1
+@export var tier: Constants.Tiers = Constants.Tiers.TIER_1
 
 # Build time in base unit of time.
 @export var build_time: int
@@ -32,6 +26,7 @@ enum Tiers {
 
 
 var _is_constructed: bool = false
+var _build_progress: int = 0
 
 
 func can_be_built_with(resource_bid: Dictionary) -> bool:
@@ -40,3 +35,13 @@ func can_be_built_with(resource_bid: Dictionary) -> bool:
 			return false
 
 	return true
+
+
+func _process(_delta):
+	if not _is_constructed:
+		_build_progress += 1
+
+	if _build_progress >= build_time:
+		_build_progress = 0
+		_is_constructed = true
+		is_active = true

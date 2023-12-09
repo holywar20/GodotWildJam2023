@@ -12,23 +12,23 @@ const PIDS = {
 
 const P_VARS = {
    PIDS.P1 : {
-      'texture_path_frag' : "0001",
-   }
+	  'texture_path_frag' : "0001",
+   },
    PIDS.P2 : {
-      'texture_path_frag' : "0002",
-   }
+	  'texture_path_frag' : "0002",
+   },
    PIDS.P3 : {
-      'texture_path_frag' : "0003",
-   }
+	  'texture_path_frag' : "0003",
+   },
    PIDS.P4 : {
-      'texture_path_frag' : "0004",
-   }
+	  'texture_path_frag' : "0004",
+   },
    PIDS.P5 : {
-      'texture_path_frag' : "0005",
-   }
+	  'texture_path_frag' : "0005",
+   },
    PIDS.P6 : {
-      'texture_path_frag' : "0006",
-   }
+	  'texture_path_frag' : "0006",
+   },
 }
 
 const OCEAN_PATH = "res://entities/planet/p1/%s_Ocean.png"
