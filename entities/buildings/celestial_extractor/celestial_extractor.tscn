@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://brj7ki86ju4c1"]
+
+[ext_resource type="Script" path="res://entities/buildings/celestial_extractor/celestial_extractor.gd" id="1_esmv5"]
+[ext_resource type="Resource" uid="uid://di8768hxc0pfy" path="res://entities/resources/power.tres" id="2_07x7u"]
+[ext_resource type="Resource" uid="uid://criguf1driv4" path="res://entities/resources/base_metal.tres" id="3_hbylq"]
+[ext_resource type="Resource" uid="uid://un8y85jvdke1" path="res://entities/resources/precious_metal.tres" id="4_evv37"]
+
+[node name="CelestialExtractor" type="Node2D"]
+script = ExtResource("1_esmv5")
+type = "Celestial Extractor"
+tier = 1
+build_time = 5000
+operational_costs = {
+ExtResource("2_07x7u"): 20
+}
+building_costs = {
+ExtResource("3_hbylq"): 200
+}
+produces = {
+ExtResource("3_hbylq"): 50,
+ExtResource("4_evv37"): 20
+}
+
+[node name="Sprite2D" type="Sprite2D" parent="."]

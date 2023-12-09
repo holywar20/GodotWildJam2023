@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://dvkjpas50d6nu"]
+
+[ext_resource type="Script" path="res://entities/buildings/dyson_swarm/dyson_swarm.gd" id="1_0u8fk"]
+[ext_resource type="Resource" uid="uid://criguf1driv4" path="res://entities/resources/base_metal.tres" id="2_irwwi"]
+[ext_resource type="Resource" uid="uid://un8y85jvdke1" path="res://entities/resources/precious_metal.tres" id="3_m6bx1"]
+[ext_resource type="Resource" uid="uid://di8768hxc0pfy" path="res://entities/resources/power.tres" id="4_7b0ox"]
+
+[node name="DysonSwarm" type="Node2D"]
+script = ExtResource("1_0u8fk")
+type = "Dyson Swarm"
+tier = 1
+build_time = 1000
+building_costs = {
+ExtResource("2_irwwi"): 1000,
+ExtResource("3_m6bx1"): 500
+}
+produces = {
+ExtResource("4_7b0ox"): 1000
+}
+
+[node name="Sprite2D" type="Sprite2D" parent="."]

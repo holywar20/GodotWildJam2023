@@ -1,0 +1,25 @@
+[gd_scene load_steps=6 format=3 uid="uid://c8ubhknb5sau8"]
+
+[ext_resource type="Script" path="res://entities/buildings/antimatter_factory/antimatter_factory.gd" id="1_lq6mu"]
+[ext_resource type="Resource" uid="uid://di8768hxc0pfy" path="res://entities/resources/power.tres" id="2_fqjbj"]
+[ext_resource type="Resource" uid="uid://criguf1driv4" path="res://entities/resources/base_metal.tres" id="3_ufv2u"]
+[ext_resource type="Resource" uid="uid://un8y85jvdke1" path="res://entities/resources/precious_metal.tres" id="4_hbp5f"]
+[ext_resource type="Resource" uid="uid://bawqrs2x5k1ov" path="res://entities/resources/antimatter.tres" id="5_hmybn"]
+
+[node name="AntimatterFactory" type="Node2D"]
+script = ExtResource("1_lq6mu")
+type = "Antimatter Factory"
+tier = 2
+build_time = 5000
+operational_costs = {
+ExtResource("2_fqjbj"): 25
+}
+building_costs = {
+ExtResource("3_ufv2u"): 7500,
+ExtResource("4_hbp5f"): 5000
+}
+produces = {
+ExtResource("5_hmybn"): 500
+}
+
+[node name="Sprite2D" type="Sprite2D" parent="."]

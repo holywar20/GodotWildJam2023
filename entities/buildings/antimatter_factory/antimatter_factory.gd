@@ -1,0 +1,2 @@
+class_name AntimatterFactory
+extends AbstractBuilding

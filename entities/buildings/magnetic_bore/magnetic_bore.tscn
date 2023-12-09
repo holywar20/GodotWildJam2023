@@ -1,0 +1,25 @@
+[gd_scene load_steps=6 format=3 uid="uid://dieeayyxocldc"]
+
+[ext_resource type="Script" path="res://entities/buildings/magnetic_bore/magnetic_bore.gd" id="1_a81ch"]
+[ext_resource type="Resource" uid="uid://di8768hxc0pfy" path="res://entities/resources/power.tres" id="2_si130"]
+[ext_resource type="Resource" uid="uid://criguf1driv4" path="res://entities/resources/base_metal.tres" id="3_d172c"]
+[ext_resource type="Resource" uid="uid://un8y85jvdke1" path="res://entities/resources/precious_metal.tres" id="4_2n5es"]
+[ext_resource type="Resource" uid="uid://i07mt6rgiele" path="res://entities/resources/hydrogen.tres" id="5_510g3"]
+
+[node name="MagneticBore" type="Node2D"]
+script = ExtResource("1_a81ch")
+type = "Magnetic Bore"
+tier = 1
+build_time = 750
+operational_costs = {
+ExtResource("2_si130"): 50
+}
+building_costs = {
+ExtResource("3_d172c"): 500,
+ExtResource("4_2n5es"): 150
+}
+produces = {
+ExtResource("5_510g3"): 500
+}
+
+[node name="Sprite2D" type="Sprite2D" parent="."]

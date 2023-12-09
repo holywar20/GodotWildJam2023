@@ -1,0 +1,23 @@
+[gd_scene load_steps=6 format=3 uid="uid://cpd2ievpc241w"]
+
+[ext_resource type="Script" path="res://entities/buildings/stellar_accelerator/stellar_accelerator.gd" id="1_oao5u"]
+[ext_resource type="Resource" uid="uid://di8768hxc0pfy" path="res://entities/resources/power.tres" id="2_fkwe2"]
+[ext_resource type="Resource" uid="uid://bawqrs2x5k1ov" path="res://entities/resources/antimatter.tres" id="3_qcefi"]
+[ext_resource type="Resource" uid="uid://criguf1driv4" path="res://entities/resources/base_metal.tres" id="4_nks8x"]
+[ext_resource type="Resource" uid="uid://un8y85jvdke1" path="res://entities/resources/precious_metal.tres" id="5_k4ioi"]
+
+[node name="StellarAccelerator" type="Node2D"]
+script = ExtResource("1_oao5u")
+type = "Stellar Accelerator"
+tier = 2
+build_time = 10000
+operational_costs = {
+ExtResource("2_fkwe2"): 100,
+ExtResource("3_qcefi"): 50
+}
+building_costs = {
+ExtResource("4_nks8x"): 10000,
+ExtResource("5_k4ioi"): 7500
+}
+
+[node name="Sprite2D" type="Sprite2D" parent="."]

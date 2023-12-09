@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://du6ngnr7qwln7"]
+
+[ext_resource type="Script" path="res://entities/buildings/planet_cracker/planet_cracker.gd" id="1_intlu"]
+[ext_resource type="Resource" uid="uid://di8768hxc0pfy" path="res://entities/resources/power.tres" id="2_fy42p"]
+[ext_resource type="Resource" uid="uid://criguf1driv4" path="res://entities/resources/base_metal.tres" id="3_t40gn"]
+
+[node name="PlanetCracker" type="Node2D"]
+script = ExtResource("1_intlu")
+type = "Planet Cracker"
+build_time = 100
+operational_costs = {
+ExtResource("2_fy42p"): 10
+}
+building_costs = {
+ExtResource("3_t40gn"): 50
+}
+
+[node name="Sprite2D" type="Sprite2D" parent="."]

@@ -1,21 +1,24 @@
-[gd_scene load_steps=5 format=3 uid="uid://brj7ki86ju4c1"]
+[gd_scene load_steps=6 format=3 uid="uid://cpl4ry0f411an"]
 
 [ext_resource type="Script" path="res://entities/buildings/starlifter/starlifter.gd" id="1_68wcj"]
 [ext_resource type="Resource" uid="uid://di8768hxc0pfy" path="res://entities/resources/power.tres" id="2_jkmmh"]
+[ext_resource type="Resource" uid="uid://bawqrs2x5k1ov" path="res://entities/resources/antimatter.tres" id="3_1gy1o"]
 [ext_resource type="Resource" uid="uid://criguf1driv4" path="res://entities/resources/base_metal.tres" id="3_3w1sa"]
 [ext_resource type="Resource" uid="uid://un8y85jvdke1" path="res://entities/resources/precious_metal.tres" id="4_eo8ke"]
 
 [node name="Starlifter" type="Node2D"]
 script = ExtResource("1_68wcj")
+type = "Starlifter"
+tier = 2
+build_time = 50000
 operational_costs = {
-ExtResource("2_jkmmh"): 20
+ExtResource("2_jkmmh"): 250,
+ExtResource("3_1gy1o"): 50
 }
 building_costs = {
-ExtResource("3_3w1sa"): 200
-}
-produces = {
-ExtResource("3_3w1sa"): 50,
-ExtResource("4_eo8ke"): 20
+ExtResource("3_3w1sa"): 50000,
+ExtResource("4_eo8ke"): 20000,
+ExtResource("3_1gy1o"): 5000
 }
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
