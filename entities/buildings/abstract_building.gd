@@ -39,9 +39,19 @@ func can_be_built_with(resource_bid: Dictionary) -> bool:
 
 func _process(_delta):
 	if not _is_constructed:
-		_build_progress += 1
+		_build_progress += 1 * GameTime.scale
 
 	if _build_progress >= build_time:
 		_build_progress = 0
 		_is_constructed = true
 		is_active = true
+		signal_constructed()
+
+
+func signal_constructed():
+	if type == Constants.BUILDING_DYSON_SWARM:
+		EventBus.dyson_construction_finished.emit()
+	elif type == Constants.BUILDING_PLANET_CRACKER:
+		EventBus.cracker_construction_finished.emit()
+	else:
+		EventBus.constructed.emit(self)

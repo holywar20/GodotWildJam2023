@@ -4,3 +4,5 @@
 
 [node name="StarScaffold" type="Node2D"]
 script = ExtResource("1_40stf")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
