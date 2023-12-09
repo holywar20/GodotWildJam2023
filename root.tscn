@@ -1,3 +1,50 @@
-[gd_scene format=3 uid="uid://i5rh3uw5xcmp"]
+[gd_scene load_steps=7 format=3 uid="uid://cnn2083d08byi"]
 
-[node name="Root" type="Node2D"]
+[ext_resource type="Shader" path="res://celestials/background/StellarBackground.gdshader" id="1_ece8b"]
+[ext_resource type="PackedScene" uid="uid://dvxm6daibl2v1" path="res://celestials/orbitlines/OrbitLines.tscn" id="1_s2yhk"]
+[ext_resource type="PackedScene" uid="uid://qxmseuwkokrh" path="res://celestials/star/StarScene.tscn" id="1_wmdo0"]
+[ext_resource type="Environment" uid="uid://n8asi34u4tt8" path="res://enviroment/Enviroment.tres" id="2_qfksb"]
+[ext_resource type="PackedScene" uid="uid://72u3s6yft8ra" path="res://celestials/planet/PlanetScene.tscn" id="4_l1f31"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1y724"]
+shader = ExtResource("1_ece8b")
+shader_parameter/layers = 4
+shader_parameter/posOffset = Vector2(0, 0)
+
+[node name="ROOT" type="Node2D"]
+
+[node name="Black" type="ColorRect" parent="."]
+offset_left = -661.0
+offset_top = -385.0
+offset_right = 693.0
+offset_bottom = 408.0
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Background" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_1y724")
+offset_left = -661.0
+offset_top = -385.0
+offset_right = 693.0
+offset_bottom = 408.0
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="SolarSystem" type="Node2D" parent="."]
+
+[node name="OrbitLines" parent="SolarSystem" instance=ExtResource("1_s2yhk")]
+offset_left = -163.0
+offset_top = -149.0
+offset_right = 183.0
+offset_bottom = 178.0
+
+[node name="Star" parent="SolarSystem" instance=ExtResource("1_wmdo0")]
+position = Vector2(-2, 0)
+
+[node name="Planet" parent="SolarSystem" instance=ExtResource("4_l1f31")]
+position = Vector2(-210, -67)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("2_qfksb")
