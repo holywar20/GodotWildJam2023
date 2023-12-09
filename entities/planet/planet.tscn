@@ -1,0 +1,62 @@
+[gd_scene load_steps=12 format=3 uid="uid://dwv5s702q62ib"]
+
+[ext_resource type="Script" path="res://entities/planet/planet.gd" id="1_5v41j"]
+[ext_resource type="Shader" path="res://entities/planet/NormalClouds.gdshader" id="2_lbdra"]
+[ext_resource type="Shader" path="res://entities/planet/LandMasses.gdshader" id="3_etq3g"]
+[ext_resource type="Texture2D" uid="uid://ca30v3plbx7uo" path="res://entities/planet/p1/00001_Ocean.png" id="4_v1ca7"]
+[ext_resource type="Texture2D" uid="uid://drgiac3ok5n3y" path="res://entities/planet/p1/00001_Ridge.png" id="5_4dopw"]
+[ext_resource type="Texture2D" uid="uid://d3mgimb177q5a" path="res://entities/planet/p1/00001_Bump.png" id="6_uyfjd"]
+[ext_resource type="Texture2D" uid="uid://b28t6bdn4wf3g" path="res://entities/planet/p1/00001_Seed.png" id="7_330um"]
+
+[sub_resource type="Gradient" id="Gradient_8t180"]
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_r2ov1"]
+gradient = SubResource("Gradient_8t180")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sd6hr"]
+shader = ExtResource("3_etq3g")
+shader_parameter/starDirection = Vector2(1, 0)
+shader_parameter/starLight = Color(0, 0, 0, 1)
+shader_parameter/starIntensity = 0.5
+shader_parameter/seed = 0.5
+shader_parameter/isMap = false
+shader_parameter/rotationSpeed = 0.1
+shader_parameter/axialTilt = 3.14
+shader_parameter/cityFactor = 0.0
+shader_parameter/hasCrater = false
+shader_parameter/craterOctave = 1
+shader_parameter/hasHydro = false
+shader_parameter/oceanDepth = 0.0
+shader_parameter/oceanColor = Color(0, 0, 1, 1)
+shader_parameter/iceColor = Color(1, 1, 1, 1)
+shader_parameter/iceCap = 0.0
+shader_parameter/heightMap = SubResource("GradientTexture1D_r2ov1")
+shader_parameter/oceanColorMap = ExtResource("4_v1ca7")
+shader_parameter/seedTexture = ExtResource("7_330um")
+shader_parameter/seedBumpMap = ExtResource("6_uyfjd")
+shader_parameter/ridgeBumpMap = ExtResource("5_4dopw")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fuiqp"]
+shader = ExtResource("2_lbdra")
+shader_parameter/starDirection = Vector2(1, 0)
+shader_parameter/starLight = Color(0, 0, 0, 1)
+shader_parameter/starIntensity = 0.5
+shader_parameter/seed = 0.5
+shader_parameter/axialTilt = 3.14
+shader_parameter/tSpeed = 0.2
+shader_parameter/cloudDensity = 5.0
+shader_parameter/banding = 1.0
+shader_parameter/turbulence = 3
+
+[node name="Planet" type="Node2D"]
+script = ExtResource("1_5v41j")
+
+[node name="LandMasses" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_sd6hr")
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Atmosphere" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_fuiqp")
+offset_right = 40.0
+offset_bottom = 40.0

@@ -1,0 +1,51 @@
+[gd_scene load_steps=8 format=3 uid="uid://qxmseuwkokrh"]
+
+[ext_resource type="Shader" path="res://entities/star/StandardStar.gdshader" id="1_rtm4d"]
+[ext_resource type="Script" path="res://entities/star/StarScene.gd" id="1_ucqo4"]
+[ext_resource type="Shader" path="res://entities/star/CoronaShader.gdshader" id="3_mj54a"]
+
+[sub_resource type="Gradient" id="Gradient_t1wmw"]
+colors = PackedColorArray(0, 0, 0, 1, 0.541176, 0.541176, 0.894118, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_wyhe6"]
+gradient = SubResource("Gradient_t1wmw")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_reljx"]
+shader = ExtResource("1_rtm4d")
+shader_parameter/rotationSpeed = 0.1
+shader_parameter/cellSize = 5.3
+shader_parameter/wormCellSize = 1.0
+shader_parameter/vorCellSize = 1.0
+shader_parameter/convectionSpeed = 1.0
+shader_parameter/stretchFactor = 1.866
+shader_parameter/starSeed = 1.0
+shader_parameter/flowFactor = 0.1
+shader_parameter/gradient = SubResource("GradientTexture1D_wyhe6")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_saqe8"]
+shader = ExtResource("3_mj54a")
+shader_parameter/color = Color(0.454902, 0, 0.580392, 1)
+shader_parameter/colorBalance = 0.1
+shader_parameter/timeFactor = 0.04
+shader_parameter/flareAmount = 10.0
+shader_parameter/size = 8.8
+shader_parameter/spiky = 0.1
+shader_parameter/gas = 0.5
+shader_parameter/starSeed = 1.0
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_ucqo4")
+
+[node name="Star" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_reljx")
+offset_left = -128.0
+offset_top = -128.0
+offset_right = 128.0
+offset_bottom = 128.0
+
+[node name="Corona" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_saqe8")
+offset_left = -256.0
+offset_top = -256.0
+offset_right = 256.0
+offset_bottom = 256.0
