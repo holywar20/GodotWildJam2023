@@ -1,0 +1,66 @@
+[gd_scene load_steps=8 format=3 uid="uid://s2euu2wxdg45"]
+
+[ext_resource type="Texture2D" uid="uid://ivcusq0mdiio" path="res://Assets/Star/SolarOvalLight.png" id="1_ms1wx"]
+[ext_resource type="Shader" path="res://Assets/Star/StandardStar.gdshader" id="2_j5bbk"]
+[ext_resource type="Shader" path="res://Assets/Star/CoronaShader.gdshader" id="3_uxvw0"]
+
+[sub_resource type="Gradient" id="Gradient_lk1p1"]
+colors = PackedColorArray(0.5794, 0.574251, 0.18029, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_6ulod"]
+gradient = SubResource("Gradient_lk1p1")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_u8jg0"]
+shader = ExtResource("2_j5bbk")
+shader_parameter/rotationSpeed = 0.175
+shader_parameter/cellSize = 8.0
+shader_parameter/wormCellSize = 2.2
+shader_parameter/vorCellSize = 0.1
+shader_parameter/convectionSpeed = 1.0
+shader_parameter/stretchFactor = 1.6
+shader_parameter/starSeed = 2.477
+shader_parameter/flowFactor = 0.1
+shader_parameter/gradient = SubResource("GradientTexture1D_6ulod")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pps2f"]
+shader = ExtResource("3_uxvw0")
+shader_parameter/color = Color(0.8, 0.65, 0.3, 1)
+shader_parameter/colorBalance = 0.21
+shader_parameter/timeFactor = 0.05
+shader_parameter/flareAmount = 10.0
+shader_parameter/size = 5.0
+shader_parameter/spiky = 50.0
+shader_parameter/gas = 3.3
+shader_parameter/starSeed = 2.799
+
+[node name="Star" type="Node2D"]
+scale = Vector2(1.5, 1.5)
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(1.5, 9)
+scale = Vector2(0.268229, 0.509259)
+shadow_enabled = true
+shadow_color = Color(1, 0, 0, 0)
+texture = ExtResource("1_ms1wx")
+
+[node name="Body" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_u8jg0")
+offset_left = -348.0
+offset_top = -338.0
+offset_right = 352.0
+offset_bottom = 362.0
+color = Color(0, 0, 0, 1)
+
+[node name="Corona" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_pps2f")
+offset_left = -684.0
+offset_top = -688.0
+offset_right = 693.0
+offset_bottom = 712.0
+color = Color(0, 0, 0, 1)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = -348.0
+offset_top = -338.0
+offset_right = -308.0
+offset_bottom = -298.0

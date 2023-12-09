@@ -1,0 +1,33 @@
+[gd_scene load_steps=3 format=3 uid="uid://bk5yg6d2m0soy"]
+
+[ext_resource type="PackedScene" uid="uid://s2euu2wxdg45" path="res://SharedUI/Star.tscn" id="1_u8mhw"]
+[ext_resource type="PackedScene" uid="uid://ikkofa1dpt0l" path="res://SharedUI/MainMenuButtons/MainMenuButton.tscn" id="2_ksqah"]
+
+[node name="VBoxContainer" type="VBoxContainer"]
+custom_minimum_size = Vector2(400, 400)
+offset_left = -404.0
+offset_right = -4.0
+offset_bottom = 1080.0
+alignment = 1
+
+[node name="MenuStar" parent="." instance=ExtResource("1_u8mhw")]
+position = Vector2(186, 355)
+
+[node name="Control" type="Control" parent="."]
+custom_minimum_size = Vector2(0, 500)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="."]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+text = "STARLIFTER "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MenuButton" parent="." instance=ExtResource("2_ksqah")]
+layout_mode = 2
+text = "New Game"
+
+[node name="MenuButton2" parent="." instance=ExtResource("2_ksqah")]
+layout_mode = 2
+text = "Quit"
