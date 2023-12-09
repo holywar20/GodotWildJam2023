@@ -1,9 +1,10 @@
 class_name Planet
 extends Node2D
 
-
 const MAX_RESOURCE_NUMBER = 1000000 # In Gigatons?
 
+@onready land_masses : ColorRect = $LandMasses
+@onready atmosphere : ColorRect = $Atmosphere
 
 # List of resource types available for this particular planet.
 @export_subgroup("Resources")
@@ -17,11 +18,13 @@ var _resource_abundance: Dictionary = {}:
 
 var _num_planet_crackers: int = 0
 
-
 func _ready() -> void:
 	randomize()
 	_randomize_resource_availability()
 
+	# Get initial Parms by planet
+
+# Utility Methods
 # Returns the amount extracted, if any.
 func extract_resource(resource: UsableResource, amount_requested: int) -> int:
 	if _resource_abundance[resource] < amount_requested:
