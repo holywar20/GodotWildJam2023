@@ -1,6 +1,9 @@
 # Bryan Todo
 
-
+# Fix Orbit lines
+# Set Transition vars for star
+# Set transition vars for Planets
+# -- -- Atmosphere, Ocean
 # Camera Movement & Background tracking
 # Build Planet and Star scenes
 # Add custom Icon

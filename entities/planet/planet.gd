@@ -2,12 +2,15 @@ class_name Planet
 extends Node2D
 
 
-const MAX_RESOURCE_NUMBER = 1000000
+const MAX_RESOURCE_NUMBER = 1000000 # In Gigatons?
 
 
 # List of resource types available for this particular planet.
+@export_subgroup("Resources")
 @export var resources_available: Array = []
 
+@export_subgroup("Display Params")
+@export_enum var pid = ( "P1" , "P2" , "P3" , "P4" , "P5" , "P6" )
 
 var _resource_abundance: Dictionary = {}:
 	get = get_resource_abundance
@@ -19,7 +22,6 @@ func _ready() -> void:
 	randomize()
 	_randomize_resource_availability()
 
-
 # Returns the amount extracted, if any.
 func extract_resource(resource: UsableResource, amount_requested: int) -> int:
 	if _resource_abundance[resource] < amount_requested:
@@ -30,10 +32,8 @@ func extract_resource(resource: UsableResource, amount_requested: int) -> int:
 	_resource_abundance[resource] -= amount_requested
 	return amount_requested
 
-
 func get_resource_abundance() -> Dictionary:
 	return _resource_abundance
-
 
 func _randomize_resource_availability() -> void:
 	for resource in resources_available:

@@ -1,7 +1,6 @@
 class_name AbstractBuilding
 extends Node2D
 
-
 enum Tiers {
 	TIER_1,
 	TIER_2,
