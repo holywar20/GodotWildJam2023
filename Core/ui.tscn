@@ -1,0 +1,296 @@
+[gd_scene load_steps=7 format=3 uid="uid://c1dcreph3lax5"]
+
+[ext_resource type="Script" path="res://Core/ui.gd" id="1_e5olo"]
+[ext_resource type="PackedScene" uid="uid://s2euu2wxdg45" path="res://SharedUI/Star.tscn" id="2_c5c4k"]
+[ext_resource type="Texture2D" uid="uid://bi4oncw05b64i" path="res://Assets/PowerPlaceholder.png" id="3_gs2sa"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_truht"]
+bg_color = Color(0.6, 0.6, 0.6, 0.211765)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wxkqd"]
+
+[sub_resource type="Theme" id="Theme_lhrqm"]
+
+[node name="UI" type="CanvasLayer"]
+script = ExtResource("1_e5olo")
+
+[node name="Hbox" type="HBoxContainer" parent="."]
+offset_right = 1920.0
+offset_bottom = 1080.0
+theme_override_constants/separation = 0
+
+[node name="LeftBorder" type="VBoxContainer" parent="Hbox"]
+layout_mode = 2
+alignment = 1
+
+[node name="PanelContainer" type="PanelContainer" parent="Hbox/LeftBorder"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="OpButtonContainer" type="VBoxContainer" parent="Hbox/LeftBorder/PanelContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="BuildMenu" type="Button" parent="Hbox/LeftBorder/PanelContainer/OpButtonContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+text = "B"
+
+[node name="Power" type="Button" parent="Hbox/LeftBorder/PanelContainer/OpButtonContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+text = "P"
+
+[node name="Stats" type="Button" parent="Hbox/LeftBorder/PanelContainer/OpButtonContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+text = "S?"
+
+[node name="Star" parent="Hbox/LeftBorder" instance=ExtResource("2_c5c4k")]
+position = Vector2(48, 47)
+scale = Vector2(0.2, 0.2)
+
+[node name="MiddleSection" type="VBoxContainer" parent="Hbox"]
+custom_minimum_size = Vector2(1720, 0)
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="TopBorder" type="HBoxContainer" parent="Hbox/MiddleSection"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+size_flags_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="Hbox/MiddleSection/TopBorder"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ResContainer" type="HBoxContainer" parent="Hbox/MiddleSection/TopBorder/PanelContainer"]
+layout_mode = 2
+
+[node name="Power" type="PanelContainer" parent="Hbox/MiddleSection/TopBorder/PanelContainer/ResContainer"]
+layout_mode = 2
+
+[node name="PowerContainer" type="VBoxContainer" parent="Hbox/MiddleSection/TopBorder/PanelContainer/ResContainer/Power"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+alignment = 2
+
+[node name="PowerIcon" type="TextureRect" parent="Hbox/MiddleSection/TopBorder/PanelContainer/ResContainer/Power/PowerContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+texture = ExtResource("3_gs2sa")
+stretch_mode = 3
+
+[node name="PanelContainer" type="PanelContainer" parent="Hbox/MiddleSection/TopBorder/PanelContainer/ResContainer/Power/PowerContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Hbox/MiddleSection/TopBorder/PanelContainer/ResContainer/Power/PowerContainer/PanelContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="Hbox/MiddleSection/TopBorder/PanelContainer/ResContainer/Power/PowerContainer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+text = "874645298"
+
+[node name="Label2" type="Label" parent="Hbox/MiddleSection/TopBorder/PanelContainer/ResContainer/Power/PowerContainer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+text = "Gt"
+
+[node name="Label3" type="Label" parent="Hbox/MiddleSection/TopBorder/PanelContainer/ResContainer/Power/PowerContainer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0.988235, 0, 1)
+text = "+12"
+
+[node name="Hydro" type="PanelContainer" parent="Hbox/MiddleSection/TopBorder/PanelContainer/ResContainer"]
+layout_mode = 2
+
+[node name="HydroContainer" type="VBoxContainer" parent="Hbox/MiddleSection/TopBorder/PanelContainer/ResContainer/Hydro"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+alignment = 2
+
+[node name="HydroIcon" type="TextureRect" parent="Hbox/MiddleSection/TopBorder/PanelContainer/ResContainer/Hydro/HydroContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+stretch_mode = 3
+
+[node name="Panel" type="PanelContainer" parent="Hbox/MiddleSection/TopBorder/PanelContainer/ResContainer/Hydro/HydroContainer"]
+layout_mode = 2
+
+[node name="Numbers" type="HBoxContainer" parent="Hbox/MiddleSection/TopBorder/PanelContainer/ResContainer/Hydro/HydroContainer/Panel"]
+layout_mode = 2
+alignment = 1
+
+[node name="Amount" type="Label" parent="Hbox/MiddleSection/TopBorder/PanelContainer/ResContainer/Hydro/HydroContainer/Panel/Numbers"]
+layout_mode = 2
+text = "874645298"
+
+[node name="Unit" type="Label" parent="Hbox/MiddleSection/TopBorder/PanelContainer/ResContainer/Hydro/HydroContainer/Panel/Numbers"]
+layout_mode = 2
+text = "Gt"
+
+[node name="Change" type="Label" parent="Hbox/MiddleSection/TopBorder/PanelContainer/ResContainer/Hydro/HydroContainer/Panel/Numbers"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0.988235, 0, 1)
+text = "+12"
+
+[node name="BaseMetals" type="PanelContainer" parent="Hbox/MiddleSection/TopBorder/PanelContainer/ResContainer"]
+layout_mode = 2
+
+[node name="BaseContainer" type="VBoxContainer" parent="Hbox/MiddleSection/TopBorder/PanelContainer/ResContainer/BaseMetals"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+alignment = 2
+
+[node name="BaseIcon" type="TextureRect" parent="Hbox/MiddleSection/TopBorder/PanelContainer/ResContainer/BaseMetals/BaseContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+stretch_mode = 3
+
+[node name="Panel" type="PanelContainer" parent="Hbox/MiddleSection/TopBorder/PanelContainer/ResContainer/BaseMetals/BaseContainer"]
+layout_mode = 2
+
+[node name="Numbers" type="HBoxContainer" parent="Hbox/MiddleSection/TopBorder/PanelContainer/ResContainer/BaseMetals/BaseContainer/Panel"]
+layout_mode = 2
+alignment = 1
+
+[node name="Amount" type="Label" parent="Hbox/MiddleSection/TopBorder/PanelContainer/ResContainer/BaseMetals/BaseContainer/Panel/Numbers"]
+layout_mode = 2
+text = "874645298"
+
+[node name="Unit" type="Label" parent="Hbox/MiddleSection/TopBorder/PanelContainer/ResContainer/BaseMetals/BaseContainer/Panel/Numbers"]
+layout_mode = 2
+text = "Gt"
+
+[node name="Change" type="Label" parent="Hbox/MiddleSection/TopBorder/PanelContainer/ResContainer/BaseMetals/BaseContainer/Panel/Numbers"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0.988235, 0, 1)
+text = "+12"
+
+[node name="PreciousMetas" type="PanelContainer" parent="Hbox/MiddleSection/TopBorder/PanelContainer/ResContainer"]
+layout_mode = 2
+
+[node name="PreciousContainer" type="VBoxContainer" parent="Hbox/MiddleSection/TopBorder/PanelContainer/ResContainer/PreciousMetas"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+alignment = 2
+
+[node name="PreciousIcon" type="TextureRect" parent="Hbox/MiddleSection/TopBorder/PanelContainer/ResContainer/PreciousMetas/PreciousContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+stretch_mode = 3
+
+[node name="Panel" type="PanelContainer" parent="Hbox/MiddleSection/TopBorder/PanelContainer/ResContainer/PreciousMetas/PreciousContainer"]
+layout_mode = 2
+
+[node name="Numbers" type="HBoxContainer" parent="Hbox/MiddleSection/TopBorder/PanelContainer/ResContainer/PreciousMetas/PreciousContainer/Panel"]
+layout_mode = 2
+alignment = 1
+
+[node name="Amount" type="Label" parent="Hbox/MiddleSection/TopBorder/PanelContainer/ResContainer/PreciousMetas/PreciousContainer/Panel/Numbers"]
+layout_mode = 2
+text = "874645298"
+
+[node name="Unit" type="Label" parent="Hbox/MiddleSection/TopBorder/PanelContainer/ResContainer/PreciousMetas/PreciousContainer/Panel/Numbers"]
+layout_mode = 2
+text = "Gt"
+
+[node name="Change" type="Label" parent="Hbox/MiddleSection/TopBorder/PanelContainer/ResContainer/PreciousMetas/PreciousContainer/Panel/Numbers"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0.988235, 0, 1)
+text = "+12"
+
+[node name="Antimatter" type="PanelContainer" parent="Hbox/MiddleSection/TopBorder/PanelContainer/ResContainer"]
+layout_mode = 2
+
+[node name="AntimatterContainer" type="VBoxContainer" parent="Hbox/MiddleSection/TopBorder/PanelContainer/ResContainer/Antimatter"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+alignment = 2
+
+[node name="AntimatterIcon" type="TextureRect" parent="Hbox/MiddleSection/TopBorder/PanelContainer/ResContainer/Antimatter/AntimatterContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+stretch_mode = 3
+
+[node name="Panel" type="PanelContainer" parent="Hbox/MiddleSection/TopBorder/PanelContainer/ResContainer/Antimatter/AntimatterContainer"]
+layout_mode = 2
+
+[node name="Numbers" type="HBoxContainer" parent="Hbox/MiddleSection/TopBorder/PanelContainer/ResContainer/Antimatter/AntimatterContainer/Panel"]
+layout_mode = 2
+alignment = 1
+
+[node name="Amount" type="Label" parent="Hbox/MiddleSection/TopBorder/PanelContainer/ResContainer/Antimatter/AntimatterContainer/Panel/Numbers"]
+layout_mode = 2
+text = "874645298"
+
+[node name="Unit" type="Label" parent="Hbox/MiddleSection/TopBorder/PanelContainer/ResContainer/Antimatter/AntimatterContainer/Panel/Numbers"]
+layout_mode = 2
+text = "Gt"
+
+[node name="Chnage" type="Label" parent="Hbox/MiddleSection/TopBorder/PanelContainer/ResContainer/Antimatter/AntimatterContainer/Panel/Numbers"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0.988235, 0, 1)
+text = "+12"
+
+[node name="CenterContainer" type="VBoxContainer" parent="Hbox/MiddleSection"]
+layout_mode = 2
+mouse_filter = 2
+alignment = 2
+
+[node name="Panel" type="PanelContainer" parent="Hbox/MiddleSection/CenterContainer"]
+custom_minimum_size = Vector2(300, 200)
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_styles/panel = SubResource("StyleBoxFlat_truht")
+
+[node name="Label" type="Label" parent="Hbox/MiddleSection/CenterContainer/Panel"]
+layout_mode = 2
+text = "Build Queue"
+horizontal_alignment = 1
+
+[node name="NavPanel" type="PanelContainer" parent="Hbox/MiddleSection/CenterContainer"]
+custom_minimum_size = Vector2(300, 400)
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_styles/panel = SubResource("StyleBoxFlat_wxkqd")
+
+[node name="Label" type="Label" parent="Hbox/MiddleSection/CenterContainer/NavPanel"]
+layout_mode = 2
+text = "NAV PANEL"
+horizontal_alignment = 1
+
+[node name="BottomBorder" type="VBoxContainer" parent="Hbox/MiddleSection"]
+custom_minimum_size = Vector2(1000, 100)
+layout_mode = 2
+size_flags_vertical = 8
+
+[node name="PanelContainer" type="PanelContainer" parent="Hbox/MiddleSection/BottomBorder"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Hbox/MiddleSection/BottomBorder/PanelContainer"]
+layout_mode = 2
+
+[node name="RightBorder" type="VBoxContainer" parent="Hbox"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme = SubResource("Theme_lhrqm")
+
+[node name="PanelContainer" type="PanelContainer" parent="Hbox/RightBorder"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Hbox/RightBorder/PanelContainer"]
+layout_mode = 2
+
+[node name="Spacer" type="Control" parent="Hbox/RightBorder/PanelContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+
+[node name="Exit" type="Button" parent="Hbox/RightBorder/PanelContainer/VBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "X"
