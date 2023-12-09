@@ -13,3 +13,7 @@ config_version=5
 config/name="GodotWildJamDec2023"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+EventBus="*res://autoloads/event_bus.gd"

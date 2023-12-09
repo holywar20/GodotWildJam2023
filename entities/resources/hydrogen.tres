@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="UsableResource" load_steps=2 format=3 uid="uid://i07mt6rgiele"]
+
+[ext_resource type="Script" path="res://entities/resources/usable_resource.gd" id="1_r30he"]
+
+[resource]
+script = ExtResource("1_r30he")
+name = "Hydrogen"
+id = "hydrogen"
