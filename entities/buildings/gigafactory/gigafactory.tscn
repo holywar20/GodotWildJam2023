@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://ccvkv5sim1d2j"]
+
+[ext_resource type="Script" path="res://entities/buildings/gigafactory/gigafactory.gd" id="1_y3466"]
+[ext_resource type="Resource" uid="uid://di8768hxc0pfy" path="res://entities/resources/power.tres" id="2_8qk54"]
+[ext_resource type="Resource" uid="uid://criguf1driv4" path="res://entities/resources/base_metal.tres" id="3_2c1m4"]
+
+[node name="Gigafactory" type="Node2D"]
+script = ExtResource("1_y3466")
+type = "Gigafactory"
+build_time = 5
+operational_costs = {
+ExtResource("2_8qk54"): 5
+}
+building_costs = {
+ExtResource("3_2c1m4"): 75
+}
+
+[node name="Sprite2D" type="Sprite2D" parent="."]

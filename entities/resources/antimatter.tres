@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="UsableResource" load_steps=2 format=3 uid="uid://bawqrs2x5k1ov"]
+
+[ext_resource type="Script" path="res://entities/resources/usable_resource.gd" id="1_gd2ak"]
+
+[resource]
+script = ExtResource("1_gd2ak")
+name = "Antimatter"
+id = "antimatter"

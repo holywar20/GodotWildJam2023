@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://dfolcdpjmn3wb"]
+
+[ext_resource type="Script" path="res://entities/buildings/fusion_reactor/fusion_reactor.gd" id="1_70iuc"]
+[ext_resource type="Resource" uid="uid://i07mt6rgiele" path="res://entities/resources/hydrogen.tres" id="2_l7d1b"]
+[ext_resource type="Resource" uid="uid://criguf1driv4" path="res://entities/resources/base_metal.tres" id="3_qnpey"]
+[ext_resource type="Resource" uid="uid://di8768hxc0pfy" path="res://entities/resources/power.tres" id="4_o0b2t"]
+
+[node name="FusionReactor" type="Node2D"]
+script = ExtResource("1_70iuc")
+type = "Fusion Reactor"
+build_time = 600
+operational_costs = {
+ExtResource("2_l7d1b"): 10
+}
+building_costs = {
+ExtResource("3_qnpey"): 100
+}
+produces = {
+ExtResource("4_o0b2t"): 10
+}
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
