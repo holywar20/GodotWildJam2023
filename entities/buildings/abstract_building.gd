@@ -29,6 +29,10 @@ var _is_constructed: bool = false
 var _build_progress: int = 0
 
 
+func _ready() -> void:
+	EventBus.tick.connect(_on_game_tick)
+
+
 func can_be_built_with(resource_bid: Dictionary) -> bool:
 	for resource in building_costs:
 		if not resource_bid.has(resource) or resource_bid[resource] < building_costs[resource]:
@@ -37,15 +41,20 @@ func can_be_built_with(resource_bid: Dictionary) -> bool:
 	return true
 
 
-func _process(_delta):
+func _on_game_tick():
 	if not _is_constructed:
 		_build_progress += 1 * GameTime.scale
 
-	if _build_progress >= build_time:
-		_build_progress = 0
-		_is_constructed = true
-		is_active = true
-		signal_constructed()
+		if _build_progress >= build_time:
+			_build_progress = 0
+			_is_constructed = true
+			is_active = true
+			signal_constructed()
+
+		return
+
+	# Report on resource extraction/changes
+	EventBus.resources_extracted.emit(next_extraction())
 
 
 func signal_constructed():
@@ -55,3 +64,7 @@ func signal_constructed():
 		EventBus.cracker_construction_finished.emit()
 	else:
 		EventBus.constructed.emit(self)
+
+
+func next_extraction():
+	return produces

@@ -5,6 +5,8 @@ extends Node2D
 const MAX_BUILDINGS = 24
 
 
+@export var current_resources: Dictionary = {}
+
 var _buildings: Array = []
 
 var _num_dyson_swarms: int = 0:
@@ -13,6 +15,11 @@ var _num_dyson_swarms: int = 0:
 
 func get_num_dyson_swarms() -> int:
 	return _num_dyson_swarms
+
+
+func _ready() -> void:
+	EventBus.tick.connect(_on_game_tick)
+	EventBus.resources_extracted.connect(_on_resources_extracted)
 
 
 func construct_building(building_type: String, resource_bid: Dictionary):
@@ -31,3 +38,17 @@ func construct_building(building_type: String, resource_bid: Dictionary):
 
 	_buildings.append(building_to_construct)
 	add_child(building_to_construct)
+
+
+func _on_game_tick() -> void:
+	EventBus.resources_reported.emit(current_resources)
+
+
+func _on_resources_extracted(new_resources: Dictionary) -> void:
+	_add_resources(new_resources)
+
+
+func _add_resources(new_resources: Dictionary) -> void:
+	for resource in new_resources:
+		current_resources[resource] += new_resources[resource]
+

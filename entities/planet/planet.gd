@@ -3,8 +3,8 @@ extends Node2D
 
 const MAX_RESOURCE_NUMBER = 1000000 # In Gigatons?
 
-@onready land_masses : ColorRect = $LandMasses
-@onready atmosphere : ColorRect = $Atmosphere
+@onready var land_masses : ColorRect = $LandMasses
+@onready var atmosphere : ColorRect = $Atmosphere
 
 # List of resource types available for this particular planet.
 @export_subgroup("Resources")
