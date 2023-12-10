@@ -8,10 +8,11 @@
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_gpyen"]
 gradient = ExtResource("3_1vcwf")
+use_hdr = true
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_reljx"]
 shader = ExtResource("1_rtm4d")
-shader_parameter/rotationSpeed = 0.1
+shader_parameter/rotationSpeed = 0.2
 shader_parameter/cellSize = 5.0
 shader_parameter/wormCellSize = 2.0
 shader_parameter/vorCellSize = 1.2

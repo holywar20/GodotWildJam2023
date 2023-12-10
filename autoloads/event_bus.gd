@@ -12,15 +12,12 @@ signal constructed( building )
 signal dyson_construction_started()
 signal dyson_construction_finished()
 
-
 # Resource signals
 signal resources_extracted(resources) # Dictionary keyed by resource with amounts as values
-
 
 # Planet signals
 signal planet_empty( planet )
 signal planet_cracker_vals_changed( val_array ) # Dictionary with 3 values
-
 
 # Event/effect signals
 signal adjust_hydrogen(amount) # can be positive or negative amount

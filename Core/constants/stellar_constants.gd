@@ -7,13 +7,15 @@ const TIER_STATES = {
 			'star_class' : "Brown Dwarf",
 			'description' : """This star is a brown dwarf. It is not a star at all but rather on the boundary between planet and star. While still warm from its formation, it lacks the proper mass to ignite fusion on its own.
 
-It is up to you to light this star, and bring illumination to a universe that is now dying to the pitiless cruelty of heat death.
-""",
+	It is up to you to light this star, and bring illumination to a universe that is now dying to the pitiless cruelty of heat death.
+	""",
+			'gradient' : preload("res://entities/star/gradients/t0.tres")
+		},
+		'interpolated_metadata' : {
 			'temperature' : 1500,
 			'luminosity' : 0.0001, # 1/10,000th of the sun
 			'mass' : 0.01,
-			'scale' : 0.5,
-			'gradient_path' : 'res://entities/star/gradients/t0.tres'
+			'scale' : 0.1,
 		},
 		'corona' : {
 			'color': Vector3( 0.69 , 0.0 , 0.875 ),
@@ -23,7 +25,7 @@ It is up to you to light this star, and bring illumination to a universe that is
 			'spiky' : 27.1,
 			'gas' : 1.8
 		},
-		'star' : {
+		'star_body' : {
 			'rotationSpeed' : 0.1,
 			'cellSize' : 5.0,
 			'wormCellSize' : 1.7,
@@ -40,39 +42,49 @@ It is up to you to light this star, and bring illumination to a universe that is
 			'temperature' : 3000,
 			'luminosity' : 0.001, # 1 / 1000th of the sun
 			'mass' : 0.08,
-			'scale' : 1.0
+			'scale' : 0.5,
+			'gradient' : preload("res://entities/star/gradients/t1.tres")
+		},
+		'interpolated_metadata' : {
+			'temperature' : 1500,
+			'luminosity' : 0.0001, # 1/10,000th of the sun
+			'mass' : 0.01,
+			'scale' : 0.5,
 		},
 		'corona' : {
-			'color': Vector3( 0.69 , 0.0 , 0.875 ),
-			'timeFactor' : 0.09,
-			'flareAmount' : 10,
-			'size' : 4.8,
-			'spiky' : 27.1,
-			'gas' : 1.8
+			'color': Vector3( 1.5 , 0.0 , 0.0 ),
+			'timeFactor' : 0.218,
+			'flareAmount' : 17,
+			'size' : 4.3,
+			'spiky' : 46.3,
+			'gas' : 0.7
 		},
-		'star' : {
-			'rotationSpeed' : 0.1,
+		'star_body' : {
+			'rotationSpeed' : 0.2,
 			'cellSize' : 5.0,
-			'wormCellSize' : 1.7,
-			'vorCellSize' : 4.1,
+			'wormCellSize' : 2.0,
+			'vorCellSize' : 1.2,
 			'convectionSpeed' : 0.1,
-			'stretchFactor' : 1.0,
-			'flowFactor' : 0.18
+			'stretchFactor' : 1.188,
+			'flowFactor' : 0.43
 		}
 	},
 	Constants.Tiers.TIER_2 : {
 		'metadata' : {
 			'star_class' : "Orange Dwarf",
 			'description' : """""",
-			'temperature' : 4500,
-			'luminosity' : 0.5, # 1/2 the sun
-			'mass' : 0.5,
-			'scale' : 1.5
+			'gradient' : preload("res://entities/star/gradients/t1.tres")
+		},
+		'interpolated_metadata' : {
+			'temperature' : 1500,
+			'luminosity' : 0.0001, # 1/10,000th of the sun
+			'mass' : 0.01,
+			'scale' : 1.0,
 		},
 		'corona' : {
 
 		},
-		'star' : {
+		'star_body' : {
 
 		}
 	},
@@ -80,27 +92,30 @@ It is up to you to light this star, and bring illumination to a universe that is
 		'metadata' : {
 			'star_class' : "Yellow Dwarf",
 			'description' : """""",
-			'temperature' : 6000,
-			'luminosity' : 0.1, # 1/2 the sun
-			'mass' : 1.0,
-			'scale' : 2.0
+			'gradient' : preload("res://entities/star/gradients/t1.tres")
+		},
+		'interpolated_metadata' : {
+			'temperature' : 1500,
+			'luminosity' : 0.0001, # 1/10,000th of the sun
+			'mass' : 0.01,
+			'scale' : 1.5,
 		},
 		'corona' : {},
-		'star' : {}
+		'star_body' : {}
 	}
 }
 
 static func get_tier_state(teir : int) -> Dictionary:
 	return TIER_STATES[teir]
 
+# Note this only for interpolated data. The rest is handled manually.
 static func get_blank_tier_data() -> Dictionary:
 	var new_state = {
-		'metadata' : {
-			'temperature' : null,
-			'luminosity' : null, # 1/10,000th of the sun
-			'mass' : null,
-			'scale' :null,
-			'gradient_path' : null
+		'interpolated_metadata' : {
+			'temperature' : 1500,
+			'luminosity' : 0.0001, # 1/10,000th of the sun
+			'mass' : 0.01,
+			'scale' : 0.5,
 		},
 		'corona' : {
 			'color': null,
@@ -110,7 +125,7 @@ static func get_blank_tier_data() -> Dictionary:
 			'spiky' : null,
 			'gas' : null
 		},
-		'star' : {
+		'star_body' : {
 			'rotationSpeed' : null,
 			'cellSize' : null,
 			'wormCellSize' : null,
