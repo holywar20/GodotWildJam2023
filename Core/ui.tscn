@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://c1dcreph3lax5"]
+[gd_scene load_steps=8 format=3 uid="uid://c1dcreph3lax5"]
 
 [ext_resource type="Script" path="res://Core/ui.gd" id="1_e5olo"]
-[ext_resource type="PackedScene" uid="uid://s2euu2wxdg45" path="res://SharedUI/Star.tscn" id="2_c5c4k"]
+[ext_resource type="PackedScene" uid="uid://cqf6e6u6vidip" path="res://SharedUI/UIExpandButton.tscn" id="2_ujlqb"]
 [ext_resource type="Texture2D" uid="uid://bi4oncw05b64i" path="res://Assets/PowerPlaceholder.png" id="3_gs2sa"]
+[ext_resource type="PackedScene" uid="uid://dih21h34x7by6" path="res://SharedUI/Submenu.tscn" id="4_lfwk5"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_truht"]
 bg_color = Color(0.6, 0.6, 0.6, 0.211765)
@@ -31,28 +32,21 @@ size_flags_vertical = 3
 layout_mode = 2
 alignment = 1
 
-[node name="BuildMenu" type="Button" parent="Hbox/LeftBorder/PanelContainer/OpButtonContainer"]
-custom_minimum_size = Vector2(100, 100)
+[node name="BuildMenu" parent="Hbox/LeftBorder/PanelContainer/OpButtonContainer" instance=ExtResource("2_ujlqb")]
 layout_mode = 2
-text = "B"
 
-[node name="Power" type="Button" parent="Hbox/LeftBorder/PanelContainer/OpButtonContainer"]
-custom_minimum_size = Vector2(100, 100)
+[node name="Power" parent="Hbox/LeftBorder/PanelContainer/OpButtonContainer" instance=ExtResource("2_ujlqb")]
 layout_mode = 2
 text = "P"
 
-[node name="Stats" type="Button" parent="Hbox/LeftBorder/PanelContainer/OpButtonContainer"]
-custom_minimum_size = Vector2(100, 100)
+[node name="Placeholder" parent="Hbox/LeftBorder/PanelContainer/OpButtonContainer" instance=ExtResource("2_ujlqb")]
 layout_mode = 2
 text = "S?"
-
-[node name="Star" parent="Hbox/LeftBorder" instance=ExtResource("2_c5c4k")]
-position = Vector2(48, 47)
-scale = Vector2(0.2, 0.2)
 
 [node name="MiddleSection" type="VBoxContainer" parent="Hbox"]
 custom_minimum_size = Vector2(1720, 0)
 layout_mode = 2
+mouse_filter = 2
 theme_override_constants/separation = 0
 
 [node name="TopBorder" type="HBoxContainer" parent="Hbox/MiddleSection"]
@@ -60,205 +54,225 @@ custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 size_flags_vertical = 2
 
-[node name="PanelContainer" type="PanelContainer" parent="Hbox/MiddleSection/TopBorder"]
+[node name="Panel" type="PanelContainer" parent="Hbox/MiddleSection/TopBorder"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="ResContainer" type="HBoxContainer" parent="Hbox/MiddleSection/TopBorder/PanelContainer"]
+[node name="ResContainer" type="HBoxContainer" parent="Hbox/MiddleSection/TopBorder/Panel"]
 layout_mode = 2
 
-[node name="Power" type="PanelContainer" parent="Hbox/MiddleSection/TopBorder/PanelContainer/ResContainer"]
+[node name="Power" type="PanelContainer" parent="Hbox/MiddleSection/TopBorder/Panel/ResContainer"]
 layout_mode = 2
 
-[node name="PowerContainer" type="VBoxContainer" parent="Hbox/MiddleSection/TopBorder/PanelContainer/ResContainer/Power"]
+[node name="PowerContainer" type="VBoxContainer" parent="Hbox/MiddleSection/TopBorder/Panel/ResContainer/Power"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 alignment = 2
 
-[node name="PowerIcon" type="TextureRect" parent="Hbox/MiddleSection/TopBorder/PanelContainer/ResContainer/Power/PowerContainer"]
+[node name="PowerIcon" type="TextureRect" parent="Hbox/MiddleSection/TopBorder/Panel/ResContainer/Power/PowerContainer"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 texture = ExtResource("3_gs2sa")
 stretch_mode = 3
 
-[node name="PanelContainer" type="PanelContainer" parent="Hbox/MiddleSection/TopBorder/PanelContainer/ResContainer/Power/PowerContainer"]
+[node name="Panel" type="PanelContainer" parent="Hbox/MiddleSection/TopBorder/Panel/ResContainer/Power/PowerContainer"]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Hbox/MiddleSection/TopBorder/PanelContainer/ResContainer/Power/PowerContainer/PanelContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Hbox/MiddleSection/TopBorder/Panel/ResContainer/Power/PowerContainer/Panel"]
 layout_mode = 2
 alignment = 1
 
-[node name="Label" type="Label" parent="Hbox/MiddleSection/TopBorder/PanelContainer/ResContainer/Power/PowerContainer/PanelContainer/HBoxContainer"]
+[node name="Amount" type="Label" parent="Hbox/MiddleSection/TopBorder/Panel/ResContainer/Power/PowerContainer/Panel/HBoxContainer"]
 layout_mode = 2
 text = "874645298"
 
-[node name="Label2" type="Label" parent="Hbox/MiddleSection/TopBorder/PanelContainer/ResContainer/Power/PowerContainer/PanelContainer/HBoxContainer"]
+[node name="Unit" type="Label" parent="Hbox/MiddleSection/TopBorder/Panel/ResContainer/Power/PowerContainer/Panel/HBoxContainer"]
 layout_mode = 2
 text = "Gt"
 
-[node name="Label3" type="Label" parent="Hbox/MiddleSection/TopBorder/PanelContainer/ResContainer/Power/PowerContainer/PanelContainer/HBoxContainer"]
+[node name="Change" type="Label" parent="Hbox/MiddleSection/TopBorder/Panel/ResContainer/Power/PowerContainer/Panel/HBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0.988235, 0, 1)
 text = "+12"
 
-[node name="Hydro" type="PanelContainer" parent="Hbox/MiddleSection/TopBorder/PanelContainer/ResContainer"]
+[node name="Hydro" type="PanelContainer" parent="Hbox/MiddleSection/TopBorder/Panel/ResContainer"]
 layout_mode = 2
 
-[node name="HydroContainer" type="VBoxContainer" parent="Hbox/MiddleSection/TopBorder/PanelContainer/ResContainer/Hydro"]
+[node name="HydroContainer" type="VBoxContainer" parent="Hbox/MiddleSection/TopBorder/Panel/ResContainer/Hydro"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 alignment = 2
 
-[node name="HydroIcon" type="TextureRect" parent="Hbox/MiddleSection/TopBorder/PanelContainer/ResContainer/Hydro/HydroContainer"]
+[node name="HydroIcon" type="TextureRect" parent="Hbox/MiddleSection/TopBorder/Panel/ResContainer/Hydro/HydroContainer"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 stretch_mode = 3
 
-[node name="Panel" type="PanelContainer" parent="Hbox/MiddleSection/TopBorder/PanelContainer/ResContainer/Hydro/HydroContainer"]
+[node name="Panel" type="PanelContainer" parent="Hbox/MiddleSection/TopBorder/Panel/ResContainer/Hydro/HydroContainer"]
 layout_mode = 2
 
-[node name="Numbers" type="HBoxContainer" parent="Hbox/MiddleSection/TopBorder/PanelContainer/ResContainer/Hydro/HydroContainer/Panel"]
+[node name="Numbers" type="HBoxContainer" parent="Hbox/MiddleSection/TopBorder/Panel/ResContainer/Hydro/HydroContainer/Panel"]
 layout_mode = 2
 alignment = 1
 
-[node name="Amount" type="Label" parent="Hbox/MiddleSection/TopBorder/PanelContainer/ResContainer/Hydro/HydroContainer/Panel/Numbers"]
+[node name="Amount" type="Label" parent="Hbox/MiddleSection/TopBorder/Panel/ResContainer/Hydro/HydroContainer/Panel/Numbers"]
 layout_mode = 2
 text = "874645298"
 
-[node name="Unit" type="Label" parent="Hbox/MiddleSection/TopBorder/PanelContainer/ResContainer/Hydro/HydroContainer/Panel/Numbers"]
+[node name="Unit" type="Label" parent="Hbox/MiddleSection/TopBorder/Panel/ResContainer/Hydro/HydroContainer/Panel/Numbers"]
 layout_mode = 2
 text = "Gt"
 
-[node name="Change" type="Label" parent="Hbox/MiddleSection/TopBorder/PanelContainer/ResContainer/Hydro/HydroContainer/Panel/Numbers"]
+[node name="Change" type="Label" parent="Hbox/MiddleSection/TopBorder/Panel/ResContainer/Hydro/HydroContainer/Panel/Numbers"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0.988235, 0, 1)
 text = "+12"
 
-[node name="BaseMetals" type="PanelContainer" parent="Hbox/MiddleSection/TopBorder/PanelContainer/ResContainer"]
+[node name="BaseMetals" type="PanelContainer" parent="Hbox/MiddleSection/TopBorder/Panel/ResContainer"]
 layout_mode = 2
 
-[node name="BaseContainer" type="VBoxContainer" parent="Hbox/MiddleSection/TopBorder/PanelContainer/ResContainer/BaseMetals"]
+[node name="BaseContainer" type="VBoxContainer" parent="Hbox/MiddleSection/TopBorder/Panel/ResContainer/BaseMetals"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 alignment = 2
 
-[node name="BaseIcon" type="TextureRect" parent="Hbox/MiddleSection/TopBorder/PanelContainer/ResContainer/BaseMetals/BaseContainer"]
+[node name="BaseIcon" type="TextureRect" parent="Hbox/MiddleSection/TopBorder/Panel/ResContainer/BaseMetals/BaseContainer"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 stretch_mode = 3
 
-[node name="Panel" type="PanelContainer" parent="Hbox/MiddleSection/TopBorder/PanelContainer/ResContainer/BaseMetals/BaseContainer"]
+[node name="Panel" type="PanelContainer" parent="Hbox/MiddleSection/TopBorder/Panel/ResContainer/BaseMetals/BaseContainer"]
 layout_mode = 2
 
-[node name="Numbers" type="HBoxContainer" parent="Hbox/MiddleSection/TopBorder/PanelContainer/ResContainer/BaseMetals/BaseContainer/Panel"]
+[node name="Numbers" type="HBoxContainer" parent="Hbox/MiddleSection/TopBorder/Panel/ResContainer/BaseMetals/BaseContainer/Panel"]
 layout_mode = 2
 alignment = 1
 
-[node name="Amount" type="Label" parent="Hbox/MiddleSection/TopBorder/PanelContainer/ResContainer/BaseMetals/BaseContainer/Panel/Numbers"]
+[node name="Amount" type="Label" parent="Hbox/MiddleSection/TopBorder/Panel/ResContainer/BaseMetals/BaseContainer/Panel/Numbers"]
 layout_mode = 2
 text = "874645298"
 
-[node name="Unit" type="Label" parent="Hbox/MiddleSection/TopBorder/PanelContainer/ResContainer/BaseMetals/BaseContainer/Panel/Numbers"]
+[node name="Unit" type="Label" parent="Hbox/MiddleSection/TopBorder/Panel/ResContainer/BaseMetals/BaseContainer/Panel/Numbers"]
 layout_mode = 2
 text = "Gt"
 
-[node name="Change" type="Label" parent="Hbox/MiddleSection/TopBorder/PanelContainer/ResContainer/BaseMetals/BaseContainer/Panel/Numbers"]
+[node name="Change" type="Label" parent="Hbox/MiddleSection/TopBorder/Panel/ResContainer/BaseMetals/BaseContainer/Panel/Numbers"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0.988235, 0, 1)
 text = "+12"
 
-[node name="PreciousMetas" type="PanelContainer" parent="Hbox/MiddleSection/TopBorder/PanelContainer/ResContainer"]
+[node name="PreciousMetas" type="PanelContainer" parent="Hbox/MiddleSection/TopBorder/Panel/ResContainer"]
 layout_mode = 2
 
-[node name="PreciousContainer" type="VBoxContainer" parent="Hbox/MiddleSection/TopBorder/PanelContainer/ResContainer/PreciousMetas"]
+[node name="PreciousContainer" type="VBoxContainer" parent="Hbox/MiddleSection/TopBorder/Panel/ResContainer/PreciousMetas"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 alignment = 2
 
-[node name="PreciousIcon" type="TextureRect" parent="Hbox/MiddleSection/TopBorder/PanelContainer/ResContainer/PreciousMetas/PreciousContainer"]
+[node name="PreciousIcon" type="TextureRect" parent="Hbox/MiddleSection/TopBorder/Panel/ResContainer/PreciousMetas/PreciousContainer"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 stretch_mode = 3
 
-[node name="Panel" type="PanelContainer" parent="Hbox/MiddleSection/TopBorder/PanelContainer/ResContainer/PreciousMetas/PreciousContainer"]
+[node name="Panel" type="PanelContainer" parent="Hbox/MiddleSection/TopBorder/Panel/ResContainer/PreciousMetas/PreciousContainer"]
 layout_mode = 2
 
-[node name="Numbers" type="HBoxContainer" parent="Hbox/MiddleSection/TopBorder/PanelContainer/ResContainer/PreciousMetas/PreciousContainer/Panel"]
+[node name="Numbers" type="HBoxContainer" parent="Hbox/MiddleSection/TopBorder/Panel/ResContainer/PreciousMetas/PreciousContainer/Panel"]
 layout_mode = 2
 alignment = 1
 
-[node name="Amount" type="Label" parent="Hbox/MiddleSection/TopBorder/PanelContainer/ResContainer/PreciousMetas/PreciousContainer/Panel/Numbers"]
+[node name="Amount" type="Label" parent="Hbox/MiddleSection/TopBorder/Panel/ResContainer/PreciousMetas/PreciousContainer/Panel/Numbers"]
 layout_mode = 2
 text = "874645298"
 
-[node name="Unit" type="Label" parent="Hbox/MiddleSection/TopBorder/PanelContainer/ResContainer/PreciousMetas/PreciousContainer/Panel/Numbers"]
+[node name="Unit" type="Label" parent="Hbox/MiddleSection/TopBorder/Panel/ResContainer/PreciousMetas/PreciousContainer/Panel/Numbers"]
 layout_mode = 2
 text = "Gt"
 
-[node name="Change" type="Label" parent="Hbox/MiddleSection/TopBorder/PanelContainer/ResContainer/PreciousMetas/PreciousContainer/Panel/Numbers"]
+[node name="Change" type="Label" parent="Hbox/MiddleSection/TopBorder/Panel/ResContainer/PreciousMetas/PreciousContainer/Panel/Numbers"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0.988235, 0, 1)
 text = "+12"
 
-[node name="Antimatter" type="PanelContainer" parent="Hbox/MiddleSection/TopBorder/PanelContainer/ResContainer"]
+[node name="Antimatter" type="PanelContainer" parent="Hbox/MiddleSection/TopBorder/Panel/ResContainer"]
 layout_mode = 2
 
-[node name="AntimatterContainer" type="VBoxContainer" parent="Hbox/MiddleSection/TopBorder/PanelContainer/ResContainer/Antimatter"]
+[node name="AntimatterContainer" type="VBoxContainer" parent="Hbox/MiddleSection/TopBorder/Panel/ResContainer/Antimatter"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 alignment = 2
 
-[node name="AntimatterIcon" type="TextureRect" parent="Hbox/MiddleSection/TopBorder/PanelContainer/ResContainer/Antimatter/AntimatterContainer"]
+[node name="AntimatterIcon" type="TextureRect" parent="Hbox/MiddleSection/TopBorder/Panel/ResContainer/Antimatter/AntimatterContainer"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 stretch_mode = 3
 
-[node name="Panel" type="PanelContainer" parent="Hbox/MiddleSection/TopBorder/PanelContainer/ResContainer/Antimatter/AntimatterContainer"]
+[node name="Panel" type="PanelContainer" parent="Hbox/MiddleSection/TopBorder/Panel/ResContainer/Antimatter/AntimatterContainer"]
 layout_mode = 2
 
-[node name="Numbers" type="HBoxContainer" parent="Hbox/MiddleSection/TopBorder/PanelContainer/ResContainer/Antimatter/AntimatterContainer/Panel"]
+[node name="Numbers" type="HBoxContainer" parent="Hbox/MiddleSection/TopBorder/Panel/ResContainer/Antimatter/AntimatterContainer/Panel"]
 layout_mode = 2
 alignment = 1
 
-[node name="Amount" type="Label" parent="Hbox/MiddleSection/TopBorder/PanelContainer/ResContainer/Antimatter/AntimatterContainer/Panel/Numbers"]
+[node name="Amount" type="Label" parent="Hbox/MiddleSection/TopBorder/Panel/ResContainer/Antimatter/AntimatterContainer/Panel/Numbers"]
 layout_mode = 2
 text = "874645298"
 
-[node name="Unit" type="Label" parent="Hbox/MiddleSection/TopBorder/PanelContainer/ResContainer/Antimatter/AntimatterContainer/Panel/Numbers"]
+[node name="Unit" type="Label" parent="Hbox/MiddleSection/TopBorder/Panel/ResContainer/Antimatter/AntimatterContainer/Panel/Numbers"]
 layout_mode = 2
 text = "Gt"
 
-[node name="Chnage" type="Label" parent="Hbox/MiddleSection/TopBorder/PanelContainer/ResContainer/Antimatter/AntimatterContainer/Panel/Numbers"]
+[node name="Change" type="Label" parent="Hbox/MiddleSection/TopBorder/Panel/ResContainer/Antimatter/AntimatterContainer/Panel/Numbers"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0.988235, 0, 1)
 text = "+12"
 
-[node name="CenterContainer" type="VBoxContainer" parent="Hbox/MiddleSection"]
+[node name="CenterContainer" type="HBoxContainer" parent="Hbox/MiddleSection"]
 layout_mode = 2
 mouse_filter = 2
 alignment = 2
 
-[node name="Panel" type="PanelContainer" parent="Hbox/MiddleSection/CenterContainer"]
+[node name="SubMenuContainer" type="VBoxContainer" parent="Hbox/MiddleSection/CenterContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="BuildMenu" parent="Hbox/MiddleSection/CenterContainer/SubMenuContainer" instance=ExtResource("4_lfwk5")]
+layout_mode = 2
+
+[node name="PowerMenu" parent="Hbox/MiddleSection/CenterContainer/SubMenuContainer" instance=ExtResource("4_lfwk5")]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Hbox/MiddleSection/CenterContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="BuildPanel" type="PanelContainer" parent="Hbox/MiddleSection/CenterContainer/VBoxContainer"]
 custom_minimum_size = Vector2(300, 200)
 layout_mode = 2
 size_flags_horizontal = 8
 theme_override_styles/panel = SubResource("StyleBoxFlat_truht")
 
-[node name="Label" type="Label" parent="Hbox/MiddleSection/CenterContainer/Panel"]
+[node name="ScrollContainer" type="ScrollContainer" parent="Hbox/MiddleSection/CenterContainer/VBoxContainer/BuildPanel"]
+modulate = Color(1, 1, 1, 0.396078)
+self_modulate = Color(1, 1, 1, 0.47451)
 layout_mode = 2
-text = "Build Queue"
-horizontal_alignment = 1
+horizontal_scroll_mode = 0
 
-[node name="NavPanel" type="PanelContainer" parent="Hbox/MiddleSection/CenterContainer"]
+[node name="BuildQueue" type="VBoxContainer" parent="Hbox/MiddleSection/CenterContainer/VBoxContainer/BuildPanel/ScrollContainer"]
+layout_mode = 2
+
+[node name="NavPanel" type="PanelContainer" parent="Hbox/MiddleSection/CenterContainer/VBoxContainer"]
 custom_minimum_size = Vector2(300, 400)
 layout_mode = 2
 size_flags_horizontal = 8
 theme_override_styles/panel = SubResource("StyleBoxFlat_wxkqd")
 
-[node name="Label" type="Label" parent="Hbox/MiddleSection/CenterContainer/NavPanel"]
+[node name="ScrollContainer" type="ScrollContainer" parent="Hbox/MiddleSection/CenterContainer/VBoxContainer/NavPanel"]
 layout_mode = 2
-text = "NAV PANEL"
-horizontal_alignment = 1
+horizontal_scroll_mode = 0
+
+[node name="NavContainer" type="VBoxContainer" parent="Hbox/MiddleSection/CenterContainer/VBoxContainer/NavPanel/ScrollContainer"]
+layout_mode = 2
 
 [node name="BottomBorder" type="VBoxContainer" parent="Hbox/MiddleSection"]
 custom_minimum_size = Vector2(1000, 100)
@@ -294,3 +308,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 text = "X"
+
+[connection signal="pressed" from="Hbox/LeftBorder/PanelContainer/OpButtonContainer/BuildMenu" to="." method="_on_build_menu_pressed"]
+[connection signal="pressed" from="Hbox/LeftBorder/PanelContainer/OpButtonContainer/Power" to="." method="_on_power_menu_pressed"]
+[connection signal="pressed" from="Hbox/RightBorder/PanelContainer/VBoxContainer/Exit" to="." method="_on_exit_pressed"]

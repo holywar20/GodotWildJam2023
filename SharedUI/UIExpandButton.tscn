@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://cqf6e6u6vidip"]
+
+[node name="BuildMenu" type="Button"]
+custom_minimum_size = Vector2(100, 100)
+text = "B"
