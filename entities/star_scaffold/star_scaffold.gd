@@ -22,7 +22,7 @@ func _ready() -> void:
 	EventBus.resources_extracted.connect(_on_resources_extracted)
 
 
-func construct_building(building_type: String, resource_bid: Dictionary):
+func construct(building_type: String, resource_bid: Dictionary):
 	# This case should never happen as the UI should prevent it.
 	if _buildings.size() + 1 >= MAX_BUILDINGS:
 		return
@@ -38,6 +38,11 @@ func construct_building(building_type: String, resource_bid: Dictionary):
 
 	_buildings.append(building_to_construct)
 	add_child(building_to_construct)
+
+
+func destroy(building) -> void:
+	_buildings.erase(building)
+	building.queue_free()
 
 
 func _on_game_tick() -> void:
