@@ -26,7 +26,7 @@ extends Node2D
 
 
 var _is_constructed: bool = false
-var _build_progress: int = 0
+var _build_progress: float = 0.0
 
 
 func _ready() -> void:
@@ -46,7 +46,7 @@ func _on_game_tick():
 		_build_progress += 1 * GameTime.scale
 
 		if _build_progress >= build_time:
-			_build_progress = 0
+			_build_progress = 0.0
 			_is_constructed = true
 			is_active = true
 			signal_constructed()
@@ -66,5 +66,5 @@ func signal_constructed():
 		EventBus.constructed.emit(self)
 
 
-func next_extraction():
+func next_extraction() -> Dictionary:
 	return produces

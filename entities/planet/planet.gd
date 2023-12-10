@@ -18,6 +18,7 @@ var _resource_abundance: Dictionary = {}:
 
 var _num_planet_crackers: int = 0
 
+
 func _ready() -> void:
 	randomize()
 	_randomize_resource_availability()
@@ -35,8 +36,10 @@ func extract_resource(resource: UsableResource, amount_requested: int) -> int:
 	_resource_abundance[resource] -= amount_requested
 	return amount_requested
 
+
 func get_resource_abundance() -> Dictionary:
 	return _resource_abundance
+
 
 func _randomize_resource_availability() -> void:
 	for resource in resources_available:
