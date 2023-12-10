@@ -9,8 +9,6 @@ signal tick()
 signal construction_requested(building_type)
 signal construction_started(building) # Fired by UI
 signal constructed( building )
-signal cracker_construction_started( planet )
-signal cracker_construction_finished( planet )
 signal dyson_construction_started()
 signal dyson_construction_finished()
 

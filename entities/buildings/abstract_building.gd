@@ -67,8 +67,6 @@ func _on_game_tick():
 func signal_constructed():
 	if type == Constants.BUILDING_DYSON_SWARM:
 		EventBus.dyson_construction_finished.emit()
-	elif type == Constants.BUILDING_PLANET_CRACKER:
-		EventBus.cracker_construction_finished.emit()
 	else:
 		EventBus.constructed.emit(self)
 
