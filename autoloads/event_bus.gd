@@ -23,10 +23,14 @@ signal planet_empty( planet )
 signal planet_cracker_vals_changed( val_array ) # Dictionary with 3 values
 
 
-# Event signals
-signal event_happened(event_type) # Constant ( or perhaps a full parameterized event )
-signal event_started(event_type)
-signal event_ended(event_type)
+# Event/effect signals
+signal adjust_hydrogen(amount) # can be positive or negative amount
+signal adjust_dyson_swarm_output(amount) # can be positive or negative
+signal disable_random_buildings(number)
+
+#signal event_happened(event) # Constant ( or perhaps a full parameterized event )
+#signal event_started(event)
+#signal event_ended(event)
 
 # Star signals
 signal star_transitioned( star_state ) # Fired by Star Scene

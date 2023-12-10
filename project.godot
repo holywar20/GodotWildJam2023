@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 
 EventBus="*res://autoloads/event_bus.gd"
 GameTime="*res://systems/time/game_time.tscn"
+GameEvents="*res://systems/events/game_events.gd"
 
 [display]
 
