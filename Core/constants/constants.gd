@@ -4,9 +4,10 @@ class_name Constants
 
 # Building tiers
 enum Tiers {
+	TEIR_0,
 	TIER_1,
 	TIER_2,
-	TIER_3,
+	TIER_3
 }
 
 

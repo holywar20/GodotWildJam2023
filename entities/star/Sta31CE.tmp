@@ -5,8 +5,7 @@
 [ext_resource type="Shader" path="res://entities/star/CoronaShader.gdshader" id="3_mj54a"]
 
 [sub_resource type="Gradient" id="Gradient_t1wmw"]
-offsets = PackedFloat32Array(0, 0.105058, 0.509728, 0.824903, 1)
-colors = PackedColorArray(0.000477551, 1.80851e-05, 0.00119228, 1, 0.409772, 0.0835083, 0.43801, 1, 0.167793, 0.105343, 1.20327e-08, 1, 0.220867, 0.0449744, 0.236402, 1, 0.150633, 0.0306476, 0.161445, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.541176, 0.541176, 0.894118, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_wyhe6"]
 gradient = SubResource("Gradient_t1wmw")
@@ -14,24 +13,24 @@ gradient = SubResource("Gradient_t1wmw")
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_reljx"]
 shader = ExtResource("1_rtm4d")
 shader_parameter/rotationSpeed = 0.1
-shader_parameter/cellSize = 5.0
-shader_parameter/wormCellSize = 1.7
-shader_parameter/vorCellSize = 4.1
-shader_parameter/convectionSpeed = 0.1
-shader_parameter/stretchFactor = 4.091
+shader_parameter/cellSize = 5.3
+shader_parameter/wormCellSize = 1.0
+shader_parameter/vorCellSize = 1.0
+shader_parameter/convectionSpeed = 1.0
+shader_parameter/stretchFactor = 1.866
 shader_parameter/starSeed = 1.0
-shader_parameter/flowFactor = 0.18
+shader_parameter/flowFactor = 0.1
 shader_parameter/gradient = SubResource("GradientTexture1D_wyhe6")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_saqe8"]
 shader = ExtResource("3_mj54a")
-shader_parameter/color = Color(0.690196, 0, 0.87451, 1)
+shader_parameter/color = Color(0.454902, 0, 0.580392, 1)
 shader_parameter/colorBalance = 0.1
-shader_parameter/timeFactor = 0.09
+shader_parameter/timeFactor = 0.04
 shader_parameter/flareAmount = 10.0
-shader_parameter/size = 4.8
-shader_parameter/spiky = 27.1
-shader_parameter/gas = 1.8
+shader_parameter/size = 8.8
+shader_parameter/spiky = 0.1
+shader_parameter/gas = 0.5
 shader_parameter/starSeed = 1.0
 
 [node name="Node2D" type="Node2D"]

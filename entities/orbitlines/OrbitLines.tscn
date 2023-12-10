@@ -5,9 +5,9 @@
 [node name="OrbitLines" type="Control"]
 layout_mode = 3
 anchors_preset = 0
-offset_left = -3000.0
-offset_top = -3000.0
-offset_right = 3000.0
-offset_bottom = 3000.0
+offset_left = -6000.0
+offset_top = -6000.0
+offset_right = 6000.0
+offset_bottom = 6000.0
 mouse_filter = 2
 script = ExtResource("1_5yele")

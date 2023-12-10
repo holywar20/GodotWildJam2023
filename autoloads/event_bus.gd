@@ -34,7 +34,7 @@ signal star_transitioned( star_state ) # Fired by Star Scene
 
 # UI signals
 signal resources_reported(resources) # Dictionary keyed by resource with amounts as values
-
+signal camera_moved( camera_pos ) # Vector2
 
 # Misc. game signals
 signal game_paused

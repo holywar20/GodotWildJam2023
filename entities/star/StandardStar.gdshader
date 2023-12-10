@@ -274,11 +274,11 @@ void fragment(){
 		wormyness = clamp( 0.0, 1.0 , wormyness);
 		float noisyness = vornoiFbm( uv * 20.0 ) * 0.5;
 		
-		float vFbm = movingVornoi( starUV * vorCellSize + noisyness ) + 0.5;
+		float vFbm = movingVornoi( starUV * vorCellSize ) + 1.0;
 		
 		// Now cross mix all the surfaces so transitions aren't so jarring
-		noisyness = mix( wormyness , noisyness , flowyness + vFbm ) - noisyness;
-		wormyness = mix( noisyness , wormyness , flowyness + vFbm ) + vFbm * 0.2;
+		noisyness = mix( wormyness , noisyness , flowyness + vFbm );
+		wormyness = mix( noisyness , wormyness , flowyness + vFbm );
 		
 		float tOffset = noise2( sin( cos( TIME * starUV * 0.01 ) * starUV * 0.01 ) ) * 0.2;
 		float surface = mix( wormyness , mix( flowyness, noisyness , wormyness ), flowyness + tOffset );
