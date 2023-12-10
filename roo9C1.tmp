@@ -1,7 +1,6 @@
-[gd_scene load_steps=15 format=3 uid="uid://cnn2083d08byi"]
+[gd_scene load_steps=14 format=3 uid="uid://cnn2083d08byi"]
 
 [ext_resource type="Shader" path="res://entities/background/StellarBackground.gdshader" id="1_ece8b"]
-[ext_resource type="PackedScene" path="res://Core/ui.tscn" id="1_qq3ke"]
 [ext_resource type="PackedScene" uid="uid://dvxm6daibl2v1" path="res://entities/orbitlines/OrbitLines.tscn" id="1_s2yhk"]
 [ext_resource type="PackedScene" uid="uid://qxmseuwkokrh" path="res://entities/star/StarScene.tscn" id="1_wmdo0"]
 [ext_resource type="Script" path="res://entities/background/Background.gd" id="2_fgrpl"]
@@ -20,8 +19,6 @@ shader_parameter/layers = 4
 shader_parameter/posOffset = Vector2(0, 0)
 
 [node name="ROOT" type="Node2D"]
-
-[node name="UI" parent="." instance=ExtResource("1_qq3ke")]
 
 [node name="Background" type="CanvasLayer" parent="."]
 layer = -30

@@ -30,6 +30,7 @@ signal event_ended(event_type)
 
 # Star signals
 signal star_transitioned( star_state ) # Fired by Star Scene
+signal star_size_changed( star_metadata ) # Fired by Star Scene
 
 
 # UI signals

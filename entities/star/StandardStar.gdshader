@@ -10,7 +10,7 @@ uniform float wormCellSize : hint_range( 0.1 , 10.0 , 0.1 ) = 1.0;
 
 uniform float vorCellSize : hint_range( 0.1 , 10.0 , 0.1 ) = 1.0;
 
-uniform float convectionSpeed : hint_range( 0.1 , 5.0 , 0.1 ) = 1.0;
+uniform float convectionSpeed : hint_range( 0.05 , 5.0 , 0.05) = 1.0;
 uniform float stretchFactor : hint_range( 0.1 , 5.0 ) = 1.8;
 uniform float starSeed : hint_range( 0.1 , 10.0 ) = 1.0;
 uniform float flowFactor : hint_range (0.01 , 1.0 , .01 ) = 0.1;
@@ -128,7 +128,7 @@ float flow(in vec2 p){
 	
 	float time = TIME * -flowFactor;
 	
-	for (float i= 1.;i < 6.0;i++ )
+	for (float i= 1.;i < 5.0;i++ )
 	{
 		//primary flow speed
 		p += vec2( time * 0.1 , 0 );
@@ -142,7 +142,7 @@ float flow(in vec2 p){
 		vec2 gr = gradn(i*p*0.4+time * convectionSpeed );
 		
 		//rotation of the displacement field
-		gr *= makem2( time * 10.0 -(0.1*p.x+0.03*p.y) *40. );
+		gr *= makem2( time * 5.0 -(0.1*p.x+0.03*p.y) *40. );
 		
 		//displace the system
 		p += vec2( gr.x , gr.y );
@@ -167,7 +167,7 @@ float movingVornoi( vec2 uv ){
 	
 	float m = 0.0;
 	float minDist = 100.0;
-	float t = TIME * convectionSpeed;
+	float t = TIME * convectionSpeed + 2.0;
 	vec2 pos = vec2(0);
 	
 	vec2 grid = uv * 5.0;
@@ -181,7 +181,7 @@ float movingVornoi( vec2 uv ){
 			float randOffset = rand( id + offset );
 			
 			// Adding R again here to prevent a display error when T is near zero.
-			pos = offset + sin( r * t + randOffset ) * 0.5;
+			pos = offset + sin( r * t * 10.0 + randOffset ) * 0.5;
 			// Euclidian ( As the bird flies ) Distance
 			float ed = distance( gridUv + r * 0.1 , pos );
 			
@@ -272,19 +272,15 @@ void fragment(){
 		float flowyness = flow( starUV * wormCellSize ) * 0.9;
 		float wormyness = wormPattern( starUV * wormCellSize ) * 0.9;
 		wormyness = clamp( 0.0, 1.0 , wormyness);
-		float noisyness = vornoiFbm( uv * 20.0 ) * 0.5;
+		float noisyness = vornoiFbm( uv * 2.0 ) * 0.5;
 		
-		float vFbm = movingVornoi( starUV * vorCellSize ) + 1.0;
+		float vFbm = movingVornoi( starUV * vorCellSize );
 		
 		// Now cross mix all the surfaces so transitions aren't so jarring
-		noisyness = mix( wormyness , noisyness , flowyness + vFbm );
-		wormyness = mix( noisyness , wormyness , flowyness + vFbm );
-		
-		float tOffset = noise2( sin( cos( TIME * starUV * 0.01 ) * starUV * 0.01 ) ) * 0.2;
-		float surface = mix( wormyness , mix( flowyness, noisyness , wormyness ), flowyness + tOffset );
-		//float surface = wFbm;
-		
-		//float wNoise = waveletNoise( starUV, time , 0.1 );
+
+		float tOffset = noise2( sin( cos( TIME * starUV * 0.01 ) ) ) * 1.0;
+		float surface = mix( ( wormyness + tOffset - sin(vFbm) ) * 0.5, mix( flowyness, noisyness , vFbm ), flowyness + vFbm );
+
 		vec4 baseTint = texture( gradient  , vec2( surface , 0.0 ) );
 
 		starSphere = baseTint.rgb;

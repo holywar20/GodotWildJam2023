@@ -1,52 +1,53 @@
-[gd_scene load_steps=8 format=3 uid="uid://qxmseuwkokrh"]
+[gd_scene load_steps=9 format=3 uid="uid://qxmseuwkokrh"]
 
 [ext_resource type="Shader" path="res://entities/star/StandardStar.gdshader" id="1_rtm4d"]
 [ext_resource type="Script" path="res://entities/star/StarScene.gd" id="1_ucqo4"]
+[ext_resource type="Gradient" uid="uid://cqjjl60em4vkq" path="res://entities/star/gradients/t1.tres" id="3_1vcwf"]
 [ext_resource type="Shader" path="res://entities/star/CoronaShader.gdshader" id="3_mj54a"]
+[ext_resource type="Environment" uid="uid://n8asi34u4tt8" path="res://enviroment/Enviroment.tres" id="5_l54cu"]
 
-[sub_resource type="Gradient" id="Gradient_t1wmw"]
-offsets = PackedFloat32Array(0, 0.105058, 0.509728, 0.824903, 1)
-colors = PackedColorArray(0.000477551, 1.80851e-05, 0.00119228, 1, 0.409772, 0.0835083, 0.43801, 1, 0.167793, 0.105343, 1.20327e-08, 1, 0.220867, 0.0449744, 0.236402, 1, 0.150633, 0.0306476, 0.161445, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_wyhe6"]
-gradient = SubResource("Gradient_t1wmw")
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_gpyen"]
+gradient = ExtResource("3_1vcwf")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_reljx"]
 shader = ExtResource("1_rtm4d")
 shader_parameter/rotationSpeed = 0.1
 shader_parameter/cellSize = 5.0
-shader_parameter/wormCellSize = 1.7
-shader_parameter/vorCellSize = 4.1
-shader_parameter/convectionSpeed = 0.1
-shader_parameter/stretchFactor = 4.091
+shader_parameter/wormCellSize = 2.0
+shader_parameter/vorCellSize = 1.2
+shader_parameter/convectionSpeed = 0.05
+shader_parameter/stretchFactor = 1.188
 shader_parameter/starSeed = 1.0
-shader_parameter/flowFactor = 0.18
-shader_parameter/gradient = SubResource("GradientTexture1D_wyhe6")
+shader_parameter/flowFactor = 0.43
+shader_parameter/gradient = SubResource("GradientTexture1D_gpyen")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_saqe8"]
 shader = ExtResource("3_mj54a")
-shader_parameter/color = Color(0.690196, 0, 0.87451, 1)
-shader_parameter/colorBalance = 0.1
-shader_parameter/timeFactor = 0.09
-shader_parameter/flareAmount = 10.0
-shader_parameter/size = 4.8
-shader_parameter/spiky = 27.1
-shader_parameter/gas = 1.8
+shader_parameter/color = Color(1.5, 0, 0, 1)
+shader_parameter/colorBalance = 0.218
+shader_parameter/timeFactor = 0.22
+shader_parameter/flareAmount = 17.0
+shader_parameter/size = 4.3
+shader_parameter/spiky = 46.3
+shader_parameter/gas = 0.7
 shader_parameter/starSeed = 1.0
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_ucqo4")
 
-[node name="Star" type="ColorRect" parent="."]
+[node name="StarBody" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_reljx")
-offset_left = -128.0
-offset_top = -128.0
-offset_right = 128.0
-offset_bottom = 128.0
+offset_left = -500.0
+offset_top = -500.0
+offset_right = 500.0
+offset_bottom = 500.0
 
 [node name="Corona" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_saqe8")
-offset_left = -256.0
-offset_top = -256.0
-offset_right = 256.0
-offset_bottom = 256.0
+offset_left = -1000.0
+offset_top = -1000.0
+offset_right = 1000.0
+offset_bottom = 1000.0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("5_l54cu")
