@@ -11,7 +11,7 @@ signal construction_started(building) # Fired by UI
 signal constructed( building )
 signal dyson_construction_started()
 signal dyson_construction_finished()
-signal construction_statuses(buildings) # Array of ConstructionStatus objects
+signal build_queue(buildings) # Array
 
 # Resource signals
 signal resources_extracted(resources) # Dictionary keyed by resource with amounts as values

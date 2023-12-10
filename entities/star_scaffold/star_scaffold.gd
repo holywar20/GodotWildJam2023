@@ -54,13 +54,7 @@ func destroy(building) -> void:
 
 
 func _on_constructed(building) -> void:
-	var building_status_to_remove = _buildings_under_construction.filter(
-			func (building_status): return building_status.building == building
-	)
-
-	if building_status_to_remove:
-		_buildings_under_construction.erase(building_status_to_remove[0])
-		building_status_to_remove[0].free()
+	_buildings_under_construction.erase(building)
 
 
 func _deduct_from_current_resources(resources_bid: Dictionary) -> void:
@@ -72,7 +66,7 @@ func _on_game_tick() -> void:
 	EventBus.resources_reported.emit(current_resources)
 
 	if _buildings_under_construction:
-		EventBus.construction_statuses.emit(_buildings_under_construction)
+		EventBus.build_queue.emit(_buildings_under_construction)
 
 
 func _on_resources_extracted(new_resources: Dictionary) -> void:
@@ -85,12 +79,7 @@ func _add_resources(new_resources: Dictionary) -> void:
 
 
 func _add_to_build_queue(building) -> void:
-	var construction_status: ConstructionStatus
-
-	construction_status.building = building
-	construction_status.percentage_complete = 0.0
-
-	_buildings_under_construction.append(construction_status)
+	_buildings_under_construction.append(building)
 
 
 func _calculate_building_speedup_factor() -> float:
