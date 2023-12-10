@@ -20,7 +20,7 @@ var _num_planet_crackers: int = 0
 
 
 func _ready() -> void:
-	randomize()
+	EventBus.adjust_hydrogen.connect(_on_adjust_hydrogen)
 	_randomize_resource_availability()
 
 	# Get initial Parms by planet
@@ -44,3 +44,11 @@ func get_resource_abundance() -> Dictionary:
 func _randomize_resource_availability() -> void:
 	for resource in resources_available:
 		_resource_abundance[resource] = randi_range(0, MAX_RESOURCE_NUMBER)
+
+
+func _on_adjust_hydrogen(amount: int) -> void:
+	_resource_abundance[Constants.HYDROGEN] += amount
+
+	if _resource_abundance[Constants.HYDROGEN] < 0:
+		_resource_abundance[Constants.HYDROGEN] = 0
+
