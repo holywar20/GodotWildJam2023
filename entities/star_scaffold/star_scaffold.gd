@@ -36,6 +36,8 @@ func construct(building_type: String, resource_bid: Dictionary):
 		building_to_construct.queue_free()
 		return
 
+	building_to_construct.set_build_speedup_factor(_calculate_building_speedup_factor)
+
 	_buildings.append(building_to_construct)
 	add_child(building_to_construct)
 
@@ -57,3 +59,12 @@ func _add_resources(new_resources: Dictionary) -> void:
 	for resource in new_resources:
 		current_resources[resource] += new_resources[resource]
 
+
+func _calculate_building_speedup_factor() -> float:
+	var speedup_factor: float = 0.0
+
+	for building in _buildings:
+		if building.type == Constants.BUILDING_GIGAFACTORY:
+			speedup_factor += building.build_speedup_factor
+
+	return speedup_factor

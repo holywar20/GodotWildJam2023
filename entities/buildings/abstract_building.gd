@@ -24,6 +24,8 @@ extends Node2D
 # Value: Number of resources per unit time to produce
 @export var produces: Dictionary
 
+var _build_speed_factor: float = 1.0:
+	set = set_build_speedup_factor
 
 var _is_constructed: bool = false
 var _build_progress: float = 0.0
@@ -31,6 +33,10 @@ var _build_progress: float = 0.0
 
 func _ready() -> void:
 	EventBus.tick.connect(_on_game_tick)
+
+
+func set_build_speedup_factor(value: float) -> void:
+	_build_speed_factor = value
 
 
 func can_be_built_with(resource_bid: Dictionary) -> bool:
@@ -43,7 +49,7 @@ func can_be_built_with(resource_bid: Dictionary) -> bool:
 
 func _on_game_tick():
 	if not _is_constructed:
-		_build_progress += 1 * GameTime.scale
+		_build_progress += GameTime.scale + _build_speed_factor
 
 		if _build_progress >= build_time:
 			_build_progress = 0.0
@@ -54,7 +60,8 @@ func _on_game_tick():
 		return
 
 	# Report on resource extraction/changes
-	EventBus.resources_extracted.emit(next_extraction())
+	if produces:
+		EventBus.resources_extracted.emit(next_extraction())
 
 
 func signal_constructed():
