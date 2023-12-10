@@ -8,6 +8,7 @@ const MAX_BUILDINGS = 24
 @export var current_resources: Dictionary = {}
 
 var _buildings: Array = []
+var _buildings_under_construction: Array = []
 
 var _num_dyson_swarms: int = 0:
 	get = get_num_dyson_swarms
@@ -20,6 +21,7 @@ func get_num_dyson_swarms() -> int:
 func _ready() -> void:
 	EventBus.tick.connect(_on_game_tick)
 	EventBus.resources_extracted.connect(_on_resources_extracted)
+	EventBus.constructed.connect(_on_constructed)
 
 
 func construct(building_type: String):
@@ -40,6 +42,8 @@ func construct(building_type: String):
 
 	_deduct_from_current_resources(building_to_construct.building_costs)
 
+	_add_to_build_queue(building_to_construct)
+
 	_buildings.append(building_to_construct)
 	add_child(building_to_construct)
 
@@ -47,6 +51,16 @@ func construct(building_type: String):
 func destroy(building) -> void:
 	_buildings.erase(building)
 	building.queue_free()
+
+
+func _on_constructed(building) -> void:
+	var building_status_to_remove = _buildings_under_construction.filter(
+			func (building_status): return building_status.building == building
+	)
+
+	if building_status_to_remove:
+		_buildings_under_construction.erase(building_status_to_remove[0])
+		building_status_to_remove[0].free()
 
 
 func _deduct_from_current_resources(resources_bid: Dictionary) -> void:
@@ -57,6 +71,9 @@ func _deduct_from_current_resources(resources_bid: Dictionary) -> void:
 func _on_game_tick() -> void:
 	EventBus.resources_reported.emit(current_resources)
 
+	if _buildings_under_construction:
+		EventBus.construction_statuses.emit(_buildings_under_construction)
+
 
 func _on_resources_extracted(new_resources: Dictionary) -> void:
 	_add_resources(new_resources)
@@ -65,6 +82,15 @@ func _on_resources_extracted(new_resources: Dictionary) -> void:
 func _add_resources(new_resources: Dictionary) -> void:
 	for resource in new_resources:
 		current_resources[resource] += new_resources[resource]
+
+
+func _add_to_build_queue(building) -> void:
+	var construction_status: ConstructionStatus
+
+	construction_status.building = building
+	construction_status.percentage_complete = 0.0
+
+	_buildings_under_construction.append(construction_status)
 
 
 func _calculate_building_speedup_factor() -> float:

@@ -47,6 +47,10 @@ func can_be_built_with(resource_bid: Dictionary) -> bool:
 	return true
 
 
+func get_construction_complete_percentage() -> float:
+	return _build_progress / build_time
+
+
 func _on_game_tick():
 	if not _is_constructed:
 		_build_progress += GameTime.scale + _build_speed_factor
