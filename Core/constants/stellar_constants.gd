@@ -12,12 +12,14 @@ It is up to you to light this star, and bring illumination to a universe that is
             'temperature' : 1500,
             'luminosity' : 0.0001, # 1/10,000th of the sun
             'mass' : 0.01,
+            'scale' : 0.1
         },
         'corona' : {
             
         },
         'star' : {
-            
+            'rotationSpeed' : 0.1,
+            'cellSize' : 5.0,
         }
     },
     Constants.Teirs.TIER_1 : {
@@ -26,7 +28,8 @@ It is up to you to light this star, and bring illumination to a universe that is
             'description' : """This star is a red dwarf. It is a small, cool star that is very common in the universe. It is not very luminous, but it is very long lived. It is the most common type of star in the universe."""
             'temperature' : 3000,
             'luminosity' : 0.001, # 1 / 1000th of the sun
-            'mass' : 0.08
+            'mass' : 0.08,
+            'scale' : 0.3
         },
         'corona' : {},
         'star' : {}
@@ -37,7 +40,8 @@ It is up to you to light this star, and bring illumination to a universe that is
             'description' : """"""
             'temperature' : 4500,
             'luminosity' : 0.5, # 1/2 the sun
-            'mass' : 0.5
+            'mass' : 0.5,
+            'scale' : 0.6
         },
         'corona' : {
 
@@ -52,7 +56,8 @@ It is up to you to light this star, and bring illumination to a universe that is
             'description' : """"""
             'temperature' : 6000,
             'luminosity' : 0.1, # 1/2 the sun
-            'mass' : 1
+            'mass' : 1.0,
+            'scale' : 1.0
         },
         'corona' : {},
         'star' : {}
