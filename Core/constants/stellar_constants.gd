@@ -36,7 +36,7 @@ It is up to you to light this star, and bring illumination to a universe that is
             'star_class' : "Orange Dwarf",
             'description' : """"""
             'temperature' : 4500,
-            'luminosity' : 0.1, # 1/2 the sun
+            'luminosity' : 0.5, # 1/2 the sun
             'mass' : 0.5
         },
         'corona' : {
