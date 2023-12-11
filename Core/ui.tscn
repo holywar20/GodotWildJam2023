@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://c1dcreph3lax5"]
+[gd_scene load_steps=9 format=3 uid="uid://c1dcreph3lax5"]
 
 [ext_resource type="Script" path="res://Core/ui.gd" id="1_e5olo"]
 [ext_resource type="PackedScene" uid="uid://cqf6e6u6vidip" path="res://SharedUI/UIExpandButton.tscn" id="2_ujlqb"]
 [ext_resource type="Texture2D" uid="uid://bi4oncw05b64i" path="res://Assets/PowerPlaceholder.png" id="3_gs2sa"]
 [ext_resource type="PackedScene" uid="uid://dih21h34x7by6" path="res://SharedUI/Submenu.tscn" id="4_lfwk5"]
+[ext_resource type="Script" path="res://SharedUI/timescale_control.gd" id="4_wfklm"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_truht"]
 bg_color = Color(0.6, 0.6, 0.6, 0.211765)
@@ -226,6 +227,40 @@ text = "Gt"
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0.988235, 0, 1)
 text = "+12"
+
+[node name="TimeScale" type="PanelContainer" parent="Hbox/MiddleSection/TopBorder/Panel/ResContainer"]
+layout_mode = 2
+script = ExtResource("4_wfklm")
+
+[node name="TimeScaleContainer" type="VBoxContainer" parent="Hbox/MiddleSection/TopBorder/Panel/ResContainer/TimeScale"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+alignment = 2
+
+[node name="TimeScaleIcon" type="TextureRect" parent="Hbox/MiddleSection/TopBorder/Panel/ResContainer/TimeScale/TimeScaleContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+stretch_mode = 3
+
+[node name="Panel" type="PanelContainer" parent="Hbox/MiddleSection/TopBorder/Panel/ResContainer/TimeScale/TimeScaleContainer"]
+layout_mode = 2
+
+[node name="Numbers" type="HBoxContainer" parent="Hbox/MiddleSection/TopBorder/Panel/ResContainer/TimeScale/TimeScaleContainer/Panel"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="Hbox/MiddleSection/TopBorder/Panel/ResContainer/TimeScale/TimeScaleContainer/Panel/Numbers"]
+layout_mode = 2
+text = "Time Scale:"
+
+[node name="Scale" type="Label" parent="Hbox/MiddleSection/TopBorder/Panel/ResContainer/TimeScale/TimeScaleContainer/Panel/Numbers"]
+layout_mode = 2
+text = "1.0"
+
+[node name="Suffix" type="Label" parent="Hbox/MiddleSection/TopBorder/Panel/ResContainer/TimeScale/TimeScaleContainer/Panel/Numbers"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0.988235, 0, 1)
+text = "x"
 
 [node name="CenterContainer" type="HBoxContainer" parent="Hbox/MiddleSection"]
 layout_mode = 2

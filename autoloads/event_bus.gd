@@ -25,9 +25,6 @@ signal adjust_hydrogen(amount) # can be positive or negative amount
 signal adjust_dyson_swarm_output(amount) # can be positive or negative
 signal disable_random_buildings(number)
 
-#signal event_happened(event) # Constant ( or perhaps a full parameterized event )
-#signal event_started(event)
-#signal event_ended(event)
 
 # Star signals
 signal star_transitioned( star_state ) # Fired by Star Scene
@@ -37,6 +34,8 @@ signal star_size_changed( star_metadata ) # Fired by Star Scene
 # UI signals
 signal resources_reported(resources) # Dictionary keyed by resource with amounts as values
 signal camera_moved( camera_pos ) # Vector2
+signal time_scale_updated(scale)
+
 
 # Misc. game signals
 signal game_paused
