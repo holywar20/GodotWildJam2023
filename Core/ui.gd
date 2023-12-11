@@ -11,8 +11,6 @@ extends CanvasLayer
 # Top bar resources
 @onready var powerAmount = $Hbox/MiddleSection/TopBorder/Panel/ResContainer/Power/PowerContainer/Panel/HBoxContainer/Amount
 @onready var powerChange = $Hbox/MiddleSection/TopBorder/Panel/ResContainer/Power/PowerContainer/Panel/HBoxContainer/Change
-@onready var hydroAmount = $Hbox/MiddleSection/TopBorder/Panel/ResContainer/Hydro/HydroContainer/Panel/Numbers/Amount
-@onready var hydroChange = $Hbox/MiddleSection/TopBorder/Panel/ResContainer/Hydro/HydroContainer/Panel/Numbers/Change
 @onready var baseAmount = $Hbox/MiddleSection/TopBorder/Panel/ResContainer/BaseMetals/BaseContainer/Panel/Numbers/Amount
 @onready var baseChange = $Hbox/MiddleSection/TopBorder/Panel/ResContainer/BaseMetals/BaseContainer/Panel/Numbers/Change
 @onready var preciousAmount = $Hbox/MiddleSection/TopBorder/Panel/ResContainer/PreciousMetas/PreciousContainer/Panel/Numbers/Amount
@@ -31,8 +29,69 @@ func _ready():
 func updateUI():
 	pass
 
+func updateChangeColours():
+	# Power
+	if int(powerChange.get_text()) < 0:
+		powerChange.modulate = Color(1,0.1,0.1,1)
+	if int(powerChange.get_text()) > 0:
+		powerChange.modulate = Color(0.1,1,0.1,1)
+		powerChange.set_text("+" + powerChange.get_text())
+	if int(powerChange.get_text()) == 0:
+		powerChange.modulate = Color(1,1,1,1)
+		powerChange.set_text("=" + powerChange.get_text())
+	
+	# Base metals
+	if int(baseChange.get_text()) < 0:
+		baseChange.modulate = Color(1,0.1,0.1,1)
+	if int(baseChange.get_text()) > 0:
+		baseChange.modulate = Color(0.1,1,0.1,1)
+		baseChange.set_text("+" + baseChange.get_text())
+	if int(baseChange.get_text()) == 0:
+		baseChange.modulate = Color(1,1,1,1)
+		baseChange.set_text("=" + baseChange.get_text())
+	
+	# Precious metals
+	if int(preciousChange.get_text()) < 0:
+		preciousChange.modulate = Color(1,0.1,0.1,1)
+	if int(preciousChange.get_text()) > 0:
+		preciousChange.modulate = Color(0.1,1,0.1,1)
+		preciousChange.set_text("+" + preciousChange.get_text())
+	if int(preciousChange.get_text()) == 0:
+		preciousChange.modulate = Color(1,1,1,1)
+		preciousChange.set_text("=" + preciousChange.get_text())
+	
+	# Antimatter
+	if int(antimatterChange.get_text()) < 0:
+		antimatterChange.modulate = Color(1,0.1,0.1,1)
+	if int(antimatterChange.get_text()) > 0:
+		antimatterChange.modulate = Color(0.1,1,0.1,1)
+		antimatterChange.set_text("+" + antimatterChange.get_text())
+	if int(antimatterChange.get_text()) == 0:
+		antimatterChange.modulate = Color(1,1,1,1)
+		antimatterChange.set_text("=" + antimatterChange.get_text())
+
 func _on_EB_resources_reported(resourcesDict):
-	pass
+	var oldPower = powerAmount.get_text()
+	var oldBase = baseAmount.get_text()
+	var oldPrecious = preciousAmount.get_text()
+	var oldAntimatter = antimatterAmount.get_text()
+	
+	var newPower = resourcesDict[Constants.POWER]
+	var newBase = resourcesDict[Constants.BASE_METAL]
+	var newPrecious = resourcesDict[Constants.PRECIOUS_METAL]
+	var newAntimatter = resourcesDict[Constants.ANTIMATTER]
+	
+	powerChange.set_text(str(int(newPower)-int(oldPower)))
+	baseChange.set_text(str(int(newBase)-int(oldBase)))
+	preciousChange.set_text(str(int(newPrecious)-int(oldPrecious)))
+	antimatterChange.set_text(str(int(newAntimatter)-int(oldAntimatter)))
+	
+	powerAmount.set_text(str(newPower))
+	baseAmount.set_text(str(newBase))
+	preciousAmount.set_text(str(newPrecious))
+	antimatterAmount.set_text(str(newAntimatter))
+	
+	updateChangeColours()
 
 func _on_EB_build_queue(buildings):
 	pass
