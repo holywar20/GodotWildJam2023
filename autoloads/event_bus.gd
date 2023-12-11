@@ -6,8 +6,8 @@ signal tick()
 
 
 # Building signals
-signal construction_requested(building_type)
-signal construction_started(building) # Fired by UI
+signal construction_requested(building_type) # Fired by UI
+signal construction_started(building) 
 signal constructed( building )
 signal dyson_construction_started()
 signal dyson_construction_finished()

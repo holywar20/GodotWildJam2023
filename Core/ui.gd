@@ -18,13 +18,14 @@ extends CanvasLayer
 @onready var antimatterAmount = $Hbox/MiddleSection/TopBorder/Panel/ResContainer/Antimatter/AntimatterContainer/Panel/Numbers/Amount
 @onready var antimatterChange = $Hbox/MiddleSection/TopBorder/Panel/ResContainer/Antimatter/AntimatterContainer/Panel/Numbers/Change
 
-var buildQueueIcon = preload("res://SharedUI/BuildQueueItem.tscn")
+var buildQueueItem = preload("res://SharedUI/BuildQueueItem.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	EventBus.connect("construction_requested", Callable(self, "_on_EB_construction_requested"))
 	EventBus.connect("resources_reported", Callable(self, "_on_EB_resources_reported"))
 	EventBus.connect("build_queue", Callable(self, "_on_EB_build_queue"))
+	EventBus.connect("construction_started", Callable(self, "_on_EB_construction_started"))
 
 func updateUI():
 	pass
@@ -95,6 +96,12 @@ func _on_EB_resources_reported(resourcesDict):
 
 func _on_EB_build_queue(buildings):
 	pass
+
+func _on_EB_construction_started(building):
+	print(building)
+	var newBuildItem = buildQueueItem.instantiate()
+	buildQueue.add_child(newBuildItem)
+	newBuildItem.setName(building.name)
 
 func _on_build_menu_pressed():
 	if (powerMenu.isOpen):
