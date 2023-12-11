@@ -272,6 +272,7 @@ alignment = 2
 [node name="SubMenuContainer" type="VBoxContainer" parent="Hbox/MiddleSection/CenterContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+alignment = 1
 
 [node name="BuildMenu" parent="Hbox/MiddleSection/CenterContainer/SubMenuContainer" instance=ExtResource("4_lfwk5")]
 layout_mode = 2
@@ -284,7 +285,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="CurrentStateControl" parent="Hbox/MiddleSection/CenterContainer/VBoxContainer" instance=ExtResource("6_c83tx")]
-custom_minimum_size = Vector2(300, 400)
+custom_minimum_size = Vector2(300, 265)
 layout_mode = 2
 size_flags_horizontal = 8
 
@@ -302,6 +303,8 @@ horizontal_scroll_mode = 0
 
 [node name="BuildQueue" type="VBoxContainer" parent="Hbox/MiddleSection/CenterContainer/VBoxContainer/BuildPanel/ScrollContainer"]
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [node name="NavPanel" type="PanelContainer" parent="Hbox/MiddleSection/CenterContainer/VBoxContainer"]
 custom_minimum_size = Vector2(300, 400)

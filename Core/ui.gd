@@ -11,6 +11,8 @@ extends CanvasLayer
 # Top bar resources
 @onready var powerAmount = $Hbox/MiddleSection/TopBorder/Panel/ResContainer/Power/PowerContainer/Panel/HBoxContainer/Amount
 @onready var powerChange = $Hbox/MiddleSection/TopBorder/Panel/ResContainer/Power/PowerContainer/Panel/HBoxContainer/Change
+@onready var hydroAmount = $Hbox/MiddleSection/TopBorder/Panel/ResContainer/Hydro/HydroContainer/Panel/Numbers/Amount
+@onready var hydroChange = $Hbox/MiddleSection/TopBorder/Panel/ResContainer/Hydro/HydroContainer/Panel/Numbers/Change
 @onready var baseAmount = $Hbox/MiddleSection/TopBorder/Panel/ResContainer/BaseMetals/BaseContainer/Panel/Numbers/Amount
 @onready var baseChange = $Hbox/MiddleSection/TopBorder/Panel/ResContainer/BaseMetals/BaseContainer/Panel/Numbers/Change
 @onready var preciousAmount = $Hbox/MiddleSection/TopBorder/Panel/ResContainer/PreciousMetas/PreciousContainer/Panel/Numbers/Amount
@@ -18,14 +20,22 @@ extends CanvasLayer
 @onready var antimatterAmount = $Hbox/MiddleSection/TopBorder/Panel/ResContainer/Antimatter/AntimatterContainer/Panel/Numbers/Amount
 @onready var antimatterChange = $Hbox/MiddleSection/TopBorder/Panel/ResContainer/Antimatter/AntimatterContainer/Panel/Numbers/Change
 
+var buildQueueIcon = preload("res://SharedUI/BuildQueueItem.tscn")
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	EventBus.connect("construction_requested", Callable(self, "_on_EB_construction_requested"))
-
+	EventBus.connect("resources_reported", Callable(self, "_on_EB_resources_reported"))
+	EventBus.connect("build_queue", Callable(self, "_on_EB_build_queue"))
 
 func updateUI():
 	pass
 
+func _on_EB_resources_reported(resourcesDict):
+	pass
+
+func _on_EB_build_queue(buildings):
+	pass
 
 func _on_build_menu_pressed():
 	if (powerMenu.isOpen):
