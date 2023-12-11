@@ -98,7 +98,7 @@ func _calculate_building_speedup_factor() -> float:
 	var speedup_factor: float = 0.0
 
 	for building in _buildings:
-		if building.type == Constants.BUILDING_GIGAFACTORY:
+		if building.type == Constants.BUILDING_GIGAFACTORY and building.is_active:
 			speedup_factor += building.build_speedup_factor
 
 	return speedup_factor

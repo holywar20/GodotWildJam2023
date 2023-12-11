@@ -26,6 +26,7 @@ func _ready():
 	EventBus.connect("resources_reported", Callable(self, "_on_EB_resources_reported"))
 	EventBus.connect("build_queue", Callable(self, "_on_EB_build_queue"))
 	EventBus.connect("construction_started", Callable(self, "_on_EB_construction_started"))
+	EventBus.connect("constructed", Callable(self, "_on_EB_constructed"))
 
 func updateUI():
 	pass
@@ -95,13 +96,25 @@ func _on_EB_resources_reported(resourcesDict):
 	updateChangeColours()
 
 func _on_EB_build_queue(buildings):
-	pass
+	for idx in range(0, buildQueue.get_child_count()):
+		buildQueue.get_child(idx).updateUI(buildings[idx].get_construction_complete_percentage())
+
 
 func _on_EB_construction_started(building):
 	print(building)
 	var newBuildItem = buildQueueItem.instantiate()
+	newBuildItem.building = building
 	buildQueue.add_child(newBuildItem)
 	newBuildItem.setName(building.type)
+
+
+func _on_EB_constructed(building) -> void:
+	var queue_item_to_remove = buildQueue.get_children().filter(func (c): return c.building == building)
+
+	if queue_item_to_remove:
+		buildQueue.remove_child(queue_item_to_remove[0])
+		queue_item_to_remove[0].queue_free()
+
 
 func _on_build_menu_pressed():
 	if (powerMenu.isOpen):

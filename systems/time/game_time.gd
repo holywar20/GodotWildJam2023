@@ -1,7 +1,7 @@
 extends Node
 
 
-const WAIT_TIME = 5.0
+const WAIT_TIME = 1.0 # The time between emitting the `tick` signal
 const SCALE_SETTINGS = [1.0, 2.0, 4.0, 16.0]
 
 @onready var timer = $Timer
