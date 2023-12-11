@@ -2,13 +2,13 @@ extends Camera2D
 
 const CAM_SPEEED = 500
 
-func _process(delta):
+func _process( _delta : float ):
 	var movement_vector = Vector2(
 		Input.get_action_strength("CAMERA_EAST") - Input.get_action_strength("CAMERA_WEST"),
 		Input.get_action_strength("CAMERA_SOUTH") - Input.get_action_strength("CAMERA_NORTH")
 	).normalized()
 
-	move_camera(movement_vector)
+	move_camera( movement_vector )
 
 func move_camera(direction):
 	global_position += direction * CAM_SPEEED * get_process_delta_time()

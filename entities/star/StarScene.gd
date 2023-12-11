@@ -15,8 +15,13 @@ var temperature : float = 0
 var luminosity : float = 0
 var mass : float = 0
 
-var over_input_threshold : float = 0.0
-var under_input_threshold : float = 0.0
+var star_hydrogen : float = 0
+
+var current_tick = {
+	'max_threshold' : 1.0,
+	'min_threshold' : 0.0
+}
+
 var current_shader_props = {
 	'star_body' : {},
 	'corona' : {},
@@ -40,13 +45,14 @@ func _ready() -> void:
 	
 	_init_data_write( current_shader_props )
 
-	# Testing
+	EventBus.connect( "resources_reported", Callable( self, "_on_resources_reported" ) )
 
-	await get_tree().create_timer(5.0).timeout
-	_apply_size_change( 1.0 )
+func _on_resources_reported( resources : Dictionary ) -> void:
+	star_hydrogen = resources[Constants.HYDROGEN]
+	var percent_change = StellarConstants.get_tier_percent_diff( star_hydrogen , tier_state , tier_state + 1 )
 
-func _on_resources_reported( resources : Array ):
-	pass
+	_apply_size_change( percent_change )
+
 
 func _init_data_write( data : Dictionary ) -> void:
 	# Metadata
@@ -72,9 +78,8 @@ func _init_data_write( data : Dictionary ) -> void:
 		for idx in range( 0 , data.gradient[p_type].size() ):
 			var prop = data.gradient[p_type][idx]
 			current_shader_props.gradient[p_type][idx] = prop
-			
-	print( current_shader_props.gradient )
 
+	EventBus.emit_signal( "star_size_changed", data.interpolated_metadata )
 
 # This method interpolates values on the basis of current and next tiers.
 # these numbers are then used in a tween to apply a more fine grained interpolation designed to sync up with resource tics.
@@ -84,7 +89,19 @@ func _apply_size_change( percent_change : float ):
 	
 	var next_tier_data = StellarConstants.get_tier_state( tier_state + 1 )
 	var tween_data = StellarConstants.get_blank_tier_data()
-	
+
+	# Metadata properties
+	for prop in current_shader_props.interpolated_metadata:
+		if( prop == 'scale' ):
+			continue # Scale is handled manually
+
+		var current_value = current_shader_props.interpolated_metadata[prop]
+		var next_value = next_tier_data.interpolated_metadata[prop]
+
+		var interpolated_value = current_value + ( ( next_value - current_value ) * percent_change )
+
+		tween_data.interpolated_metadata[prop] = interpolated_value
+
 	# Star body interpolation
 	for prop in current_shader_props.star_body:
 		var current_value = current_shader_props.star_body[prop]
@@ -104,7 +121,6 @@ func _apply_size_change( percent_change : float ):
 		tween_data.corona[prop] = interpolated_value
 
 	# Handling gradients - structure is assumed to be dictionary -> array -> value
-	print( current_shader_props.gradient )
 	for p_type in current_shader_props.gradient:
 		tween_data.gradient[p_type] = []
 		
@@ -149,7 +165,6 @@ func _apply_size_change( percent_change : float ):
 	var c_grad = current_shader_props.gradient
 	var t_grad = tween_data.gradient
 
-	print( c_grad )
 	# Now do the gradient. Worst code in this whole project. rage.
 	star_tween.parallel().tween_method( _set_grad_c0 , c_grad.colors[0]  , t_grad.colors[0]   , TWEEN_DURATION )
 	star_tween.parallel().tween_method( _set_grad_c1 , c_grad.colors[1]   ,t_grad.colors[1]   , TWEEN_DURATION )
@@ -174,6 +189,7 @@ func _apply_size_change( percent_change : float ):
 
 
 # Gradient Properties
+# Stupid thing I hafta do because tweening dynamic shader properties doesn't seem to be supported
 func _set_grad_c0( value : Vector3 ) -> void:
 	starbody_mat.get_shader_parameter( "gradient" ).get_gradient().set_color( 0 , Color( value.x , value.y, value.z ) )
 
@@ -224,7 +240,6 @@ func _set_gas( value : float ) -> void:
 	corona_mat.set_shader_parameter("gas", value);
 
 # Star_body tween methods
-# Stupid thing I hafta do because tweening dynamic shader properties doesn't seem to be supported
 func _set_wormCellSize( value : float ) -> void:
 	starbody_mat.set_shader_parameter("wormCellSize", value);
 

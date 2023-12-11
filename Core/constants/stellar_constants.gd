@@ -3,6 +3,11 @@ class_name StellarConstants
 
 const TIER_STATES = {
 	Constants.Tiers.TIER_0 : {
+		'state_thresholds' : {
+			'threshold' : 0.0,
+			'min_input' : 0.0,
+			'max_input' : 100.0
+		},
 		'metadata' : {
 			'star_class' : "Brown Dwarf",
 			'description' : """This star is a brown dwarf. It is not a star at all but rather on the boundary between planet and star. While still warm from its formation, it lacks the proper mass to ignite fusion on its own.
@@ -36,6 +41,11 @@ const TIER_STATES = {
 		}
 	},
 	Constants.Tiers.TIER_1 : {
+		'state_thresholds' : {
+			'threshold' : 1000.0,
+			'min_input' : 0.002, # As a percent
+			'max_input' : 0.007
+		},
 		'metadata' : {
 			'star_class' : "Red Dwarf",
 			'description' : """This star is a red dwarf. It is a small, cool star that is very common in the universe. It is not very luminous, but it is very long lived. It is the most common type of star in the universe.""",
@@ -43,8 +53,8 @@ const TIER_STATES = {
 		},
 		'interpolated_metadata' : {
 			'temperature' : 1500,
-			'luminosity' : 0.0001, # 1/10,000th of the sun
-			'mass' : 0.01,
+			'luminosity' : 0.01, # 1/100th
+			'mass' : 0.05,
 			'scale' : 0.5,
 		},
 		'corona' : {
@@ -66,6 +76,9 @@ const TIER_STATES = {
 		}
 	},
 	Constants.Tiers.TIER_2 : {
+		'state_thresholds' : {
+			'threshold' : 0.0
+		},
 		'metadata' : {
 			'star_class' : "Orange Dwarf",
 			'description' : """""",
@@ -85,6 +98,9 @@ const TIER_STATES = {
 		}
 	},
 	Constants.Tiers.TIER_3 : {
+		'state_thresholds' : {
+			'threshold' : 0.0
+		},
 		'metadata' : {
 			'star_class' : "Yellow Dwarf",
 			'description' : """""",
@@ -118,12 +134,29 @@ static func _extract_gradient( gradient : Gradient ):
 		'offsets' : offsets
 	}
 
-static func get_tier_state(teir : int) -> Dictionary:
-	var this_tier = TIER_STATES[teir].duplicate( true )
-	print( this_tier.metadata )
+static func get_tier_state(tier : int) -> Dictionary:
+	var this_tier = TIER_STATES[tier].duplicate( true )
 	this_tier['gradient'] = _extract_gradient( this_tier.metadata.gradient )
 
 	return this_tier
+
+static func get_tier_threshold( tier : int ) -> float:
+	return TIER_STATES[tier].state_thresholds.threshold
+
+static func get_tier_percent_diff( current : float, s_tier : int , t_tier : int ):
+	var s_tier_num = TIER_STATES[s_tier].state_thresholds.threshold
+	var t_tier_num = TIER_STATES[t_tier].state_thresholds.threshold
+
+	# Calculate percent diff between s_tier and t_tier, at current
+	if( float( current ) <= float(s_tier_num) || float( current ) == 0.0 ):
+		return 0.0
+	
+	# Calculate percentage of diff between the two values
+	var total_diff = t_tier_num - s_tier_num
+	var current_diff = current - s_tier_num
+	var percent_diff = current_diff / total_diff
+
+	return percent_diff
 
 # Note this only for interpolated data. The rest is handled manually.
 static func get_blank_tier_data() -> Dictionary:

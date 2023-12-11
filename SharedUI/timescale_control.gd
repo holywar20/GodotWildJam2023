@@ -14,5 +14,5 @@ func _gui_input(event):
 			GameTime.increase_time_scale()
 
 
-func _on_time_scale_updated(scale) -> void:
-	scale_label.text = str(scale).pad_decimals(1)
+func _on_time_scale_updated(n_scale) -> void:
+	scale_label.text = str(n_scale).pad_decimals(1)
