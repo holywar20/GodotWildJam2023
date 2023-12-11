@@ -20,11 +20,10 @@ extends CanvasLayer
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	EventBus.connect("construction_requested", Callable(self, "_on_EB_construction_requested"))
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func updateUI():
 	pass
 
 
@@ -32,7 +31,6 @@ func _on_build_menu_pressed():
 	if (powerMenu.isOpen):
 		powerMenu.openClose()
 	buildMenu.openClose()
-
 
 func _on_power_menu_pressed():
 	if (buildMenu.isOpen):
@@ -42,3 +40,4 @@ func _on_power_menu_pressed():
 
 func _on_exit_pressed():
 	pass # Replace with function body.
+

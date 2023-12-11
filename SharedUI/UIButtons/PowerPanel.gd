@@ -1,11 +1,12 @@
 extends PanelContainer
 
-@onready var container = $ScrollContainer/VBoxContainer
+@onready var menuLabel = $VBox/MenuName
+
 
 var isOpen = false
 
 func _ready():
-	pass # Replace with function body.
+	pass
 
 func openClose():
 	if(isOpen):

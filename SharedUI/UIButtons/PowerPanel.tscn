@@ -1,0 +1,24 @@
+[gd_scene load_steps=2 format=3 uid="uid://dvknl67r1rgib"]
+
+[ext_resource type="Script" path="res://SharedUI/UIButtons/PowerPanel.gd" id="1_k8eme"]
+
+[node name="SubMenu" type="PanelContainer"]
+visible = false
+custom_minimum_size = Vector2(400, 500)
+size_flags_horizontal = 0
+script = ExtResource("1_k8eme")
+
+[node name="VBox" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="MenuName" type="Label" parent="VBox"]
+layout_mode = 2
+text = "Power"
+horizontal_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBox"]
+layout_mode = 2
+horizontal_scroll_mode = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBox/ScrollContainer"]
+layout_mode = 2
