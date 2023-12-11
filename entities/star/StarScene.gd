@@ -42,7 +42,7 @@ func _ready() -> void:
 
 	# Testing
 
-	await get_tree().create_timer(5.0).timeout
+	#await get_tree().create_timer(5.0).timeout
 	_apply_size_change( 1.0 )
 
 func _on_resources_reported( resources : Array ):

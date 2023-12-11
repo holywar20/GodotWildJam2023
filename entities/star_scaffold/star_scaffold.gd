@@ -22,9 +22,19 @@ func _ready() -> void:
 	EventBus.tick.connect(_on_game_tick)
 	EventBus.resources_extracted.connect(_on_resources_extracted)
 	EventBus.constructed.connect(_on_constructed)
+	EventBus.construction_requested.connect(_construct)
+	
+	# TODO: Remove after testing!
+	_give_player_resources()
 
 
-func construct(building_type: String):
+func _give_player_resources() -> void:
+	current_resources[Constants.HYDROGEN] = 1000
+	current_resources[Constants.BASE_METAL] = 1000
+	current_resources[Constants.PRECIOUS_METAL] = 1000
+
+
+func _construct(building_type: String):
 	# This case should never happen as the UI should prevent it.
 	if _buildings.size() + 1 >= MAX_BUILDINGS:
 		return
@@ -38,7 +48,7 @@ func construct(building_type: String):
 		building_to_construct.queue_free()
 		return
 
-	building_to_construct.set_build_speedup_factor(_calculate_building_speedup_factor)
+	building_to_construct.set_build_speedup_factor(_calculate_building_speedup_factor())
 
 	_deduct_from_current_resources(building_to_construct.building_costs)
 
