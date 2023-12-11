@@ -57,6 +57,8 @@ func _construct(building_type: String):
 	_buildings.append(building_to_construct)
 	add_child(building_to_construct)
 
+	EventBus.construction_started.emit(building_to_construct)
+
 
 func destroy(building) -> void:
 	_buildings.erase(building)
