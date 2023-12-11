@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://c1dcreph3lax5"]
+[gd_scene load_steps=11 format=3 uid="uid://c1dcreph3lax5"]
 
 [ext_resource type="Script" path="res://Core/ui.gd" id="1_e5olo"]
 [ext_resource type="PackedScene" uid="uid://cqf6e6u6vidip" path="res://SharedUI/UIButtons/UIExpandButton.tscn" id="2_ujlqb"]
 [ext_resource type="Texture2D" uid="uid://bi4oncw05b64i" path="res://Assets/PowerPlaceholder.png" id="3_gs2sa"]
 [ext_resource type="PackedScene" uid="uid://dih21h34x7by6" path="res://SharedUI/UIButtons/BuildPanel.tscn" id="4_lfwk5"]
 [ext_resource type="Script" path="res://SharedUI/timescale_control.gd" id="4_wfklm"]
+[ext_resource type="PackedScene" uid="uid://bi6bvo3nmefgu" path="res://SharedUI/current_state_control.tscn" id="6_c83tx"]
 [ext_resource type="PackedScene" uid="uid://dvknl67r1rgib" path="res://SharedUI/UIButtons/PowerPanel.tscn" id="6_uejkd"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_truht"]
@@ -281,6 +282,11 @@ layout_mode = 2
 [node name="VBoxContainer" type="VBoxContainer" parent="Hbox/MiddleSection/CenterContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+
+[node name="CurrentStateControl" parent="Hbox/MiddleSection/CenterContainer/VBoxContainer" instance=ExtResource("6_c83tx")]
+custom_minimum_size = Vector2(300, 400)
+layout_mode = 2
+size_flags_horizontal = 8
 
 [node name="BuildPanel" type="PanelContainer" parent="Hbox/MiddleSection/CenterContainer/VBoxContainer"]
 custom_minimum_size = Vector2(300, 200)

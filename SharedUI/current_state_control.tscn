@@ -1,0 +1,68 @@
+[gd_scene load_steps=2 format=3 uid="uid://bi6bvo3nmefgu"]
+
+[ext_resource type="Script" path="res://SharedUI/current_state_control.gd" id="1_wlaij"]
+
+[node name="CurrentStateControl" type="PanelContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_wlaij")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="TemperatureContainer" type="PanelContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/TemperatureContainer"]
+layout_mode = 2
+
+[node name="Stat" type="Label" parent="VBoxContainer/TemperatureContainer/HBoxContainer"]
+layout_mode = 2
+text = "Temperature:"
+
+[node name="Value" type="Label" parent="VBoxContainer/TemperatureContainer/HBoxContainer"]
+layout_mode = 2
+text = "0"
+
+[node name="Units" type="Label" parent="VBoxContainer/TemperatureContainer/HBoxContainer"]
+layout_mode = 2
+text = "K"
+
+[node name="LuminosityContainer" type="PanelContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/LuminosityContainer"]
+layout_mode = 2
+
+[node name="Stat" type="Label" parent="VBoxContainer/LuminosityContainer/HBoxContainer"]
+layout_mode = 2
+text = "Luminosity:"
+
+[node name="Value" type="Label" parent="VBoxContainer/LuminosityContainer/HBoxContainer"]
+layout_mode = 2
+text = "0"
+
+[node name="Units" type="Label" parent="VBoxContainer/LuminosityContainer/HBoxContainer"]
+layout_mode = 2
+text = "sols"
+
+[node name="MassContainer" type="PanelContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MassContainer"]
+layout_mode = 2
+
+[node name="Stat" type="Label" parent="VBoxContainer/MassContainer/HBoxContainer"]
+layout_mode = 2
+text = "Mass:"
+
+[node name="Value" type="Label" parent="VBoxContainer/MassContainer/HBoxContainer"]
+layout_mode = 2
+text = "0"
+
+[node name="Units" type="Label" parent="VBoxContainer/MassContainer/HBoxContainer"]
+layout_mode = 2
+text = "solar masses"
