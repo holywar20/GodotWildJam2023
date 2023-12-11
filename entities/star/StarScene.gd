@@ -50,8 +50,8 @@ func _ready() -> void:
 func _on_resources_reported( resources : Dictionary ) -> void:
 	star_hydrogen = resources[Constants.HYDROGEN]
 	var percent_change = StellarConstants.get_tier_percent_diff( star_hydrogen , tier_state , tier_state + 1 )
-
-	_apply_size_change( percent_change )
+	#await get_tree().create_timer(5.0).timeout
+	_apply_size_change( 1.0 )
 
 
 func _init_data_write( data : Dictionary ) -> void:

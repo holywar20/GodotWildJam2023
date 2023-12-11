@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://co3qkw7w7e35p"
+path="res://.godot/imported/MARiAN - Futuristic World.mp3-ea761f980f549252a1a5dc2bf7523ef2.mp3str"
+
+[deps]
+
+source_file="res://Assets/music/MARiAN - Futuristic World.mp3"
+dest_files=["res://.godot/imported/MARiAN - Futuristic World.mp3-ea761f980f549252a1a5dc2bf7523ef2.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

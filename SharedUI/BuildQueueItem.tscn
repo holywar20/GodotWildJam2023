@@ -1,0 +1,28 @@
+[gd_scene load_steps=2 format=3 uid="uid://b25xr6qejo8gx"]
+
+[ext_resource type="Script" path="res://SharedUI/BuildQueueItem.gd" id="1_c2351"]
+
+[node name="BuildQueueItem" type="PanelContainer"]
+custom_minimum_size = Vector2(290, 60)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1630.0
+offset_bottom = -1020.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_c2351")
+
+[node name="VBox" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBox"]
+layout_mode = 2
+text = "Building Name"
+horizontal_alignment = 1
+
+[node name="ProgressBar" type="ProgressBar" parent="VBox"]
+custom_minimum_size = Vector2(285, 0)
+layout_mode = 2
+
+[connection signal="value_changed" from="VBox/ProgressBar" to="." method="_on_progress_bar_value_changed"]
