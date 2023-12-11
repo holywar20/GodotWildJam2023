@@ -51,7 +51,7 @@ func get_construction_complete_percentage() -> float:
 	return _build_progress / build_time
 
 
-func _on_game_tick():
+func _process(_delta) -> void:
 	if not _is_constructed:
 		_build_progress += GameTime.scale + _build_speed_factor
 
@@ -61,7 +61,18 @@ func _on_game_tick():
 			is_active = true
 			signal_constructed()
 
-		return
+
+func _on_game_tick():
+	#if not _is_constructed:
+		#_build_progress += GameTime.scale + _build_speed_factor
+#
+		#if _build_progress >= build_time:
+			#_build_progress = 0.0
+			#_is_constructed = true
+			#is_active = true
+			#signal_constructed()
+#
+		#return
 
 	# Report on resource extraction/changes
 	if produces:

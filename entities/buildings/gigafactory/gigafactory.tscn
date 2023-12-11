@@ -7,7 +7,7 @@
 [node name="Gigafactory" type="Node2D"]
 script = ExtResource("1_y3466")
 type = "Gigafactory"
-build_time = 2
+build_time = 3000
 operational_costs = {
 ExtResource("2_8qk54"): 5
 }
