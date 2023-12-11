@@ -19,7 +19,8 @@ var over_input_threshold : float = 0.0
 var under_input_threshold : float = 0.0
 var current_shader_props = {
 	'star_body' : {},
-	'corona' : {}
+	'corona' : {},
+	'gradient' : []
 }
 
 # Materials and childen
@@ -32,14 +33,16 @@ var starbody_mat : ShaderMaterial
 var target_shader_values : Dictionary = {}
 
 func _ready() -> void:
-	var starState = StellarConstants.get_tier_state( tier_state )
-
+	current_shader_props = StellarConstants.get_tier_state( tier_state )
+	
 	corona_mat = $Corona.get_material()
 	starbody_mat = $StarBody.get_material()
 	
-	_init_data_write( starState )
+	_init_data_write( current_shader_props )
 
 	# Testing
+
+	await get_tree().create_timer(5.0).timeout
 	_apply_size_change( 1.0 )
 
 func _on_resources_reported( resources : Array ):
@@ -49,9 +52,6 @@ func _init_data_write( data : Dictionary ) -> void:
 	# Metadata
 	star_class = data.metadata.star_class
 	description = data.metadata.description
-
-	var gradient_base = starbody_mat.get_shader_parameter( "gradient" )
-	gradient_base.set_gradient( data.metadata.gradient )
 
 	# Interpolated Metadata
 	temperature = data.interpolated_metadata.temperature
@@ -68,31 +68,58 @@ func _init_data_write( data : Dictionary ) -> void:
 		starbody_mat.set_shader_parameter( prop, data.star_body[prop] )
 		current_shader_props.star_body[prop] = data.star_body[prop]
 
+	for p_type in data.gradient:
+		for idx in range( 0 , data.gradient[p_type].size() ):
+			var prop = data.gradient[p_type][idx]
+			current_shader_props.gradient[p_type][idx] = prop
+			
+	print( current_shader_props.gradient )
+
+
+# This method interpolates values on the basis of current and next tiers.
+# these numbers are then used in a tween to apply a more fine grained interpolation designed to sync up with resource tics.
 func _apply_size_change( percent_change : float ):
 	if( tier_state == Constants.Tiers.TIER_3 ):
 		return # Star is at the final state, so we don't need to apply size changes anymore.
-
-	var current_tier_data = StellarConstants.get_tier_state( tier_state )
+	
 	var next_tier_data = StellarConstants.get_tier_state( tier_state + 1 )
 	var tween_data = StellarConstants.get_blank_tier_data()
+	
+	# Star body interpolation
+	for prop in current_shader_props.star_body:
+		var current_value = current_shader_props.star_body[prop]
+		var next_value = next_tier_data.star_body[prop]
 
-	# Calculate all the non-meta_data interpolated values
-	for dict_key in current_tier_data:
-		if( dict_key == "metadata" ):
-			continue
+		var interpolated_value = current_value + ( ( next_value - current_value ) * percent_change )
+
+		tween_data.star_body[prop] = interpolated_value
 		
-		for prop_key in current_tier_data[dict_key]:
-			var current_value = current_tier_data[dict_key][prop_key]
-			var next_value = next_tier_data[dict_key][prop_key]
+	# Handling the Corona
+	for prop in current_shader_props.corona:
+		var current_value = current_shader_props.corona[prop]
+		var next_value = next_tier_data.corona[prop]
+
+		var interpolated_value = current_value + ( ( next_value - current_value ) * percent_change )
+
+		tween_data.corona[prop] = interpolated_value
+
+	# Handling gradients - structure is assumed to be dictionary -> array -> value
+	print( current_shader_props.gradient )
+	for p_type in current_shader_props.gradient:
+		tween_data.gradient[p_type] = []
+		
+		for idx in range( 0 , current_shader_props.gradient[p_type].size() ):
+			var current_value = current_shader_props.gradient[p_type][idx]
+			var next_value = next_tier_data.gradient[p_type][idx]
 
 			var interpolated_value = current_value + ( ( next_value - current_value ) * percent_change )
 
-			tween_data[dict_key][prop_key] = interpolated_value
+			tween_data.gradient[p_type].append( interpolated_value )
 
 	# Create a new tween
 	var star_tween = get_tree().create_tween()
 	
-	# Handle scale manually
+	# Handle scale manually cuz it needs a vec2, and is the only interpolated_property that requires tweening
 	var s = Vector2( tween_data.interpolated_metadata.scale, tween_data.interpolated_metadata.scale )
 	star_tween.tween_property( self , "scale" , s , TWEEN_DURATION )
 
@@ -100,24 +127,41 @@ func _apply_size_change( percent_change : float ):
 	var s_tar = tween_data.star_body
 	
 	# Now use the tween method to apply all the shader values
-	star_tween.parallel().tween_method( _set_convectionSpeed, s_cur.convectionSpeed , s_tar.convectionSpeed , TWEEN_DURATION );
-	star_tween.parallel().tween_method( _set_rotationSpeed, s_cur.rotationSpeed , s_tar.rotationSpeed , TWEEN_DURATION );
-	star_tween.parallel().tween_method( _set_stretchFactor, s_cur.stretchFactor , s_tar.stretchFactor , TWEEN_DURATION );
-	star_tween.parallel().tween_method( _set_wormCellSize, s_cur.wormCellSize , s_tar.wormCellSize , TWEEN_DURATION );
-	star_tween.parallel().tween_method( _set_vorCellSize, s_cur.vorCellSize , s_tar.vorCellSize , TWEEN_DURATION );
-	star_tween.parallel().tween_method( _set_flowFactor, s_cur.flowFactor , s_tar.flowFactor , TWEEN_DURATION );
-	star_tween.parallel().tween_method( _set_cellSize, s_cur.cellSize , s_tar.cellSize , TWEEN_DURATION );
+	star_tween.parallel().tween_method( _set_convectionSpeed, s_cur.convectionSpeed , s_tar.convectionSpeed , TWEEN_DURATION )
+	star_tween.parallel().tween_method( _set_rotationSpeed, s_cur.rotationSpeed , s_tar.rotationSpeed , TWEEN_DURATION )
+	star_tween.parallel().tween_method( _set_stretchFactor, s_cur.stretchFactor , s_tar.stretchFactor , TWEEN_DURATION )
+	star_tween.parallel().tween_method( _set_wormCellSize, s_cur.wormCellSize , s_tar.wormCellSize , TWEEN_DURATION )
+	star_tween.parallel().tween_method( _set_vorCellSize, s_cur.vorCellSize , s_tar.vorCellSize , TWEEN_DURATION )
+	star_tween.parallel().tween_method( _set_flowFactor, s_cur.flowFactor , s_tar.flowFactor , TWEEN_DURATION )
+	star_tween.parallel().tween_method( _set_cellSize, s_cur.cellSize , s_tar.cellSize , TWEEN_DURATION )
 	
 	var c_cur = current_shader_props.corona
 	var c_tar = tween_data.corona
 
 	# Handle the Corona
-	star_tween.parallel().tween_method( _set_flareAmount, c_cur.flareAmount , c_tar.flareAmount , TWEEN_DURATION );
-	star_tween.parallel().tween_method( _set_timeFactor, c_cur.timeFactor , c_tar.timeFactor , TWEEN_DURATION );
-	star_tween.parallel().tween_method( _set_spiky, c_cur.spiky , c_tar.spiky , TWEEN_DURATION );
-	star_tween.parallel().tween_method( _set_color, c_cur.color , c_tar.color , TWEEN_DURATION );
-	star_tween.parallel().tween_method( _set_csize, c_cur.size , c_tar.size , TWEEN_DURATION );
-	star_tween.parallel().tween_method( _set_gas, c_cur.gas , c_tar.gas , TWEEN_DURATION );
+	star_tween.parallel().tween_method( _set_flareAmount, c_cur.flareAmount , c_tar.flareAmount , TWEEN_DURATION )
+	star_tween.parallel().tween_method( _set_timeFactor, c_cur.timeFactor , c_tar.timeFactor , TWEEN_DURATION )
+	star_tween.parallel().tween_method( _set_spiky, c_cur.spiky , c_tar.spiky , TWEEN_DURATION )
+	star_tween.parallel().tween_method( _set_color, c_cur.color , c_tar.color , TWEEN_DURATION )
+	star_tween.parallel().tween_method( _set_csize, c_cur.size , c_tar.size , TWEEN_DURATION )
+	star_tween.parallel().tween_method( _set_gas, c_cur.gas , c_tar.gas , TWEEN_DURATION )
+
+	var c_grad = current_shader_props.gradient
+	var t_grad = tween_data.gradient
+
+	print( c_grad )
+	# Now do the gradient. Worst code in this whole project. rage.
+	star_tween.parallel().tween_method( _set_grad_c0 , c_grad.colors[0]  , t_grad.colors[0]   , TWEEN_DURATION )
+	star_tween.parallel().tween_method( _set_grad_c1 , c_grad.colors[1]   ,t_grad.colors[1]   , TWEEN_DURATION )
+	star_tween.parallel().tween_method( _set_grad_c2 , c_grad.colors[2]  , t_grad.colors[2]  , TWEEN_DURATION )
+	star_tween.parallel().tween_method( _set_grad_c3 , c_grad.colors[3]  , t_grad.colors[3]  , TWEEN_DURATION )
+	star_tween.parallel().tween_method( _set_grad_c4 , c_grad.colors[4]  , t_grad.colors[4]  , TWEEN_DURATION )
+
+	star_tween.parallel().tween_method( _set_grad_o0 , c_grad.offsets[0]  , t_grad.offsets[0]  , TWEEN_DURATION )
+	star_tween.parallel().tween_method( _set_grad_o1 , c_grad.offsets[1]  , t_grad.offsets[1]  , TWEEN_DURATION )
+	star_tween.parallel().tween_method( _set_grad_o2 , c_grad.offsets[2]  , t_grad.offsets[2]  , TWEEN_DURATION )
+	star_tween.parallel().tween_method( _set_grad_o3 , c_grad.offsets[3]  , t_grad.offsets[3]  , TWEEN_DURATION )
+	star_tween.parallel().tween_method( _set_grad_o4 , c_grad.offsets[4]  , t_grad.offsets[4]  , TWEEN_DURATION )
 
 	star_tween.play()
 
@@ -125,8 +169,40 @@ func _apply_size_change( percent_change : float ):
 	EventBus.emit_signal( "star_size_changed", tween_data.interpolated_metadata )
 
 	# Now we update the current so next tick has this data.
+	await get_tree().create_timer(4.0).timeout
 	current_shader_props = tween_data
 
+
+# Gradient Properties
+func _set_grad_c0( value : Vector3 ) -> void:
+	starbody_mat.get_shader_parameter( "gradient" ).get_gradient().set_color( 0 , Color( value.x , value.y, value.z ) )
+
+func _set_grad_c1( value : Vector3 ) -> void:
+	starbody_mat.get_shader_parameter( "gradient" ).get_gradient().set_color( 1 , Color( value.x , value.y, value.z ) )
+
+func _set_grad_c2( value : Vector3 ) -> void:
+	starbody_mat.get_shader_parameter( "gradient" ).get_gradient().set_color( 2 , Color( value.x , value.y, value.z ) )
+
+func _set_grad_c3( value : Vector3 ) -> void:
+	starbody_mat.get_shader_parameter( "gradient" ).get_gradient().set_color( 3 , Color( value.x , value.y, value.z ) )
+
+func _set_grad_c4( value : Vector3 ) -> void:
+	starbody_mat.get_shader_parameter( "gradient" ).get_gradient().set_color( 4 , Color( value.x , value.y, value.z ) )
+
+func _set_grad_o0( value : float ) -> void:
+	starbody_mat.get_shader_parameter( "gradient" ).get_gradient().set_offset( 0 , value )
+
+func _set_grad_o1( value : float ) -> void:
+	starbody_mat.get_shader_parameter( "gradient" ).get_gradient().set_offset( 1 , value )
+
+func _set_grad_o2( value : float ) -> void:
+	starbody_mat.get_shader_parameter( "gradient" ).get_gradient().set_offset( 2 , value )
+
+func _set_grad_o3( value : float ) -> void:
+	starbody_mat.get_shader_parameter( "gradient" ).get_gradient().set_offset( 3 , value )
+
+func _set_grad_o4( value : float ) -> void:
+	starbody_mat.get_shader_parameter( "gradient" ).get_gradient().set_offset( 4 , value )
 
 # Corona tween methods 
 func _set_color( value : Vector3 ) -> void:

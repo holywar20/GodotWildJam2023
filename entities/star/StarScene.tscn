@@ -2,12 +2,12 @@
 
 [ext_resource type="Shader" path="res://entities/star/StandardStar.gdshader" id="1_rtm4d"]
 [ext_resource type="Script" path="res://entities/star/StarScene.gd" id="1_ucqo4"]
-[ext_resource type="Gradient" uid="uid://cqjjl60em4vkq" path="res://entities/star/gradients/t1.tres" id="3_1vcwf"]
+[ext_resource type="Gradient" uid="uid://bi57mnx0stjix" path="res://entities/star/gradients/t0.tres" id="3_0x8m3"]
 [ext_resource type="Shader" path="res://entities/star/CoronaShader.gdshader" id="3_mj54a"]
 [ext_resource type="Environment" uid="uid://n8asi34u4tt8" path="res://enviroment/Enviroment.tres" id="5_l54cu"]
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_gpyen"]
-gradient = ExtResource("3_1vcwf")
+gradient = ExtResource("3_0x8m3")
 use_hdr = true
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_reljx"]

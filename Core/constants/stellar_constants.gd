@@ -39,10 +39,6 @@ const TIER_STATES = {
 		'metadata' : {
 			'star_class' : "Red Dwarf",
 			'description' : """This star is a red dwarf. It is a small, cool star that is very common in the universe. It is not very luminous, but it is very long lived. It is the most common type of star in the universe.""",
-			'temperature' : 3000,
-			'luminosity' : 0.001, # 1 / 1000th of the sun
-			'mass' : 0.08,
-			'scale' : 0.5,
 			'gradient' : preload("res://entities/star/gradients/t1.tres")
 		},
 		'interpolated_metadata' : {
@@ -105,8 +101,29 @@ const TIER_STATES = {
 	}
 }
 
+# Extract the gradient into raw numbers.
+# VERY BRITTLE! All Gradients MUST have 5 colors, no more, no less.
+# Nessecary because godot tweens using shaders are extremely clunky.
+static func _extract_gradient( gradient : Gradient ):
+	var colors = []
+	var offsets = []
+
+	for i in range( 0 , gradient.colors.size() ):
+		var thisColor = gradient.get_color( i )
+		colors.append( Vector3( thisColor.r, thisColor.g , thisColor.b ) )
+		offsets.append( gradient.get_offset( i ) )
+
+	return {
+		'colors' : colors,
+		'offsets' : offsets
+	}
+
 static func get_tier_state(teir : int) -> Dictionary:
-	return TIER_STATES[teir]
+	var this_tier = TIER_STATES[teir].duplicate( true )
+	print( this_tier.metadata )
+	this_tier['gradient'] = _extract_gradient( this_tier.metadata.gradient )
+
+	return this_tier
 
 # Note this only for interpolated data. The rest is handled manually.
 static func get_blank_tier_data() -> Dictionary:
@@ -133,6 +150,10 @@ static func get_blank_tier_data() -> Dictionary:
 			'convectionSpeed' :  null,
 			'stretchFactor' : null,
 			'flowFactor' :  null
+		},
+		'gradient' : {
+			'colors' : [],
+			'offsets' : [],
 		}
 	}
 	

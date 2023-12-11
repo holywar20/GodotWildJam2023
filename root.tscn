@@ -1,7 +1,7 @@
 [gd_scene load_steps=15 format=3 uid="uid://cnn2083d08byi"]
 
 [ext_resource type="Shader" path="res://entities/background/StellarBackground.gdshader" id="1_ece8b"]
-[ext_resource type="PackedScene" uid="uid://c1dcreph3lax5" path="res://Core/ui.tscn" id="1_qq3ke"]
+[ext_resource type="PackedScene" path="res://Core/ui.tscn" id="1_qq3ke"]
 [ext_resource type="PackedScene" uid="uid://dvxm6daibl2v1" path="res://entities/orbitlines/OrbitLines.tscn" id="1_s2yhk"]
 [ext_resource type="PackedScene" uid="uid://qxmseuwkokrh" path="res://entities/star/StarScene.tscn" id="1_wmdo0"]
 [ext_resource type="Script" path="res://entities/background/Background.gd" id="2_fgrpl"]
