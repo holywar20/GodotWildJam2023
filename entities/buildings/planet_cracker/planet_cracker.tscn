@@ -7,7 +7,7 @@
 [node name="PlanetCracker" type="Node2D"]
 script = ExtResource("1_intlu")
 type = "Planet Cracker"
-build_time = 100
+build_time = 30
 operational_costs = {
 ExtResource("2_fy42p"): 10
 }

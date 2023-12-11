@@ -6,7 +6,7 @@ extends Node2D
 @export var is_active: bool = false
 @export var tier: Constants.Tiers = Constants.Tiers.TIER_1
 
-# Build time in base unit of time.
+# In seconds
 @export var build_time: int
 
 # Dictates per unit time resource costs.
@@ -51,9 +51,9 @@ func get_construction_complete_percentage() -> float:
 	return _build_progress / build_time
 
 
-func _process(_delta) -> void:
+func _process(delta) -> void:
 	if not _is_constructed:
-		_build_progress += GameTime.scale + _build_speed_factor
+		_build_progress += delta * GameTime.scale * _build_speed_factor
 
 		if _build_progress >= build_time:
 			_build_progress = 0.0
@@ -63,17 +63,6 @@ func _process(_delta) -> void:
 
 
 func _on_game_tick():
-	#if not _is_constructed:
-		#_build_progress += GameTime.scale + _build_speed_factor
-#
-		#if _build_progress >= build_time:
-			#_build_progress = 0.0
-			#_is_constructed = true
-			#is_active = true
-			#signal_constructed()
-#
-		#return
-
 	# Report on resource extraction/changes
 	if produces:
 		EventBus.resources_extracted.emit(next_extraction())

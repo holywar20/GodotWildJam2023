@@ -10,9 +10,9 @@
 script = ExtResource("1_lq6mu")
 type = "Antimatter Factory"
 tier = 2
-build_time = 5000
+build_time = 300
 operational_costs = {
-ExtResource("2_fqjbj"): 25
+ExtResource("2_fqjbj"): 250
 }
 building_costs = {
 ExtResource("3_ufv2u"): 7500,

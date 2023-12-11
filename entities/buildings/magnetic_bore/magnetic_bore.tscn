@@ -9,8 +9,7 @@
 [node name="MagneticBore" type="Node2D"]
 script = ExtResource("1_a81ch")
 type = "Magnetic Bore"
-tier = 1
-build_time = 750
+build_time = 65
 operational_costs = {
 ExtResource("2_si130"): 50
 }

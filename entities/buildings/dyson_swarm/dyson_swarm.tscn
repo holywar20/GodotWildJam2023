@@ -8,8 +8,7 @@
 [node name="DysonSwarm" type="Node2D"]
 script = ExtResource("1_0u8fk")
 type = "Dyson Swarm"
-tier = 1
-build_time = 1000
+build_time = 90
 building_costs = {
 ExtResource("2_irwwi"): 1000,
 ExtResource("3_m6bx1"): 500

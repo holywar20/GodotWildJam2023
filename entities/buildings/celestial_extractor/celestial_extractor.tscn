@@ -8,8 +8,7 @@
 [node name="CelestialExtractor" type="Node2D"]
 script = ExtResource("1_esmv5")
 type = "Celestial Extractor"
-tier = 1
-build_time = 5000
+build_time = 60
 operational_costs = {
 ExtResource("2_07x7u"): 20
 }

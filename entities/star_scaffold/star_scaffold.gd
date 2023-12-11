@@ -95,7 +95,7 @@ func _add_to_build_queue(building) -> void:
 
 
 func _calculate_building_speedup_factor() -> float:
-	var speedup_factor: float = 0.0
+	var speedup_factor: float = 1.0
 
 	for building in _buildings:
 		if building.type == Constants.BUILDING_GIGAFACTORY and building.is_active:

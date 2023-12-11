@@ -10,7 +10,7 @@
 script = ExtResource("1_oao5u")
 type = "Stellar Accelerator"
 tier = 2
-build_time = 10000
+build_time = 360
 operational_costs = {
 ExtResource("2_fkwe2"): 100,
 ExtResource("3_qcefi"): 50
