@@ -101,7 +101,6 @@ func _on_EB_build_queue(buildings):
 
 
 func _on_EB_construction_started(building):
-	print(building)
 	var newBuildItem = buildQueueItem.instantiate()
 	newBuildItem.building = building
 	buildQueue.add_child(newBuildItem)
@@ -112,8 +111,7 @@ func _on_EB_constructed(building) -> void:
 	var queue_item_to_remove = buildQueue.get_children().filter(func (c): return c.building == building)
 
 	if queue_item_to_remove:
-		buildQueue.remove_child(queue_item_to_remove[0])
-		queue_item_to_remove[0].queue_free()
+		queue_item_to_remove[0].removeSelf()
 
 
 func _on_build_menu_pressed():

@@ -1,6 +1,42 @@
-[gd_scene load_steps=2 format=3 uid="uid://b25xr6qejo8gx"]
+[gd_scene load_steps=5 format=3 uid="uid://b25xr6qejo8gx"]
 
 [ext_resource type="Script" path="res://SharedUI/BuildQueueItem.gd" id="1_c2351"]
+
+[sub_resource type="Animation" id="Animation_wwdoq"]
+resource_name = "BUILDING_FINISHED"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("VBox/BuildComplete:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0.219608, 1, 0.219608, 0), Color(0.219608, 1, 0.219608, 1), Color(0.219608, 1, 0.219608, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_dewl7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("VBox/BuildComplete:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.219608, 1, 0.219608, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_s8tcm"]
+_data = {
+"BUILDING_FINISHED": SubResource("Animation_wwdoq"),
+"RESET": SubResource("Animation_dewl7")
+}
 
 [node name="BuildQueueItem" type="PanelContainer"]
 custom_minimum_size = Vector2(290, 60)
@@ -24,5 +60,17 @@ horizontal_alignment = 1
 [node name="ProgressBar" type="ProgressBar" parent="VBox"]
 custom_minimum_size = Vector2(285, 0)
 layout_mode = 2
+
+[node name="BuildComplete" type="Label" parent="VBox"]
+visible = false
+modulate = Color(0.219608, 1, 0.219608, 0)
+layout_mode = 2
+text = "BUILDING COMPLETE"
+horizontal_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_s8tcm")
+}
 
 [connection signal="value_changed" from="VBox/ProgressBar" to="." method="_on_progress_bar_value_changed"]

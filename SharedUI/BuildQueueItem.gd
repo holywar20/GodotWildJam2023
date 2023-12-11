@@ -2,6 +2,8 @@ extends PanelContainer
 
 @onready var buildingName = $VBox/Label
 @onready var progressBar = $VBox/ProgressBar
+@onready var buildComplete = $VBox/BuildComplete
+@onready var animationPlayer = $AnimationPlayer
 
 # The actual building object
 var building
@@ -15,7 +17,12 @@ func updateUI(rawPercent):
 	var accPercent = rawPercent*100
 	progressBar.set_value(accPercent)
 
+func removeSelf():
+	var vanishTween = create_tween()
+	progressBar.hide()
+	buildComplete.show()
+	animationPlayer.play("BUILDING_FINISHED")
+	vanishTween.tween_property(buildingName.owner, 'position', Vector2(300,0), 1)
+	await animationPlayer.animation_finished
+	queue_free()
 
-func _on_progress_bar_value_changed(value):
-	if value == 100:
-		pass
