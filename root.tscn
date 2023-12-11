@@ -22,6 +22,7 @@ shader_parameter/posOffset = Vector2(0, 0)
 [node name="ROOT" type="Node2D"]
 
 [node name="UI" parent="." instance=ExtResource("1_qq3ke")]
+process_mode = 3
 
 [node name="Background" type="CanvasLayer" parent="."]
 layer = -30
