@@ -6,6 +6,7 @@ const TEMPERATURE_KEY = "temperature"
 const LUMINOSITY_KEY = "luminosity"
 const MASS_KEY = "mass"
 
+
 @onready var temperature_value = $VBoxContainer/TemperatureContainer/HBoxContainer/Value
 @onready var luminosity_value = $VBoxContainer/LuminosityContainer/HBoxContainer/Value
 @onready var mass_value = $VBoxContainer/MassContainer/HBoxContainer/Value
