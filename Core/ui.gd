@@ -101,7 +101,7 @@ func _on_EB_construction_started(building):
 	print(building)
 	var newBuildItem = buildQueueItem.instantiate()
 	buildQueue.add_child(newBuildItem)
-	newBuildItem.setName(building.name)
+	newBuildItem.setName(building.type)
 
 func _on_build_menu_pressed():
 	if (powerMenu.isOpen):
