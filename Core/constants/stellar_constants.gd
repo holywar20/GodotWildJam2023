@@ -4,9 +4,9 @@ class_name StellarConstants
 const TIER_STATES = {
 	Constants.Tiers.TIER_0 : {
 		'state_thresholds' : {
-			'threshold' : 0.0,
-			'min_input' : 0.0,
-			'max_input' : 100.0
+			'threshold' : 1000,
+			'min_flow_tolerance' : 50,
+			'max_flow_tolerance' : 50
 		},
 		'metadata' : {
 			'star_class' : "Brown Dwarf",
@@ -42,9 +42,9 @@ const TIER_STATES = {
 	},
 	Constants.Tiers.TIER_1 : {
 		'state_thresholds' : {
-			'threshold' : 1000.0,
-			'min_input' : 0.002, # As a percent
-			'max_input' : 0.007
+			'threshold' : 5000,
+			'min_flow_tolerance' : 40,
+			'max_flow_tolerance' : 40
 		},
 		'metadata' : {
 			'star_class' : "Red Dwarf",
@@ -77,7 +77,9 @@ const TIER_STATES = {
 	},
 	Constants.Tiers.TIER_2 : {
 		'state_thresholds' : {
-			'threshold' : 0.0
+			'threshold' : 10000,
+			'min_flow_tolerance' : 30,
+			'max_flow_tolerance' : 30
 		},
 		'metadata' : {
 			'star_class' : "Orange Dwarf",
@@ -99,7 +101,9 @@ const TIER_STATES = {
 	},
 	Constants.Tiers.TIER_3 : {
 		'state_thresholds' : {
-			'threshold' : 0.0
+			'threshold' : 50000,
+			'min_flow_tolerance' : 20,
+			'max_flow_tolerance' : 20
 		},
 		'metadata' : {
 			'star_class' : "Yellow Dwarf",
@@ -142,6 +146,25 @@ static func get_tier_state(tier : int) -> Dictionary:
 
 static func get_tier_threshold( tier : int ) -> float:
 	return TIER_STATES[tier].state_thresholds.threshold
+
+
+static func get_tier_state_thresholds( tier : int ) -> Dictionary:
+	return TIER_STATES[tier].state_thresholds
+
+
+static func calculate_target_flow(current_hydrogen: int, star_tier: int) -> int:
+	var func_value = 0
+	var x: int = current_hydrogen
+
+	match star_tier:
+		Constants.Tiers.TIER_0:
+			func_value = sqrt(x) + 50
+		Constants.Tiers.TIER_1:
+			func_value = sin(x) * 100
+		# TODO: Fill in other tiers
+
+	return int(func_value)
+
 
 static func get_tier_percent_diff( current : float, s_tier : int , t_tier : int ):
 	var s_tier_num = TIER_STATES[s_tier].state_thresholds.threshold

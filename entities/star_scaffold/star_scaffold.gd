@@ -6,6 +6,8 @@ const MAX_BUILDINGS = 24
 
 
 @export var current_resources: Dictionary = {}
+@export var star: StarScene
+
 
 var _buildings: Array = []
 var _buildings_under_construction: Array = []
@@ -26,7 +28,7 @@ func _ready() -> void:
 	
 	# TODO: Remove after testing!
 	_give_player_resources()
-	EventBus.star_hydrogen_updated.emit(0, 1000)
+	#EventBus.star_hydrogen_updated.emit(0, 1000)
 	###
 
 
@@ -80,16 +82,35 @@ func _on_game_tick() -> void:
 	EventBus.resources_reported.emit(current_resources)
 	
 	# TODO: Remove after testing.
-	EventBus.star_hydrogen_updated.emit(current_resources[Constants.HYDROGEN], 1000)
+	#EventBus.star_hydrogen_updated.emit(current_resources[Constants.HYDROGEN], 1000)
 
 
 func _on_resources_extracted(new_resources: Dictionary) -> void:
 	_add_resources(new_resources)
+	_check_tier_threshold()
+	_send_hydrogen_to_star(new_resources[Constants.HYDROGEN])
+
+
+func _check_tier_threshold() -> void:
+	if current_resources[Constants.HYDROGEN] >= StellarConstants.get_tier_threshold(star.tier_state):
+		EventBus.star_transitioned.emit(star.tier_state + 1)
 
 
 func _add_resources(new_resources: Dictionary) -> void:
 	for resource in new_resources:
 		current_resources[resource] += new_resources[resource]
+
+
+func _send_hydrogen_to_star(actual_flow: int) -> void:
+	var ideal_target_flow: int = StellarConstants.calculate_target_flow(current_resources[Constants.HYDROGEN], star.tier_state)
+	var thresholds: Dictionary = StellarConstants.get_tier_state_thresholds(star.tier_state)
+
+	EventBus.hydrogen_flow_updated.emit(
+		actual_flow, 
+		ideal_target_flow, 
+		ideal_target_flow - thresholds.min_flow_tolerance,
+		ideal_target_flow + thresholds.max_flow_tolerance
+	)
 
 
 func _add_to_build_queue(building) -> void:

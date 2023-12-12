@@ -4,7 +4,7 @@ class_name StarScene
 # Should be less than the resource tick
 const TWEEN_DURATION : float = 4.0
 
-# Teir props
+# Tier props
 var tier_state = Constants.Tiers.TIER_0
 var nteir_progress : float = 0.0
 var star_class : String = "Not assigned"
@@ -37,10 +37,6 @@ var starbody_mat : ShaderMaterial
 
 var target_shader_values : Dictionary = {}
 
-# target hydrogen values
-# TODO: use proper values and increments
-var _min_target: int = 0
-var _max_target: int = 50
 
 func _ready() -> void:
 	current_shader_props = StellarConstants.get_tier_state( tier_state )
@@ -52,11 +48,6 @@ func _ready() -> void:
 
 	EventBus.connect( "resources_reported", Callable( self, "_on_resources_reported" ) )
 	EventBus.connect( "tick", Callable( self, "_on_tick" ) )
-
-func _on_tick() -> void:
-	EventBus.star_hydrogen_target_updated.emit(_min_target, _max_target)
-	_min_target += 100
-	_max_target += 100
 
 
 func _on_resources_reported( resources : Dictionary ) -> void:

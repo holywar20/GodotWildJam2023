@@ -49,11 +49,12 @@ script = ExtResource("2_gcu2o")
 
 [node name="SolarSystem" type="Node2D" parent="."]
 
+[node name="StarScaffold" parent="SolarSystem" node_paths=PackedStringArray("star") instance=ExtResource("8_p7ro6")]
+star = NodePath("../Star")
+
 [node name="TempBuildings" type="Node2D" parent="SolarSystem"]
 
 [node name="PlanetCracker" parent="SolarSystem/TempBuildings" instance=ExtResource("7_8ee2p")]
-
-[node name="StarScaffold" parent="SolarSystem/TempBuildings" instance=ExtResource("8_p7ro6")]
 
 [node name="OrbitLines" parent="SolarSystem" instance=ExtResource("1_s2yhk")]
 offset_left = 0.0

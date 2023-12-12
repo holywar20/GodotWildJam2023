@@ -29,8 +29,7 @@ signal disable_random_buildings(number)
 # Star signals
 signal star_transitioned( star_state ) # Fired by Star Scene
 signal star_size_changed( star_metadata ) # Fired by Star Scene
-signal star_hydrogen_updated(current_amount, target_amount)
-signal star_hydrogen_target_updated(min_target, max_target)
+signal hydrogen_flow_updated(actual_flow, ideal_target_flow, min_target_flow, max_target_flow)
 
 
 # UI signals
