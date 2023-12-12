@@ -8,12 +8,10 @@ func _ready():
 
 func updateUI():
 	var planetArray = get_tree().get_nodes_in_group( "PLANET_SCENE" )
-	print(planetArray)
 	for planet in planetArray:
 		for panel in navButtonContainer.get_children():
 			if panel.planetRef == null:
 				panel.updateUI(planet)
-				print(planet)
 				break
 			if !(panel.planetRef == null):
 				continue

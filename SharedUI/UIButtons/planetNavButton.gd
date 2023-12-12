@@ -10,7 +10,6 @@ func _ready():
 
 func updateUI(nPlanet):
 	planetRef = nPlanet
-	print(nPlanet)
 	pName.set_text(planetRef.p_name)
 
 
