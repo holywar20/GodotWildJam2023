@@ -76,6 +76,9 @@ func _deduct_from_current_resources(resources_bid: Dictionary) -> void:
 
 func _on_game_tick() -> void:
 	EventBus.resources_reported.emit(current_resources)
+	
+	# TODO: Remove after testing.
+	EventBus.star_hydrogen_updated.emit(current_resources[Constants.HYDROGEN], 12000)
 
 
 func _on_resources_extracted(new_resources: Dictionary) -> void:
