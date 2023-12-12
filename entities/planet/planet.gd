@@ -29,6 +29,12 @@ var _resource_abundance: Dictionary = {}:
 
 var _num_planet_crackers: int = 0
 
+var flowRateDict : Dictionary = {
+	"hydrogen" : 1.0,
+	"base_metal" : 1.0,
+	"precious_metal" : 1.0
+}
+
 func _ready() -> void:
 	_rng.seed = RAND_SEED
 

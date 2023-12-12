@@ -39,6 +39,7 @@ alignment = 1
 layout_mode = 2
 
 [node name="Power" parent="Hbox/LeftBorder/PanelContainer/OpButtonContainer" instance=ExtResource("2_ujlqb")]
+visible = false
 layout_mode = 2
 text = "P"
 
@@ -51,6 +52,7 @@ custom_minimum_size = Vector2(1720, 0)
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/separation = 0
+alignment = 2
 
 [node name="TopBorder" type="HBoxContainer" parent="Hbox/MiddleSection"]
 custom_minimum_size = Vector2(0, 100)
@@ -231,7 +233,6 @@ text = "x"
 [node name="CenterContainer" type="HBoxContainer" parent="Hbox/MiddleSection"]
 layout_mode = 2
 mouse_filter = 2
-alignment = 2
 
 [node name="SubMenuContainer" type="VBoxContainer" parent="Hbox/MiddleSection/CenterContainer"]
 layout_mode = 2
@@ -244,9 +245,14 @@ layout_mode = 2
 [node name="PowerMenu" parent="Hbox/MiddleSection/CenterContainer/SubMenuContainer" instance=ExtResource("6_uejkd")]
 layout_mode = 2
 
+[node name="PlanetDetails" type="VBoxContainer" parent="Hbox/MiddleSection/CenterContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+alignment = 2
+
 [node name="VBoxContainer" type="VBoxContainer" parent="Hbox/MiddleSection/CenterContainer"]
 layout_mode = 2
-size_flags_horizontal = 3
+size_flags_horizontal = 8
 
 [node name="CurrentStateControl" parent="Hbox/MiddleSection/CenterContainer/VBoxContainer" instance=ExtResource("6_c83tx")]
 custom_minimum_size = Vector2(300, 265)
