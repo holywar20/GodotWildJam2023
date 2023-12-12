@@ -26,9 +26,17 @@ func _ready():
 	EventBus.connect("resources_reported", Callable(self, "_on_EB_resources_reported"))
 	EventBus.connect("construction_started", Callable(self, "_on_EB_construction_started"))
 	EventBus.connect("constructed", Callable(self, "_on_EB_constructed"))
+	updateUI()
 
 func updateUI():
-	pass
+	var planetArray = get_tree().get_nodes_in_group( "PLANET_SCENE" )
+	for planet in planetArray:
+		for panel in navPanel.get_children():
+			if panel.planetRef == null:
+				panel.updateUI(planet)
+				break
+			if !(panel.planetRef == null):
+				continue
 
 func updateChangeColours():
 	# Power
