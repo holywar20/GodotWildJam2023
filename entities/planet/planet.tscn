@@ -48,8 +48,7 @@ shader_parameter/cloudDensity = 5.0
 shader_parameter/banding = 1.0
 shader_parameter/turbulence = 3
 
-[node name="Planet" type="Node2D"]
-position = Vector2(-19, 18)
+[node name="Planet" type="Node2D" groups=["PLANET_SCENE"]]
 script = ExtResource("1_5v41j")
 
 [node name="LandMasses" type="ColorRect" parent="."]
