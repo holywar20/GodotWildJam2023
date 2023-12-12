@@ -52,7 +52,7 @@ func _construct(building_type: String):
 
 	_deduct_from_current_resources(building_to_construct.building_costs)
 
-	_add_to_build_queue(building_to_construct)
+	_add_to_build_queue(building_to_construct) # might be moot...
 
 	_buildings.append(building_to_construct)
 	add_child(building_to_construct)
@@ -76,9 +76,6 @@ func _deduct_from_current_resources(resources_bid: Dictionary) -> void:
 
 func _on_game_tick() -> void:
 	EventBus.resources_reported.emit(current_resources)
-
-	if _buildings_under_construction:
-		EventBus.build_queue.emit(_buildings_under_construction)
 
 
 func _on_resources_extracted(new_resources: Dictionary) -> void:
