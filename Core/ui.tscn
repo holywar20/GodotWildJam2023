@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://c1dcreph3lax5"]
+[gd_scene load_steps=11 format=3 uid="uid://c1dcreph3lax5"]
 
 [ext_resource type="Script" path="res://Core/ui.gd" id="1_e5olo"]
 [ext_resource type="PackedScene" uid="uid://cqf6e6u6vidip" path="res://SharedUI/UIButtons/UIExpandButton.tscn" id="2_ujlqb"]
@@ -7,7 +7,6 @@
 [ext_resource type="Script" path="res://SharedUI/timescale_control.gd" id="4_wfklm"]
 [ext_resource type="PackedScene" uid="uid://bi6bvo3nmefgu" path="res://SharedUI/current_state_control.tscn" id="6_c83tx"]
 [ext_resource type="PackedScene" uid="uid://dvknl67r1rgib" path="res://SharedUI/UIButtons/PowerPanel.tscn" id="6_uejkd"]
-[ext_resource type="PackedScene" uid="uid://dkkfls4a277e0" path="res://SharedUI/star_hydrogen_bar.tscn" id="8_x2jij"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_truht"]
 bg_color = Color(0.6, 0.6, 0.6, 0.211765)
@@ -296,9 +295,6 @@ layout_mode = 2
 size_flags_vertical = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Hbox/MiddleSection/BottomBorder/PanelContainer"]
-layout_mode = 2
-
-[node name="StarHydrogenBar" parent="Hbox/MiddleSection/BottomBorder/PanelContainer/VBoxContainer" instance=ExtResource("8_x2jij")]
 layout_mode = 2
 
 [node name="RightBorder" type="VBoxContainer" parent="Hbox"]
