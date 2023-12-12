@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://bj7a2tnxouqd7"]
+
+[ext_resource type="Script" path="res://SharedUI/UIButtons/planetNavButton.gd" id="1_uc73e"]
+
+[node name="PlanetNavButton" type="Button"]
+custom_minimum_size = Vector2(290, 60)
+anchors_preset = -1
+anchor_right = 0.351
+anchor_bottom = 0.109
+offset_right = -383.92
+offset_bottom = -57.72
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_uc73e")
+
+[node name="HBox" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 288.0
+offset_bottom = 59.0

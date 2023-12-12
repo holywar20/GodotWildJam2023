@@ -282,6 +282,8 @@ horizontal_scroll_mode = 0
 
 [node name="NavContainer" type="VBoxContainer" parent="Hbox/MiddleSection/CenterContainer/VBoxContainer/NavPanel/ScrollContainer"]
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [node name="BottomBorder" type="VBoxContainer" parent="Hbox/MiddleSection"]
 custom_minimum_size = Vector2(1000, 100)
