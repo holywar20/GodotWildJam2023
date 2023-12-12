@@ -35,7 +35,7 @@ func removeSelf():
 	progressBar.hide()
 	buildComplete.show()
 	animationPlayer.play("BUILDING_FINISHED")
-	vanishTween.tween_property(buildingName.owner, 'position', Vector2(300,0), 1)
+	vanishTween.tween_property(buildingName.owner, 'position', Vector2(300,self.position.y), 1)
 	await animationPlayer.animation_finished
 	queue_free()
 
