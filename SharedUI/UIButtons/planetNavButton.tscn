@@ -18,17 +18,19 @@ custom_minimum_size = Vector2(290, 60)
 layout_mode = 0
 offset_right = 288.0
 offset_bottom = 59.0
+alignment = 1
 
 [node name="PlanetSpacer" type="Control" parent="HBox"]
 custom_minimum_size = Vector2(60, 0)
 layout_mode = 2
 
+[node name="Planet" type="Label" parent="HBox"]
+layout_mode = 2
+text = "Planet"
+
 [node name="VBox" type="VBoxContainer" parent="HBox"]
 layout_mode = 2
 size_flags_horizontal = 3
-
-[node name="Planet" type="Label" parent="HBox/VBox"]
-layout_mode = 2
-text = "Planet"
+alignment = 1
 
 [connection signal="pressed" from="." to="." method="_on_pressed"]

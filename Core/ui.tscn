@@ -7,12 +7,11 @@
 [ext_resource type="Script" path="res://SharedUI/timescale_control.gd" id="4_wfklm"]
 [ext_resource type="PackedScene" uid="uid://bi6bvo3nmefgu" path="res://SharedUI/current_state_control.tscn" id="6_c83tx"]
 [ext_resource type="PackedScene" uid="uid://dvknl67r1rgib" path="res://SharedUI/UIButtons/PowerPanel.tscn" id="6_uejkd"]
-[ext_resource type="PackedScene" uid="uid://bj7a2tnxouqd7" path="res://SharedUI/UIButtons/planetNavButton.tscn" id="8_hvk5a"]
+[ext_resource type="PackedScene" uid="uid://blsg03ijwetrt" path="res://SharedUI/UIButtons/nav_panel.tscn" id="8_a18dp"]
+[ext_resource type="PackedScene" uid="uid://cih3s5dfqmx5" path="res://SharedUI/UIButtons/ExitConfirmPopup.tscn" id="9_m07hd"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_truht"]
 bg_color = Color(0.6, 0.6, 0.6, 0.211765)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wxkqd"]
 
 [sub_resource type="Theme" id="Theme_lhrqm"]
 
@@ -271,37 +270,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="NavPanel" type="PanelContainer" parent="Hbox/MiddleSection/CenterContainer/VBoxContainer"]
-custom_minimum_size = Vector2(300, 400)
-layout_mode = 2
-size_flags_horizontal = 8
-theme_override_styles/panel = SubResource("StyleBoxFlat_wxkqd")
-
-[node name="ScrollContainer" type="ScrollContainer" parent="Hbox/MiddleSection/CenterContainer/VBoxContainer/NavPanel"]
-layout_mode = 2
-horizontal_scroll_mode = 0
-
-[node name="NavContainer" type="VBoxContainer" parent="Hbox/MiddleSection/CenterContainer/VBoxContainer/NavPanel/ScrollContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="1" parent="Hbox/MiddleSection/CenterContainer/VBoxContainer/NavPanel/ScrollContainer/NavContainer" instance=ExtResource("8_hvk5a")]
-layout_mode = 2
-
-[node name="2" parent="Hbox/MiddleSection/CenterContainer/VBoxContainer/NavPanel/ScrollContainer/NavContainer" instance=ExtResource("8_hvk5a")]
-layout_mode = 2
-
-[node name="3" parent="Hbox/MiddleSection/CenterContainer/VBoxContainer/NavPanel/ScrollContainer/NavContainer" instance=ExtResource("8_hvk5a")]
-layout_mode = 2
-
-[node name="4" parent="Hbox/MiddleSection/CenterContainer/VBoxContainer/NavPanel/ScrollContainer/NavContainer" instance=ExtResource("8_hvk5a")]
-layout_mode = 2
-
-[node name="5" parent="Hbox/MiddleSection/CenterContainer/VBoxContainer/NavPanel/ScrollContainer/NavContainer" instance=ExtResource("8_hvk5a")]
-layout_mode = 2
-
-[node name="6" parent="Hbox/MiddleSection/CenterContainer/VBoxContainer/NavPanel/ScrollContainer/NavContainer" instance=ExtResource("8_hvk5a")]
+[node name="NavPanel" parent="Hbox/MiddleSection/CenterContainer/VBoxContainer" instance=ExtResource("8_a18dp")]
 layout_mode = 2
 
 [node name="BottomBorder" type="VBoxContainer" parent="Hbox/MiddleSection"]
@@ -338,6 +307,10 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 text = "X"
+
+[node name="Popup" parent="." instance=ExtResource("9_m07hd")]
+position = Vector2i(560, 240)
+visible = false
 
 [connection signal="pressed" from="Hbox/LeftBorder/PanelContainer/OpButtonContainer/BuildMenu" to="." method="_on_build_menu_pressed"]
 [connection signal="pressed" from="Hbox/LeftBorder/PanelContainer/OpButtonContainer/Power" to="." method="_on_power_menu_pressed"]

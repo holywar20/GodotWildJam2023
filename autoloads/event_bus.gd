@@ -37,6 +37,7 @@ signal star_hydrogen_target_updated(min_target, max_target)
 signal resources_reported(resources) # Dictionary keyed by resource with amounts as values
 signal camera_moved( camera_pos ) # Vector2
 signal time_scale_updated(scale)
+signal planet_nav_button_pressed(planetRef)
 
 
 # Misc. game signals

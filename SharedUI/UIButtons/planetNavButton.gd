@@ -1,9 +1,8 @@
 extends Button
 
-@onready var pName = $HBox/VBox/Planet
+@onready var pName = $HBox/Planet
 
 var planetRef = null
-var planetLoc : Vector2
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -11,8 +10,9 @@ func _ready():
 
 func updateUI(nPlanet):
 	planetRef = nPlanet
+	print(nPlanet)
 	pName.set_text(planetRef.p_name)
 
 
 func _on_pressed():
-	pass # Replace with function body.
+	EventBus.planet_nav_button_pressed.emit(planetRef)

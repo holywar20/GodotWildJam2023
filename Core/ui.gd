@@ -5,8 +5,9 @@ extends CanvasLayer
 @onready var powerMenu = $Hbox/MiddleSection/CenterContainer/SubMenuContainer/PowerMenu
 
 # Panels
-@onready var navPanel = $Hbox/MiddleSection/CenterContainer/VBoxContainer/NavPanel/ScrollContainer/NavContainer
+@onready var navPanel = $Hbox/MiddleSection/CenterContainer/VBoxContainer/NavPanel
 @onready var buildQueue = $Hbox/MiddleSection/CenterContainer/VBoxContainer/BuildPanel/ScrollContainer/BuildQueue
+@onready var confirmQuit = $Popup
 
 # Top bar resources
 @onready var powerAmount = $Hbox/MiddleSection/TopBorder/Panel/ResContainer/Power/PowerContainer/Panel/HBoxContainer/Amount
@@ -19,6 +20,7 @@ extends CanvasLayer
 @onready var antimatterChange = $Hbox/MiddleSection/TopBorder/Panel/ResContainer/Antimatter/AntimatterContainer/Panel/Numbers/Change
 
 var buildQueueItem = preload("res://SharedUI/BuildQueueItem.tscn")
+var homeStar
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -26,17 +28,8 @@ func _ready():
 	EventBus.connect("resources_reported", Callable(self, "_on_EB_resources_reported"))
 	EventBus.connect("construction_started", Callable(self, "_on_EB_construction_started"))
 	EventBus.connect("constructed", Callable(self, "_on_EB_constructed"))
-	updateUI()
-
-func updateUI():
-	var planetArray = get_tree().get_nodes_in_group( "PLANET_SCENE" )
-	for planet in planetArray:
-		for panel in navPanel.get_children():
-			if panel.planetRef == null:
-				panel.updateUI(planet)
-				break
-			if !(panel.planetRef == null):
-				continue
+	EventBus.connect("planet_nav_button_pressed", Callable(self, "_on_EB_planet_nav_button_pressed"))
+	navPanel.updateUI()
 
 func updateChangeColours():
 	# Power
@@ -127,5 +120,5 @@ func _on_power_menu_pressed():
 
 
 func _on_exit_pressed():
-	pass # Replace with function body.
-
+	Input.action_press("ui_pause")
+	confirmQuit.popup()
