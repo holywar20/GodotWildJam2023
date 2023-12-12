@@ -1,6 +1,16 @@
 extends Node2D
 
 
+const MUSIC_TRACK_TITLE = "title"
+const MUSIC_TRACK_GAME_1 = "game_1"
+const MUSIC_TRACK_GAME_2 = "game_2"
+const MUSIC_TRACK_GAME_3 = "game_3"
+const MUSIC_TRACK_GAME_4 = "game_4"
+const MUSIC_TRACK_GAME_5 = "game_5"
+const MUSIC_TRACK_GAME_6 = "game_6"
+const MUSIC_TRACK_GAME_7 = "game_7"
+
+
 @onready var music_player: AudioStreamPlayer2D = $Music/MusicPlayer
 @onready var sfx_player_1: AudioStreamPlayer2D = $SFX/SFXPlayer1
 @onready var sfx_player_2: AudioStreamPlayer2D = $SFX/SFXPlayer2
@@ -8,7 +18,14 @@ extends Node2D
 @onready var sfx_player_4: AudioStreamPlayer2D = $SFX/SFXPlayer4
 
 var music_tracks = {
-	#"": preload("")
+	MUSIC_TRACK_TITLE: preload("res://Assets/music/main_track.mp3"),
+	MUSIC_TRACK_GAME_1: preload("res://Assets/music/MARiAN - Creative Technology.mp3"),
+	MUSIC_TRACK_GAME_2: preload("res://Assets/music/MARiAN - Futuristic World.mp3"),
+	MUSIC_TRACK_GAME_3: preload("res://Assets/music/MARiAN - Pandemic.mp3"),
+	MUSIC_TRACK_GAME_4: preload("res://Assets/music/MARiAN - Retro Sci Fi.mp3"),
+	MUSIC_TRACK_GAME_5: preload("res://Assets/music/MARiAN - Supernova.mp3"),
+	MUSIC_TRACK_GAME_6: preload("res://Assets/music/MARiAN - Retro Sci Fi.mp3"),
+	MUSIC_TRACK_GAME_7: preload("res://Assets/music/The Space.mp3")
 }
 
 var sfx_tracks = {
