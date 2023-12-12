@@ -49,6 +49,12 @@ script = ExtResource("2_gcu2o")
 
 [node name="SolarSystem" type="Node2D" parent="."]
 
+[node name="TempBuildings" type="Node2D" parent="SolarSystem"]
+
+[node name="PlanetCracker" parent="SolarSystem/TempBuildings" instance=ExtResource("7_8ee2p")]
+
+[node name="StarScaffold" parent="SolarSystem/TempBuildings" instance=ExtResource("8_p7ro6")]
+
 [node name="OrbitLines" parent="SolarSystem" instance=ExtResource("1_s2yhk")]
 offset_left = 0.0
 offset_top = 0.0
@@ -64,27 +70,47 @@ scale = Vector2(0.5, 0.5)
 [node name="P1" parent="SolarSystem/Planets" instance=ExtResource("6_fk80q")]
 position = Vector2(215, 150)
 resources_available = [ExtResource("7_xxeen"), ExtResource("8_qbtun"), ExtResource("9_xghfi")]
+p_scale = 1.2
+orbital_speed = 1.8
+p_name = "Emberon"
 
 [node name="P2" parent="SolarSystem/Planets" instance=ExtResource("6_fk80q")]
 position = Vector2(258, -34)
+p_scale = 0.4
+orbit_num = 2
+p_name = "Ashenon"
+p_descript = "Barren Planet"
 
 [node name="P3" parent="SolarSystem/Planets" instance=ExtResource("6_fk80q")]
 position = Vector2(178, -169)
+orbit_num = 3
+orbital_speed = 0.8
+p_name = "Escher's Staircase"
+p_descript = "Terran Planet"
 
 [node name="P4" parent="SolarSystem/Planets" instance=ExtResource("6_fk80q")]
 position = Vector2(-89, -191)
+p_scale = 2.1
+orbit_num = 4
+orbital_speed = 0.5
+p_name = "Seranova"
+p_descript = "Gas Giant"
 
 [node name="P5" parent="SolarSystem/Planets" instance=ExtResource("6_fk80q")]
 position = Vector2(-293, 6)
+p_scale = 1.4
+orbit_num = 5
+orbital_speed = 0.23
+p_name = "Burden of Ymir"
+p_descript = "Ice Giant"
 
 [node name="P6" parent="SolarSystem/Planets" instance=ExtResource("6_fk80q")]
 position = Vector2(-207, 182)
-
-[node name="TempBuildings" type="Node2D" parent="SolarSystem"]
-
-[node name="PlanetCracker" parent="SolarSystem/TempBuildings" instance=ExtResource("7_8ee2p")]
-
-[node name="StarScaffold" parent="SolarSystem/TempBuildings" instance=ExtResource("8_p7ro6")]
+p_scale = 0.7
+orbit_num = 6
+orbital_speed = 0.05
+p_name = "Entropia"
+p_descript = "Ice Planet"
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("2_qfksb")

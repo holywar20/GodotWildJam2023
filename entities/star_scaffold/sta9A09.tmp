@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cboib6gk2ih2"]
+[gd_scene load_steps=9 format=3 uid="uid://cboib6gk2ih2"]
 
 [ext_resource type="Script" path="res://entities/star_scaffold/star_scaffold.gd" id="1_40stf"]
 [ext_resource type="Resource" uid="uid://bawqrs2x5k1ov" path="res://entities/resources/antimatter.tres" id="2_w4o67"]
@@ -8,15 +8,6 @@
 [ext_resource type="Resource" uid="uid://un8y85jvdke1" path="res://entities/resources/precious_metal.tres" id="6_65lbb"]
 [ext_resource type="Resource" uid="uid://bgl3fqja6q28p" path="res://entities/resources/unobtanium.tres" id="7_hiy1i"]
 [ext_resource type="Texture2D" uid="uid://bddb6mnut41gy" path="res://Assets/dysonring/Scaffolding.png" id="8_jokuy"]
-
-[sub_resource type="Animation" id="Animation_blqma"]
-resource_name = "InnerRingRotation"
-length = 20.0
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_jwp58"]
-_data = {
-"InnerRingRotation": SubResource("Animation_blqma")
-}
 
 [node name="StarScaffold" type="Node2D"]
 script = ExtResource("1_40stf")
@@ -30,32 +21,25 @@ ExtResource("7_hiy1i"): 0
 }
 metadata/_edit_lock_ = true
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_jwp58")
-}
-
-[node name="Node2D" type="Node2D" parent="."]
-
-[node name="NorthWest" type="Sprite2D" parent="Node2D"]
+[node name="NorthWest" type="Sprite2D" parent="."]
 position = Vector2(-374, -373)
 scale = Vector2(4, 4)
 texture = ExtResource("8_jokuy")
 
-[node name="NorthEast" type="Sprite2D" parent="Node2D"]
+[node name="NorthEast" type="Sprite2D" parent="."]
 position = Vector2(370, -373)
 scale = Vector2(4, 4)
 texture = ExtResource("8_jokuy")
 flip_h = true
 
-[node name="SouthEast" type="Sprite2D" parent="Node2D"]
+[node name="SouthEast" type="Sprite2D" parent="."]
 position = Vector2(370, 371)
 scale = Vector2(4, 4)
 texture = ExtResource("8_jokuy")
 flip_h = true
 flip_v = true
 
-[node name="SouthWest" type="Sprite2D" parent="Node2D"]
+[node name="SouthWest" type="Sprite2D" parent="."]
 position = Vector2(-374, 371)
 scale = Vector2(4, 4)
 texture = ExtResource("8_jokuy")

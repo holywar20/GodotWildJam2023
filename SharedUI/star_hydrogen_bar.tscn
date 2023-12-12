@@ -1,5 +1,4 @@
 [gd_scene load_steps=4 format=3 uid="uid://dya0to7jqbx8b"]
-
 [ext_resource type="Texture2D" uid="uid://d1tyajybnh64l" path="res://Assets/life_bar_fill_white.png" id="1_ayqyd"]
 [ext_resource type="Script" path="res://SharedUI/star_hydrogen_bar.gd" id="1_k4gps"]
 [ext_resource type="Texture2D" uid="uid://b8cul23mq6lqy" path="res://Assets/life_bar_fill.png" id="2_wr034"]
@@ -18,7 +17,7 @@ layout_mode = 2
 
 [node name="PanelContainer" type="Control" parent="VBoxContainer"]
 custom_minimum_size = Vector2(0, 1)
-layout_mode = 2
+
 
 [node name="Sprite2D" type="Sprite2D" parent="VBoxContainer/PanelContainer"]
 visible = false
@@ -33,3 +32,4 @@ stretch_margin_left = 5
 stretch_margin_right = 5
 stretch_margin_bottom = 30
 texture_progress = ExtResource("1_ayqyd")
+tint_under = Color(0, 0.635294, 0.635294, 1)

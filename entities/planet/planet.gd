@@ -3,6 +3,9 @@ extends Node2D
 
 const MAX_RESOURCE_NUMBER = 1000000 # In Gigatons?
 
+const STAR_SIZE = 1500 # In Pixels , max star size, including scaffolding
+const ORBIT_SIZE = 2000
+
 @onready var land_masses : ColorRect = $LandMasses
 @onready var atmosphere : ColorRect = $Atmosphere
 
@@ -12,18 +15,38 @@ const MAX_RESOURCE_NUMBER = 1000000 # In Gigatons?
 
 @export_subgroup("Display Params")
 @export_enum( "P1" , "P2" , "P3" , "P4" , "P5" , "P6" ) var pid
+@export var p_scale : float = 1.0
+@export var orbit_num : int = 1.0
+@export var orbital_speed : float = 1.0
+@export var p_name : String = "Unamed Planet"
+@export var p_descript : String = "Lava Planet" 
+
+const RAND_SEED = 11111111
+var _rng = RandomNumberGenerator.new()
 
 var _resource_abundance: Dictionary = {}:
 	get = get_resource_abundance
 
 var _num_planet_crackers: int = 0
 
-
 func _ready() -> void:
+	_rng.seed = RAND_SEED
+
 	EventBus.adjust_hydrogen.connect(_on_adjust_hydrogen)
 	_randomize_resource_availability()
 
+	set_scale( Vector2( p_scale , p_scale ) )
+	_calculate_init_orbit()
+	
 	# Get initial Parms by planet
+
+func _calculate_init_orbit():
+	var dist = STAR_SIZE + ORBIT_SIZE * orbit_num
+	var angle = _rng.randf_range( 0 , 2 * PI )
+	var pos = Vector2( cos( angle) , sin( angle) ) * dist
+
+	set_global_position( pos )
+
 
 # Utility Methods
 # Returns the amount extracted, if any.

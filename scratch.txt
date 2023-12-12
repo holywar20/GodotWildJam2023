@@ -1,10 +1,29 @@
 # Bryan Todo
 
 # Fix Orbit lines
+# Animate Orbits
 # Set Transition vars for star
 # Set transition vars for Planets
 # -- -- Atmosphere, Ocean
-# Camera Movement & Background tracking
-# Build Planet and Star scenes
-# Add custom Icon
+# 6 Icons, 1 for each resource
+# 8 buildings, 1 for each planet type
+# Add a Dyson Swarm partical effect to scaffolding
 # Add custom Cursors
+
+
+# Done
+-- Camera Movement & Background tracking
+-- Build Planet and Star scenes
+-- Build Dyson Ring
+
+# Joe Notes
+
+Planets now spawn. I added some very basic properties to planets as well so you can start working
+On those UI scenes.
+
+Planets now are in a NodeGroup named `PLANET_SCENE`
+
+You can call get_tree().get_nodes_in_group( "PLANET_SCENE" ) ("I think?" ), and it will return an array of planet scenes.
+
+Don't worry about making Icons for now. That will require some special code, and we will most likely we will need to hoist the planet into a resource
+or duplicate the planet and then construct them.

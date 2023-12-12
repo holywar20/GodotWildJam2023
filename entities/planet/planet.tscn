@@ -49,14 +49,19 @@ shader_parameter/banding = 1.0
 shader_parameter/turbulence = 3
 
 [node name="Planet" type="Node2D"]
+position = Vector2(-19, 18)
 script = ExtResource("1_5v41j")
 
 [node name="LandMasses" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_sd6hr")
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = -250.0
+offset_top = -250.0
+offset_right = 250.0
+offset_bottom = 250.0
 
 [node name="Atmosphere" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_fuiqp")
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = -250.0
+offset_top = -250.0
+offset_right = 250.0
+offset_bottom = 250.0

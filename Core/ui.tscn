@@ -7,7 +7,7 @@
 [ext_resource type="Script" path="res://SharedUI/timescale_control.gd" id="4_wfklm"]
 [ext_resource type="PackedScene" uid="uid://bi6bvo3nmefgu" path="res://SharedUI/current_state_control.tscn" id="6_c83tx"]
 [ext_resource type="PackedScene" uid="uid://dvknl67r1rgib" path="res://SharedUI/UIButtons/PowerPanel.tscn" id="6_uejkd"]
-[ext_resource type="PackedScene" uid="uid://dya0to7jqbx8b" path="res://SharedUI/star_hydrogen_bar.tscn" id="8_x2jij"]
+[ext_resource type="PackedScene" uid="uid://dkkfls4a277e0" path="res://SharedUI/star_hydrogen_bar.tscn" id="8_x2jij"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_truht"]
 bg_color = Color(0.6, 0.6, 0.6, 0.211765)
