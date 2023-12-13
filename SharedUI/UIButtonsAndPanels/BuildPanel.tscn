@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dih21h34x7by6"]
 
-[ext_resource type="Script" path="res://SharedUI/UIButtons/BuildPanel.gd" id="1_thxis"]
-[ext_resource type="PackedScene" uid="uid://c3kplm0etxp0p" path="res://SharedUI/UIButtons/BuildingButton.tscn" id="2_nr33l"]
+[ext_resource type="Script" path="res://SharedUI/UIButtonsAndPanels/BuildPanel.gd" id="1_thxis"]
+[ext_resource type="PackedScene" uid="uid://c3kplm0etxp0p" path="res://SharedUI/UIButtonsAndPanels/BuildingButton.tscn" id="2_nr33l"]
 
 [node name="SubMenu" type="PanelContainer"]
 visible = false

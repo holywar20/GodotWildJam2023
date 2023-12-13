@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://c3kplm0etxp0p"]
 
-[ext_resource type="Script" path="res://SharedUI/UIButtons/BuildingButton.gd" id="1_0x1v2"]
+[ext_resource type="Script" path="res://SharedUI/UIButtonsAndPanels/BuildingButton.gd" id="1_0x1v2"]
 [ext_resource type="Texture2D" uid="uid://12c7cu74lhqq" path="res://Assets/Placeholder 50x50.png" id="2_mfgu6"]
 
 [node name="BuildingButton" type="Button"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bj7a2tnxouqd7"]
 
-[ext_resource type="Script" path="res://SharedUI/UIButtons/planetNavButton.gd" id="1_uc73e"]
+[ext_resource type="Script" path="res://SharedUI/UIButtonsAndPanels/planetNavButton.gd" id="1_8huxb"]
 
 [node name="PlanetNavButton" type="Button"]
 custom_minimum_size = Vector2(290, 60)
@@ -11,7 +11,7 @@ offset_right = -383.92
 offset_bottom = -57.72
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_uc73e")
+script = ExtResource("1_8huxb")
 
 [node name="HBox" type="HBoxContainer" parent="."]
 custom_minimum_size = Vector2(290, 60)

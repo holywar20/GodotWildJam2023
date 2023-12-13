@@ -7,6 +7,7 @@ extends CanvasLayer
 # Panels
 @onready var navPanel = $Hbox/MiddleSection/CenterContainer/VBoxContainer/NavPanel
 @onready var buildQueue = $Hbox/MiddleSection/CenterContainer/VBoxContainer/BuildPanel/ScrollContainer/BuildQueue
+@onready var planetDetailPanel = $Hbox/MiddleSection/CenterContainer/PlanetDetails/PlanetContainer
 @onready var confirmQuit = $Popup
 
 # Top bar resources
@@ -107,6 +108,12 @@ func _on_EB_constructed(building) -> void:
 
 	if queue_item_to_remove:
 		queue_item_to_remove[0].removeSelf()
+
+
+func _on_EB_planet_nav_button_pressed(planetRef):
+	planetDetailPanel.show()
+	planetDetailPanel.updateUI(planetRef)
+
 
 func _on_build_menu_pressed():
 	if (powerMenu.isOpen):

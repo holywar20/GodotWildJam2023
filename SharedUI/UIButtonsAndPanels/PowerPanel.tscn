@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dvknl67r1rgib"]
 
-[ext_resource type="Script" path="res://SharedUI/UIButtons/PowerPanel.gd" id="1_k8eme"]
+[ext_resource type="Script" path="res://SharedUI/UIButtonsAndPanels/PowerPanel.gd" id="1_k8eme"]
 
 [node name="SubMenu" type="PanelContainer"]
 visible = false
