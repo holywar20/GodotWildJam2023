@@ -73,7 +73,7 @@ func _process(delta) -> void:
 
 func _on_game_tick():
 	# Report on resource extraction/changes
-	if produces and is_active:
+	if is_active:
 		EventBus.resources_extracted.emit(next_extraction())
 
 
@@ -88,4 +88,4 @@ func signal_constructed():
 
 
 func next_extraction() -> Dictionary:
-	return produces
+	return produces if produces else {}

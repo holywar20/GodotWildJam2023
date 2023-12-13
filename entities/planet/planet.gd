@@ -37,6 +37,19 @@ var _rng = RandomNumberGenerator.new()
 
 var _planet_crackers: Array = []
 
+# Mining percentages
+var _hydrogen_percentage: float = 0.33:
+	get = get_hydrogen_percentage,
+	set = set_hydrogen_percentage
+
+var _base_metals_percentage: float = 0.33:
+	get = get_base_metals_percentage,
+	set = set_base_metals_percentage
+
+var _precious_metals_percentage: float = 0.33:
+	get = get_precious_metals_percentage,
+	set = set_precious_metals_percentage
+
 
 func _ready() -> void:
 	_rng.seed = RAND_SEED
@@ -59,6 +72,30 @@ func remove_planet_cracker() -> void:
 
 func has_planet_crackers() -> bool:
 	return _planet_crackers.size() > 0
+
+
+func get_hydrogen_percentage() -> float:
+	return _hydrogen_percentage
+
+
+func set_hydrogen_percentage(value: float) -> void:
+	_hydrogen_percentage = value
+
+
+func get_base_metals_percentage() -> float:
+	return _base_metals_percentage
+
+
+func set_base_metals_percentage(value: float) -> void:
+	_base_metals_percentage = value
+
+
+func get_precious_metals_percentage() -> float:
+	return _precious_metals_percentage
+
+
+func set_precious_metals_percentage(value: float) -> void:
+	_precious_metals_percentage = value
 
 
 func _calculate_init_orbit():

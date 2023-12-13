@@ -18,11 +18,11 @@ layout_mode = 2
 layout_mode = 2
 resource_type = "Hydrogen"
 
-[node name="BaseMetalSliderControl" parent="VBoxContainer/CrackerControls" instance=ExtResource("2_nustn")]
+[node name="BaseMetalsSliderControl" parent="VBoxContainer/CrackerControls" instance=ExtResource("2_nustn")]
 layout_mode = 2
 resource_type = "Base Metal"
 
-[node name="PreciousMetalSliderControl" parent="VBoxContainer/CrackerControls" instance=ExtResource("2_nustn")]
+[node name="PreciousMetalsSliderControl" parent="VBoxContainer/CrackerControls" instance=ExtResource("2_nustn")]
 layout_mode = 2
 resource_type = "Precious Metal"
 
