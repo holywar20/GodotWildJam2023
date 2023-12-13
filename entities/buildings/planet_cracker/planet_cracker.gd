@@ -20,13 +20,12 @@ var _precious_metals_percentage: float = 0.33:
 
 func _ready():
 	super()
-	_is_constructed = true
-	is_active = true
-	produces[Constants.HYDROGEN] = 10
+	#produces[Constants.HYDROGEN] = 10
 
 
 func assign_to(planet: Planet) -> void:
 	_planet = planet
+	_planet.add_planet_cracker()
 
 
 func next_extraction() -> Dictionary:

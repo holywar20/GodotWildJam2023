@@ -24,7 +24,11 @@ const ORBIT_SIZE = 2000
 const RAND_SEED = 11111111
 var _rng = RandomNumberGenerator.new()
 
-var _resource_abundance: Dictionary = {}:
+var _resource_abundance: Dictionary = {
+	Constants.HYDROGEN: 0,
+	Constants.BASE_METAL: 0,
+	Constants.PRECIOUS_METAL: 0
+}:
 	get = get_resource_abundance
 
 var _num_planet_crackers: int = 0
@@ -45,6 +49,15 @@ func _ready() -> void:
 	_calculate_init_orbit()
 	
 	# Get initial Parms by planet
+
+
+func add_planet_cracker() -> void:
+	_num_planet_crackers += 1
+
+
+func remove_planet_cracker() -> void:
+	_num_planet_crackers -= 1
+
 
 func _calculate_init_orbit():
 	var dist = STAR_SIZE + ORBIT_SIZE * orbit_num
