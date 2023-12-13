@@ -1,15 +1,64 @@
 class_name StarScaffold
 extends Node2D
 
+const construction_sprite = preload("res://Assets/buildings/ConstructionPlaceholder.png")
 
 const MAX_BUILDINGS = 24
-
+const BUILD_POS = {
+	Vector2(0,0) : Vector2(-109,-839),
+	Vector2(0,1) : Vector2(-320,-791),
+	Vector2(0,2) : Vector2(-501,-679),
+	Vector2(0,3) : Vector2(-665,-531),
+	Vector2(0,4) : Vector2(-773,-343),
+	Vector2(0,5) : Vector2(-833,-123),
+	Vector2(1,0) : Vector2( 90 ,-839),
+	Vector2(1,1) : Vector2(302,-790),
+	Vector2(1,2) : Vector2(482,-678),
+	Vector2(1,3) : Vector2(646,-531),
+	Vector2(1,4) : Vector2(755,-343),
+	Vector2(1,5) : Vector2(814,-123),
+	Vector2(2,0) : Vector2(-109,829),
+	Vector2(2,1) : Vector2(-320,781),
+	Vector2(2,2) : Vector2(-501,669),
+	Vector2(2,3) : Vector2(-665,521),
+	Vector2(2,4) : Vector2(-773,333),
+	Vector2(2,5) : Vector2(-833,113),
+	Vector2(3,0) : Vector2(90,830),
+	Vector2(3,1) : Vector2(302,781),
+	Vector2(3,2) : Vector2(482,669),
+	Vector2(3,3) : Vector2(645,521),
+	Vector2(3,4) : Vector2(754,333),
+	Vector2(3,5) : Vector2(814,113)
+}
 
 @export var current_resources: Dictionary = {}
 @export var star: StarScene
 
 
-var _buildings: Array = []
+var _buildings: Dictionary = {
+	Vector2(0,0) : null,
+	Vector2(0,1) : null,
+	Vector2(0,2) : null,
+	Vector2(0,3) : null,
+	Vector2(0,4) : null,
+	Vector2(0,5) : null,
+	Vector2(1,0) : null,
+	Vector2(1,1) : null,
+	Vector2(1,2) : null,
+	Vector2(1,3) : null,
+	Vector2(1,4) : null,
+	Vector2(1,5) : null,
+	Vector2(2,0) : null,
+	Vector2(2,1) : null,
+	Vector2(2,2) : null,
+	Vector2(2,3) : null,
+	Vector2(2,4) : null,
+	Vector2(2,5) : null,
+	Vector2(3,0) : null,
+	Vector2(3,1) : null,
+	Vector2(3,2) : null,
+	Vector2(3,3) : null
+}
 var _buildings_under_construction: Array = []
 
 var _num_dyson_swarms: int = 0:
@@ -57,11 +106,25 @@ func _construct(building_type: String):
 	_deduct_from_current_resources(building_to_construct.building_costs)
 
 	_add_to_build_queue(building_to_construct) # might be moot...
+	
+	# Fetch slot
+	var next_slot = _find_next_empty_slot()
+	
+	if( next_slot == null ):
+		return # Something went wrong. Bail gracefully
 
-	_buildings.append(building_to_construct)
-	add_child(building_to_construct)
+	_buildings[next_slot] = building_to_construct
+	building_to_construct.position = BUILD_POS[next_slot]
+	add_child( building_to_construct )
 
 	EventBus.construction_started.emit(building_to_construct)
+
+func _find_next_empty_slot():
+	for pos in _buildings:
+		if( _buildings[pos] == null ):
+			return pos
+			
+	return null
 
 
 func destroy(building) -> void:
@@ -122,8 +185,11 @@ func _add_to_build_queue(building) -> void:
 func _calculate_building_speedup_factor() -> float:
 	var speedup_factor: float = 1.0
 
-	for building in _buildings:
-		if building.type == Constants.BUILDING_GIGAFACTORY and building.is_active:
-			speedup_factor += building.build_speedup_factor
+	for pos in _buildings:
+		if( _buildings[pos] == null ):
+			continue
+		
+		if _buildings[pos].type == Constants.BUILDING_GIGAFACTORY and _buildings[pos].is_active:
+			speedup_factor += _buildings[pos].build_speedup_factor
 
 	return speedup_factor

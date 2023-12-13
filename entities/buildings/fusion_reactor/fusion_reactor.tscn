@@ -1,11 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://dfolcdpjmn3wb"]
+[gd_scene load_steps=7 format=3 uid="uid://dfolcdpjmn3wb"]
 
 [ext_resource type="Script" path="res://entities/buildings/fusion_reactor/fusion_reactor.gd" id="1_70iuc"]
 [ext_resource type="Resource" uid="uid://i07mt6rgiele" path="res://entities/resources/hydrogen.tres" id="2_l7d1b"]
 [ext_resource type="Resource" uid="uid://criguf1driv4" path="res://entities/resources/base_metal.tres" id="3_qnpey"]
 [ext_resource type="Resource" uid="uid://di8768hxc0pfy" path="res://entities/resources/power.tres" id="4_o0b2t"]
+[ext_resource type="Texture2D" uid="uid://ckm0s8esujj8f" path="res://Assets/buildings/PlacedPlaceholder.png" id="5_lhe7p"]
+[ext_resource type="Texture2D" uid="uid://ca8y4rl40yqgd" path="res://Assets/buildings/ConstructionPlaceholder.png" id="6_bmrxf"]
 
 [node name="FusionReactor" type="Node2D"]
+scale = Vector2(4, 4)
 script = ExtResource("1_70iuc")
 type = "Fusion Reactor"
 build_time = 25
@@ -19,4 +22,8 @@ produces = {
 ExtResource("4_o0b2t"): 10
 }
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Building" type="Sprite2D" parent="."]
+texture = ExtResource("5_lhe7p")
+
+[node name="Construction" type="Sprite2D" parent="."]
+texture = ExtResource("6_bmrxf")

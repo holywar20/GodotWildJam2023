@@ -11,6 +11,8 @@
 # Add custom Cursors
 
 
+-- Add Scaffolding
+
 # Done
 -- Camera Movement & Background tracking
 -- Build Planet and Star scenes
