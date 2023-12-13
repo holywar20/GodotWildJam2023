@@ -20,6 +20,17 @@ func _ready():
 	base_metals_slider_control.slider.value_changed.connect(_on_base_metals_value_changed)
 	precious_metals_slider_control.slider.value_changed.connect(_on_precious_metals_value_changed)
 
+func updateUI(planetRef):
+	if !(planetRef._planet_crackers.is_empty()):
+		cracker_controls.show()
+		hydrogen_slider_control.value_label.text = str(planetRef.get_hydrogen_percentage()) + "%"
+		base_metals_slider_control.value_label.text = str(planetRef.get_base_metals_percentage()) + "%"
+		precious_metals_slider_control.value_label.text = str(planetRef.get_precious_metals_percentage()) + "%"
+	if planetRef._planet_crackers.is_empty():
+		cracker_controls.hide()
+		hydrogen_slider_control.value_label.text = "33%"
+		base_metals_slider_control.value_label.text = "33%"
+		precious_metals_slider_control.value_label.text = "33%"
 
 func _on_buy_pressed():
 	if not _current_planet:

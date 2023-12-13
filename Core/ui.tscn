@@ -248,6 +248,7 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="PlanetDetails" type="VBoxContainer" parent="Hbox/MiddleSection/CenterContainer"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 10
 alignment = 2
