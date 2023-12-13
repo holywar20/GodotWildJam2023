@@ -1,10 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://ccvkv5sim1d2j"]
+[gd_scene load_steps=6 format=3 uid="uid://ccvkv5sim1d2j"]
 
 [ext_resource type="Script" path="res://entities/buildings/gigafactory/gigafactory.gd" id="1_y3466"]
 [ext_resource type="Resource" uid="uid://di8768hxc0pfy" path="res://entities/resources/power.tres" id="2_8qk54"]
 [ext_resource type="Resource" uid="uid://criguf1driv4" path="res://entities/resources/base_metal.tres" id="3_2c1m4"]
+[ext_resource type="Texture2D" uid="uid://ckm0s8esujj8f" path="res://Assets/buildings/PlacedPlaceholder.png" id="4_ah5yl"]
+[ext_resource type="Texture2D" uid="uid://ca8y4rl40yqgd" path="res://Assets/buildings/ConstructionPlaceholder.png" id="4_ybrqo"]
 
 [node name="Gigafactory" type="Node2D"]
+scale = Vector2(4, 4)
 script = ExtResource("1_y3466")
 type = "Gigafactory"
 build_time = 20
@@ -15,4 +18,8 @@ building_costs = {
 ExtResource("3_2c1m4"): 75
 }
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Construction" type="Sprite2D" parent="."]
+texture = ExtResource("4_ybrqo")
+
+[node name="Building" type="Sprite2D" parent="."]
+texture = ExtResource("4_ah5yl")

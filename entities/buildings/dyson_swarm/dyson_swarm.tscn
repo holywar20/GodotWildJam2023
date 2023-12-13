@@ -16,5 +16,3 @@ ExtResource("3_m6bx1"): 500
 produces = {
 ExtResource("4_7b0ox"): 1000
 }
-
-[node name="Sprite2D" type="Sprite2D" parent="."]

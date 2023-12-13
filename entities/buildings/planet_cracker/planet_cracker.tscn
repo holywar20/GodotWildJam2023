@@ -1,10 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://du6ngnr7qwln7"]
+[gd_scene load_steps=6 format=3 uid="uid://du6ngnr7qwln7"]
 
 [ext_resource type="Script" path="res://entities/buildings/planet_cracker/planet_cracker.gd" id="1_intlu"]
 [ext_resource type="Resource" uid="uid://di8768hxc0pfy" path="res://entities/resources/power.tres" id="2_fy42p"]
 [ext_resource type="Resource" uid="uid://criguf1driv4" path="res://entities/resources/base_metal.tres" id="3_t40gn"]
+[ext_resource type="Texture2D" uid="uid://ca8y4rl40yqgd" path="res://Assets/buildings/ConstructionPlaceholder.png" id="4_vpav1"]
+[ext_resource type="Texture2D" uid="uid://ckm0s8esujj8f" path="res://Assets/buildings/PlacedPlaceholder.png" id="4_wv0sv"]
 
 [node name="PlanetCracker" type="Node2D"]
+scale = Vector2(4, 4)
 script = ExtResource("1_intlu")
 type = "Planet Cracker"
 build_time = 30
@@ -15,4 +18,9 @@ building_costs = {
 ExtResource("3_t40gn"): 50
 }
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Construction" type="Sprite2D" parent="."]
+texture = ExtResource("4_vpav1")
+
+[node name="Building" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("4_wv0sv")
