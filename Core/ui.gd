@@ -140,5 +140,5 @@ func _on_power_menu_pressed():
 
 
 func _on_exit_pressed():
-	Input.action_press("ui_pause")
+	EventBus.game_paused.emit()
 	confirmQuit.popup()

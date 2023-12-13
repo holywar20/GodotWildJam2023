@@ -3,18 +3,23 @@ extends Node
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
+	EventBus.game_paused.connect(_on_game_paused)
+	EventBus.game_unpaused.connect(_on_game_unpaused)
 
 
 func _process(_delta):
 	if Input.is_action_just_pressed("ui_pause"):
-		_do_pause()
+		var is_paused = get_tree().paused
+
+		if is_paused:
+			EventBus.game_unpaused.emit()
+		else:
+			EventBus.game_paused.emit()
 
 
-func _do_pause():
-	get_tree().paused = not get_tree().paused
+func _on_game_paused() -> void:
+	get_tree().paused = true
 
-	if get_tree().paused:
-		EventBus.game_paused.emit()
-	else:
-		EventBus.game_unpaused.emit()
 
+func _on_game_unpaused() -> void:
+	get_tree().paused = false
