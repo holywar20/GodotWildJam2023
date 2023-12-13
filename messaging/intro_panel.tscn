@@ -1,0 +1,43 @@
+[gd_scene load_steps=2 format=3 uid="uid://c6t0tdq43a0s3"]
+
+[ext_resource type="Theme" uid="uid://d1sjl81lo5my0" path="res://messaging/messaging.tres" id="1_k181i"]
+
+[node name="IntroPanel" type="Panel"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_k181i")
+
+[node name="Control" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 857.0
+offset_top = 48.0
+offset_right = 897.0
+offset_bottom = 88.0
+
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = -73.0
+offset_top = -7.0
+offset_right = 346.0
+offset_bottom = 48.0
+text = "Welcome to Starlifter!"
+
+[node name="Control2" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 643.0
+offset_top = 147.0
+offset_right = 683.0
+offset_bottom = 187.0
+
+[node name="Label" type="Label" parent="Control2"]
+layout_mode = 0
+offset_left = -136.0
+offset_top = 75.0
+offset_right = 1012.0
+offset_bottom = 246.0
+theme_override_font_sizes/font_size = 25
+text = "Mine resources from planets and build giant structures to turn a dying brown dwarf into a main-sequence star."
+autowrap_mode = 2
