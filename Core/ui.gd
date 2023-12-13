@@ -8,6 +8,7 @@ extends CanvasLayer
 @onready var navPanel = $Hbox/MiddleSection/CenterContainer/VBoxContainer/NavPanel
 @onready var buildQueue = $Hbox/MiddleSection/CenterContainer/VBoxContainer/BuildPanel/ScrollContainer/BuildQueue
 @onready var planetDetailPanel = $Hbox/MiddleSection/CenterContainer/PlanetDetails/PlanetContainer
+@onready var planetCrackerPanel = $Hbox/MiddleSection/CenterContainer/PlanetDetails/CrackerMenu
 @onready var confirmQuit = $Popup
 
 # Top bar resources
@@ -115,9 +116,12 @@ func _on_EB_constructed(building) -> void:
 
 func _on_EB_planet_nav_button_pressed(planetRef):
 	planetDetailPanel.show()
+	planetCrackerPanel.show()
+	#planetCrackerPanel.updateUI(planetRef)
 	planetDetailPanel.updateUI(planetRef)
 
 func _on_EB_return_to_star_pressed():
+	planetCrackerPanel.hide()
 	planetDetailPanel.hide()
 
 func _on_build_menu_pressed():

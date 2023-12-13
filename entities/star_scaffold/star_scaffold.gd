@@ -157,7 +157,8 @@ func _on_resources_extracted(new_resources: Dictionary) -> void:
 
 func _check_tier_threshold() -> void:
 	if current_resources[Constants.HYDROGEN] >= StellarConstants.get_tier_threshold(star.tier_state):
-		EventBus.star_transitioned.emit(star.tier_state + 1)
+		pass
+		#EventBus.star_transitioned.emit(star.tier_state + 1)
 
 
 func _add_resources(new_resources: Dictionary) -> void:

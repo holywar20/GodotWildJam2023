@@ -57,22 +57,56 @@ func _populate_resource_sliders() -> void:
 	precious_metals_slider_control.set_init_value(_current_planet.get_precious_metals_percentage())
 
 
+func normalizeSliders(value, changeSlider):
+	var hydro = hydrogen_slider_control.slider
+	var base = base_metals_slider_control.slider
+	var precious = precious_metals_slider_control.slider
+	
+	var sliders = [hydro,base,precious]
+	
+	var total = hydro.value + base.value + precious.value
+	
+	var movingSliderIndex
+	var highestSliderIndex = 0
+	var highestSliderValue = -1
+	
+	
+	for x in range(sliders.size()):
+		if sliders[x] == changeSlider:
+			movingSliderIndex = x
+			break
+	
+	
+	for x in range(sliders.size()):
+		total += sliders[x].value
+		if sliders[x].value > highestSliderValue and x != movingSliderIndex:
+			highestSliderValue = sliders[x].value
+			highestSliderIndex = x
+	
+	var excess = total - 2
+	
+	# If total exceeds 100, deduct the excess from the slider with the highest value
+	if total > 2:
+		sliders[highestSliderIndex].value -= excess
+	
+	_current_planet.set_hydrogen_percentage(hydro.value)
+	_current_planet.set_base_metals_percentage(base.value)
+	_current_planet.set_precious_metals_percentage(precious.value)
+
+
 func _on_hydrogen_value_changed(value: float) -> void:
 	if not _current_planet:
 		return
-
-	_current_planet.set_hydrogen_percentage(value)
+	normalizeSliders(value, hydrogen_slider_control.slider)
 
 
 func _on_base_metals_value_changed(value: float) -> void:
 	if not _current_planet:
 		return
-
-	_current_planet.set_base_metals_percentage(value)
+	normalizeSliders(value, base_metals_slider_control.slider)
 
 
 func _on_precious_metals_value_changed(value: float) -> void:
 	if not _current_planet:
 		return
-
-	_current_planet.set_precious_metals_percentage(value)
+	normalizeSliders(value, precious_metals_slider_control.slider)
