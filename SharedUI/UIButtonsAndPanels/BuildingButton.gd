@@ -4,6 +4,9 @@ extends Button
 
 @onready var buildingName = $HBox/BuildingName
 
+var building
+var buildingArray = Constants.BUILDING_INFO
+
 func _ready():
 	match buildingRef:
 		"Gigafactory":
