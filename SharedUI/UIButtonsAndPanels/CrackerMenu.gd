@@ -20,6 +20,9 @@ func _ready():
 	base_metals_slider_control.slider.value_changed.connect(_on_base_metals_value_changed)
 	precious_metals_slider_control.slider.value_changed.connect(_on_precious_metals_value_changed)
 
+func setupScene(selectedPlanetRef):
+	_current_planet = selectedPlanetRef
+
 func updateUI(planetRef):
 	if !(planetRef._planet_crackers.is_empty()):
 		cracker_controls.show()

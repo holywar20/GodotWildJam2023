@@ -23,7 +23,7 @@ extends CanvasLayer
 @onready var antimatterChange = $Hbox/MiddleSection/TopBorder/Panel/ResContainer/Antimatter/AntimatterContainer/Panel/Numbers/Change
 
 var buildQueueItem = preload("res://SharedUI/BuildQueueItem.tscn")
-var homeStar
+var selectedPlanetRef
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -31,10 +31,10 @@ func _ready():
 	EventBus.connect("resources_reported", Callable(self, "_on_EB_resources_reported"))
 	EventBus.connect("construction_started", Callable(self, "_on_EB_construction_started"))
 	EventBus.connect("constructed", Callable(self, "_on_EB_constructed"))
+	EventBus.connect("camera_move_to_planet_finished", Callable(self, "_on_EB_camera_move_to_planet_finished"))
 	EventBus.connect("planet_nav_button_pressed", Callable(self, "_on_EB_planet_nav_button_pressed"))
 	EventBus.connect("return_to_star_pressed", Callable(self, "_on_EB_return_to_star_pressed"))
 	navPanel.updateUI()
-
 
 
 func updateChangeColours():
@@ -116,9 +116,14 @@ func _on_EB_constructed(building) -> void:
 
 
 func _on_EB_planet_nav_button_pressed(planetRef):
+	selectedPlanetRef = planetRef
+	planetCrackerPanel.setupScene(selectedPlanetRef)
+
+
+func _on_EB_camera_move_to_planet_finished():
 	planetDetailContainer.show()
-	planetCrackerPanel.updateUI(planetRef)
-	planetDetailPanel.updateUI(planetRef)
+	planetCrackerPanel.updateUI(selectedPlanetRef)
+	planetDetailPanel.updateUI(selectedPlanetRef)
 
 func _on_EB_return_to_star_pressed():
 	planetDetailContainer.hide()
