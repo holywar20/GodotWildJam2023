@@ -23,6 +23,7 @@ GameTime="*res://systems/time/game_time.tscn"
 GameEvents="*res://systems/events/game_events.gd"
 InputManager="*res://systems/input/input_manager.gd"
 AudioManager="*res://systems/audio/audio_manager.tscn"
+Info="*res://autoloads/info.gd"
 
 [display]
 

@@ -23,19 +23,6 @@ const BUILDING_STELLAR_ACCELERATOR = "Stellar Accelerator"
 const BUILDING_STARLIFTER = "Starlifter"
 
 
-# Building info
-var BUILDING_INFO = [
-	AntimatterFactory.new(),
-	CelestialExtractor.new(),
-	DysonSwarm.new(),
-	FusionReactor.new(),
-	Gigafactory.new(),
-	MagneticBore.new(),
-	PlanetCracker.new(),
-	Starlifter.new(),
-	StellarAccelerator.new()
-]
-
 # Resource types
 const ANTIMATTER = preload("res://entities/resources/antimatter.tres")
 const BASE_METAL = preload("res://entities/resources/base_metal.tres")
