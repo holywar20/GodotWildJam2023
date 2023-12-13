@@ -37,7 +37,6 @@ var starbody_mat : ShaderMaterial
 
 var target_shader_values : Dictionary = {}
 
-
 func _ready() -> void:
 	current_shader_props = StellarConstants.get_tier_state( tier_state )
 	
@@ -46,15 +45,13 @@ func _ready() -> void:
 	
 	_init_data_write( current_shader_props )
 
-	EventBus.connect( "resources_reported", Callable( self, "_on_resources_reported" ) )
-	EventBus.connect( "tick", Callable( self, "_on_tick" ) )
-
+	EventBus.connect( "resources_reported" , Callable(self, "_on_star_size_changed") )
 
 func _on_resources_reported( resources : Dictionary ) -> void:
 	star_hydrogen = resources[Constants.HYDROGEN]
 	var percent_change = StellarConstants.get_tier_percent_diff( star_hydrogen , tier_state , tier_state + 1 )
-	# await get_tree().create_timer(5.0).timeout
-	# _apply_size_change( 1.0 )
+
+	print( percent_change )
 
 
 func _init_data_write( data : Dictionary ) -> void:

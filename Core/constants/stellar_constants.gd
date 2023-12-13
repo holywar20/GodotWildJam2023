@@ -20,7 +20,7 @@ const TIER_STATES = {
 			'temperature' : 1500,
 			'luminosity' : 0.0001, # 1/10,000th of the sun
 			'mass' : 0.01,
-			'scale' : 1.5,
+			'scale' : 0.1,
 		},
 		'corona' : {
 			'color': Vector3( 0.69 , 0.0 , 0.875 ),
@@ -55,7 +55,7 @@ const TIER_STATES = {
 			'temperature' : 1500,
 			'luminosity' : 0.01, # 1/100th
 			'mass' : 0.05,
-			'scale' : 1.5,
+			'scale' : 0.5,
 		},
 		'corona' : {
 			'color': Vector3( 1.5 , 0.0 , 0.0 ),
