@@ -76,6 +76,9 @@ func _randomize_resource_availability() -> void:
 
 
 func _on_adjust_hydrogen(amount: int) -> void:
+	if not _resource_abundance.has(Constants.HYDROGEN):
+		return
+
 	_resource_abundance[Constants.HYDROGEN] += amount
 
 	if _resource_abundance[Constants.HYDROGEN] < 0:

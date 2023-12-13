@@ -88,7 +88,9 @@ func _on_game_tick() -> void:
 func _on_resources_extracted(new_resources: Dictionary) -> void:
 	_add_resources(new_resources)
 	_check_tier_threshold()
-	_send_hydrogen_to_star(new_resources[Constants.HYDROGEN])
+
+	if new_resources.has(Constants.HYDROGEN):
+		_send_hydrogen_to_star(new_resources[Constants.HYDROGEN])
 
 
 func _check_tier_threshold() -> void:
