@@ -27,7 +27,9 @@ extends Node2D
 var _build_speed_factor: float = 1.0:
 	set = set_build_speedup_factor
 
-var _is_constructed: bool = false
+var _is_constructed: bool = false:
+	get = is_constructed
+
 var _build_progress: float = 0.0
 
 var main_sprite
@@ -46,6 +48,10 @@ func _set_nodes() -> void:
 
 func set_build_speedup_factor(value: float) -> void:
 	_build_speed_factor = value
+
+
+func is_constructed() -> bool:
+	return _is_constructed
 
 
 func can_be_built_with(resource_bid: Dictionary) -> bool:

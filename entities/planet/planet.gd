@@ -71,7 +71,7 @@ func remove_planet_cracker() -> void:
 
 
 func has_planet_crackers() -> bool:
-	return _planet_crackers.size() > 0
+	return _planet_crackers.filter(func (c): return c.is_constructed()).size() > 0
 
 
 func get_hydrogen_percentage() -> float:
