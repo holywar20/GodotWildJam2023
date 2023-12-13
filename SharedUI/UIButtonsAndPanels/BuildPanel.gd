@@ -20,7 +20,9 @@ var tier3 = [AntimatterFactoryButton , StellarAcceleratorButton , StarlifterButt
 var currentTier = 0
 
 func _ready():
-	EventBus.connect("star_transitioned", Callable(self, "_on_EB_star_transitioned"))
+	pass
+	# Joe this code breaks on star_transitioned
+	#EventBus.connect("star_transitioned", Callable(self, "_on_EB_star_transitioned"))
 
 func _on_EB_star_transitioned(_state):
 	currentTier += 1

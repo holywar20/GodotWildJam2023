@@ -116,3 +116,10 @@ p_descript = "Ice Planet"
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("2_qfksb")
+
+[editable path="SolarSystem/Planets/P1"]
+[editable path="SolarSystem/Planets/P2"]
+[editable path="SolarSystem/Planets/P3"]
+[editable path="SolarSystem/Planets/P4"]
+[editable path="SolarSystem/Planets/P5"]
+[editable path="SolarSystem/Planets/P6"]

@@ -4,7 +4,7 @@ class_name StellarConstants
 const TIER_STATES = {
 	Constants.Tiers.TIER_0 : {
 		'state_thresholds' : {
-			'threshold' : 1000,
+			'threshold' : 0,
 			'min_flow_tolerance' : 50,
 			'max_flow_tolerance' : 50
 		},
@@ -25,7 +25,6 @@ const TIER_STATES = {
 		'corona' : {
 			'color': Vector3( 0.69 , 0.0 , 0.875 ),
 			'timeFactor' : 0.09,
-			'flareAmount' : 10,
 			'size' : 4.8,
 			'spiky' : 27.1,
 			'gas' : 1.8
@@ -60,7 +59,6 @@ const TIER_STATES = {
 		'corona' : {
 			'color': Vector3( 1.5 , 0.0 , 0.0 ),
 			'timeFactor' : 0.218,
-			'flareAmount' : 17,
 			'size' : 4.3,
 			'spiky' : 46.3,
 			'gas' : 0.7
@@ -171,7 +169,7 @@ static func get_tier_percent_diff( current : float, s_tier : int , t_tier : int 
 	var t_tier_num = TIER_STATES[t_tier].state_thresholds.threshold
 
 	# Calculate percent diff between s_tier and t_tier, at current
-	if( float( current ) <= float(s_tier_num) || float( current ) == 0.0 ):
+	if( float( current ) <= float( s_tier_num ) || float( current ) == 0.0 ):
 		return 0.0
 	
 	# Calculate percentage of diff between the two values
