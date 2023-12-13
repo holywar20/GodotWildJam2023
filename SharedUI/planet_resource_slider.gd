@@ -1,13 +1,13 @@
 class_name PlanetResourceSlider
-extends HBoxContainer
+extends VBoxContainer
 
 
 @export var resource_type: String = ""
 
 
 @onready var resource_label = $Resource
-@onready var slider = $HSlider
-@onready var value_label = $Value
+@onready var slider = $PlanetResourceSlider/HSlider
+@onready var value_label = $PlanetResourceSlider/Value
 
 
 func _ready() -> void:
@@ -15,8 +15,10 @@ func _ready() -> void:
 
 
 func _on_slider_value_changed(value: float) -> void:
-	value_label.text = str(value * 100)
+	value_label.text = str(value * 100) + "%"
 
 
 func set_init_value(value: float) -> void:
 	slider.value = value
+
+
