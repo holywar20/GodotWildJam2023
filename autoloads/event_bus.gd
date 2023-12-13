@@ -37,6 +37,7 @@ signal resources_reported(resources) # Dictionary keyed by resource with amounts
 signal camera_moved( camera_pos ) # Vector2
 signal time_scale_updated(scale)
 signal planet_nav_button_pressed(planetRef)
+signal return_to_star_pressed()
 
 
 # Misc. game signals

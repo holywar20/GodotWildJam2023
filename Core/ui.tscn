@@ -251,7 +251,11 @@ layout_mode = 2
 size_flags_horizontal = 10
 alignment = 2
 
+[node name="CrackerMenu" type="PanelContainer" parent="Hbox/MiddleSection/CenterContainer/PlanetDetails"]
+layout_mode = 2
+
 [node name="PlanetContainer" parent="Hbox/MiddleSection/CenterContainer/PlanetDetails" instance=ExtResource("7_s0tdy")]
+visible = true
 layout_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Hbox/MiddleSection/CenterContainer"]

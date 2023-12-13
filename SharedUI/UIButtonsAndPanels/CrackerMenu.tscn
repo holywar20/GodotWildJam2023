@@ -1,0 +1,30 @@
+[gd_scene load_steps=2 format=3 uid="uid://8mk37v21ofpx"]
+
+[ext_resource type="Script" path="res://SharedUI/UIButtonsAndPanels/CrackerMenu.gd" id="1_vb25h"]
+
+[node name="CrackerMenu" type="PanelContainer"]
+size_flags_vertical = 8
+script = ExtResource("1_vb25h")
+
+[node name="BuyCracker" type="VBoxContainer" parent="."]
+layout_mode = 2
+size_flags_vertical = 8
+alignment = 2
+
+[node name="Buy" type="Button" parent="BuyCracker"]
+custom_minimum_size = Vector2(280, 60)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="BuyCracker/Buy"]
+layout_mode = 0
+offset_right = 301.0
+offset_bottom = 61.0
+text = "Buy New Cracker"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CrackerControls" type="VBoxContainer" parent="."]
+visible = false
+layout_mode = 2
+
+[connection signal="pressed" from="BuyCracker/Buy" to="." method="_on_buy_pressed"]

@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://dm455vsv3u6cm"]
+
+[node name="Star" type="Button"]
+custom_minimum_size = Vector2(290, 60)
+
+[node name="HBox" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(290, 60)
+layout_mode = 0
+offset_right = 288.0
+offset_bottom = 57.0
+alignment = 1
+
+[node name="Label" type="Label" parent="HBox"]
+layout_mode = 2
+text = "Return to Star"
+horizontal_alignment = 1

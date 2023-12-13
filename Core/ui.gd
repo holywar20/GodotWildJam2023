@@ -30,7 +30,10 @@ func _ready():
 	EventBus.connect("construction_started", Callable(self, "_on_EB_construction_started"))
 	EventBus.connect("constructed", Callable(self, "_on_EB_constructed"))
 	EventBus.connect("planet_nav_button_pressed", Callable(self, "_on_EB_planet_nav_button_pressed"))
+	EventBus.connect("return_to_star_pressed", Callable(self, "_on_EB_return_to_star_pressed"))
 	navPanel.updateUI()
+
+
 
 func updateChangeColours():
 	# Power
@@ -114,6 +117,8 @@ func _on_EB_planet_nav_button_pressed(planetRef):
 	planetDetailPanel.show()
 	planetDetailPanel.updateUI(planetRef)
 
+func _on_EB_return_to_star_pressed():
+	planetDetailPanel.hide()
 
 func _on_build_menu_pressed():
 	if (powerMenu.isOpen):

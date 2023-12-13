@@ -8,18 +8,11 @@ extends PanelContainer
 
 var currentPlanet = null
 
-#@export var p_scale : float = 1.0
-#@export var orbit_num : int = 1.0
-#@export var orbital_speed : float = 1.0
-#@export var p_name : String = "Unamed Planet"
-#@export var p_descript : String = "Lava Planet" 
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if !(currentPlanet == null):
 		updateNumbers()

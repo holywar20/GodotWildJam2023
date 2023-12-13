@@ -24,6 +24,7 @@ func _ready():
 
 func _on_EB_star_transitioned(_state):
 	currentTier += 1
+	print("Tier " + str(currentTier))
 	if currentTier == 2:
 		for button in tier2:
 			button.show()

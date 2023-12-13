@@ -1,6 +1,6 @@
 extends PanelContainer
 
-@onready var navButtonContainer = $ScrollContainer/NavContainer
+@onready var navButtonContainer = $VBox/ScrollContainer/NavContainer
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -15,3 +15,7 @@ func updateUI():
 				break
 			if !(panel.planetRef == null):
 				continue
+
+
+func _on_star_pressed():
+	EventBus.emit_signal("return_to_star_pressed")
