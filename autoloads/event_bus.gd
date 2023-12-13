@@ -20,6 +20,7 @@ signal resources_extracted(resources) # Dictionary keyed by resource with amount
 signal planet_empty( planet )
 signal planet_cracker_vals_changed( val_array ) # Dictionary with 3 values
 signal planet_selected(planet)
+signal camera_move_to_planet_finished()
 
 
 # Event/effect signals

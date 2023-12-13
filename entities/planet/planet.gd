@@ -59,6 +59,10 @@ func remove_planet_cracker() -> void:
 	_planet_crackers.pop_back()
 
 
+func has_planet_crackers() -> bool:
+	return _planet_crackers.size() > 0
+
+
 func _calculate_init_orbit():
 	var dist = STAR_SIZE + ORBIT_SIZE * orbit_num
 	var angle = _rng.randf_range( 0 , 2 * PI )
