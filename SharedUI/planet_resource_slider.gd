@@ -20,5 +20,3 @@ func _on_slider_value_changed(value: float) -> void:
 
 func set_init_value(value: float) -> void:
 	slider.value = value
-
-
