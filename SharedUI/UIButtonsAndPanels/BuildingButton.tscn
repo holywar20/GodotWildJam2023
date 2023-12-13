@@ -13,6 +13,7 @@ offset_bottom = -1020.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_0x1v2")
+buildingRef = null
 
 [node name="HBox" type="HBoxContainer" parent="."]
 custom_minimum_size = Vector2(300, 60)

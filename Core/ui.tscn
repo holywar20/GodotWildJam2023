@@ -39,6 +39,7 @@ alignment = 1
 
 [node name="BuildMenu" parent="Hbox/LeftBorder/PanelContainer/OpButtonContainer" instance=ExtResource("2_cpkjk")]
 layout_mode = 2
+text = "Build Menu"
 
 [node name="Power" parent="Hbox/LeftBorder/PanelContainer/OpButtonContainer" instance=ExtResource("2_cpkjk")]
 visible = false
@@ -47,7 +48,7 @@ text = "P"
 
 [node name="Placeholder" parent="Hbox/LeftBorder/PanelContainer/OpButtonContainer" instance=ExtResource("2_cpkjk")]
 layout_mode = 2
-text = "S?"
+text = "Crackers"
 
 [node name="MiddleSection" type="VBoxContainer" parent="Hbox"]
 custom_minimum_size = Vector2(1720, 0)

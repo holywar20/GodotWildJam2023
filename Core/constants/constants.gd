@@ -24,7 +24,7 @@ const BUILDING_STARLIFTER = "Starlifter"
 
 
 # Building info
-var BULIDING_INFO = [
+var BUILDING_INFO = [
 	AntimatterFactory.new(),
 	CelestialExtractor.new(),
 	DysonSwarm.new(),
