@@ -31,7 +31,7 @@ var _resource_abundance: Dictionary = {
 }:
 	get = get_resource_abundance
 
-var _num_planet_crackers: int = 0
+var _planet_crackers: Array = []
 
 var flowRateDict : Dictionary = {
 	"hydrogen" : 1.0,
@@ -51,12 +51,12 @@ func _ready() -> void:
 	# Get initial Parms by planet
 
 
-func add_planet_cracker() -> void:
-	_num_planet_crackers += 1
+func add_planet_cracker(planet_cracker) -> void:
+	_planet_crackers.append(planet_cracker)
 
 
 func remove_planet_cracker() -> void:
-	_num_planet_crackers -= 1
+	_planet_crackers.pop_back()
 
 
 func _calculate_init_orbit():

@@ -10,6 +10,8 @@
 scale = Vector2(4, 4)
 script = ExtResource("1_intlu")
 type = "Planet Cracker"
+is_active = null
+tier = null
 build_time = 30
 operational_costs = {
 ExtResource("2_fy42p"): 10
@@ -17,6 +19,7 @@ ExtResource("2_fy42p"): 10
 building_costs = {
 ExtResource("3_t40gn"): 50
 }
+produces = null
 
 [node name="Construction" type="Sprite2D" parent="."]
 texture = ExtResource("4_vpav1")

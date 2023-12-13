@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cnn2083d08byi"]
+[gd_scene load_steps=15 format=3 uid="uid://cnn2083d08byi"]
 
 [ext_resource type="Shader" path="res://entities/background/StellarBackground.gdshader" id="1_ece8b"]
 [ext_resource type="PackedScene" uid="uid://c1dcreph3lax5" path="res://Core/ui.tscn" id="1_qq3ke"]
@@ -9,7 +9,6 @@
 [ext_resource type="Script" path="res://CameraTest.gd" id="2_gcu2o"]
 [ext_resource type="Environment" uid="uid://n8asi34u4tt8" path="res://enviroment/Enviroment.tres" id="2_qfksb"]
 [ext_resource type="PackedScene" uid="uid://dwv5s702q62ib" path="res://entities/planet/planet.tscn" id="6_fk80q"]
-[ext_resource type="PackedScene" uid="uid://du6ngnr7qwln7" path="res://entities/buildings/planet_cracker/planet_cracker.tscn" id="7_8ee2p"]
 [ext_resource type="Resource" uid="uid://i07mt6rgiele" path="res://entities/resources/hydrogen.tres" id="7_xxeen"]
 [ext_resource type="PackedScene" uid="uid://cboib6gk2ih2" path="res://entities/star_scaffold/star_scaffold.tscn" id="8_p7ro6"]
 [ext_resource type="Resource" uid="uid://criguf1driv4" path="res://entities/resources/base_metal.tres" id="8_qbtun"]
@@ -51,10 +50,6 @@ script = ExtResource("2_gcu2o")
 
 [node name="StarScaffold" parent="SolarSystem" node_paths=PackedStringArray("star") instance=ExtResource("8_p7ro6")]
 star = NodePath("../Star")
-
-[node name="TempBuildings" type="Node2D" parent="SolarSystem"]
-
-[node name="PlanetCracker" parent="SolarSystem/TempBuildings" instance=ExtResource("7_8ee2p")]
 
 [node name="OrbitLines" parent="SolarSystem" instance=ExtResource("1_s2yhk")]
 offset_left = 0.0

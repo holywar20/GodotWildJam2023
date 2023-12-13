@@ -25,7 +25,7 @@ func _ready():
 
 func assign_to(planet: Planet) -> void:
 	_planet = planet
-	_planet.add_planet_cracker()
+	_planet.add_planet_cracker(self)
 
 
 func next_extraction() -> Dictionary:

@@ -3,7 +3,6 @@ extends Node2D
 
 const construction_sprite = preload("res://Assets/buildings/ConstructionPlaceholder.png")
 
-const MAX_BUILDINGS = 24
 const BUILD_POS = {
 	Vector2(0,0) : Vector2(-109,-839),
 	Vector2(0,1) : Vector2(-320,-791),
@@ -59,6 +58,7 @@ var _buildings: Dictionary = {
 	Vector2(3,2) : null,
 	Vector2(3,3) : null
 }
+
 var _buildings_under_construction: Array = []
 
 var _num_dyson_swarms: int = 0:
@@ -83,13 +83,14 @@ func _ready() -> void:
 
 func _give_player_resources() -> void:
 	current_resources[Constants.HYDROGEN] = 5
-	current_resources[Constants.BASE_METAL] = 1000
+	current_resources[Constants.BASE_METAL] = 10000
 	current_resources[Constants.PRECIOUS_METAL] = 1000
 
 
 func _construct(building_type: String):
-	# This case should never happen as the UI should prevent it.
-	if _buildings.size() + 1 >= MAX_BUILDINGS:
+	var next_slot = _find_next_empty_slot()
+
+	if next_slot == null:
 		return
 
 	var building_to_construct = BuildingFactory.create_building(building_type)
@@ -107,9 +108,6 @@ func _construct(building_type: String):
 
 	_add_to_build_queue(building_to_construct) # might be moot...
 	
-	# Fetch slot
-	var next_slot = _find_next_empty_slot()
-	
 	if( next_slot == null ):
 		return # Something went wrong. Bail gracefully
 
@@ -119,11 +117,12 @@ func _construct(building_type: String):
 
 	EventBus.construction_started.emit(building_to_construct)
 
+
 func _find_next_empty_slot():
 	for pos in _buildings:
 		if( _buildings[pos] == null ):
 			return pos
-			
+
 	return null
 
 
