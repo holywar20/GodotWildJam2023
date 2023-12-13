@@ -11,7 +11,18 @@ const ORBIT_SIZE = 2000
 
 # List of resource types available for this particular planet.
 @export_subgroup("Resources")
-@export var resources_available: Array = []
+@export var _resource_abundance: Dictionary = {
+	Constants.HYDROGEN: 100000,
+	Constants.BASE_METAL: 100000,
+	Constants.PRECIOUS_METAL: 100000
+}:
+	get = get_resource_abundance
+
+@export var flow_rate_dict : Dictionary = {
+	Constants.HYDROGEN : 1.0,
+	Constants.BASE_METAL : 1.0,
+	Constants.PRECIOUS_METAL : 1.0
+}
 
 @export_subgroup("Display Params")
 @export_enum( "P1" , "P2" , "P3" , "P4" , "P5" , "P6" ) var pid
@@ -24,26 +35,13 @@ const ORBIT_SIZE = 2000
 const RAND_SEED = 11111111
 var _rng = RandomNumberGenerator.new()
 
-var _resource_abundance: Dictionary = {
-	Constants.HYDROGEN: 0,
-	Constants.BASE_METAL: 0,
-	Constants.PRECIOUS_METAL: 0
-}:
-	get = get_resource_abundance
-
 var _planet_crackers: Array = []
 
-var flowRateDict : Dictionary = {
-	"hydrogen" : 1.0,
-	"base_metal" : 1.0,
-	"precious_metal" : 1.0
-}
 
 func _ready() -> void:
 	_rng.seed = RAND_SEED
 
 	EventBus.adjust_hydrogen.connect(_on_adjust_hydrogen)
-	_randomize_resource_availability()
 
 	set_scale( Vector2( p_scale , p_scale ) )
 	_calculate_init_orbit()
@@ -85,12 +83,6 @@ func extract_resource(resource: UsableResource, amount_requested: int) -> int:
 
 func get_resource_abundance() -> Dictionary:
 	return _resource_abundance
-
-
-func _randomize_resource_availability() -> void:
-	for resource in resources_available:
-		_resource_abundance[resource] = randi_range(0, MAX_RESOURCE_NUMBER)
-
 
 func _on_adjust_hydrogen(amount: int) -> void:
 	if not _resource_abundance.has(Constants.HYDROGEN):
