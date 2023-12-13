@@ -117,7 +117,7 @@ func _on_EB_constructed(building) -> void:
 
 func _on_EB_planet_nav_button_pressed(planetRef):
 	selectedPlanetRef = planetRef
-	planetCrackerPanel.setupScene(selectedPlanetRef)
+	EventBus.planet_selected.emit(planetRef)
 
 
 func _on_EB_camera_move_to_planet_finished():
