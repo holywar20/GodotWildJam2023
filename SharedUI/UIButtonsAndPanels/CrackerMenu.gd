@@ -26,9 +26,9 @@ func setupScene(selectedPlanetRef):
 func updateUI(planetRef):
 	if !(planetRef._planet_crackers.is_empty()):
 		cracker_controls.show()
-		hydrogen_slider_control.value_label.text = str(planetRef.get_hydrogen_percentage()) + "%"
-		base_metals_slider_control.value_label.text = str(planetRef.get_base_metals_percentage()) + "%"
-		precious_metals_slider_control.value_label.text = str(planetRef.get_precious_metals_percentage()) + "%"
+		hydrogen_slider_control.value_label.text = str(planetRef.get_hydrogen_percentage()*100) + "%"
+		base_metals_slider_control.value_label.text = str(planetRef.get_base_metals_percentage()*100) + "%"
+		precious_metals_slider_control.value_label.text = str(planetRef.get_precious_metals_percentage()*100) + "%"
 	if planetRef._planet_crackers.is_empty():
 		cracker_controls.hide()
 		hydrogen_slider_control.value_label.text = "33%"
