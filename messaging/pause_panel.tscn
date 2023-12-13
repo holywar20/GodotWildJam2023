@@ -1,0 +1,25 @@
+[gd_scene load_steps=2 format=3 uid="uid://d3kbycc6q0xqa"]
+
+[ext_resource type="Theme" uid="uid://d1sjl81lo5my0" path="res://messaging/messaging.tres" id="1_5dyr6"]
+
+[node name="PausePanel" type="Panel"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_5dyr6")
+
+[node name="Control" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 842.0
+offset_top = 420.0
+offset_right = 1088.0
+offset_bottom = 507.0
+
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 60
+text = "PAUSED"
