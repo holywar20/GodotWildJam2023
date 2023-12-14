@@ -27,8 +27,117 @@ mouse_filter = 2
 layout_mode = 2
 texture = ExtResource("2_mfgu6")
 
-[node name="BuildingName" type="Label" parent="HBox"]
+[node name="HBox" type="HBoxContainer" parent="HBox"]
+layout_mode = 2
+
+[node name="VBox" type="VBoxContainer" parent="HBox/HBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="BuildingName" type="Label" parent="HBox/HBox/VBox"]
 layout_mode = 2
 text = "Building Name"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBox/HBox/VBox"]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="Power" type="VBoxContainer" parent="HBox/HBox/VBox/HBoxContainer"]
+visible = false
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="HBox/HBox/VBox/HBoxContainer/Power"]
+layout_mode = 2
+
+[node name="PowerCost" type="Label" parent="HBox/HBox/VBox/HBoxContainer/Power"]
+layout_mode = 2
+
+[node name="Base" type="VBoxContainer" parent="HBox/HBox/VBox/HBoxContainer"]
+visible = false
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="HBox/HBox/VBox/HBoxContainer/Base"]
+layout_mode = 2
+
+[node name="BaseCost" type="Label" parent="HBox/HBox/VBox/HBoxContainer/Base"]
+layout_mode = 2
+
+[node name="Prec" type="VBoxContainer" parent="HBox/HBox/VBox/HBoxContainer"]
+visible = false
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="HBox/HBox/VBox/HBoxContainer/Prec"]
+layout_mode = 2
+
+[node name="PrecCost" type="Label" parent="HBox/HBox/VBox/HBoxContainer/Prec"]
+layout_mode = 2
+
+[node name="Antimatter" type="VBoxContainer" parent="HBox/HBox/VBox/HBoxContainer"]
+visible = false
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="HBox/HBox/VBox/HBoxContainer/Antimatter"]
+layout_mode = 2
+
+[node name="AntimatterCost" type="Label" parent="HBox/HBox/VBox/HBoxContainer/Antimatter"]
+layout_mode = 2
+
+[node name="Operationals" type="VBoxContainer" parent="HBox"]
+layout_mode = 2
+size_flags_horizontal = 10
+alignment = 1
+
+[node name="Power" type="HBoxContainer" parent="HBox/Operationals"]
+visible = false
+layout_mode = 2
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="HBox/Operationals/Power"]
+layout_mode = 2
+
+[node name="Power" type="Label" parent="HBox/Operationals/Power"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+
+[node name="Base" type="HBoxContainer" parent="HBox/Operationals"]
+visible = false
+layout_mode = 2
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="HBox/Operationals/Base"]
+layout_mode = 2
+
+[node name="Base" type="Label" parent="HBox/Operationals/Base"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+
+[node name="Prec" type="HBoxContainer" parent="HBox/Operationals"]
+visible = false
+layout_mode = 2
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="HBox/Operationals/Prec"]
+layout_mode = 2
+
+[node name="Prec" type="Label" parent="HBox/Operationals/Prec"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+
+[node name="Antimatter" type="HBoxContainer" parent="HBox/Operationals"]
+visible = false
+layout_mode = 2
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="HBox/Operationals/Antimatter"]
+layout_mode = 2
+
+[node name="Antimatter" type="Label" parent="HBox/Operationals/Antimatter"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+
+[node name="Spacer" type="Control" parent="HBox"]
+custom_minimum_size = Vector2(5, 0)
+layout_mode = 2
 
 [connection signal="pressed" from="." to="." method="_on_pressed"]
