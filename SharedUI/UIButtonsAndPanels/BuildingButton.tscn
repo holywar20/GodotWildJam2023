@@ -1,15 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://c3kplm0etxp0p"]
+[gd_scene load_steps=6 format=3 uid="uid://c3kplm0etxp0p"]
 
 [ext_resource type="Script" path="res://SharedUI/UIButtonsAndPanels/BuildingButton.gd" id="1_0x1v2"]
 [ext_resource type="Texture2D" uid="uid://12c7cu74lhqq" path="res://Assets/Placeholder 50x50.png" id="2_mfgu6"]
+[ext_resource type="Texture2D" uid="uid://4o2x723fimq1" path="res://Assets/icons/IronIcon.png" id="3_ttqgi"]
+[ext_resource type="Texture2D" uid="uid://b3di2of4v8no4" path="res://Assets/icons/PreciousMetalIcon.png" id="4_tab0w"]
+[ext_resource type="Texture2D" uid="uid://tdgybvpdlhda" path="res://Assets/icons/AntiMatterIcon.png" id="5_hnaln"]
 
 [node name="BuildingButton" type="Button"]
-custom_minimum_size = Vector2(350, 60)
+custom_minimum_size = Vector2(350, 80)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_right = -1570.0
-offset_bottom = -1020.0
+offset_bottom = -1000.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_0x1v2")
@@ -60,6 +63,7 @@ layout_mode = 2
 
 [node name="TextureRect" type="TextureRect" parent="HBox/HBox/VBox/HBoxContainer/Base"]
 layout_mode = 2
+texture = ExtResource("3_ttqgi")
 
 [node name="BaseCost" type="Label" parent="HBox/HBox/VBox/HBoxContainer/Base"]
 layout_mode = 2
@@ -70,6 +74,7 @@ layout_mode = 2
 
 [node name="TextureRect" type="TextureRect" parent="HBox/HBox/VBox/HBoxContainer/Prec"]
 layout_mode = 2
+texture = ExtResource("4_tab0w")
 
 [node name="PrecCost" type="Label" parent="HBox/HBox/VBox/HBoxContainer/Prec"]
 layout_mode = 2
@@ -80,6 +85,7 @@ layout_mode = 2
 
 [node name="TextureRect" type="TextureRect" parent="HBox/HBox/VBox/HBoxContainer/Antimatter"]
 layout_mode = 2
+texture = ExtResource("5_hnaln")
 
 [node name="AntimatterCost" type="Label" parent="HBox/HBox/VBox/HBoxContainer/Antimatter"]
 layout_mode = 2
@@ -108,6 +114,7 @@ alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="HBox/Operationals/Base"]
 layout_mode = 2
+texture = ExtResource("3_ttqgi")
 
 [node name="Base" type="Label" parent="HBox/Operationals/Base"]
 layout_mode = 2
@@ -120,6 +127,7 @@ alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="HBox/Operationals/Prec"]
 layout_mode = 2
+texture = ExtResource("4_tab0w")
 
 [node name="Prec" type="Label" parent="HBox/Operationals/Prec"]
 layout_mode = 2
@@ -132,6 +140,7 @@ alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="HBox/Operationals/Antimatter"]
 layout_mode = 2
+texture = ExtResource("5_hnaln")
 
 [node name="Antimatter" type="Label" parent="HBox/Operationals/Antimatter"]
 layout_mode = 2

@@ -2,7 +2,7 @@ extends CanvasLayer
 
 # Buttons
 @onready var buildMenu = $Hbox/MiddleSection/CenterContainer/SubMenuContainer/BuildMenu
-@onready var powerMenu = $Hbox/MiddleSection/CenterContainer/SubMenuContainer/PowerMenu
+@onready var boreMenu = $Hbox/MiddleSection/CenterContainer/SubMenuContainer/BoreMenu
 
 # Panels
 @onready var navPanel = $Hbox/MiddleSection/CenterContainer/VBoxContainer/NavPanel
@@ -163,16 +163,17 @@ func _on_EB_feedback_message(text):
 	newMessage.beginMessage(text, mousePos)
 
 func _on_build_menu_pressed():
-	if (powerMenu.isOpen):
-		powerMenu.openClose()
+	if (boreMenu.isOpen):
+		boreMenu.openClose()
 	buildMenu.openClose()
-
-func _on_power_menu_pressed():
-	if (buildMenu.isOpen):
-		buildMenu.openClose()
-	powerMenu.openClose()
 
 
 func _on_exit_pressed():
 	EventBus.game_paused.emit()
 	confirmQuit.popup()
+
+
+func _on_bore_pressed():
+	if (buildMenu.isOpen):
+		buildMenu.openClose()
+	boreMenu.openClose()

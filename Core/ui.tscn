@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://dih21h34x7by6" path="res://SharedUI/UIButtonsAndPanels/BuildPanel.tscn" id="5_r6hw1"]
 [ext_resource type="Texture2D" uid="uid://tdgybvpdlhda" path="res://Assets/icons/AntiMatterIcon.png" id="6_8fqn7"]
 [ext_resource type="PackedScene" uid="uid://bi6bvo3nmefgu" path="res://SharedUI/current_state_control.tscn" id="6_c83tx"]
-[ext_resource type="PackedScene" uid="uid://dvknl67r1rgib" path="res://SharedUI/UIButtonsAndPanels/PowerPanel.tscn" id="6_kcpw5"]
+[ext_resource type="PackedScene" uid="uid://dvknl67r1rgib" path="res://SharedUI/UIButtonsAndPanels/BoreMenu.tscn" id="6_kcpw5"]
 [ext_resource type="PackedScene" uid="uid://dk5m622k28ce6" path="res://SharedUI/UIButtonsAndPanels/building_info.tscn" id="7_gvmy2"]
 [ext_resource type="PackedScene" uid="uid://8mk37v21ofpx" path="res://SharedUI/UIButtonsAndPanels/CrackerMenu.tscn" id="7_mqhwr"]
 [ext_resource type="PackedScene" uid="uid://qjlfp7nylr7y" path="res://SharedUI/UIButtonsAndPanels/planetDetail.tscn" id="7_s0tdy"]
@@ -45,16 +45,14 @@ alignment = 1
 
 [node name="BuildMenu" parent="Hbox/LeftBorder/PanelContainer/OpButtonContainer" instance=ExtResource("2_cpkjk")]
 layout_mode = 2
-text = "Build Menu"
+text = "Build
+Menu"
 
-[node name="Power" parent="Hbox/LeftBorder/PanelContainer/OpButtonContainer" instance=ExtResource("2_cpkjk")]
-visible = false
+[node name="Bore" parent="Hbox/LeftBorder/PanelContainer/OpButtonContainer" instance=ExtResource("2_cpkjk")]
 layout_mode = 2
-text = "P"
-
-[node name="Placeholder" parent="Hbox/LeftBorder/PanelContainer/OpButtonContainer" instance=ExtResource("2_cpkjk")]
-layout_mode = 2
-text = "Crackers"
+text = "Bore 
+Control
+Menu"
 
 [node name="MiddleSection" type="VBoxContainer" parent="Hbox"]
 custom_minimum_size = Vector2(1720, 0)
@@ -291,7 +289,8 @@ alignment = 2
 [node name="BuildMenu" parent="Hbox/MiddleSection/CenterContainer/SubMenuContainer" instance=ExtResource("5_r6hw1")]
 layout_mode = 2
 
-[node name="PowerMenu" parent="Hbox/MiddleSection/CenterContainer/SubMenuContainer" instance=ExtResource("6_kcpw5")]
+[node name="BoreMenu" parent="Hbox/MiddleSection/CenterContainer/SubMenuContainer" instance=ExtResource("6_kcpw5")]
+visible = false
 layout_mode = 2
 
 [node name="BuildingInfo" type="VBoxContainer" parent="Hbox/MiddleSection/CenterContainer"]
@@ -387,5 +386,5 @@ position = Vector2i(560, 240)
 visible = false
 
 [connection signal="pressed" from="Hbox/LeftBorder/PanelContainer/OpButtonContainer/BuildMenu" to="." method="_on_build_menu_pressed"]
-[connection signal="pressed" from="Hbox/LeftBorder/PanelContainer/OpButtonContainer/Power" to="." method="_on_power_menu_pressed"]
+[connection signal="pressed" from="Hbox/LeftBorder/PanelContainer/OpButtonContainer/Bore" to="." method="_on_bore_pressed"]
 [connection signal="pressed" from="Hbox/RightBorder/PanelContainer/VBoxContainer/Exit" to="." method="_on_exit_pressed"]

@@ -4,7 +4,6 @@
 [ext_resource type="PackedScene" uid="uid://c3kplm0etxp0p" path="res://SharedUI/UIButtonsAndPanels/BuildingButton.tscn" id="2_nr33l"]
 
 [node name="SubMenu" type="PanelContainer"]
-visible = false
 custom_minimum_size = Vector2(400, 500)
 size_flags_horizontal = 0
 script = ExtResource("1_thxis")

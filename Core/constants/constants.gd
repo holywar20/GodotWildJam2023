@@ -28,9 +28,9 @@ const ICONS = {
 	"Fusion Reactor" : "res://Assets/Placeholder 50x50.png" ,
 	"Celestial Extractor" : "res://Assets/Placeholder 50x50.png" ,
 	"Dyson Swarm" : "res://Assets/Placeholder 50x50.png" ,
-	"Magnetic Bore" : "res://Assets/Placeholder 50x50.png" ,
+	"Magnetic Bore" : "res://Assets/buildings/MagneticBore.png" ,
 	"Antimatter Factory" : "res://Assets/Placeholder 50x50.png" ,
-	"Stellar Accelerator" : "res://Assets/Placeholder 50x50.png" ,
+	"Stellar Accelerator" : "res://Assets/buildings/StellarAccelerator.png" ,
 	"Starlifter" : "res://Assets/Placeholder 50x50.png"
 }
 

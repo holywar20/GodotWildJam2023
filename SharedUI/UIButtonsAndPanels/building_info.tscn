@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://dk5m622k28ce6"]
+[gd_scene load_steps=5 format=3 uid="uid://dk5m622k28ce6"]
 
 [ext_resource type="Script" path="res://SharedUI/UIButtonsAndPanels/building_info.gd" id="1_82416"]
+[ext_resource type="Texture2D" uid="uid://4o2x723fimq1" path="res://Assets/icons/IronIcon.png" id="2_n8daw"]
+[ext_resource type="Texture2D" uid="uid://b3di2of4v8no4" path="res://Assets/icons/PreciousMetalIcon.png" id="3_4e58d"]
+[ext_resource type="Texture2D" uid="uid://tdgybvpdlhda" path="res://Assets/icons/AntiMatterIcon.png" id="4_fhb27"]
 
 [node name="BuildingInfo" type="PanelContainer"]
 custom_minimum_size = Vector2(300, 400)
@@ -58,6 +61,7 @@ alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="VBox/HBoxContainer/Produce/Base"]
 layout_mode = 2
+texture = ExtResource("2_n8daw")
 
 [node name="ProdBase" type="Label" parent="VBox/HBoxContainer/Produce/Base"]
 modulate = Color(0.0392157, 1, 0.0352941, 1)
@@ -70,6 +74,7 @@ alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="VBox/HBoxContainer/Produce/Prec"]
 layout_mode = 2
+texture = ExtResource("3_4e58d")
 
 [node name="ProdPrec" type="Label" parent="VBox/HBoxContainer/Produce/Prec"]
 modulate = Color(0.0392157, 1, 0.0352941, 1)
@@ -82,6 +87,7 @@ alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="VBox/HBoxContainer/Produce/Anti"]
 layout_mode = 2
+texture = ExtResource("4_fhb27")
 
 [node name="ProdAnti" type="Label" parent="VBox/HBoxContainer/Produce/Anti"]
 modulate = Color(0.0392157, 1, 0.0352941, 1)
@@ -111,6 +117,7 @@ layout_mode = 2
 
 [node name="TextureRect" type="TextureRect" parent="VBox/HBoxContainer/Costs/Base"]
 layout_mode = 2
+texture = ExtResource("2_n8daw")
 
 [node name="CostBase" type="Label" parent="VBox/HBoxContainer/Costs/Base"]
 modulate = Color(1, 0.0352941, 0.0509804, 1)
@@ -122,6 +129,7 @@ layout_mode = 2
 
 [node name="TextureRect" type="TextureRect" parent="VBox/HBoxContainer/Costs/Prec"]
 layout_mode = 2
+texture = ExtResource("3_4e58d")
 
 [node name="CostPrec" type="Label" parent="VBox/HBoxContainer/Costs/Prec"]
 modulate = Color(1, 0.0352941, 0.0509804, 1)
@@ -133,6 +141,7 @@ layout_mode = 2
 
 [node name="TextureRect" type="TextureRect" parent="VBox/HBoxContainer/Costs/Anti"]
 layout_mode = 2
+texture = ExtResource("4_fhb27")
 
 [node name="CostAnti" type="Label" parent="VBox/HBoxContainer/Costs/Anti"]
 modulate = Color(1, 0.0352941, 0.0509804, 1)
