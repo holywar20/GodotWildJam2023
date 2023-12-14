@@ -1,6 +1,9 @@
 class_name StarScaffold
 extends Node2D
 
+
+const MESSAGE_INSUFFICIENT_RESOURCES = "Insufficient resources to build!"
+
 const construction_sprite = preload("res://Assets/buildings/ConstructionPlaceholder.png")
 
 const BUILD_POS = {
@@ -100,6 +103,7 @@ func _construct(building_type: String):
 
 	if not building_to_construct.can_be_built_with(current_resources):
 		building_to_construct.queue_free()
+		EventBus.feedback_message.emit(MESSAGE_INSUFFICIENT_RESOURCES)
 		return
 
 	building_to_construct.set_build_speedup_factor(_calculate_building_speedup_factor())

@@ -47,3 +47,4 @@ signal return_to_star_pressed()
 signal game_paused
 signal game_unpaused
 signal new_game
+signal feedback_message(message)
