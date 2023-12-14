@@ -3,6 +3,7 @@ extends Node2D
 
 
 const MESSAGE_INSUFFICIENT_RESOURCES = "Insufficient resources to build!"
+const MESSAGE_INSUFFICIENT_SPACE = "No more space left for structures!"
 
 const construction_sprite = preload("res://Assets/buildings/ConstructionPlaceholder.png")
 
@@ -93,6 +94,7 @@ func _construct(building_type: String):
 	var next_slot = _find_next_empty_slot()
 
 	if next_slot == null:
+		EventBus.feedback_message.emit(MESSAGE_INSUFFICIENT_SPACE)
 		return
 
 	var building_to_construct = BuildingFactory.create_building(building_type)
