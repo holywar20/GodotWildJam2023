@@ -16,6 +16,8 @@ extends CanvasLayer
 # Top bar resources
 @onready var powerAmount = $Hbox/MiddleSection/TopBorder/Panel/ResContainer/Power/PowerContainer/Panel/HBoxContainer/Amount
 @onready var powerChange = $Hbox/MiddleSection/TopBorder/Panel/ResContainer/Power/PowerContainer/Panel/HBoxContainer/Change
+@onready var hydrogenAmount = $Hbox/MiddleSection/TopBorder/Panel/ResContainer/Hydrogen/HydrogenContainer/Panel/Numbers/Amount
+@onready var hydrogenChange = $Hbox/MiddleSection/TopBorder/Panel/ResContainer/Hydrogen/HydrogenContainer/Panel/Numbers/Change
 @onready var baseAmount = $Hbox/MiddleSection/TopBorder/Panel/ResContainer/BaseMetals/BaseContainer/Panel/Numbers/Amount
 @onready var baseChange = $Hbox/MiddleSection/TopBorder/Panel/ResContainer/BaseMetals/BaseContainer/Panel/Numbers/Change
 @onready var preciousAmount = $Hbox/MiddleSection/TopBorder/Panel/ResContainer/PreciousMetas/PreciousContainer/Panel/Numbers/Amount
@@ -52,7 +54,17 @@ func updateChangeColours():
 	if int(powerChange.get_text()) == 0:
 		powerChange.modulate = Color(1,1,1,1)
 		powerChange.set_text("=" + powerChange.get_text())
-	
+
+	# Hydrogen
+	if int(hydrogenChange.get_text()) < 0:
+		hydrogenChange.modulate = Color(1,0.1,0.1,1)
+	elif int(hydrogenChange.get_text()) > 0:
+		hydrogenChange.modulate = Color(0.1,1,0.1,1)
+		hydrogenChange.set_text("+" + hydrogenChange.get_text())
+	else:
+		hydrogenChange.modulate = Color(1,1,1,1)
+		hydrogenChange.set_text("=" + hydrogenChange.get_text())
+
 	# Base metals
 	if int(baseChange.get_text()) < 0:
 		baseChange.modulate = Color(1,0.1,0.1,1)
@@ -85,21 +97,25 @@ func updateChangeColours():
 
 func _on_EB_resources_reported(resourcesDict):
 	var oldPower = powerAmount.get_text()
+	var oldHydrogen = hydrogenAmount.get_text()
 	var oldBase = baseAmount.get_text()
 	var oldPrecious = preciousAmount.get_text()
 	var oldAntimatter = antimatterAmount.get_text()
 	
 	var newPower = resourcesDict[Constants.POWER]
+	var newHydrogen = resourcesDict[Constants.HYDROGEN]
 	var newBase = resourcesDict[Constants.BASE_METAL]
 	var newPrecious = resourcesDict[Constants.PRECIOUS_METAL]
 	var newAntimatter = resourcesDict[Constants.ANTIMATTER]
 	
 	powerChange.set_text(str(int(newPower)-int(oldPower)))
+	hydrogenChange.set_text(str(int(newHydrogen)-int(oldHydrogen)))
 	baseChange.set_text(str(int(newBase)-int(oldBase)))
 	preciousChange.set_text(str(int(newPrecious)-int(oldPrecious)))
 	antimatterChange.set_text(str(int(newAntimatter)-int(oldAntimatter)))
 	
 	powerAmount.set_text(str(newPower))
+	hydrogenAmount.set_text(str(newHydrogen))
 	baseAmount.set_text(str(newBase))
 	preciousAmount.set_text(str(newPrecious))
 	antimatterAmount.set_text(str(newAntimatter))

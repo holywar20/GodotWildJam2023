@@ -41,6 +41,7 @@ var main_sprite
 var construction_sprite
 
 func _ready() -> void:
+	tree_exited.connect(_on_tree_exited)
 	EventBus.tick.connect(_on_game_tick)
 	_set_nodes()
 
@@ -105,3 +106,7 @@ func next_extraction() -> Dictionary:
 
 func get_operational_cost() -> Dictionary:
 	return operational_costs if operational_costs else {}
+
+
+func _on_tree_exited() -> void:
+	queue_free()

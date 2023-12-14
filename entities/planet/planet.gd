@@ -63,11 +63,12 @@ func _ready() -> void:
 
 
 func add_planet_cracker(planet_cracker) -> void:
+	add_child(planet_cracker)
 	_planet_crackers.append(planet_cracker)
 
 
 func remove_planet_cracker() -> void:
-	_planet_crackers.pop_back()
+	remove_child(_planet_crackers.pop_back())
 
 
 func has_planet_crackers() -> bool:

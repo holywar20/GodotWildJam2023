@@ -110,13 +110,17 @@ func _construct(building_type: String):
 	_deduct_from_current_resources(building_to_construct.building_costs)
 
 	_add_to_build_queue(building_to_construct) # might be moot...
-	
-	if( next_slot == null ):
-		return # Something went wrong. Bail gracefully
 
-	_buildings[next_slot] = building_to_construct
-	building_to_construct.position = BUILD_POS[next_slot]
-	add_child( building_to_construct )
+	# planet crackers are built/managed by an assigned planet, so we don't assign it to the
+	# scaffold's own buildings
+	if building_to_construct.type != Constants.BUILDING_PLANET_CRACKER:
+		if( next_slot == null ):
+			return # Something went wrong. Bail gracefully
+
+		_buildings[next_slot] = building_to_construct
+		building_to_construct.position = BUILD_POS[next_slot]
+
+		add_child( building_to_construct )
 
 	EventBus.construction_started.emit(building_to_construct)
 
@@ -131,7 +135,7 @@ func _find_next_empty_slot():
 
 func destroy(building) -> void:
 	_buildings.erase(building)
-	building.queue_free()
+	remove_child(building)
 
 
 func _on_constructed(building) -> void:

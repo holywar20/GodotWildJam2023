@@ -105,6 +105,38 @@ text = "Gt"
 layout_mode = 2
 text = "+0"
 
+[node name="Hydrogen" type="PanelContainer" parent="Hbox/MiddleSection/TopBorder/Panel/ResContainer"]
+layout_mode = 2
+
+[node name="HydrogenContainer" type="VBoxContainer" parent="Hbox/MiddleSection/TopBorder/Panel/ResContainer/Hydrogen"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+alignment = 2
+
+[node name="HydrogenIcon" type="TextureRect" parent="Hbox/MiddleSection/TopBorder/Panel/ResContainer/Hydrogen/HydrogenContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+stretch_mode = 3
+
+[node name="Panel" type="PanelContainer" parent="Hbox/MiddleSection/TopBorder/Panel/ResContainer/Hydrogen/HydrogenContainer"]
+layout_mode = 2
+
+[node name="Numbers" type="HBoxContainer" parent="Hbox/MiddleSection/TopBorder/Panel/ResContainer/Hydrogen/HydrogenContainer/Panel"]
+layout_mode = 2
+alignment = 1
+
+[node name="Amount" type="Label" parent="Hbox/MiddleSection/TopBorder/Panel/ResContainer/Hydrogen/HydrogenContainer/Panel/Numbers"]
+layout_mode = 2
+text = "0"
+
+[node name="Unit" type="Label" parent="Hbox/MiddleSection/TopBorder/Panel/ResContainer/Hydrogen/HydrogenContainer/Panel/Numbers"]
+layout_mode = 2
+text = "Gt"
+
+[node name="Change" type="Label" parent="Hbox/MiddleSection/TopBorder/Panel/ResContainer/Hydrogen/HydrogenContainer/Panel/Numbers"]
+layout_mode = 2
+text = "+0"
+
 [node name="BaseMetals" type="PanelContainer" parent="Hbox/MiddleSection/TopBorder/Panel/ResContainer"]
 layout_mode = 2
 
@@ -231,6 +263,7 @@ layout_mode = 2
 text = "1.0"
 
 [node name="Suffix" type="Label" parent="Hbox/MiddleSection/TopBorder/Panel/ResContainer/TimeScale/TimeScaleContainer/Panel/Numbers"]
+visible = false
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0.988235, 0, 1)
 text = "x"
