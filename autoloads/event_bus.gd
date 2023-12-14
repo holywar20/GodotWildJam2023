@@ -12,9 +12,12 @@ signal constructed( building )
 signal dyson_construction_started()
 signal dyson_construction_finished()
 signal build_queue(buildings) # Array
+signal operational_cost(resources)
+
 
 # Resource signals
 signal resources_extracted(resources) # Dictionary keyed by resource with amounts as values
+
 
 # Planet signals
 signal planet_empty( planet )

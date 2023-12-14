@@ -83,6 +83,7 @@ func _on_game_tick():
 	# Report on resource extraction/changes
 	if is_active:
 		EventBus.resources_extracted.emit(next_extraction())
+		EventBus.operational_cost.emit(get_operational_cost())
 
 
 func signal_constructed():
@@ -97,3 +98,7 @@ func signal_constructed():
 
 func next_extraction() -> Dictionary:
 	return produces if produces else {}
+
+
+func get_operational_cost() -> Dictionary:
+	return operational_costs if operational_costs else {}
