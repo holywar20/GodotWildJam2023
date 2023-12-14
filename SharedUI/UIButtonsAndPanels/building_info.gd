@@ -25,6 +25,7 @@ extends PanelContainer
 @onready var costAntiCont = $VBox/HBoxContainer/Costs/Anti
 
 var buildingInfo
+var buildingRef
 var buildingArray = Info.BUILDING_INFO
 
 # Called when the node enters the scene tree for the first time.
@@ -37,6 +38,7 @@ func _process(delta):
 	pass
 
 func setupScene(building):
+	buildingRef = building
 	costAntiCont.hide()
 	costBaseCont.hide()
 	costPrecCont.hide()
@@ -98,5 +100,5 @@ func setupScene(building):
 
 
 func _on_remove_pressed():
-	
+	EventBus.emit_signal("destroyed", buildingRef)
 	hide()
