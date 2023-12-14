@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://c6t0tdq43a0s3"]
+[gd_scene load_steps=3 format=3 uid="uid://c6t0tdq43a0s3"]
 
 [ext_resource type="Theme" uid="uid://d1sjl81lo5my0" path="res://messaging/messaging.tres" id="1_k181i"]
+[ext_resource type="Script" path="res://messaging/intro_panel.gd" id="2_bohxj"]
 
 [node name="IntroPanel" type="Panel"]
 anchors_preset = 15
@@ -9,6 +10,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_k181i")
+script = ExtResource("2_bohxj")
 
 [node name="Control" type="Control" parent="."]
 anchors_preset = 0
@@ -41,3 +43,20 @@ offset_bottom = 246.0
 theme_override_font_sizes/font_size = 25
 text = "Mine resources from planets and build giant structures to turn a dying brown dwarf into a main-sequence star."
 autowrap_mode = 2
+
+[node name="Control3" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 897.0
+offset_top = 641.0
+offset_right = 1076.0
+offset_bottom = 715.0
+
+[node name="StartButton" type="Button" parent="Control3"]
+layout_mode = 0
+offset_left = -25.0
+offset_top = -2.0
+offset_right = 193.0
+offset_bottom = 61.0
+text = "New Game"
+
+[connection signal="pressed" from="Control3/StartButton" to="." method="_on_start_button_pressed"]

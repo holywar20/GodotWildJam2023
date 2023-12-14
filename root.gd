@@ -2,9 +2,11 @@ extends Node2D
 
 
 func _ready() -> void:
+	get_tree().paused = true
 	EventBus.connect("planet_nav_button_pressed", Callable(self, "_on_EB_planet_nav_button_pressed"))
 	EventBus.connect("return_to_star_pressed", Callable(self, "_on_EB_return_to_star_pressed"))
-	#AudioManager.play_music(AudioManager.MUSIC_TRACK_GAME_1)
+	EventBus.new_game.connect(_on_new_game)
+	AudioManager.play_music(AudioManager.MUSIC_TRACK_TITLE)
 
 func _on_EB_planet_nav_button_pressed(planetRef):
 	var moveTween = create_tween()
@@ -21,3 +23,8 @@ func _on_EB_return_to_star_pressed():
 	moveTween.tween_property($Camera2D,'position',Vector2(0,0),2.0)
 	moveTween.play()
 	#$Camera2D.set_position(Vector2(0,0))
+
+
+func _on_new_game() -> void:
+	AudioManager.play_music(AudioManager.MUSIC_TRACK_GAME_1)
+	EventBus.game_unpaused.emit()

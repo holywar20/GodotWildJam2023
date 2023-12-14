@@ -46,3 +46,4 @@ signal return_to_star_pressed()
 # Misc. game signals
 signal game_paused
 signal game_unpaused
+signal new_game

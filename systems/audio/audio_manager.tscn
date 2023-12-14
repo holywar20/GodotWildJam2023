@@ -7,14 +7,14 @@ script = ExtResource("1_jj52k")
 
 [node name="Music" type="Node2D" parent="."]
 
-[node name="MusicPlayer" type="AudioStreamPlayer2D" parent="Music"]
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="Music"]
 
 [node name="SFX" type="Node2D" parent="."]
 
-[node name="SFXPlayer1" type="AudioStreamPlayer2D" parent="SFX"]
+[node name="SFXPlayer1" type="AudioStreamPlayer" parent="SFX"]
 
-[node name="SFXPlayer2" type="AudioStreamPlayer2D" parent="SFX"]
+[node name="SFXPlayer2" type="AudioStreamPlayer" parent="SFX"]
 
-[node name="SFXPlayer3" type="AudioStreamPlayer2D" parent="SFX"]
+[node name="SFXPlayer3" type="AudioStreamPlayer" parent="SFX"]
 
-[node name="SFXPlayer4" type="AudioStreamPlayer2D" parent="SFX"]
+[node name="SFXPlayer4" type="AudioStreamPlayer" parent="SFX"]

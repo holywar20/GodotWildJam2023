@@ -124,7 +124,7 @@ environment = ExtResource("2_qfksb")
 script = ExtResource("12_37mgj")
 
 [node name="IntroPanel" parent="Messaging" instance=ExtResource("12_c1rvc")]
-visible = false
+process_mode = 3
 
 [node name="PausePanel" parent="Messaging" instance=ExtResource("13_36ufa")]
 visible = false
