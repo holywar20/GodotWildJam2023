@@ -77,17 +77,16 @@ func _ready() -> void:
 	EventBus.resources_extracted.connect(_on_resources_extracted)
 	EventBus.constructed.connect(_on_constructed)
 	EventBus.construction_requested.connect(_construct)
+
+	_give_player_resources()
 	
 	# TODO: Remove after testing!
-	#_give_player_resources()
 	#EventBus.star_hydrogen_updated.emit(0, 1000)
 	###
 
 
 func _give_player_resources() -> void:
-	current_resources[Constants.HYDROGEN] = 5
-	current_resources[Constants.BASE_METAL] = 10000
-	current_resources[Constants.PRECIOUS_METAL] = 1000
+	current_resources[Constants.BASE_METAL] = 150
 
 
 func _construct(building_type: String):
