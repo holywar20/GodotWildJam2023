@@ -7,12 +7,12 @@
 [ext_resource type="Texture2D" uid="uid://tdgybvpdlhda" path="res://Assets/icons/AntiMatterIcon.png" id="5_hnaln"]
 
 [node name="BuildingButton" type="Button"]
-custom_minimum_size = Vector2(350, 80)
+custom_minimum_size = Vector2(350, 100)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_right = -1570.0
-offset_bottom = -1000.0
+offset_bottom = -980.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_0x1v2")
@@ -20,13 +20,12 @@ script = ExtResource("1_0x1v2")
 [node name="HBox" type="HBoxContainer" parent="."]
 custom_minimum_size = Vector2(300, 60)
 layout_mode = 0
-offset_left = 2.0
-offset_top = 1.0
-offset_right = 350.0
-offset_bottom = 61.0
+offset_right = 348.0
+offset_bottom = 100.0
 mouse_filter = 2
 
 [node name="TextureRect" type="TextureRect" parent="HBox"]
+custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 texture = ExtResource("2_mfgu6")
 
@@ -38,6 +37,7 @@ size_flags_horizontal = 3
 [node name="VBox" type="VBoxContainer" parent="HBox/HBox"]
 layout_mode = 2
 size_flags_horizontal = 3
+alignment = 2
 
 [node name="BuildingName" type="Label" parent="HBox/HBox/VBox"]
 layout_mode = 2
@@ -50,9 +50,11 @@ size_flags_vertical = 3
 [node name="Power" type="VBoxContainer" parent="HBox/HBox/VBox/HBoxContainer"]
 visible = false
 layout_mode = 2
+alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="HBox/HBox/VBox/HBoxContainer/Power"]
 layout_mode = 2
+stretch_mode = 2
 
 [node name="PowerCost" type="Label" parent="HBox/HBox/VBox/HBoxContainer/Power"]
 layout_mode = 2
@@ -60,10 +62,12 @@ layout_mode = 2
 [node name="Base" type="VBoxContainer" parent="HBox/HBox/VBox/HBoxContainer"]
 visible = false
 layout_mode = 2
+alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="HBox/HBox/VBox/HBoxContainer/Base"]
 layout_mode = 2
 texture = ExtResource("3_ttqgi")
+stretch_mode = 2
 
 [node name="BaseCost" type="Label" parent="HBox/HBox/VBox/HBoxContainer/Base"]
 layout_mode = 2
@@ -71,10 +75,12 @@ layout_mode = 2
 [node name="Prec" type="VBoxContainer" parent="HBox/HBox/VBox/HBoxContainer"]
 visible = false
 layout_mode = 2
+alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="HBox/HBox/VBox/HBoxContainer/Prec"]
 layout_mode = 2
 texture = ExtResource("4_tab0w")
+stretch_mode = 2
 
 [node name="PrecCost" type="Label" parent="HBox/HBox/VBox/HBoxContainer/Prec"]
 layout_mode = 2
@@ -82,10 +88,12 @@ layout_mode = 2
 [node name="Antimatter" type="VBoxContainer" parent="HBox/HBox/VBox/HBoxContainer"]
 visible = false
 layout_mode = 2
+alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="HBox/HBox/VBox/HBoxContainer/Antimatter"]
 layout_mode = 2
 texture = ExtResource("5_hnaln")
+stretch_mode = 2
 
 [node name="AntimatterCost" type="Label" parent="HBox/HBox/VBox/HBoxContainer/Antimatter"]
 layout_mode = 2
@@ -102,6 +110,7 @@ alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="HBox/Operationals/Power"]
 layout_mode = 2
+stretch_mode = 2
 
 [node name="Power" type="Label" parent="HBox/Operationals/Power"]
 layout_mode = 2
@@ -115,6 +124,7 @@ alignment = 1
 [node name="TextureRect" type="TextureRect" parent="HBox/Operationals/Base"]
 layout_mode = 2
 texture = ExtResource("3_ttqgi")
+stretch_mode = 2
 
 [node name="Base" type="Label" parent="HBox/Operationals/Base"]
 layout_mode = 2
