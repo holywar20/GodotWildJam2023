@@ -5,6 +5,8 @@ const EVENTS = [
 	preload("res://entities/events/coronal_mass_ejection_event.gd")
 ]
 
+
+
 var _event_chance: float = 0.001:
 	set = set_event_chance
 
@@ -32,7 +34,10 @@ func _generate_event() -> void:
 
 
 func _process_finished_events() -> void:
-	var events_to_erase: Array = _current_events.filter(func(event): return event.is_finshed())
+	if not _current_events:
+		return
+
+	var events_to_erase: Array = _current_events.filter(func(e): return e.is_finished())
 
 	for event in events_to_erase:
 		_current_events.erase(event)
