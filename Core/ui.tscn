@@ -1,10 +1,17 @@
+<<<<<<< Updated upstream
 [gd_scene load_steps=15 format=3 uid="uid://c1dcreph3lax5"]
+=======
+[gd_scene load_steps=17 format=3 uid="uid://c1dcreph3lax5"]
+>>>>>>> Stashed changes
 
 [ext_resource type="Script" path="res://Core/ui.gd" id="1_e5olo"]
 [ext_resource type="PackedScene" uid="uid://cqf6e6u6vidip" path="res://SharedUI/UIButtonsAndPanels/UIExpandButton.tscn" id="2_cpkjk"]
 [ext_resource type="Texture2D" uid="uid://bi4oncw05b64i" path="res://Assets/PowerPlaceholder.png" id="3_gs2sa"]
 [ext_resource type="Script" path="res://SharedUI/timescale_control.gd" id="4_wfklm"]
+[ext_resource type="Texture2D" uid="uid://4o2x723fimq1" path="res://Assets/icons/IronIcon.png" id="4_xmkav"]
+[ext_resource type="Texture2D" uid="uid://b3di2of4v8no4" path="res://Assets/icons/PreciousMetalIcon.png" id="5_7ms3v"]
 [ext_resource type="PackedScene" uid="uid://dih21h34x7by6" path="res://SharedUI/UIButtonsAndPanels/BuildPanel.tscn" id="5_r6hw1"]
+[ext_resource type="Texture2D" uid="uid://tdgybvpdlhda" path="res://Assets/icons/AntiMatterIcon.png" id="6_8fqn7"]
 [ext_resource type="PackedScene" uid="uid://bi6bvo3nmefgu" path="res://SharedUI/current_state_control.tscn" id="6_c83tx"]
 [ext_resource type="PackedScene" uid="uid://dvknl67r1rgib" path="res://SharedUI/UIButtonsAndPanels/PowerPanel.tscn" id="6_kcpw5"]
 [ext_resource type="PackedScene" uid="uid://dk5m622k28ce6" path="res://SharedUI/UIButtonsAndPanels/building_info.tscn" id="7_gvmy2"]
@@ -114,9 +121,10 @@ layout_mode = 2
 alignment = 2
 
 [node name="BaseIcon" type="TextureRect" parent="Hbox/MiddleSection/TopBorder/Panel/ResContainer/BaseMetals/BaseContainer"]
-custom_minimum_size = Vector2(50, 50)
+custom_minimum_size = Vector2(96, 96)
 layout_mode = 2
-stretch_mode = 3
+texture = ExtResource("4_xmkav")
+stretch_mode = 5
 
 [node name="Panel" type="PanelContainer" parent="Hbox/MiddleSection/TopBorder/Panel/ResContainer/BaseMetals/BaseContainer"]
 layout_mode = 2
@@ -146,9 +154,10 @@ layout_mode = 2
 alignment = 2
 
 [node name="PreciousIcon" type="TextureRect" parent="Hbox/MiddleSection/TopBorder/Panel/ResContainer/PreciousMetas/PreciousContainer"]
-custom_minimum_size = Vector2(50, 50)
+custom_minimum_size = Vector2(96, 96)
 layout_mode = 2
-stretch_mode = 3
+texture = ExtResource("5_7ms3v")
+stretch_mode = 5
 
 [node name="Panel" type="PanelContainer" parent="Hbox/MiddleSection/TopBorder/Panel/ResContainer/PreciousMetas/PreciousContainer"]
 layout_mode = 2
@@ -178,9 +187,10 @@ layout_mode = 2
 alignment = 2
 
 [node name="AntimatterIcon" type="TextureRect" parent="Hbox/MiddleSection/TopBorder/Panel/ResContainer/Antimatter/AntimatterContainer"]
-custom_minimum_size = Vector2(50, 50)
+custom_minimum_size = Vector2(96, 96)
 layout_mode = 2
-stretch_mode = 3
+texture = ExtResource("6_8fqn7")
+stretch_mode = 5
 
 [node name="Panel" type="PanelContainer" parent="Hbox/MiddleSection/TopBorder/Panel/ResContainer/Antimatter/AntimatterContainer"]
 layout_mode = 2

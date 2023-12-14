@@ -14,7 +14,7 @@
 [ext_resource type="Script" path="res://messaging/messaging.gd" id="12_37mgj"]
 [ext_resource type="PackedScene" uid="uid://c6t0tdq43a0s3" path="res://messaging/intro_panel.tscn" id="12_c1rvc"]
 [ext_resource type="PackedScene" uid="uid://d3kbycc6q0xqa" path="res://messaging/pause_panel.tscn" id="13_36ufa"]
-[ext_resource type="PackedScene" uid="uid://cksacqby33ysk" path="res://messaging/stage_complete_panel.tscn" id="15_2cnmd"]
+[ext_resource type="PackedScene" path="res://messaging/stage_complete_panel.tscn" id="15_2cnmd"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1y724"]
 shader = ExtResource("1_ece8b")
