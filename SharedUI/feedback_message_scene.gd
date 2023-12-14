@@ -13,8 +13,8 @@ func _process(delta):
 
 func beginMessage(nText, pos):
 	messageBox.text = nText
-	print(pos)
+	#print(pos)
 	set_position(pos)
-	animPlayer.play("NOTIFICATION")
-	await animPlayer.animation_finished
-	queue_free()
+	var tween = create_tween()
+	tween.tween_property(self, "position", position - Vector2(0, 100), 0.75)
+	tween.tween_callback(queue_free)

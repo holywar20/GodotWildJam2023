@@ -132,8 +132,8 @@ func _on_EB_return_to_star_pressed():
 
 func _on_EB_feedback_message(text):
 	var newMessage = feedbackMessage.instantiate()
-	add_child(newMessage)
 	var mousePos = get_viewport().get_mouse_position()
+	add_child(newMessage)
 	newMessage.beginMessage(text, mousePos)
 
 func _on_build_menu_pressed():
