@@ -28,7 +28,9 @@ layout_mode = 2
 texture = ExtResource("2_mfgu6")
 
 [node name="HBox" type="HBoxContainer" parent="HBox"]
+custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
+size_flags_horizontal = 3
 
 [node name="VBox" type="VBoxContainer" parent="HBox/HBox"]
 layout_mode = 2
@@ -41,7 +43,6 @@ text = "Building Name"
 [node name="HBoxContainer" type="HBoxContainer" parent="HBox/HBox/VBox"]
 layout_mode = 2
 size_flags_vertical = 3
-alignment = 1
 
 [node name="Power" type="VBoxContainer" parent="HBox/HBox/VBox/HBoxContainer"]
 visible = false
