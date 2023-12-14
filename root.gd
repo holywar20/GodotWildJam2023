@@ -11,7 +11,7 @@ func _ready() -> void:
 func _on_EB_planet_nav_button_pressed(planetRef):
 	var moveTween = create_tween()
 	moveTween.finished.connect(_on_tween_finished)
-	moveTween.tween_property($Camera2D,'position',planetRef.get_position()-Vector2(-300,0),2.0)
+	moveTween.tween_property($Camera2D,'position', planetRef.get_position() - Vector2(-300, 0), 1.0)
 	moveTween.play()
 	#$Camera2D.set_position(planetRef.get_position()-Vector2(-300,0))
 
@@ -20,7 +20,7 @@ func _on_tween_finished() -> void:
 
 func _on_EB_return_to_star_pressed():
 	var moveTween = create_tween()
-	moveTween.tween_property($Camera2D,'position',Vector2(0,0),2.0)
+	moveTween.tween_property($Camera2D,'position', Vector2(0, 0), 1.0)
 	moveTween.play()
 	#$Camera2D.set_position(Vector2(0,0))
 
