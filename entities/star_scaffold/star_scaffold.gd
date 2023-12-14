@@ -78,7 +78,7 @@ func _ready() -> void:
 	EventBus.constructed.connect(_on_constructed)
 	EventBus.construction_requested.connect(_construct)
 
-	#_give_player_resources()
+	_give_player_resources()
 	
 	# TODO: Remove after testing!
 	#EventBus.star_hydrogen_updated.emit(0, 1000)
