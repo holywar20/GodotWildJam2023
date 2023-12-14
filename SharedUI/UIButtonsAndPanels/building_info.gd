@@ -1,6 +1,8 @@
 extends PanelContainer
 
 @onready var buildingName = $VBox/HBox/BuildingName
+@onready var buildingIcon = $VBox/TextureRect
+@onready var description = $VBox/HBoxContainer2/Description
 
 @onready var prodPower = $VBox/HBoxContainer/Produce/Power/ProdPower
 @onready var prodBase = $VBox/HBoxContainer/Produce/Base/ProdBase
@@ -65,6 +67,8 @@ func setupScene(building):
 	var buildProdDict = buildingInfo.produces
 	
 	buildingName.text = building
+	buildingIcon.set_texture(load(Constants.ICONS[building]))
+	description.set_text(buildingInfo.description)
 	
 	if buildCostDict.has(Constants.POWER):
 		costPowerCont.show()

@@ -9,6 +9,9 @@ extends Node2D
 # In seconds
 @export var build_time: int
 
+# Building description shown in UI elements
+@export var description: String = ""
+
 # Dictates per unit time resource costs.
 # Key: UsableResource
 # Value: Number of resources per unit time to deduct

@@ -24,17 +24,6 @@ extends Button
 @onready var opPrecLabel = $HBox/Operationals/Prec/Prec
 @onready var opAntimatterLabel = $HBox/Operationals/Antimatter/Antimatter
 
-var icons = {
-	"Gigafactory" : "res://Assets/buildings/Factory.png",
-	"Fusion Reactor" : "res://Assets/Placeholder 50x50.png" ,
-	"Celestial Extractor" : "res://Assets/Placeholder 50x50.png" ,
-	"Dyson Swarm" : "res://Assets/Placeholder 50x50.png" ,
-	"Magnetic Bore" : "res://Assets/Placeholder 50x50.png" ,
-	"Antimatter Factory" : "res://Assets/Placeholder 50x50.png" ,
-	"Stellar Accelerator" : "res://Assets/Placeholder 50x50.png" ,
-	"Starlifter" : "res://Assets/Placeholder 50x50.png"
-}
-
 var buildingArray = Info.BUILDING_INFO
 var building 
 var buildCostDict
@@ -66,7 +55,7 @@ func _ready():
 		"Starlifter":
 			buildingName.set_text(buildingRef)
 			building = buildingArray.filter(func (b): return b.type == Constants.BUILDING_STARLIFTER)[0]
-	buildingIcon.set_texture(load(icons[buildingRef]))
+	buildingIcon.set_texture(load(Constants.ICONS[buildingRef]))
 	buildCostDict = building.building_costs
 	setupStats(buildCostDict)
 

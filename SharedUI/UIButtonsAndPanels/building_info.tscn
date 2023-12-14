@@ -27,7 +27,7 @@ text = "x"
 [node name="TextureRect" type="TextureRect" parent="VBox"]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
-stretch_mode = 3
+stretch_mode = 5
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBox"]
 layout_mode = 2
@@ -36,6 +36,7 @@ size_flags_vertical = 3
 [node name="Produce" type="VBoxContainer" parent="VBox/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_vertical = 0
 alignment = 1
 
 [node name="Power" type="HBoxContainer" parent="VBox/HBoxContainer/Produce"]
@@ -89,6 +90,7 @@ layout_mode = 2
 [node name="Costs" type="VBoxContainer" parent="VBox/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_vertical = 0
 alignment = 1
 
 [node name="Power" type="HBoxContainer" parent="VBox/HBoxContainer/Costs"]
@@ -134,6 +136,23 @@ layout_mode = 2
 
 [node name="CostAnti" type="Label" parent="VBox/HBoxContainer/Costs/Anti"]
 modulate = Color(1, 0.0352941, 0.0509804, 1)
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBox"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="StartMargin" type="Control" parent="VBox/HBoxContainer2"]
+custom_minimum_size = Vector2(5, 0)
+layout_mode = 2
+
+[node name="Description" type="RichTextLabel" parent="VBox/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="EndMargin" type="Control" parent="VBox/HBoxContainer2"]
+custom_minimum_size = Vector2(5, 0)
 layout_mode = 2
 
 [node name="Remove" type="Button" parent="VBox"]

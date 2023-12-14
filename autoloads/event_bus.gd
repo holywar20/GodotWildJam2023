@@ -9,6 +9,7 @@ signal tick()
 signal construction_requested(building_type) # Fired by UI
 signal construction_started(building) 
 signal constructed( building )
+signal destroyed( building )
 signal dyson_construction_started()
 signal dyson_construction_finished()
 signal build_queue(buildings) # Array

@@ -22,6 +22,17 @@ const BUILDING_ANTIMATTER_FACTORY = "Antimatter Factory"
 const BUILDING_STELLAR_ACCELERATOR = "Stellar Accelerator"
 const BUILDING_STARLIFTER = "Starlifter"
 
+# Building icons
+const ICONS = {
+	"Gigafactory" : "res://Assets/buildings/Factory.png",
+	"Fusion Reactor" : "res://Assets/Placeholder 50x50.png" ,
+	"Celestial Extractor" : "res://Assets/Placeholder 50x50.png" ,
+	"Dyson Swarm" : "res://Assets/Placeholder 50x50.png" ,
+	"Magnetic Bore" : "res://Assets/Placeholder 50x50.png" ,
+	"Antimatter Factory" : "res://Assets/Placeholder 50x50.png" ,
+	"Stellar Accelerator" : "res://Assets/Placeholder 50x50.png" ,
+	"Starlifter" : "res://Assets/Placeholder 50x50.png"
+}
 
 # Resource types
 const ANTIMATTER = preload("res://entities/resources/antimatter.tres")
