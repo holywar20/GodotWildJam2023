@@ -88,19 +88,19 @@ func setupStats(buildCostDict):
 	
 	if opCostDict.has(Constants.POWER):
 		opPowerContainer.show()
-		opPowerLabel.text = str(opCostDict[Constants.POWER])
+		opPowerLabel.text = "-" +  str(opCostDict[Constants.POWER])
 		opPowerLabel.modulate = (Color(1,0.1,0.1,1))
 	if opCostDict.has(Constants.BASE_METAL):
 		opBaseContainer.show()
-		opBaseLabel.text = str(opCostDict[Constants.BASE_METAL])
+		opBaseLabel.text = "-" + str(opCostDict[Constants.BASE_METAL])
 		opBaseLabel.modulate = (Color(1,0.1,0.1,1))
 	if opCostDict.has(Constants.PRECIOUS_METAL):
 		opPrecContainer.show()
-		opPrecLabel.text = str(opCostDict[Constants.PRECIOUS_METAL])
+		opPrecLabel.text = "-" +  str(opCostDict[Constants.PRECIOUS_METAL])
 		opPrecLabel.modulate = (Color(1,0.1,0.1,1))
 	if opCostDict.has(Constants.ANTIMATTER):
 		opAntimatterContainer.show()
-		opAntimatterLabel.text = str(opCostDict[Constants.ANTIMATTER])
+		opAntimatterLabel.text = "-" + str(opCostDict[Constants.ANTIMATTER])
 		opAntimatterLabel.modulate = (Color(1,0.1,0.1,1))
 
 	if produceDict.has(Constants.POWER):

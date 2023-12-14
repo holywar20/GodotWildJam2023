@@ -22,6 +22,7 @@ extends CanvasLayer
 @onready var antimatterAmount = $Hbox/MiddleSection/TopBorder/Panel/ResContainer/Antimatter/AntimatterContainer/Panel/Numbers/Amount
 @onready var antimatterChange = $Hbox/MiddleSection/TopBorder/Panel/ResContainer/Antimatter/AntimatterContainer/Panel/Numbers/Change
 
+var feedbackMessage = preload("res://SharedUI/feedback_message_scene.tscn")
 var buildQueueItem = preload("res://SharedUI/BuildQueueItem.tscn")
 var selectedPlanetRef
 
@@ -34,6 +35,7 @@ func _ready():
 	EventBus.connect("camera_move_to_planet_finished", Callable(self, "_on_EB_camera_move_to_planet_finished"))
 	EventBus.connect("planet_nav_button_pressed", Callable(self, "_on_EB_planet_nav_button_pressed"))
 	EventBus.connect("return_to_star_pressed", Callable(self, "_on_EB_return_to_star_pressed"))
+	EventBus.connect("feedback_message", Callable(self, "_on_EB_feedback_message"))
 	navPanel.updateUI()
 
 
@@ -127,6 +129,12 @@ func _on_EB_camera_move_to_planet_finished():
 
 func _on_EB_return_to_star_pressed():
 	planetDetailContainer.hide()
+
+func _on_EB_feedback_message(text):
+	var newMessage = feedbackMessage.instantiate()
+	add_child(newMessage)
+	var mousePos = get_viewport().get_mouse_position()
+	newMessage.beginMessage(text, mousePos)
 
 func _on_build_menu_pressed():
 	if (powerMenu.isOpen):
