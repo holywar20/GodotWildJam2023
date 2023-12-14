@@ -42,6 +42,7 @@ signal hydrogen_flow_updated(actual_flow, ideal_target_flow, min_target_flow, ma
 signal resources_reported(resources) # Dictionary keyed by resource with amounts as values
 signal camera_moved( camera_pos ) # Vector2
 signal time_scale_updated(scale)
+signal building_pressed(building)
 signal planet_nav_button_pressed(planetRef)
 signal return_to_star_pressed()
 

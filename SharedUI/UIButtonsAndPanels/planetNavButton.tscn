@@ -23,6 +23,7 @@ alignment = 1
 [node name="PlanetSpacer" type="Control" parent="HBox"]
 custom_minimum_size = Vector2(60, 0)
 layout_mode = 2
+mouse_filter = 2
 
 [node name="Planet" type="Label" parent="HBox"]
 layout_mode = 2

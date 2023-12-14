@@ -20,19 +20,21 @@ var tier3 = [AntimatterFactoryButton , StellarAcceleratorButton , StarlifterButt
 var currentTier = 0
 
 func _ready():
-	pass
 	# Joe this code breaks on star_transitioned
-	#EventBus.connect("star_transitioned", Callable(self, "_on_EB_star_transitioned"))
+	EventBus.connect("star_transitioned", Callable(self, "_on_EB_star_transitioned"))
 
 func _on_EB_star_transitioned(_state):
 	currentTier += 1
+	print(_state)
 	print("Tier " + str(currentTier))
 	if currentTier == 2:
-		for button in tier2:
-			button.show()
+		CelestialExtractorButton.show()
+		DysonSwarmButton.show()
+		MagneticBoreButton.show()
 	if currentTier == 3:
-		for button in tier3:
-			button.show()
+		AntimatterFactoryButton.show()
+		StellarAcceleratorButton.show()
+		StarlifterButton.show()
 
 func openClose():
 	if(isOpen):

@@ -1,0 +1,145 @@
+[gd_scene load_steps=2 format=3 uid="uid://dk5m622k28ce6"]
+
+[ext_resource type="Script" path="res://SharedUI/UIButtonsAndPanels/building_info.gd" id="1_82416"]
+
+[node name="BuildingInfo" type="PanelContainer"]
+custom_minimum_size = Vector2(300, 400)
+script = ExtResource("1_82416")
+
+[node name="VBox" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="HBox" type="HBoxContainer" parent="VBox"]
+layout_mode = 2
+alignment = 1
+
+[node name="BuildingName" type="Label" parent="VBox/HBox"]
+layout_mode = 2
+text = "Building Name"
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="VBox/HBox"]
+visible = false
+custom_minimum_size = Vector2(23, 23)
+layout_mode = 2
+text = "x"
+
+[node name="TextureRect" type="TextureRect" parent="VBox"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+stretch_mode = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBox"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Produce" type="VBoxContainer" parent="VBox/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="Power" type="HBoxContainer" parent="VBox/HBoxContainer/Produce"]
+visible = false
+layout_mode = 2
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="VBox/HBoxContainer/Produce/Power"]
+layout_mode = 2
+
+[node name="ProdPower" type="Label" parent="VBox/HBoxContainer/Produce/Power"]
+modulate = Color(0.0392157, 1, 0.0352941, 1)
+layout_mode = 2
+
+[node name="Base" type="HBoxContainer" parent="VBox/HBoxContainer/Produce"]
+visible = false
+layout_mode = 2
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="VBox/HBoxContainer/Produce/Base"]
+layout_mode = 2
+
+[node name="ProdBase" type="Label" parent="VBox/HBoxContainer/Produce/Base"]
+modulate = Color(0.0392157, 1, 0.0352941, 1)
+layout_mode = 2
+
+[node name="Prec" type="HBoxContainer" parent="VBox/HBoxContainer/Produce"]
+visible = false
+layout_mode = 2
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="VBox/HBoxContainer/Produce/Prec"]
+layout_mode = 2
+
+[node name="ProdPrec" type="Label" parent="VBox/HBoxContainer/Produce/Prec"]
+modulate = Color(0.0392157, 1, 0.0352941, 1)
+layout_mode = 2
+
+[node name="Anti" type="HBoxContainer" parent="VBox/HBoxContainer/Produce"]
+visible = false
+layout_mode = 2
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="VBox/HBoxContainer/Produce/Anti"]
+layout_mode = 2
+
+[node name="ProdAnti" type="Label" parent="VBox/HBoxContainer/Produce/Anti"]
+modulate = Color(0.0392157, 1, 0.0352941, 1)
+layout_mode = 2
+
+[node name="Costs" type="VBoxContainer" parent="VBox/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="Power" type="HBoxContainer" parent="VBox/HBoxContainer/Costs"]
+visible = false
+layout_mode = 2
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="VBox/HBoxContainer/Costs/Power"]
+layout_mode = 2
+
+[node name="CostPower" type="Label" parent="VBox/HBoxContainer/Costs/Power"]
+modulate = Color(1, 0.0352941, 0.0509804, 1)
+layout_mode = 2
+
+[node name="Base" type="HBoxContainer" parent="VBox/HBoxContainer/Costs"]
+visible = false
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="VBox/HBoxContainer/Costs/Base"]
+layout_mode = 2
+
+[node name="CostBase" type="Label" parent="VBox/HBoxContainer/Costs/Base"]
+modulate = Color(1, 0.0352941, 0.0509804, 1)
+layout_mode = 2
+
+[node name="Prec" type="HBoxContainer" parent="VBox/HBoxContainer/Costs"]
+visible = false
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="VBox/HBoxContainer/Costs/Prec"]
+layout_mode = 2
+
+[node name="CostPrec" type="Label" parent="VBox/HBoxContainer/Costs/Prec"]
+modulate = Color(1, 0.0352941, 0.0509804, 1)
+layout_mode = 2
+
+[node name="Anti" type="HBoxContainer" parent="VBox/HBoxContainer/Costs"]
+visible = false
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="VBox/HBoxContainer/Costs/Anti"]
+layout_mode = 2
+
+[node name="CostAnti" type="Label" parent="VBox/HBoxContainer/Costs/Anti"]
+modulate = Color(1, 0.0352941, 0.0509804, 1)
+layout_mode = 2
+
+[node name="Remove" type="Button" parent="VBox"]
+custom_minimum_size = Vector2(200, 70)
+layout_mode = 2
+size_flags_vertical = 10
+text = "Remove"
+
+[connection signal="pressed" from="VBox/Remove" to="." method="_on_remove_pressed"]

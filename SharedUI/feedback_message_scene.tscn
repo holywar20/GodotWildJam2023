@@ -7,6 +7,7 @@ top_level = true
 custom_minimum_size = Vector2(300, 40)
 offset_right = 300.0
 offset_bottom = 40.0
+mouse_filter = 2
 alignment = 1
 script = ExtResource("1_0cgca")
 
@@ -14,4 +15,5 @@ script = ExtResource("1_0cgca")
 clip_contents = false
 layout_mode = 2
 size_flags_horizontal = 3
+mouse_filter = 2
 text = "Placeholder Text"

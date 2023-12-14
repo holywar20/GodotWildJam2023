@@ -29,3 +29,12 @@ texture = ExtResource("6_uk0ns")
 
 [node name="Building" type="Sprite2D" parent="."]
 texture = ExtResource("7_lfuue")
+
+[node name="Button" type="Button" parent="."]
+modulate = Color(1, 1, 1, 0)
+offset_left = -17.0
+offset_top = -18.0
+offset_right = 21.0
+offset_bottom = 21.0
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

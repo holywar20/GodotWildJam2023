@@ -10,6 +10,7 @@ extends CanvasLayer
 @onready var planetDetailContainer = $Hbox/MiddleSection/CenterContainer/PlanetDetails
 @onready var planetDetailPanel = $Hbox/MiddleSection/CenterContainer/PlanetDetails/PlanetContainer
 @onready var planetCrackerPanel = $Hbox/MiddleSection/CenterContainer/PlanetDetails/CrackerMenu
+@onready var buildingInfo = $Hbox/MiddleSection/CenterContainer/BuildingInfo/BuildingInfo
 @onready var confirmQuit = $Popup
 
 # Top bar resources
@@ -25,6 +26,7 @@ extends CanvasLayer
 var feedbackMessage = preload("res://SharedUI/feedback_message_scene.tscn")
 var buildQueueItem = preload("res://SharedUI/BuildQueueItem.tscn")
 var selectedPlanetRef
+var lastSelectedBuilding
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -36,6 +38,7 @@ func _ready():
 	EventBus.connect("planet_nav_button_pressed", Callable(self, "_on_EB_planet_nav_button_pressed"))
 	EventBus.connect("return_to_star_pressed", Callable(self, "_on_EB_return_to_star_pressed"))
 	EventBus.connect("feedback_message", Callable(self, "_on_EB_feedback_message"))
+	EventBus.connect("building_pressed", Callable(self, "_on_EB_building_pressed"))
 	navPanel.updateUI()
 
 
@@ -116,6 +119,13 @@ func _on_EB_constructed(building) -> void:
 	if queue_item_to_remove:
 		queue_item_to_remove[0].removeSelf()
 
+func _on_EB_building_pressed(building):
+	if lastSelectedBuilding == building and buildingInfo.is_visible_in_tree():
+		buildingInfo.hide()
+	else:
+		buildingInfo.show()
+		buildingInfo.setupScene(building)
+		lastSelectedBuilding = building
 
 func _on_EB_planet_nav_button_pressed(planetRef):
 	selectedPlanetRef = planetRef

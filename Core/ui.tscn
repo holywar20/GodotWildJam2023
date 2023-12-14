@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://c1dcreph3lax5"]
+[gd_scene load_steps=15 format=3 uid="uid://c1dcreph3lax5"]
 
 [ext_resource type="Script" path="res://Core/ui.gd" id="1_e5olo"]
 [ext_resource type="PackedScene" uid="uid://cqf6e6u6vidip" path="res://SharedUI/UIButtonsAndPanels/UIExpandButton.tscn" id="2_cpkjk"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dih21h34x7by6" path="res://SharedUI/UIButtonsAndPanels/BuildPanel.tscn" id="5_r6hw1"]
 [ext_resource type="PackedScene" uid="uid://bi6bvo3nmefgu" path="res://SharedUI/current_state_control.tscn" id="6_c83tx"]
 [ext_resource type="PackedScene" uid="uid://dvknl67r1rgib" path="res://SharedUI/UIButtonsAndPanels/PowerPanel.tscn" id="6_kcpw5"]
+[ext_resource type="PackedScene" uid="uid://dk5m622k28ce6" path="res://SharedUI/UIButtonsAndPanels/building_info.tscn" id="7_gvmy2"]
 [ext_resource type="PackedScene" uid="uid://8mk37v21ofpx" path="res://SharedUI/UIButtonsAndPanels/CrackerMenu.tscn" id="7_mqhwr"]
 [ext_resource type="PackedScene" uid="uid://qjlfp7nylr7y" path="res://SharedUI/UIButtonsAndPanels/planetDetail.tscn" id="7_s0tdy"]
 [ext_resource type="PackedScene" uid="uid://blsg03ijwetrt" path="res://SharedUI/UIButtonsAndPanels/nav_panel.tscn" id="9_ss6sf"]
@@ -23,6 +24,7 @@ script = ExtResource("1_e5olo")
 [node name="Hbox" type="HBoxContainer" parent="."]
 offset_right = 1920.0
 offset_bottom = 1080.0
+mouse_filter = 2
 theme_override_constants/separation = 0
 
 [node name="LeftBorder" type="VBoxContainer" parent="Hbox"]
@@ -236,11 +238,14 @@ text = "x"
 [node name="CenterContainer" type="HBoxContainer" parent="Hbox/MiddleSection"]
 layout_mode = 2
 mouse_filter = 2
+theme_override_constants/separation = 0
+alignment = 1
 
 [node name="SubMenuContainer" type="VBoxContainer" parent="Hbox/MiddleSection/CenterContainer"]
 layout_mode = 2
-size_flags_horizontal = 3
-alignment = 1
+size_flags_horizontal = 0
+mouse_filter = 2
+alignment = 2
 
 [node name="BuildMenu" parent="Hbox/MiddleSection/CenterContainer/SubMenuContainer" instance=ExtResource("5_r6hw1")]
 layout_mode = 2
@@ -248,10 +253,21 @@ layout_mode = 2
 [node name="PowerMenu" parent="Hbox/MiddleSection/CenterContainer/SubMenuContainer" instance=ExtResource("6_kcpw5")]
 layout_mode = 2
 
+[node name="BuildingInfo" type="VBoxContainer" parent="Hbox/MiddleSection/CenterContainer"]
+layout_mode = 2
+size_flags_horizontal = 2
+mouse_filter = 2
+alignment = 2
+
+[node name="BuildingInfo" parent="Hbox/MiddleSection/CenterContainer/BuildingInfo" instance=ExtResource("7_gvmy2")]
+visible = false
+layout_mode = 2
+
 [node name="PlanetDetails" type="VBoxContainer" parent="Hbox/MiddleSection/CenterContainer"]
 visible = false
 layout_mode = 2
 size_flags_horizontal = 10
+mouse_filter = 2
 alignment = 2
 
 [node name="CrackerMenu" parent="Hbox/MiddleSection/CenterContainer/PlanetDetails" instance=ExtResource("7_mqhwr")]
