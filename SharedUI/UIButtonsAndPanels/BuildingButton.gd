@@ -89,60 +89,37 @@ func setupStats(buildCostDict):
 	if opCostDict.has(Constants.POWER):
 		opPowerContainer.show()
 		opPowerLabel.text = str(opCostDict[Constants.POWER])
-		if opCostDict[Constants.POWER] > 0:
-			opPowerLabel.modulate = (Color(0.1,1,0.1,1))
-		if opCostDict[Constants.POWER] < 0:
-			opPowerLabel.modulate = (Color(1,0.1,0.1,1))
+		opPowerLabel.modulate = (Color(1,0.1,0.1,1))
 	if opCostDict.has(Constants.BASE_METAL):
 		opBaseContainer.show()
 		opBaseLabel.text = str(opCostDict[Constants.BASE_METAL])
-		if opCostDict[Constants.BASE_METAL] > 0:
-			opBaseLabel.modulate = (Color(0.1,1,0.1,1))
-		if opCostDict[Constants.BASE_METAL] < 0:
-			opBaseLabel.modulate = (Color(1,0.1,0.1,1))
+		opBaseLabel.modulate = (Color(1,0.1,0.1,1))
 	if opCostDict.has(Constants.PRECIOUS_METAL):
 		opPrecContainer.show()
 		opPrecLabel.text = str(opCostDict[Constants.PRECIOUS_METAL])
-		if opCostDict[Constants.PRECIOUS_METAL] > 0:
-			opPrecLabel.modulate = (Color(0.1,1,0.1,1))
-		if opCostDict[Constants.PRECIOUS_METAL] < 0:
-			opPrecLabel.modulate = (Color(1,0.1,0.1,1))
+		opPrecLabel.modulate = (Color(1,0.1,0.1,1))
 	if opCostDict.has(Constants.ANTIMATTER):
 		opAntimatterContainer.show()
 		opAntimatterLabel.text = str(opCostDict[Constants.ANTIMATTER])
-		if opCostDict[Constants.ANTIMATTER] > 0:
-			opAntimatterLabel.modulate = (Color(0.1,1,0.1,1))
-		if opCostDict[Constants.ANTIMATTER] < 0:
-			opAntimatterLabel.modulate = (Color(1,0.1,0.1,1))
+		opAntimatterLabel.modulate = (Color(1,0.1,0.1,1))
 
 	if produceDict.has(Constants.POWER):
 		opPowerContainer.show()
 		opPowerLabel.text = str(produceDict[Constants.POWER])
-		if produceDict[Constants.POWER] > 0:
-			opPowerLabel.modulate = (Color(0.1,1,0.1,1))
-		if produceDict[Constants.POWER] < 0:
-			opPowerLabel.modulate = (Color(1,0.1,0.1,1))
+		opPowerLabel.modulate = (Color(0.1,1,0.1,1))
 	if produceDict.has(Constants.BASE_METAL):
 		opBaseContainer.show()
 		opBaseLabel.text = str(produceDict[Constants.BASE_METAL])
-		if produceDict[Constants.BASE_METAL] > 0:
-			opBaseLabel.modulate = (Color(0.1,1,0.1,1))
-		if produceDict[Constants.BASE_METAL] < 0:
-			opBaseLabel.modulate = (Color(1,0.1,0.1,1))
+		opBaseLabel.modulate = (Color(0.1,1,0.1,1))
 	if produceDict.has(Constants.PRECIOUS_METAL):
 		opPrecContainer.show()
 		opPrecLabel.text = str(produceDict[Constants.PRECIOUS_METAL])
-		if produceDict[Constants.PRECIOUS_METAL] > 0:
-			opPrecLabel.modulate = (Color(0.1,1,0.1,1))
-		if produceDict[Constants.PRECIOUS_METAL] < 0:
-			opPrecLabel.modulate = (Color(1,0.1,0.1,1))
+		opPrecLabel.modulate = (Color(0.1,1,0.1,1))
 	if produceDict.has(Constants.ANTIMATTER):
 		opAntimatterContainer.show()
 		opAntimatterLabel.text = str(produceDict[Constants.ANTIMATTER])
-		if produceDict[Constants.ANTIMATTER] > 0:
-			opAntimatterLabel.modulate = (Color(0.1,1,0.1,1))
-		if produceDict[Constants.ANTIMATTER] < 0:
-			opAntimatterLabel.modulate = (Color(1,0.1,0.1,1))
+		opAntimatterLabel.modulate = (Color(0.1,1,0.1,1))
+
 
 func _on_pressed():
 	print(buildCostDict)
