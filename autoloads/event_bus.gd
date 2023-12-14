@@ -44,7 +44,7 @@ signal return_to_star_pressed()
 
 
 # Misc. game signals
-signal game_paused
+signal game_paused(show_pause_screen)
 signal game_unpaused
 signal new_game
 signal feedback_message(message)

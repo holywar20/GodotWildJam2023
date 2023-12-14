@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cnn2083d08byi"]
+[gd_scene load_steps=17 format=3 uid="uid://cnn2083d08byi"]
 
 [ext_resource type="Shader" path="res://entities/background/StellarBackground.gdshader" id="1_ece8b"]
 [ext_resource type="PackedScene" uid="uid://c1dcreph3lax5" path="res://Core/ui.tscn" id="1_qq3ke"]
@@ -14,6 +14,7 @@
 [ext_resource type="Script" path="res://messaging/messaging.gd" id="12_37mgj"]
 [ext_resource type="PackedScene" uid="uid://c6t0tdq43a0s3" path="res://messaging/intro_panel.tscn" id="12_c1rvc"]
 [ext_resource type="PackedScene" uid="uid://d3kbycc6q0xqa" path="res://messaging/pause_panel.tscn" id="13_36ufa"]
+[ext_resource type="PackedScene" uid="uid://cksacqby33ysk" path="res://messaging/stage_complete_panel.tscn" id="15_2cnmd"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1y724"]
 shader = ExtResource("1_ece8b")
@@ -128,6 +129,9 @@ process_mode = 3
 visible = false
 
 [node name="PausePanel" parent="Messaging" instance=ExtResource("13_36ufa")]
+visible = false
+
+[node name="StageCompletePanel" parent="Messaging" instance=ExtResource("15_2cnmd")]
 visible = false
 
 [editable path="SolarSystem/Planets/P1"]

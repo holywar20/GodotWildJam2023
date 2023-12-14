@@ -25,7 +25,7 @@ extends Button
 @onready var opAntimatterLabel = $HBox/Operationals/Antimatter/Antimatter
 
 var icons = {
-	"Gigafactory" : "res://Assets/Placeholder 50x50.png",
+	"Gigafactory" : "res://Assets/buildings/Factory.png",
 	"Fusion Reactor" : "res://Assets/Placeholder 50x50.png" ,
 	"Celestial Extractor" : "res://Assets/Placeholder 50x50.png" ,
 	"Dyson Swarm" : "res://Assets/Placeholder 50x50.png" ,

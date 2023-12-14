@@ -14,10 +14,10 @@ func _process(_delta):
 		if is_paused:
 			EventBus.game_unpaused.emit()
 		else:
-			EventBus.game_paused.emit()
+			EventBus.game_paused.emit(true)
 
 
-func _on_game_paused() -> void:
+func _on_game_paused(_show_pause_screen) -> void:
 	get_tree().paused = true
 
 

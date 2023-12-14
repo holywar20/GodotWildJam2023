@@ -24,6 +24,8 @@ extends Node2D
 # Value: Number of resources per unit time to produce
 @export var produces: Dictionary
 
+@onready var building_sprite = $Building
+
 var _build_speed_factor: float = 1.0:
 	set = set_build_speedup_factor
 
