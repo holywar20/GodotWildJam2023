@@ -2,35 +2,35 @@
 
 [ext_resource type="Shader" path="res://entities/star/StandardStar.gdshader" id="1_rtm4d"]
 [ext_resource type="Script" path="res://entities/star/StarScene.gd" id="1_ucqo4"]
-[ext_resource type="Gradient" uid="uid://bi57mnx0stjix" path="res://entities/star/gradients/t0.tres" id="3_0x8m3"]
 [ext_resource type="Shader" path="res://entities/star/CoronaShader.gdshader" id="3_mj54a"]
+[ext_resource type="Gradient" uid="uid://dn8icr1dolhw5" path="res://entities/star/gradients/t3.tres" id="3_xwkie"]
 [ext_resource type="Environment" uid="uid://n8asi34u4tt8" path="res://enviroment/Enviroment.tres" id="5_l54cu"]
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_gpyen"]
-gradient = ExtResource("3_0x8m3")
+gradient = ExtResource("3_xwkie")
 use_hdr = true
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_reljx"]
 shader = ExtResource("1_rtm4d")
-shader_parameter/rotationSpeed = 0.2
+shader_parameter/rotationSpeed = 0.348
 shader_parameter/cellSize = 5.0
-shader_parameter/wormCellSize = 2.0
-shader_parameter/vorCellSize = 1.2
-shader_parameter/convectionSpeed = 0.05
-shader_parameter/stretchFactor = 1.188
+shader_parameter/wormCellSize = 2.4
+shader_parameter/vorCellSize = 2.5
+shader_parameter/convectionSpeed = 0.8
+shader_parameter/stretchFactor = 1.398
 shader_parameter/starSeed = 1.0
-shader_parameter/flowFactor = 0.43
+shader_parameter/flowFactor = 0.39
 shader_parameter/gradient = SubResource("GradientTexture1D_gpyen")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_saqe8"]
 shader = ExtResource("3_mj54a")
-shader_parameter/color = Color(1.5, 0, 0, 1)
-shader_parameter/colorBalance = 0.218
-shader_parameter/timeFactor = 0.22
-shader_parameter/flareAmount = 17.0
-shader_parameter/size = 4.3
-shader_parameter/spiky = 46.3
-shader_parameter/gas = 0.7
+shader_parameter/color = Color(1.50196, 1, 0, 1)
+shader_parameter/colorBalance = 0.605
+shader_parameter/timeFactor = 0.17
+shader_parameter/flareAmount = 24.0
+shader_parameter/size = 3.8
+shader_parameter/spiky = 50.0
+shader_parameter/gas = 0.6
 shader_parameter/starSeed = 1.0
 
 [node name="Node2D" type="Node2D"]

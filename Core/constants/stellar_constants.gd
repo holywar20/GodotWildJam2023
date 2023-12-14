@@ -24,6 +24,7 @@ const TIER_STATES = {
 		},
 		'corona' : {
 			'color': Vector3( 0.69 , 0.0 , 0.875 ),
+			'colorBalance' : 0.1,
 			'timeFactor' : 0.09,
 			'size' : 4.8,
 			'spiky' : 27.1,
@@ -58,6 +59,7 @@ const TIER_STATES = {
 		},
 		'corona' : {
 			'color': Vector3( 1.5 , 0.0 , 0.0 ),
+			'colorBalance' : 0.25,
 			'timeFactor' : 0.218,
 			'size' : 4.3,
 			'spiky' : 46.3,
@@ -82,19 +84,30 @@ const TIER_STATES = {
 		'metadata' : {
 			'star_class' : "Orange Dwarf",
 			'description' : """""",
-			'gradient' : preload("res://entities/star/gradients/t1.tres")
+			'gradient' : preload("res://entities/star/gradients/t2.tres")
 		},
 		'interpolated_metadata' : {
-			'temperature' : 1500,
-			'luminosity' : 0.0001, # 1/10,000th of the sun
-			'mass' : 0.01,
+			'temperature' : 4500,
+			'luminosity' : 0.5,
+			'mass' : 0.5,
 			'scale' : 1.0,
 		},
 		'corona' : {
-
+			'color': Vector3(1.502 , 0.483, 0.0 ),
+			'colorBalance' : 0.4,
+			'timeFactor' : 0.26,
+			'size' : 3.1,
+			'spiky' : 10.6,
+			'gas' : 2.2
 		},
 		'star_body' : {
-
+			'rotationSpeed' : 0.25,
+			'cellSize' : 5.9,
+			'wormCellSize' : 2.8,
+			'vorCellSize' : 2.0,
+			'convectionSpeed' : 0.65,
+			'stretchFactor' : 1.165,
+			'flowFactor' : 0.25
 		}
 	},
 	Constants.Tiers.TIER_3 : {
@@ -106,16 +119,31 @@ const TIER_STATES = {
 		'metadata' : {
 			'star_class' : "Yellow Dwarf",
 			'description' : """""",
-			'gradient' : preload("res://entities/star/gradients/t1.tres")
+			'gradient' : preload("res://entities/star/gradients/t3.tres")
 		},
 		'interpolated_metadata' : {
-			'temperature' : 1500,
-			'luminosity' : 0.0001, # 1/10,000th of the sun
-			'mass' : 0.01,
+			'temperature' : 6000,
+			'luminosity' : 1.0, # 1/10,000th of the sun
+			'mass' : 1.0,
 			'scale' : 1.5,
 		},
-		'corona' : {},
-		'star_body' : {}
+		'corona' : {
+			'color': Vector3( 1.502 , 1.0 , 0 ),
+			'colorBalance' : 0.605,
+			'timeFactor' : 0.17,
+			'size' : 3.8,
+			'spiky' : 50,
+			'gas' : 0.6
+		},
+		'star_body' : {
+			'rotationSpeed' : 0.348,
+			'cellSize' : 5.0,
+			'wormCellSize' : 2.4,
+			'vorCellSize' : 2.5,
+			'convectionSpeed' : 0.8,
+			'stretchFactor' : 1.398,
+			'flowFactor' : 0.39
+		}
 	}
 }
 
@@ -149,6 +177,8 @@ static func get_tier_threshold( tier : int ) -> float:
 static func get_tier_state_thresholds( tier : int ) -> Dictionary:
 	return TIER_STATES[tier].state_thresholds
 
+static func get_threshold( tier : int ) -> float:
+	return TIER_STATES[tier].state_thresholds.threshold
 
 static func calculate_target_flow(current_hydrogen: int, star_tier: int) -> int:
 	var func_value = 0
@@ -162,7 +192,6 @@ static func calculate_target_flow(current_hydrogen: int, star_tier: int) -> int:
 		# TODO: Fill in other tiers
 
 	return int(func_value)
-
 
 static func get_tier_percent_diff( current : float, s_tier : int , t_tier : int ):
 	var s_tier_num = TIER_STATES[s_tier].state_thresholds.threshold

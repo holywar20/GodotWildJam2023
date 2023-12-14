@@ -15,7 +15,7 @@ var temperature : float = 0
 var luminosity : float = 0
 var mass : float = 0
 
-var star_hydrogen : float = 0
+var star_hydrogen : float = 10000
 
 var current_tick = {
 	'max_threshold' : 1.0,
@@ -36,6 +36,8 @@ var corona_mat : ShaderMaterial
 var starbody_mat : ShaderMaterial
 var starbody_gradient
 
+@export var star_active : bool = true
+
 func _ready() -> void:
 	current_shader_props = StellarConstants.get_tier_state( tier_state )
 	
@@ -48,15 +50,35 @@ func _ready() -> void:
 	_init_data_write( current_shader_props )
 	_shader_data_write( current_shader_props )
 
-	EventBus.connect( "resources_reported" , Callable(self, "_on_resources_reported") )
+	if( star_active ):
+		EventBus.connect( "resources_reported" , Callable(self, "_on_resources_reported") )
 
 func _on_resources_reported( resources : Dictionary ) -> void:
-	# star_hydrogen = resources[Constants.HYDROGEN]
+	if( tier_state == Constants.Tiers.TIER_3 ):
+		return # Star is at the final state, so we don't need to apply size changes anymore.
 	
-	# Testing
-	star_hydrogen = star_hydrogen + 100
-	var percent_change = StellarConstants.get_tier_percent_diff( star_hydrogen , tier_state , tier_state + 1 )
+	var next_hydrogen = resources[Constants.HYDROGEN]
+	if( next_hydrogen == star_hydrogen ):
+		return # No change, so we don't need to do anything
 
+	star_hydrogen = next_hydrogen
+
+	# Test if we have reached the threshold for this star-teir
+	var target_threshold = StellarConstants.get_threshold( tier_state + 1 )
+	if( star_hydrogen >= target_threshold ):
+		# We have reached the threshold, so we need to increment the tier state
+		tier_state = tier_state + 1
+		# We also need to update the current shader props
+		current_shader_props = StellarConstants.get_tier_state( tier_state )
+		# And write the data to the shader
+
+		EventBus.emit_signal( "star_transitioned" , tier_state )
+		EventBus.emit_signal( "star_size_changed" , current_shader_props.interpolated_metadata )
+
+		_shader_data_write( current_shader_props )
+		return
+
+	var percent_change = StellarConstants.get_tier_percent_diff( star_hydrogen , tier_state , tier_state + 1 )
 	_apply_size_change( percent_change )
 
 
@@ -95,16 +117,13 @@ func _shader_data_write( data : Dictionary ) -> void:
 func _apply_size_change( percent_change : float ):
 	if( tier_state == Constants.Tiers.TIER_3 ):
 		return # Star is at the final state, so we don't need to apply size changes anymore.
-	
+
 	var current_tier_data = StellarConstants.get_tier_state( tier_state )
 	var next_tier_data = StellarConstants.get_tier_state( tier_state + 1 )
 	var target = StellarConstants.get_blank_tier_data()
 
 	# Metadata properties
 	for prop in current_tier_data.interpolated_metadata:
-		if( prop == 'scale' ):
-			continue # Scale is handled manually
-
 		var current_value = current_tier_data.interpolated_metadata[prop]
 		var next_value = next_tier_data.interpolated_metadata[prop]
 
