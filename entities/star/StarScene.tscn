@@ -42,6 +42,7 @@ offset_left = -500.0
 offset_top = -500.0
 offset_right = 500.0
 offset_bottom = 500.0
+mouse_filter = 2
 
 [node name="Corona" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_saqe8")
@@ -49,6 +50,7 @@ offset_left = -1000.0
 offset_top = -1000.0
 offset_right = 1000.0
 offset_bottom = 1000.0
+mouse_filter = 2
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("5_l54cu")
