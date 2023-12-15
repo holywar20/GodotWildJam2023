@@ -25,10 +25,12 @@ func next_extraction():
 	var clouds_remaining = _gas_clouds.filter(func (c): return c.has_hydrogen_remaining())
 
 	if not clouds_remaining:
-		return
+		return produces
 
 	var cloud = clouds_remaining[randi_range(0, clouds_remaining.size() - 1)]
 	produces[Constants.HYDROGEN] += cloud.extract_hydrogen(extraction_rate)
+
+	return produces
 
 
 func set_gas_clouds(value: Array) -> void:

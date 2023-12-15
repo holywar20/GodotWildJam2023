@@ -12,7 +12,7 @@
 scale = Vector2(4, 4)
 script = ExtResource("1_a81ch")
 type = "Magnetic Bore"
-build_time = 65
+build_time = 2
 operational_costs = {
 ExtResource("2_si130"): 50
 }
