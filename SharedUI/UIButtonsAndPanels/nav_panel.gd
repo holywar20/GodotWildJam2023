@@ -1,6 +1,6 @@
 extends PanelContainer
 
-@onready var navButtonContainer = $VBox/ScrollContainer/NavContainer
+@onready var navButtonContainer = $VBox/NavContainer
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

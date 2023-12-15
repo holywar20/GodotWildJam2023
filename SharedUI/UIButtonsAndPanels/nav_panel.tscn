@@ -19,32 +19,30 @@ layout_mode = 2
 [node name="Star" parent="VBox" instance=ExtResource("2_rabnb")]
 layout_mode = 2
 
-[node name="ScrollContainer" type="ScrollContainer" parent="VBox"]
+[node name="Control" type="Control" parent="VBox"]
 layout_mode = 2
-size_flags_vertical = 3
-horizontal_scroll_mode = 0
 
-[node name="NavContainer" type="VBoxContainer" parent="VBox/ScrollContainer"]
+[node name="NavContainer" type="VBoxContainer" parent="VBox"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="1" parent="VBox/ScrollContainer/NavContainer" instance=ExtResource("2_aiel2")]
+[node name="1" parent="VBox/NavContainer" instance=ExtResource("2_aiel2")]
 layout_mode = 2
 
-[node name="2" parent="VBox/ScrollContainer/NavContainer" instance=ExtResource("2_aiel2")]
+[node name="2" parent="VBox/NavContainer" instance=ExtResource("2_aiel2")]
 layout_mode = 2
 
-[node name="3" parent="VBox/ScrollContainer/NavContainer" instance=ExtResource("2_aiel2")]
+[node name="3" parent="VBox/NavContainer" instance=ExtResource("2_aiel2")]
 layout_mode = 2
 
-[node name="4" parent="VBox/ScrollContainer/NavContainer" instance=ExtResource("2_aiel2")]
+[node name="4" parent="VBox/NavContainer" instance=ExtResource("2_aiel2")]
 layout_mode = 2
 
-[node name="5" parent="VBox/ScrollContainer/NavContainer" instance=ExtResource("2_aiel2")]
+[node name="5" parent="VBox/NavContainer" instance=ExtResource("2_aiel2")]
 layout_mode = 2
 
-[node name="6" parent="VBox/ScrollContainer/NavContainer" instance=ExtResource("2_aiel2")]
+[node name="6" parent="VBox/NavContainer" instance=ExtResource("2_aiel2")]
 layout_mode = 2
 
 [connection signal="pressed" from="VBox/Star" to="." method="_on_star_pressed"]

@@ -295,13 +295,12 @@ mouse_filter = 2
 alignment = 2
 
 [node name="BuildMenu" parent="Hbox/MiddleSection/CenterContainer/SubMenuContainer" instance=ExtResource("5_r6hw1")]
-visible = false
-custom_minimum_size = Vector2(400, 550)
+custom_minimum_size = Vector2(400, 642)
 layout_mode = 2
 
 [node name="BoreMenu" parent="Hbox/MiddleSection/CenterContainer/SubMenuContainer" instance=ExtResource("6_kcpw5")]
 visible = false
-custom_minimum_size = Vector2(400, 550)
+custom_minimum_size = Vector2(400, 642)
 layout_mode = 2
 
 [node name="BuildingInfo" type="VBoxContainer" parent="Hbox/MiddleSection/CenterContainer"]
