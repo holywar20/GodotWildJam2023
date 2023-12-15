@@ -9,15 +9,17 @@ script = ExtResource("1_dy6kn")
 
 [node name="VBox" type="VBoxContainer" parent="."]
 layout_mode = 2
+theme_override_constants/separation = 30
 
 [node name="MenuName" type="Label" parent="VBox"]
 layout_mode = 2
 text = "Magnetic Bore Controls"
 horizontal_alignment = 1
 
-[node name="ScrollContainer" type="ScrollContainer" parent="VBox"]
+[node name="Hbox" type="HBoxContainer" parent="VBox"]
 layout_mode = 2
-horizontal_scroll_mode = 0
+alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VBox/ScrollContainer"]
+[node name="VSlider" type="VSlider" parent="VBox/Hbox"]
+custom_minimum_size = Vector2(0, 400)
 layout_mode = 2

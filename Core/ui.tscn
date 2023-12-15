@@ -321,7 +321,6 @@ alignment = 2
 layout_mode = 2
 
 [node name="PlanetContainer" parent="Hbox/MiddleSection/CenterContainer/PlanetDetails" instance=ExtResource("7_s0tdy")]
-visible = true
 layout_mode = 2
 size_flags_horizontal = 8
 

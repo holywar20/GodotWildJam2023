@@ -39,7 +39,8 @@ var gas_mat : ShaderMaterial
 @export var orbit_num : int = 1.0
 @export var orbital_speed : float = 1.0
 @export var p_name : String = "Unamed Planet"
-@export var p_descript : String = "Lava Planet" 
+@export var p_class : String = "Lava Planet"
+@export var p_descript : String = "" 
 
 
 
