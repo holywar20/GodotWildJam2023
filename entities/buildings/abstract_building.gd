@@ -40,10 +40,12 @@ var _build_progress: float = 0.0
 var main_sprite
 var construction_sprite
 
+
 func _ready() -> void:
 	tree_exited.connect(_on_tree_exited)
 	EventBus.tick.connect(_on_game_tick)
 	_set_nodes()
+
 
 func _set_nodes() -> void:
 	main_sprite = $Building
@@ -51,6 +53,7 @@ func _set_nodes() -> void:
 	
 	construction_sprite.show()
 	main_sprite.hide()
+
 
 func set_build_speedup_factor(value: float) -> void:
 	_build_speed_factor = value

@@ -6,7 +6,8 @@ const RESOURCES_PER_EXTRACTION = 100
 
 
 @onready var _planet: Planet = get_node("/root/ROOT/SolarSystem/Planets/P1"):
-	set = assign_to
+	set = assign_to,
+	get = get_assigned_planet
 
 
 func _ready():
@@ -16,6 +17,10 @@ func _ready():
 func assign_to(planet: Planet) -> void:
 	_planet = planet
 	_planet.add_planet_cracker(self)
+
+
+func get_assigned_planet() -> Planet:
+	return _planet
 
 
 func next_extraction() -> Dictionary:

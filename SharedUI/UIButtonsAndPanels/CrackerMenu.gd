@@ -42,7 +42,7 @@ func _on_buy_pressed():
 
 
 func _on_constructed(building) -> void:
-	if not building.type == Constants.BUILDING_PLANET_CRACKER:
+	if _current_planet != building.get_assigned_planet() or building.type != Constants.BUILDING_PLANET_CRACKER:
 		return
 
 	_populate_resource_sliders()
