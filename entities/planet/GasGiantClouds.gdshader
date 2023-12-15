@@ -2,7 +2,7 @@ shader_type canvas_item;
 
 uniform vec2 starDirection = vec2( 1.0 , 1.0 );
 uniform vec3 starLight : source_color = vec3( 0.0 , 0.0 , 0.0 ); // Not Implimented
-uniform float starIntensity : hint_range( 1.0 , 2.0 ) = 0.5;     // Not Implimented
+uniform float starIntensity : hint_range( 0.1 , 2.0 ) = 0.5;     // Not Implimented
 
 uniform float seed : hint_range( 0.0 , 1.0 ) = 0.5;
 uniform float axialTilt : hint_range( 0.0 , 6.28 ) = 3.14; // 2 PI
@@ -116,23 +116,23 @@ void fragment() {
 		sphereUV.x = sphereUV.x + baseRotation;
 	}
 	
-	float flowDirection = sin( sphereUV.y * 30.0 );
-	//flowDirection = smoothstep( -1.0 , 1.0 , flowDirection );
+	float flowDirection = sin( sphereUV.y * 5.0 );
+	//\flowDirection = smoothstep( -1.0 , 1.0 , flowDirection );
 	
 	float cloudMotion1 = warpedNoise( sphereUV * vec2( 1.0 , 3.0 ) * 20.0 + vec2( TIME * tSpeed * 0.5, 0.0 ) ) * 0.005;
-	float cloudMotion2 = warpedNoise( sphereUV * vec2( 1.0 , 3.0 ) * 20.0 + vec2( TIME * tSpeed * 10.0, 0.0 ) ) * 0.005 * flowDirection;
+	float cloudMotion2 = warpedNoise( sphereUV * vec2( 1.0 , 3.0 ) * 20.0 + vec2( TIME * tSpeed * 10.0, 0.0 ) ) * 0.005 * flowDirection * 2.0;
 	
 	// Band color starts a simple 1 to 1 match before fancy math
 	float bandColor = sphereUV.y + cloudMotion1 + cloudMotion2;
 	
 	vec3 color = texture( colorBands , vec2( bandColor  , 0.0 ) ).rgb;
 	
-	float mixNoise = noise( sphereUV * 30.0 + vec2( TIME * tSpeed * 1.0 , 0.0 ) + cloudMotion2 - cloudMotion1 );
+	float mixNoise = noise( sphereUV * 1.0 + vec2( TIME * tSpeed * 1.0 , 0.0 ) );
 	float highClouds = mix( cloudMotion1, cloudMotion2 , mixNoise );
-	color -= cloudMotion2;
-	color -= cloudMotion1;
+	//color -= cloudMotion2;
+	//color -= cloudMotion1;
 	
-	color = mix( color , vec3( 0.0 ), highClouds * 5.0 );
+	color = mix( color , vec3( 0.0 ), highClouds * 10.0 ) + smoothNoise( vec2( cloudMotion1 , cloudMotion2 ) ) * 100.0;
 	
 	COLOR = vec4( color , a );
 }

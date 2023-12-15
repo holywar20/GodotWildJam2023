@@ -3,7 +3,7 @@ shader_type canvas_item;
 // Config inputs
 uniform vec2 starDirection = vec2( 1.0 , 1.0 );
 uniform vec3 starLight : source_color = vec3( 0.0 , 0.0 , 0.0 ); // Not Implimented
-uniform float starIntensity : hint_range( 1.0 , 2.0 ) = 0.5;     // Not Implimented
+uniform float starIntensity : hint_range( 0.0 , 2.0 ) = 0.5;     // Not Implimented
 
 uniform float seed : hint_range( 0.0 , 1.0 ) = 0.5;
 uniform float axialTilt : hint_range( 0.0 , 6.28 ) = 3.14; // 2 PI
@@ -194,15 +194,15 @@ void fragment() {
 	float baseAlpha = cloud_alpha( sphereUV * vec2(1.0, banding ) + vec2( mergedCHeight * 0.04 , 0.0 ) ) + mergedCHeight * 1.0;
 	
 	// Now determine my color
-	vec3 cloudColor = texture( cloudColors , vec2( mergedCHeight, 0.0 ) ).rgb + baseAlpha * 0.3;
+	vec3 cloudColor = texture( cloudColors , vec2( mergedCHeight, 0.0 ) ).rgb + baseAlpha * 0.1;
 	
 	// Handle directional lighting
 	float dirLight = abs( distance( (ogUV - 0.5 ) * 2.0 , starDirection ) );
-	dirLight = pow(dirLight, 2.0) * 0.4;
+	dirLight = pow(dirLight, 2.0) * 0.15;
 	
 	vec2 p = -0.5 + ogUV;
 	float dist = length( p );
-	vec3 fresnal = starLight * 55.0 * dist * dist * dist * dist * dist * dist * dist;
+	vec3 fresnal = starLight * 55.0 * dist * dist * dist * dist * dist * dist;
 	
 	float lightMixFactor = smoothstep( 0.85 , 0.0 , dirLight );
 	cloudColor = mix( cloudColor * 0.05 , cloudColor * starIntensity + fresnal  , lightMixFactor );

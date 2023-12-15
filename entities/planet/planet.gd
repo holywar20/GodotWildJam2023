@@ -12,6 +12,9 @@ const ORBIT_SIZE = 2000
 
 @onready var land_masses : ColorRect = $LandMasses
 @onready var atmosphere : ColorRect = $Atmosphere
+@onready var gas_atmo : ColorRect = $GasAtmo
+
+@onready var enviroment = $WorldEnviroment
 
 var land_mat : ShaderMaterial
 var atmos_mat : ShaderMaterial
@@ -39,6 +42,8 @@ var gas_mat : ShaderMaterial
 @export var orbital_speed : float = 1.0
 @export var p_name : String = "Unamed Planet"
 @export var p_descript : String = "Lava Planet" 
+
+
 
 const RAND_SEED = 11111111
 var _rng = RandomNumberGenerator.new()
@@ -127,12 +132,26 @@ func decoratePlanet( paramsDict , initLoad = false ):
 
 	if( isGas ):
 		if( initLoad ):
-			pass
-		
+			land_masses.hide()
+			atmosphere.hide()
 
-		_update_gasgiant_shader( paramsDict , null )
+			gas_atmo.show()
+
+			gas_mat = ShaderMaterial.new()
+			gas_mat.set_shader( GAS_GIANT_SHADER )
+			gas_atmo.set_material( gas_mat )
+
+			var gasTexture = PlanetaryConstants.get_cloud_gradient( pid )
+			gas_mat.set_shader_parameter( "colorBands" , gasTexture )
+
+		_update_gasgiant_shader( paramsDict  )
 	else:
 		if( initLoad ):
+			land_masses.show()
+			atmosphere.show()
+
+			gas_atmo.hide()
+
 			land_mat = ShaderMaterial.new()
 			land_mat.set_shader( LAND_MASS_SHADER )
 			land_masses.set_material( land_mat )
@@ -153,19 +172,26 @@ func decoratePlanet( paramsDict , initLoad = false ):
 			land_mat.set_shader_parameter( "heightMap" , heightMap )
 			land_mat.set_shader_parameter( "isMap" , false )
 
-			#atmos_mat = ShaderMaterial.new()
-			#atmos_mat.set_shader( ATMOSPHERE_SHADER )
-			#atmosphere.set_material( atmos_mat )
+			atmos_mat = ShaderMaterial.new()
+			atmos_mat.set_shader( ATMOSPHERE_SHADER )
+			atmosphere.set_material( atmos_mat )
 
-		# _update_landmass_shader( paramsDict , null )
+			var cloudGradient = PlanetaryConstants.get_cloud_gradient( pid )
+			if( cloudGradient != null ):
+				atmos_mat.set_shader_parameter( "cloudGradient" , cloudGradient )
+
+		_update_landmass_shader( paramsDict )
+		_update_atmoshader_shader( paramsDict )
 		# _update_gasgiant_shader( paramsDict , null )
 
-func _update_landmass_shader( paramDict : Dictionary , grad ):
+func _update_landmass_shader( paramDict : Dictionary ):
 	for prop in paramDict['landMasses']:
 		land_mat.set_shader_parameter( prop , paramDict['landMasses'][prop] )
 
-func _update_atmoshader_shader( paramDict : Dictionary , grad  ):
-	pass
+func _update_atmoshader_shader( paramDict : Dictionary ):
+	for prop in paramDict['atmo']:
+		atmos_mat.set_shader_parameter( prop , paramDict['atmo'][prop] )
 
-func _update_gasgiant_shader( paramDict : Dictionary , grad  ):
-	pass
+func _update_gasgiant_shader( paramDict : Dictionary ):
+	for prop in paramDict['gasAtmo']:
+		gas_mat.set_shader_parameter( prop , paramDict['gasAtmo'][prop] )
