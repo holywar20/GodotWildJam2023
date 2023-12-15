@@ -61,8 +61,6 @@ var _precious_metals_percentage: float = 0.33:
 func _ready() -> void:
 	_rng.seed = RAND_SEED
 
-	EventBus.adjust_hydrogen.connect(_on_adjust_hydrogen)
-
 	set_scale( Vector2( p_scale , p_scale ) )
 	_calculate_init_orbit()
 
@@ -119,15 +117,6 @@ func extract_resource(resource: UsableResource, amount_requested: int) -> int:
 
 func get_resource_abundance() -> Dictionary:
 	return _resource_abundance
-
-func _on_adjust_hydrogen(amount: int) -> void:
-	if not _resource_abundance.has(Constants.HYDROGEN):
-		return
-
-	_resource_abundance[Constants.HYDROGEN] += amount
-
-	if _resource_abundance[Constants.HYDROGEN] < 0:
-		_resource_abundance[Constants.HYDROGEN] = 0
 
 # Shader methods
 

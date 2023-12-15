@@ -2,7 +2,8 @@ extends Node
 
 
 const EVENTS = [
-	preload("res://entities/events/coronal_mass_ejection_event.gd")
+	preload("res://entities/events/coronal_mass_ejection_event.gd"),
+	preload("res://entities/events/comet_impact_event.gd")
 ]
 
 
@@ -31,6 +32,7 @@ func _on_tick() -> void:
 
 func _generate_event() -> void:
 	_current_events.append(EVENTS[randi_range(0, EVENTS.size() - 1)].new())
+	EventBus.event_happened.emit(_current_events.back())
 
 
 func _process_finished_events() -> void:

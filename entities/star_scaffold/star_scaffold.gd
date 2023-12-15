@@ -78,6 +78,7 @@ func _ready() -> void:
 	EventBus.resources_extracted.connect(_on_resources_extracted)
 	EventBus.constructed.connect(_on_constructed)
 	EventBus.construction_requested.connect(_construct)
+	EventBus.adjust_hydrogen.connect(_on_adjust_hydrogen)
 
 	_give_player_resources()
 	
@@ -203,3 +204,13 @@ func _calculate_building_speedup_factor() -> float:
 			speedup_factor += _buildings[pos].build_speedup_factor
 
 	return speedup_factor
+
+
+func _on_adjust_hydrogen(amount: int) -> void:
+	if not current_resources.has(Constants.HYDROGEN):
+		return
+
+	current_resources[Constants.HYDROGEN] += amount
+
+	if current_resources[Constants.HYDROGEN] < 0:
+		current_resources[Constants.HYDROGEN] = 0

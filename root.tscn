@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://cnn2083d08byi"]
+[gd_scene load_steps=20 format=3 uid="uid://cnn2083d08byi"]
 
 [ext_resource type="Shader" path="res://entities/background/StellarBackground.gdshader" id="1_ece8b"]
 [ext_resource type="PackedScene" uid="uid://c1dcreph3lax5" path="res://Core/ui.tscn" id="1_qq3ke"]
@@ -17,6 +17,7 @@
 [ext_resource type="Resource" uid="uid://un8y85jvdke1" path="res://entities/resources/precious_metal.tres" id="12_l13i1"]
 [ext_resource type="PackedScene" uid="uid://d3kbycc6q0xqa" path="res://messaging/pause_panel.tscn" id="13_36ufa"]
 [ext_resource type="PackedScene" uid="uid://cksacqby33ysk" path="res://messaging/stage_complete_panel.tscn" id="15_2cnmd"]
+[ext_resource type="PackedScene" uid="uid://ccsqcphban41y" path="res://messaging/event_panel.tscn" id="18_1isq2"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1y724"]
 shader = ExtResource("1_ece8b")
@@ -136,6 +137,9 @@ visible = false
 visible = false
 
 [node name="StageCompletePanel" parent="Messaging" instance=ExtResource("15_2cnmd")]
+visible = false
+
+[node name="EventPanel" parent="Messaging" instance=ExtResource("18_1isq2")]
 visible = false
 
 [editable path="SolarSystem/Planets/P1"]

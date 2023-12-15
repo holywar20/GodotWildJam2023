@@ -2,14 +2,16 @@ class_name AbstractEvent
 extends Object
 
 
-@export var effect_length_in_ticks: float = 1.0
+var effect_length_in_ticks: float = 1.0
+var description: String = ""
+var type: String = ""
 
 var _tick_count: int = 0
 var _is_finished: bool = false:
 	get = is_finished
 
 
-func _init() -> void:
+func _init():
 	EventBus.tick.connect(_on_tick)
 
 
