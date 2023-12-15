@@ -33,7 +33,7 @@ var gas_mat : ShaderMaterial
 }
 
 @export_subgroup("Display Params")
-@export_enum( "P1" , "P2" , "P3" , "P4" , "P5" , "P6" ) var pid : String
+@export_enum( "P1" , "P2" , "P3" , "P4" , "P5" , "P6" ) var pid : String = "P1"
 @export var p_scale : float = 1.0
 @export var orbit_num : int = 1.0
 @export var orbital_speed : float = 1.0
@@ -69,7 +69,6 @@ func _ready() -> void:
 	# Get initial Parms by planet
 	var shaderParams = PlanetaryConstants.get_shader_params( pid )
 	decoratePlanet( shaderParams , true )
-
 
 func add_planet_cracker(planet_cracker) -> void:
 	add_child(planet_cracker)

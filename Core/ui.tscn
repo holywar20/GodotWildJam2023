@@ -1,9 +1,5 @@
-<<<<<<< Updated upstream
 [gd_scene load_steps=19 format=3 uid="uid://c1dcreph3lax5"]
-=======
-[gd_scene load_steps=15 format=3 uid="uid://c1dcreph3lax5"]
 
->>>>>>> Stashed changes
 
 [ext_resource type="Script" path="res://Core/ui.gd" id="1_e5olo"]
 [ext_resource type="PackedScene" uid="uid://cqf6e6u6vidip" path="res://SharedUI/UIButtonsAndPanels/UIExpandButton.tscn" id="2_cpkjk"]
