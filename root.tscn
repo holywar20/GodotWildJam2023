@@ -75,12 +75,12 @@ position = Vector2(215, 150)
 _resource_abundance = {
 ExtResource("7_xxeen"): 0,
 ExtResource("11_3sx44"): 4000,
-ExtResource("12_l13i1"): 500
+ExtResource("12_l13i1"): 0
 }
 flow_rate_dict = {
 ExtResource("7_xxeen"): 0.0,
 ExtResource("11_3sx44"): 10.0,
-ExtResource("12_l13i1"): 2.0
+ExtResource("12_l13i1"): 0.0
 }
 p_scale = 1.2
 orbital_speed = 1.8
@@ -93,6 +93,11 @@ _resource_abundance = {
 ExtResource("7_xxeen"): 10000,
 ExtResource("11_3sx44"): 500,
 ExtResource("12_l13i1"): 0
+}
+flow_rate_dict = {
+ExtResource("7_xxeen"): 10.0,
+ExtResource("11_3sx44"): 2.0,
+ExtResource("12_l13i1"): 0.0
 }
 pid = "P2"
 orbit_num = 2
