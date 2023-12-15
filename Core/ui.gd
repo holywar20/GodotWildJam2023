@@ -169,7 +169,7 @@ func _on_build_menu_pressed():
 
 
 func _on_exit_pressed():
-	EventBus.game_paused.emit()
+	EventBus.game_paused.emit(false)
 	confirmQuit.popup()
 
 

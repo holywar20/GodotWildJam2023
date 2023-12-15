@@ -16,7 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://c6t0tdq43a0s3" path="res://messaging/intro_panel.tscn" id="12_c1rvc"]
 [ext_resource type="Resource" uid="uid://un8y85jvdke1" path="res://entities/resources/precious_metal.tres" id="12_l13i1"]
 [ext_resource type="PackedScene" uid="uid://d3kbycc6q0xqa" path="res://messaging/pause_panel.tscn" id="13_36ufa"]
-[ext_resource type="PackedScene" path="res://messaging/stage_complete_panel.tscn" id="15_2cnmd"]
+[ext_resource type="PackedScene" uid="uid://cksacqby33ysk" path="res://messaging/stage_complete_panel.tscn" id="15_2cnmd"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1y724"]
 shader = ExtResource("1_ece8b")
