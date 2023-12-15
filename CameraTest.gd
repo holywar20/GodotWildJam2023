@@ -3,6 +3,8 @@ extends Camera2D
 
 const CAM_SPEED = 1000
 const SCREEN_EDGE_TOLERANCE = 10
+const ZOOM_IN_FACTOR = Vector2(1.25, 1.25)
+const ZOOM_OUT_FACTOR = Vector2(0.85, 0.85)
 
 
 var _is_mouse_pan: bool = false
@@ -38,9 +40,16 @@ func _input(event: InputEvent) -> void:
 				return
 
 			_current_rel = (event as InputEventMouseMotion).relative
-			_current_rel.y *= -1
+			_current_rel *= -1
 
 			_movement_vector = _current_rel.normalized()
+		return
+
+	if event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_WHEEL_UP:
+			zoom *= ZOOM_IN_FACTOR
+		elif event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
+			zoom *= ZOOM_OUT_FACTOR
 
 
 func _process( _delta : float ):
@@ -48,6 +57,7 @@ func _process( _delta : float ):
 		_is_mouse_pan = true
 	elif Input.is_action_just_pressed("CAMERA_RECENTER"):
 		global_position = _original_cam_pos
+		zoom = Vector2.ONE
 	else:
 		_is_mouse_pan = false
 		_movement_vector = Vector2(
