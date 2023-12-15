@@ -1,0 +1,72 @@
+[gd_scene load_steps=2 format=3 uid="uid://3xroj5m8nitt"]
+
+[ext_resource type="Script" path="res://SharedUI/FlowDisplay/FlowDisplay.gd" id="1_g7ssn"]
+
+[node name="Panel" type="Panel"]
+anchors_preset = -1
+anchor_left = 0.051
+anchor_top = 0.084
+anchor_right = 0.051
+anchor_bottom = 0.084
+offset_left = -97.92
+offset_top = -90.72
+offset_right = 406.08
+offset_bottom = -66.72
+script = ExtResource("1_g7ssn")
+
+[node name="ToLittleLabel" type="Label" parent="."]
+layout_mode = 2
+offset_left = 77.172
+offset_top = -22.064
+offset_right = 122.172
+offset_bottom = 0.936001
+text = "--"
+horizontal_alignment = 1
+
+[node name="IdealLabel" type="Label" parent="."]
+layout_mode = 2
+offset_left = 240.0
+offset_top = -48.0
+offset_right = 301.0
+offset_bottom = -25.0
+text = "00"
+horizontal_alignment = 1
+
+[node name="FlowLabel" type="Label" parent="."]
+layout_mode = 2
+offset_left = 216.0
+offset_top = -24.0
+offset_right = 277.0
+offset_bottom = -1.0
+text = "00"
+horizontal_alignment = 1
+
+[node name="ToMuchLabel" type="Label" parent="."]
+layout_mode = 2
+offset_left = 381.172
+offset_top = -22.064
+offset_right = 434.172
+offset_bottom = 0.936001
+text = "++
+"
+horizontal_alignment = 1
+
+[node name="HBox" type="HBoxContainer" parent="."]
+layout_mode = 2
+offset_right = 496.0
+offset_bottom = 16.0
+theme_override_constants/separation = 0
+
+[node name="ToLittle" type="ColorRect" parent="HBox"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+color = Color(1, 0.278431, 0.278431, 1)
+
+[node name="JustRight" type="ColorRect" parent="HBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ToMuch" type="ColorRect" parent="HBox"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+color = Color(1, 0.278431, 0.278431, 1)
