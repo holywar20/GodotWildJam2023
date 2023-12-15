@@ -24,6 +24,9 @@ extends PanelContainer
 @onready var costPrecCont = $VBox/HBoxContainer/Costs/Prec
 @onready var costAntiCont = $VBox/HBoxContainer/Costs/Anti
 
+@onready var timeCont = $VBox/HBoxContainer/Produce/Time
+@onready var timeLabel = $VBox/HBoxContainer/Produce/Time/ProdTime
+
 var buildingInfo
 var buildingRef
 var buildingArray = Info.BUILDING_INFO
@@ -50,6 +53,8 @@ func setupScene(building):
 	match building:
 		"Gigafactory":
 			buildingInfo = buildingArray.filter(func (b): return b.type == Constants.BUILDING_GIGAFACTORY)[0]
+			timeCont.show()
+			timeLabel.text = str(snapped(buildingInfo.build_speedup_factor, 1)) + " x"
 		"Fusion Reactor":
 			buildingInfo = buildingArray.filter(func (b): return b.type == Constants.BUILDING_FUSION_REACTOR)[0]
 		"Celestial Extractor":

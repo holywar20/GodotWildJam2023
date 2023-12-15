@@ -171,6 +171,18 @@ texture = ExtResource("5_hnaln")
 layout_mode = 2
 theme_override_font_sizes/font_size = 8
 
+[node name="Time" type="HBoxContainer" parent="HBox/Operationals"]
+visible = false
+layout_mode = 2
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="HBox/Operationals/Time"]
+layout_mode = 2
+
+[node name="Time" type="Label" parent="HBox/Operationals/Time"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+
 [node name="Spacer" type="Control" parent="HBox"]
 custom_minimum_size = Vector2(5, 0)
 layout_mode = 2

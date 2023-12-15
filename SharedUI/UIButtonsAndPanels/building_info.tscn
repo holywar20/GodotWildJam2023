@@ -93,6 +93,18 @@ texture = ExtResource("4_fhb27")
 modulate = Color(0.0392157, 1, 0.0352941, 1)
 layout_mode = 2
 
+[node name="Time" type="HBoxContainer" parent="VBox/HBoxContainer/Produce"]
+visible = false
+layout_mode = 2
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="VBox/HBoxContainer/Produce/Time"]
+layout_mode = 2
+
+[node name="ProdTime" type="Label" parent="VBox/HBoxContainer/Produce/Time"]
+modulate = Color(0.0392157, 1, 0.0352941, 1)
+layout_mode = 2
+
 [node name="Costs" type="VBoxContainer" parent="VBox/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3

@@ -27,6 +27,9 @@ extends Button
 @onready var opPrecLabel = $HBox/Operationals/Prec/Prec
 @onready var opAntimatterLabel = $HBox/Operationals/Antimatter/Antimatter
 
+@onready var timeContainer = $HBox/Operationals/Time
+@onready var timeLabel = $HBox/Operationals/Time/Time
+
 var buildingArray = Info.BUILDING_INFO
 var building 
 var buildCostDict
@@ -115,7 +118,11 @@ func setupStats(buildDict):
 		opAntimatterContainer.show()
 		opAntimatterLabel.text = str(produceDict[Constants.ANTIMATTER])
 		opAntimatterLabel.modulate = (Color(0.1,1,0.1,1))
-
+	
+	if building.type == Constants.BUILDING_GIGAFACTORY:
+		timeContainer.show()
+		timeLabel.text = str(snapped(building.build_speedup_factor, 1)) + " x"
+		timeLabel.modulate = (Color(0.1,1,0.1,1))
 
 func _on_pressed():
 	print(buildCostDict)
