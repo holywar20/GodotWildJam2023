@@ -10,7 +10,7 @@ const TIER_STATES = {
 		},
 		'metadata' : {
 			'star_class' : "Brown Dwarf",
-			'description' : """This star is a brown dwarf. It is not a star at all but rather on the boundary between planet and star. While still warm from its formation, it lacks the proper mass to ignite fusion on its own.
+			'description' : """This dim star is a brown dwarf. It is not a star at all but rather on the boundary between planet and star. While still warm from its formation, it lacks the proper mass to ignite fusion on its own.
 
 	It is up to you to light this star, and bring illumination to a universe that is now dying to the pitiless cruelty of heat death.
 	""",
@@ -48,7 +48,9 @@ const TIER_STATES = {
 		},
 		'metadata' : {
 			'star_class' : "Red Dwarf",
-			'description' : """This star is a red dwarf. It is a small, cool star that is very common in the universe. It is not very luminous, but it is very long lived. It is the most common type of star in the universe.""",
+			'description' : """Thanks to your efforts, the star is now a red dwarf.
+			
+			It is a small, cool star that is very common in the universe. It is not very luminous, but it is very long lived. It is the most common type of star in the universe.""",
 			'gradient' : preload("res://entities/star/gradients/t1.tres")
 		},
 		'interpolated_metadata' : {
@@ -83,7 +85,12 @@ const TIER_STATES = {
 		},
 		'metadata' : {
 			'star_class' : "Orange Dwarf",
-			'description' : """""",
+			'description' : """From a red dwarf, the star has become a glowing orange dwarf.
+			
+			Stable and possibly capable of helping support life, this ball of gas continues to devour fuel like a growing adolescent. It isn't an adult yet, but 
+			it will be with your continued help.
+			
+			Just be sure to keep an eye on your new teenager.""",
 			'gradient' : preload("res://entities/star/gradients/t2.tres")
 		},
 		'interpolated_metadata' : {
@@ -118,7 +125,12 @@ const TIER_STATES = {
 		},
 		'metadata' : {
 			'star_class' : "Yellow Dwarf",
-			'description' : """""",
+			'description' : """Another Sol has emerged from what was once a cold, dead celestial body.
+			
+			The star's voracious appetite has only accelerated, although its warmth and luminosity make the possibility of life on orbiting planet a very distinct 
+			posibility.
+			
+			Will your new sun be the saving grace of the universe? Or will it run amok, greedily fusing anything it can get its hands on until it becomes too big to support itself?""",
 			'gradient' : preload("res://entities/star/gradients/t3.tres")
 		},
 		'interpolated_metadata' : {
@@ -207,6 +219,9 @@ static func get_tier_percent_diff( current : float, s_tier : int , t_tier : int 
 	var percent_diff = current_diff / total_diff
 
 	return percent_diff
+
+static func get_tier_metadata(tier: int) -> Dictionary:
+	return TIER_STATES[tier].metadata
 
 # Note this only for interpolated data. The rest is handled manually.
 static func get_blank_tier_data() -> Dictionary:

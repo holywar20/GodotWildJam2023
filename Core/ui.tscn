@@ -298,6 +298,7 @@ alignment = 2
 visible = false
 custom_minimum_size = Vector2(400, 642)
 layout_mode = 2
+mouse_force_pass_scroll_events = false
 
 [node name="BoreMenu" parent="Hbox/MiddleSection/CenterContainer/SubMenuContainer" instance=ExtResource("6_kcpw5")]
 visible = false

@@ -15,7 +15,7 @@ var temperature : float = 0
 var luminosity : float = 0
 var mass : float = 0
 
-var star_hydrogen : float = 10000
+var star_hydrogen : float = 0
 
 var current_tick = {
 	'max_threshold' : 1.0,
@@ -58,8 +58,9 @@ func _on_resources_reported( resources : Dictionary ) -> void:
 		return # Star is at the final state, so we don't need to apply size changes anymore.
 	
 	var next_hydrogen = resources[Constants.HYDROGEN]
-	if( next_hydrogen == star_hydrogen ):
-		return # No change, so we don't need to do anything
+
+	#if( next_hydrogen == star_hydrogen ):
+		#return # No change, so we don't need to do anything
 
 	star_hydrogen = next_hydrogen
 

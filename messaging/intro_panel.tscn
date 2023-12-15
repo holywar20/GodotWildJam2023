@@ -34,7 +34,7 @@ offset_top = 147.0
 offset_right = 683.0
 offset_bottom = 187.0
 
-[node name="Label" type="Label" parent="Control2"]
+[node name="Description" type="Label" parent="Control2"]
 layout_mode = 0
 offset_left = -136.0
 offset_top = 75.0
