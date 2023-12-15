@@ -15,19 +15,19 @@ gradient = SubResource("Gradient_8t180")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_sd6hr"]
 shader = ExtResource("3_etq3g")
-shader_parameter/starDirection = Vector2(1, 0)
-shader_parameter/starLight = Color(0, 0, 0, 1)
+shader_parameter/starDirection = Vector2(-1, 0)
+shader_parameter/starLight = Color(0.521569, 0.172549, 0.45098, 1)
 shader_parameter/starIntensity = 0.5
 shader_parameter/seed = 0.5
 shader_parameter/isMap = false
 shader_parameter/rotationSpeed = 0.1
 shader_parameter/axialTilt = 3.14
 shader_parameter/cityFactor = 0.0
-shader_parameter/hasCrater = false
+shader_parameter/hasCrater = true
 shader_parameter/craterOctave = 1
-shader_parameter/hasHydro = false
+shader_parameter/hasHydro = true
 shader_parameter/oceanDepth = 0.0
-shader_parameter/oceanColor = Color(0, 0, 1, 1)
+shader_parameter/oceanColor = Color(0.898039, 0.92549, 1, 1)
 shader_parameter/iceColor = Color(1, 1, 1, 1)
 shader_parameter/iceCap = 0.0
 shader_parameter/heightMap = SubResource("GradientTexture1D_r2ov1")
@@ -59,6 +59,7 @@ offset_right = 250.0
 offset_bottom = 250.0
 
 [node name="Atmosphere" type="ColorRect" parent="."]
+visible = false
 material = SubResource("ShaderMaterial_fuiqp")
 offset_left = -250.0
 offset_top = -250.0
