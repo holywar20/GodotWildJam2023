@@ -16,7 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://c6t0tdq43a0s3" path="res://messaging/intro_panel.tscn" id="12_c1rvc"]
 [ext_resource type="Resource" uid="uid://un8y85jvdke1" path="res://entities/resources/precious_metal.tres" id="12_l13i1"]
 [ext_resource type="PackedScene" uid="uid://d3kbycc6q0xqa" path="res://messaging/pause_panel.tscn" id="13_36ufa"]
-[ext_resource type="PackedScene" uid="uid://cksacqby33ysk" path="res://messaging/stage_complete_panel.tscn" id="15_2cnmd"]
+[ext_resource type="PackedScene" path="res://messaging/stage_complete_panel.tscn" id="15_2cnmd"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1y724"]
 shader = ExtResource("1_ece8b")
@@ -70,25 +70,37 @@ scale = Vector2(0.5, 0.5)
 
 [node name="P1" parent="SolarSystem/Planets" instance=ExtResource("6_fk80q")]
 position = Vector2(215, 150)
+_resource_abundance = {
+ExtResource("7_xxeen"): 5000,
+ExtResource("11_3sx44"): 10000,
+ExtResource("12_l13i1"): 300
+}
+flow_rate_dict = {
+ExtResource("7_xxeen"): 0.05,
+ExtResource("11_3sx44"): 0.1,
+ExtResource("12_l13i1"): 0.01
+}
 p_scale = 1.2
 orbital_speed = 1.8
 p_name = "Emberon"
+p_descript = "Lava Planet - Serves as initial source of Base Metals for the player. Has very limited precious and hydrogen"
 
 [node name="P2" parent="SolarSystem/Planets" instance=ExtResource("6_fk80q")]
 position = Vector2(258, -34)
 pid = "P2"
-p_scale = 0.4
+p_scale = 1.1
 orbit_num = 2
-p_name = "Ashenon"
-p_descript = "Barren Planet"
+p_name = "Escher's Staircase"
+p_descript = "Terran Planet - Provides the first major Hydrogen source, as well as a good mix of other materials."
 
 [node name="P3" parent="SolarSystem/Planets" instance=ExtResource("6_fk80q")]
 position = Vector2(178, -169)
 pid = "P3"
+p_scale = 0.8
 orbit_num = 3
 orbital_speed = 0.8
-p_name = "Escher's Staircase"
-p_descript = "Terran Planet"
+p_name = "Ashenon"
+p_descript = "Barren Planet"
 
 [node name="P4" parent="SolarSystem/Planets" instance=ExtResource("6_fk80q")]
 position = Vector2(-89, -191)

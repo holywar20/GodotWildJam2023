@@ -3,7 +3,7 @@ shader_type canvas_item;
 // Config inputs
 uniform vec2 starDirection = vec2( 1.0 , 1.0 );
 uniform vec3 starLight : source_color = vec3( 0.0 , 0.0 , 0.0 );
-uniform float starIntensity : hint_range( 1.0 , 2.0 ) = 0.5; 
+uniform float starIntensity : hint_range( 0.3 , 2.0 ) = 0.5; 
 
 uniform float seed : hint_range( 0.0 , 1.0 ) = 0.5;
 uniform bool isMap = true;
