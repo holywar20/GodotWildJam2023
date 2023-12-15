@@ -73,14 +73,14 @@ scale = Vector2(0.5, 0.5)
 [node name="P1" parent="SolarSystem/Planets" instance=ExtResource("6_fk80q")]
 position = Vector2(215, 150)
 _resource_abundance = {
-ExtResource("7_xxeen"): 5000,
-ExtResource("11_3sx44"): 10000,
-ExtResource("12_l13i1"): 300
+ExtResource("7_xxeen"): 0,
+ExtResource("11_3sx44"): 4000,
+ExtResource("12_l13i1"): 500
 }
 flow_rate_dict = {
-ExtResource("7_xxeen"): 0.05,
-ExtResource("11_3sx44"): 0.1,
-ExtResource("12_l13i1"): 0.01
+ExtResource("7_xxeen"): 0.0,
+ExtResource("11_3sx44"): 10.0,
+ExtResource("12_l13i1"): 2.0
 }
 p_scale = 1.2
 orbital_speed = 1.8
@@ -89,15 +89,30 @@ p_descript = "Serves as initial source of Base Metals for the player. Has very l
 
 [node name="P2" parent="SolarSystem/Planets" instance=ExtResource("6_fk80q")]
 position = Vector2(258, -34)
+_resource_abundance = {
+ExtResource("7_xxeen"): 10000,
+ExtResource("11_3sx44"): 500,
+ExtResource("12_l13i1"): 0
+}
 pid = "P2"
-p_scale = 1.1
 orbit_num = 2
+orbital_speed = 0.0
 p_name = "Escher's Staircase"
 p_class = "Terran Planet"
 p_descript = "Provides the first major Hydrogen source, as well as a good mix of other materials."
 
 [node name="P3" parent="SolarSystem/Planets" instance=ExtResource("6_fk80q")]
 position = Vector2(178, -169)
+_resource_abundance = {
+ExtResource("7_xxeen"): 10000,
+ExtResource("11_3sx44"): 10000,
+ExtResource("12_l13i1"): 3000
+}
+flow_rate_dict = {
+ExtResource("7_xxeen"): 10.0,
+ExtResource("11_3sx44"): 15.0,
+ExtResource("12_l13i1"): 10.0
+}
 pid = "P3"
 p_scale = 0.8
 orbit_num = 3
@@ -107,6 +122,16 @@ p_class = "Barren Planet"
 
 [node name="P4" parent="SolarSystem/Planets" instance=ExtResource("6_fk80q")]
 position = Vector2(-89, -191)
+_resource_abundance = {
+ExtResource("7_xxeen"): 50000,
+ExtResource("11_3sx44"): 0,
+ExtResource("12_l13i1"): 0
+}
+flow_rate_dict = {
+ExtResource("7_xxeen"): 20.0,
+ExtResource("11_3sx44"): 0.0,
+ExtResource("12_l13i1"): 0.0
+}
 pid = "P4"
 p_scale = 2.1
 orbit_num = 4
@@ -116,6 +141,16 @@ p_class = "Gas Giant"
 
 [node name="P5" parent="SolarSystem/Planets" instance=ExtResource("6_fk80q")]
 position = Vector2(-293, 6)
+_resource_abundance = {
+ExtResource("7_xxeen"): 100000,
+ExtResource("11_3sx44"): 0,
+ExtResource("12_l13i1"): 0
+}
+flow_rate_dict = {
+ExtResource("7_xxeen"): 30.0,
+ExtResource("11_3sx44"): 0.0,
+ExtResource("12_l13i1"): 0.0
+}
 pid = "P5"
 p_scale = 1.4
 orbit_num = 5
@@ -126,9 +161,14 @@ p_class = "Ice Giant"
 [node name="P6" parent="SolarSystem/Planets" instance=ExtResource("6_fk80q")]
 position = Vector2(-207, 182)
 _resource_abundance = {
-ExtResource("7_xxeen"): 500,
-ExtResource("11_3sx44"): 500,
-ExtResource("12_l13i1"): 500
+ExtResource("7_xxeen"): 25000,
+ExtResource("11_3sx44"): 25000,
+ExtResource("12_l13i1"): 10000
+}
+flow_rate_dict = {
+ExtResource("7_xxeen"): 15.0,
+ExtResource("11_3sx44"): 35.0,
+ExtResource("12_l13i1"): 20.0
 }
 pid = "P6"
 p_scale = 0.7
