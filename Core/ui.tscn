@@ -47,6 +47,7 @@ layout_mode = 2
 text = "Structures"
 
 [node name="Bore" parent="Hbox/LeftBorder/PanelContainer/OpButtonContainer" instance=ExtResource("2_cpkjk")]
+visible = false
 layout_mode = 2
 text = "Bore 
 Control"

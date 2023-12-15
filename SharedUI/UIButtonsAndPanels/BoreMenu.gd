@@ -35,4 +35,5 @@ func openCloseNoTransition():
 
 
 func _on_slider_value_changed(value):
-	percentLabel.set_text("% " + str(value))
+	percentLabel.set_text(str(value * 100) + "%")
+	EventBus.bore_control_updated.emit(value)

@@ -3,6 +3,7 @@ extends CanvasLayer
 # Buttons
 @onready var buildMenu = $Hbox/MiddleSection/CenterContainer/SubMenuContainer/BuildMenu
 @onready var boreMenu = $Hbox/MiddleSection/CenterContainer/SubMenuContainer/BoreMenu
+@onready var boreMenuButton = $Hbox/LeftBorder/PanelContainer/OpButtonContainer/Bore
 
 # Panels
 @onready var navPanel = $Hbox/MiddleSection/CenterContainer/VBoxContainer/NavPanel
@@ -41,6 +42,7 @@ func _ready():
 	EventBus.connect("return_to_star_pressed", Callable(self, "_on_EB_return_to_star_pressed"))
 	EventBus.connect("feedback_message", Callable(self, "_on_EB_feedback_message"))
 	EventBus.connect("building_pressed", Callable(self, "_on_EB_building_pressed"))
+
 	navPanel.updateUI()
 
 
@@ -134,6 +136,10 @@ func _on_EB_constructed(building) -> void:
 
 	if queue_item_to_remove:
 		queue_item_to_remove[0].removeSelf()
+
+	if building.type == Constants.BUILDING_MAGNETIC_BORE:
+		boreMenuButton.show()
+
 
 func _on_EB_building_pressed(building):
 	if lastSelectedBuilding == building and buildingInfo.is_visible_in_tree():

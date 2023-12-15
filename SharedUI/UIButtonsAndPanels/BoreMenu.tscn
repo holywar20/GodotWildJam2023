@@ -4,6 +4,8 @@
 
 [node name="SubMenu" type="PanelContainer"]
 custom_minimum_size = Vector2(400, 500)
+offset_right = 400.0
+offset_bottom = 500.0
 size_flags_horizontal = 0
 script = ExtResource("1_dy6kn")
 
@@ -30,6 +32,9 @@ layout_mode = 2
 [node name="Slider" type="VSlider" parent="VBox/Hbox/SliderCont"]
 custom_minimum_size = Vector2(0, 400)
 layout_mode = 2
+max_value = 1.0
+step = 0.01
+value = 1.0
 
 [node name="PercentCont" type="VBoxContainer" parent="VBox/Hbox"]
 layout_mode = 2
@@ -40,6 +45,12 @@ alignment = 1
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
 size_flags_horizontal = 4
-text = "% 0"
+text = "100%"
+
+[node name="MenuName2" type="Label" parent="VBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "Controls the cloud extraction rate for all bores"
+horizontal_alignment = 1
 
 [connection signal="value_changed" from="VBox/Hbox/SliderCont/Slider" to="." method="_on_slider_value_changed"]

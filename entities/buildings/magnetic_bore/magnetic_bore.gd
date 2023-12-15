@@ -35,7 +35,3 @@ func next_extraction():
 
 func set_gas_clouds(value: Array) -> void:
 	_gas_clouds = value
-
-
-func post_constructed() -> void:
-	EventBus.magnetic_bore_constructed.emit(self)

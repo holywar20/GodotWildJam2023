@@ -81,6 +81,7 @@ func _ready() -> void:
 	EventBus.construction_requested.connect(_construct)
 	EventBus.adjust_hydrogen.connect(_on_adjust_hydrogen)
 	EventBus.operational_cost_reported.connect(_on_operational_cost_reported)
+	EventBus.bore_control_updated.connect(_on_bore_control_updated)
 
 	_give_player_resources()
 	
@@ -94,10 +95,10 @@ func _give_player_resources() -> void:
 	current_resources[Constants.POWER] = 1000
 
 	# TESTING VALUES
-	current_resources[Constants.HYDROGEN] = 10000
-	current_resources[Constants.POWER] = 10000
-	current_resources[Constants.BASE_METAL] = 50000
-	current_resources[Constants.PRECIOUS_METAL] = 50000
+	#current_resources[Constants.HYDROGEN] = 10000
+	#current_resources[Constants.POWER] = 10000
+	#current_resources[Constants.BASE_METAL] = 50000
+	#current_resources[Constants.PRECIOUS_METAL] = 50000
 
 
 func _construct(building_type: String):
@@ -147,6 +148,8 @@ func _find_next_empty_slot():
 	return null
 
 
+# TODO: If we end up implementing this feature, this method will need to be changed
+# as buildings are indexed by its position on the scaffold.
 func destroy(building) -> void:
 	_buildings.erase(building)
 	remove_child(building)
@@ -155,6 +158,13 @@ func destroy(building) -> void:
 func _on_constructed(building) -> void:
 	_buildings_under_construction.erase(building)
 
+
+func _on_bore_control_updated(value: float) -> void:
+	var magnetic_bores: Array = _buildings.values().filter(func (b): return b and b.type == Constants.BUILDING_MAGNETIC_BORE)
+
+	for bore in magnetic_bores:
+		bore.set_extraction_rate(value)
+	
 
 func _deduct_from_current_resources(resources_bid: Dictionary) -> void:
 	for resource in resources_bid:

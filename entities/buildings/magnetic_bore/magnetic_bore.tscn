@@ -12,13 +12,13 @@
 scale = Vector2(4, 4)
 script = ExtResource("1_a81ch")
 type = "Magnetic Bore"
-build_time = 2
+build_time = 30
 operational_costs = {
-ExtResource("2_si130"): 50
+ExtResource("2_si130"): 20
 }
 building_costs = {
-ExtResource("3_d172c"): 500,
-ExtResource("4_2n5es"): 150
+ExtResource("3_d172c"): 1000,
+ExtResource("4_2n5es"): 300
 }
 produces = {
 ExtResource("5_510g3"): 500

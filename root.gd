@@ -9,7 +9,7 @@ func _ready() -> void:
 	EventBus.connect("planet_nav_button_pressed", Callable(self, "_on_EB_planet_nav_button_pressed"))
 	EventBus.connect("return_to_star_pressed", Callable(self, "_on_EB_return_to_star_pressed"))
 	EventBus.new_game.connect(_on_new_game)
-	EventBus.magnetic_bore_constructed.connect(_on_magnetic_bore_constructed)
+	EventBus.constructed.connect(_on_constructed)
 	#AudioManager.play_music(AudioManager.MUSIC_TRACK_TITLE)
 
 func _on_EB_planet_nav_button_pressed(planetRef):
@@ -32,5 +32,8 @@ func _on_new_game() -> void:
 	EventBus.game_unpaused.emit()
 
 
-func _on_magnetic_bore_constructed(building) -> void:
+func _on_constructed(building) -> void:
+	if building.type != Constants.BUILDING_MAGNETIC_BORE:
+		return
+
 	building.set_gas_clouds(_clouds.get_children())

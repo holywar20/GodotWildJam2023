@@ -14,7 +14,6 @@ signal dyson_construction_started()
 signal dyson_construction_finished()
 signal build_queue(buildings) # Array
 signal operational_cost_reported(resources)
-signal magnetic_bore_constructed(building)
 
 
 # Resource signals
@@ -48,6 +47,7 @@ signal time_scale_updated(scale)
 signal building_pressed(building)
 signal planet_nav_button_pressed(planetRef)
 signal return_to_star_pressed()
+signal bore_control_updated(value)
 
 
 # Misc. game signals
