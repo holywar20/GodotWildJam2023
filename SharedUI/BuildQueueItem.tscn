@@ -49,6 +49,12 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_c2351")
 
+[node name="Label" type="Label" parent="."]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+horizontal_alignment = 1
+vertical_alignment = 2
+
 [node name="VBox" type="VBoxContainer" parent="."]
 layout_mode = 2
 
@@ -58,8 +64,9 @@ text = "Building Name"
 horizontal_alignment = 1
 
 [node name="ProgressBar" type="ProgressBar" parent="VBox"]
-custom_minimum_size = Vector2(285, 0)
+custom_minimum_size = Vector2(285, 27)
 layout_mode = 2
+show_percentage = false
 
 [node name="BuildComplete" type="Label" parent="VBox"]
 visible = false
@@ -72,5 +79,7 @@ horizontal_alignment = 1
 libraries = {
 "": SubResource("AnimationLibrary_s8tcm")
 }
+
+[node name="Timer" type="Timer" parent="."]
 
 [connection signal="value_changed" from="VBox/ProgressBar" to="." method="_on_progress_bar_value_changed"]

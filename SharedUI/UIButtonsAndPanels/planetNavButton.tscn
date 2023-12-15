@@ -20,7 +20,7 @@ offset_right = 288.0
 offset_bottom = 59.0
 alignment = 1
 
-[node name="PlanetSpacer" type="Control" parent="HBox"]
+[node name="PlanetIcon" type="Panel" parent="HBox"]
 custom_minimum_size = Vector2(60, 0)
 layout_mode = 2
 mouse_filter = 2
