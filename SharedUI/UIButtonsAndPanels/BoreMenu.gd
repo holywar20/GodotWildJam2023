@@ -1,7 +1,7 @@
 extends PanelContainer
 
 @onready var menuLabel = $VBox/MenuName
-@onready var slider = $VBox/Hbox/VSlider
+@onready var slider = $VBox/Hbox/SliderCont/Slider
 @onready var percentLabel = $VBox/Hbox/PercentCont/Percent
 
 var isOpen = false
