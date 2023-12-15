@@ -149,11 +149,17 @@ func _on_EB_planet_nav_button_pressed(planetRef):
 
 
 func _on_EB_camera_move_to_planet_finished():
+	var t = create_tween()
+	planetDetailContainer.modulate = Color.TRANSPARENT
 	planetDetailContainer.show()
+	t.tween_property(planetDetailContainer, "modulate", Color.WHITE, 0.25)
 	planetCrackerPanel.updateUI(selectedPlanetRef)
 	planetDetailPanel.updateUI(selectedPlanetRef)
 
 func _on_EB_return_to_star_pressed():
+	var t = create_tween()
+	t.tween_property(planetDetailContainer, "modulate", Color.TRANSPARENT, 0.25)
+	await t.finished
 	planetDetailContainer.hide()
 
 func _on_EB_feedback_message(text):
@@ -164,7 +170,7 @@ func _on_EB_feedback_message(text):
 
 func _on_build_menu_pressed():
 	if (boreMenu.isOpen):
-		boreMenu.openClose()
+		boreMenu.openCloseNoTransition()
 	buildMenu.openClose()
 
 
@@ -175,5 +181,5 @@ func _on_exit_pressed():
 
 func _on_bore_pressed():
 	if (buildMenu.isOpen):
-		buildMenu.openClose()
+		buildMenu.openCloseNoTransition()
 	boreMenu.openClose()

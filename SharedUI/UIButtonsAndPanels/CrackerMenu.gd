@@ -46,7 +46,10 @@ func _on_constructed(building) -> void:
 		return
 
 	_populate_resource_sliders()
+
+	cracker_controls.modulate = Color.TRANSPARENT
 	cracker_controls.show()
+	create_tween().tween_property(cracker_controls, "modulate", Color.WHITE, 0.25)
 
 
 func _on_planet_selected(planet) -> void:

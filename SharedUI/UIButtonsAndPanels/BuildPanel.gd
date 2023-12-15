@@ -37,8 +37,24 @@ func _on_EB_star_transitioned(_state):
 		StarlifterButton.show()
 
 func openClose():
+	var t = create_tween()
+	if(isOpen):
+		t.tween_property(self, "modulate", Color.TRANSPARENT, 0.25)
+		await t.finished
+		hide()
+	else:
+		modulate = Color.TRANSPARENT
+		show()
+		t.tween_property(self, "modulate", Color.WHITE, 0.25)
+		await t.finished
+
+	isOpen = !isOpen
+
+
+func openCloseNoTransition():
 	if(isOpen):
 		hide()
 	else:
 		show()
+
 	isOpen = !isOpen
