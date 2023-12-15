@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://c3kplm0etxp0p"]
+[gd_scene load_steps=7 format=3 uid="uid://c3kplm0etxp0p"]
 
 [ext_resource type="Script" path="res://SharedUI/UIButtonsAndPanels/BuildingButton.gd" id="1_0x1v2"]
 [ext_resource type="Texture2D" uid="uid://12c7cu74lhqq" path="res://Assets/Placeholder 50x50.png" id="2_mfgu6"]
 [ext_resource type="Texture2D" uid="uid://4o2x723fimq1" path="res://Assets/icons/IronIcon.png" id="3_ttqgi"]
 [ext_resource type="Texture2D" uid="uid://b3di2of4v8no4" path="res://Assets/icons/PreciousMetalIcon.png" id="4_tab0w"]
 [ext_resource type="Texture2D" uid="uid://tdgybvpdlhda" path="res://Assets/icons/AntiMatterIcon.png" id="5_hnaln"]
+[ext_resource type="Texture2D" uid="uid://bwwgp4askqbv" path="res://Assets/icons/HydrogenIcon.png" id="6_40ycp"]
 
 [node name="BuildingButton" type="Button"]
 custom_minimum_size = Vector2(350, 100)
@@ -102,6 +103,20 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 10
 alignment = 1
+
+[node name="Hydro" type="HBoxContainer" parent="HBox/Operationals"]
+visible = false
+layout_mode = 2
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="HBox/Operationals/Hydro"]
+layout_mode = 2
+texture = ExtResource("6_40ycp")
+stretch_mode = 2
+
+[node name="Hydro" type="Label" parent="HBox/Operationals/Hydro"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
 
 [node name="Power" type="HBoxContainer" parent="HBox/Operationals"]
 visible = false

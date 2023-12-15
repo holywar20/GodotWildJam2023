@@ -9,6 +9,8 @@ extends Button
 @onready var baseContainer = $HBox/HBox/VBox/HBoxContainer/Base
 @onready var precContainer = $HBox/HBox/VBox/HBoxContainer/Prec
 @onready var antimatterContainer = $HBox/HBox/VBox/HBoxContainer/Antimatter
+
+@onready var opHydroContainer = $HBox/Operationals/Hydro
 @onready var opPowerContainer = $HBox/Operationals/Power
 @onready var opBaseContainer = $HBox/Operationals/Base
 @onready var opPrecContainer = $HBox/Operationals/Prec
@@ -19,6 +21,7 @@ extends Button
 @onready var precLabel = $HBox/HBox/VBox/HBoxContainer/Prec/PrecCost
 @onready var antimatterLabel = $HBox/HBox/VBox/HBoxContainer/Antimatter/AntimatterCost
 
+@onready var opHydroLabel = $HBox/Operationals/Hydro/Hydro
 @onready var opPowerLabel = $HBox/Operationals/Power/Power
 @onready var opBaseLabel = $HBox/Operationals/Base/Base
 @onready var opPrecLabel = $HBox/Operationals/Prec/Prec
@@ -59,22 +62,26 @@ func _ready():
 	buildCostDict = building.building_costs
 	setupStats(buildCostDict)
 
-func setupStats(buildCostDict):
+func setupStats(buildDict):
 	var opCostDict = building.operational_costs
 	var produceDict = building.produces
-	if buildCostDict.has(Constants.POWER):
+	if buildDict.has(Constants.POWER):
 		powerContainer.show()
-		powerLabel.text = str(buildCostDict[Constants.POWER])
-	if buildCostDict.has(Constants.BASE_METAL):
+		powerLabel.text = str(buildDict[Constants.POWER])
+	if buildDict.has(Constants.BASE_METAL):
 		baseContainer.show()
-		baseLabel.text = str(buildCostDict[Constants.BASE_METAL])
-	if buildCostDict.has(Constants.PRECIOUS_METAL):
+		baseLabel.text = str(buildDict[Constants.BASE_METAL])
+	if buildDict.has(Constants.PRECIOUS_METAL):
 		precContainer.show()
-		precLabel.text = str(buildCostDict[Constants.PRECIOUS_METAL])
-	if buildCostDict.has(Constants.ANTIMATTER):
+		precLabel.text = str(buildDict[Constants.PRECIOUS_METAL])
+	if buildDict.has(Constants.ANTIMATTER):
 		antimatterContainer.show()
-		antimatterLabel.text = str(buildCostDict[Constants.BASE_METAL])
+		antimatterLabel.text = str(buildDict[Constants.BASE_METAL])
 	
+	if opCostDict.has(Constants.HYDROGEN):
+		opHydroContainer.show()
+		opHydroLabel.text = "-" +  str(opCostDict[Constants.HYDROGEN])
+		opHydroLabel.modulate = (Color(1,0.1,0.1,1))
 	if opCostDict.has(Constants.POWER):
 		opPowerContainer.show()
 		opPowerLabel.text = "-" +  str(opCostDict[Constants.POWER])
