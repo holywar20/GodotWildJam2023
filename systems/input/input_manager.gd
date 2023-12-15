@@ -15,6 +15,7 @@ func _process(_delta):
 			EventBus.game_unpaused.emit()
 		else:
 			EventBus.game_paused.emit(true)
+		return
 
 
 func _on_game_paused(_show_pause_screen) -> void:
