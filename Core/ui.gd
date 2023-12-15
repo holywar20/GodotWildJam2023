@@ -53,7 +53,7 @@ func updateChangeColours():
 		powerChange.set_text("+" + powerChange.get_text())
 	if int(powerChange.get_text()) == 0:
 		powerChange.modulate = Color(1,1,1,1)
-		powerChange.set_text("=" + powerChange.get_text())
+		powerChange.set_text("")
 
 	# Hydrogen
 	if int(hydrogenChange.get_text()) < 0:
@@ -63,7 +63,7 @@ func updateChangeColours():
 		hydrogenChange.set_text("+" + hydrogenChange.get_text())
 	else:
 		hydrogenChange.modulate = Color(1,1,1,1)
-		hydrogenChange.set_text("=" + hydrogenChange.get_text())
+		hydrogenChange.set_text("")
 
 	# Base metals
 	if int(baseChange.get_text()) < 0:
@@ -73,7 +73,7 @@ func updateChangeColours():
 		baseChange.set_text("+" + baseChange.get_text())
 	if int(baseChange.get_text()) == 0:
 		baseChange.modulate = Color(1,1,1,1)
-		baseChange.set_text("=" + baseChange.get_text())
+		baseChange.set_text("")
 	
 	# Precious metals
 	if int(preciousChange.get_text()) < 0:
@@ -83,7 +83,7 @@ func updateChangeColours():
 		preciousChange.set_text("+" + preciousChange.get_text())
 	if int(preciousChange.get_text()) == 0:
 		preciousChange.modulate = Color(1,1,1,1)
-		preciousChange.set_text("=" + preciousChange.get_text())
+		preciousChange.set_text("")
 	
 	# Antimatter
 	if int(antimatterChange.get_text()) < 0:
@@ -93,7 +93,7 @@ func updateChangeColours():
 		antimatterChange.set_text("+" + antimatterChange.get_text())
 	if int(antimatterChange.get_text()) == 0:
 		antimatterChange.modulate = Color(1,1,1,1)
-		antimatterChange.set_text("=" + antimatterChange.get_text())
+		antimatterChange.set_text("")
 
 func _on_EB_resources_reported(resourcesDict):
 	var oldPower = powerAmount.get_text()

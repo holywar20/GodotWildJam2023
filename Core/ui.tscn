@@ -102,7 +102,6 @@ text = "Gt"
 
 [node name="Change" type="Label" parent="Hbox/MiddleSection/TopBorder/Panel/ResContainer/Power/PowerContainer/Panel/HBoxContainer"]
 layout_mode = 2
-text = "+0"
 
 [node name="Hydrogen" type="PanelContainer" parent="Hbox/MiddleSection/TopBorder/Panel/ResContainer"]
 layout_mode = 2
@@ -135,7 +134,6 @@ text = "Gt"
 
 [node name="Change" type="Label" parent="Hbox/MiddleSection/TopBorder/Panel/ResContainer/Hydrogen/HydrogenContainer/Panel/Numbers"]
 layout_mode = 2
-text = "+0"
 
 [node name="BaseMetals" type="PanelContainer" parent="Hbox/MiddleSection/TopBorder/Panel/ResContainer"]
 layout_mode = 2
@@ -168,7 +166,6 @@ text = "Gt"
 
 [node name="Change" type="Label" parent="Hbox/MiddleSection/TopBorder/Panel/ResContainer/BaseMetals/BaseContainer/Panel/Numbers"]
 layout_mode = 2
-text = "+0"
 
 [node name="PreciousMetas" type="PanelContainer" parent="Hbox/MiddleSection/TopBorder/Panel/ResContainer"]
 layout_mode = 2
@@ -201,7 +198,6 @@ text = "Gt"
 
 [node name="Change" type="Label" parent="Hbox/MiddleSection/TopBorder/Panel/ResContainer/PreciousMetas/PreciousContainer/Panel/Numbers"]
 layout_mode = 2
-text = "+0"
 
 [node name="Antimatter" type="PanelContainer" parent="Hbox/MiddleSection/TopBorder/Panel/ResContainer"]
 layout_mode = 2
@@ -234,7 +230,6 @@ text = "Gt"
 
 [node name="Change" type="Label" parent="Hbox/MiddleSection/TopBorder/Panel/ResContainer/Antimatter/AntimatterContainer/Panel/Numbers"]
 layout_mode = 2
-text = "+0"
 
 [node name="TimeScale" type="PanelContainer" parent="Hbox/MiddleSection/TopBorder/Panel/ResContainer"]
 layout_mode = 2
