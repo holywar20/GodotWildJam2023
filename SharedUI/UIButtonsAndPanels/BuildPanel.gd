@@ -32,7 +32,7 @@ func _on_EB_star_transitioned(_state):
 		DysonSwarmButton.show()
 		MagneticBoreButton.show()
 	if currentTier == 3:
-		AntimatterFactoryButton.show()
+		#AntimatterFactoryButton.show()
 		StellarAcceleratorButton.show()
 		StarlifterButton.show()
 

@@ -9,15 +9,37 @@ script = ExtResource("1_dy6kn")
 
 [node name="VBox" type="VBoxContainer" parent="."]
 layout_mode = 2
+theme_override_constants/separation = 30
 
 [node name="MenuName" type="Label" parent="VBox"]
 layout_mode = 2
 text = "Magnetic Bore Controls"
 horizontal_alignment = 1
 
-[node name="ScrollContainer" type="ScrollContainer" parent="VBox"]
+[node name="Hbox" type="HBoxContainer" parent="VBox"]
 layout_mode = 2
-horizontal_scroll_mode = 0
+alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VBox/ScrollContainer"]
+[node name="Spacer" type="VBoxContainer" parent="VBox/Hbox"]
 layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SliderCont" type="HBoxContainer" parent="VBox/Hbox"]
+layout_mode = 2
+
+[node name="Slider" type="VSlider" parent="VBox/Hbox/SliderCont"]
+custom_minimum_size = Vector2(0, 400)
+layout_mode = 2
+
+[node name="PercentCont" type="VBoxContainer" parent="VBox/Hbox"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="Percent" type="Label" parent="VBox/Hbox/PercentCont"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "% 0"
+
+[connection signal="value_changed" from="VBox/Hbox/SliderCont/Slider" to="." method="_on_slider_value_changed"]

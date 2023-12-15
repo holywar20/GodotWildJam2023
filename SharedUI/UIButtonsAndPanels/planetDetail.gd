@@ -5,6 +5,7 @@ extends PanelContainer
 @onready var hydro = $VBox/Hydrogen/Amount
 @onready var base = $VBox/Base/Amount
 @onready var prec = $VBox/Precious/Amount
+@onready var desc = $VBox/Desc
 
 var currentPlanet = null
 
@@ -24,7 +25,8 @@ func updateUI(planetRef):
 	var resourceDict = currentPlanet.get_resource_abundance()
 	print(resourceDict)
 	planetName.set_text(planetRef.p_name)
-	planetType.set_text(planetRef.p_descript)
+	planetType.set_text(planetRef.p_class)
+	desc.set_text(planetRef.p_descript)
 	
 	updateNumbers()
 

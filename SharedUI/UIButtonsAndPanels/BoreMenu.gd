@@ -1,7 +1,8 @@
 extends PanelContainer
 
 @onready var menuLabel = $VBox/MenuName
-
+@onready var slider = $VBox/Hbox/SliderCont/Slider
+@onready var percentLabel = $VBox/Hbox/PercentCont/Percent
 
 var isOpen = false
 
@@ -31,3 +32,7 @@ func openCloseNoTransition():
 		show()
 
 	isOpen = !isOpen
+
+
+func _on_slider_value_changed(value):
+	percentLabel.set_text("% " + str(value))

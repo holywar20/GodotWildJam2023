@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://c1dcreph3lax5"]
+[gd_scene load_steps=19 format=3 uid="uid://c1dcreph3lax5"]
 
 [ext_resource type="Script" path="res://Core/ui.gd" id="1_e5olo"]
 [ext_resource type="PackedScene" uid="uid://cqf6e6u6vidip" path="res://SharedUI/UIButtonsAndPanels/UIExpandButton.tscn" id="2_cpkjk"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://qjlfp7nylr7y" path="res://SharedUI/UIButtonsAndPanels/planetDetail.tscn" id="7_s0tdy"]
 [ext_resource type="PackedScene" uid="uid://blsg03ijwetrt" path="res://SharedUI/UIButtonsAndPanels/nav_panel.tscn" id="9_ss6sf"]
 [ext_resource type="PackedScene" uid="uid://cih3s5dfqmx5" path="res://SharedUI/UIButtonsAndPanels/ExitConfirmPopup.tscn" id="10_j0cds"]
+[ext_resource type="PackedScene" uid="uid://3xroj5m8nitt" path="res://SharedUI/FlowDisplay/FlowDisplay.tscn" id="17_10cx6"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_truht"]
 bg_color = Color(0.6, 0.6, 0.6, 0.211765)
@@ -321,7 +322,6 @@ alignment = 2
 layout_mode = 2
 
 [node name="PlanetContainer" parent="Hbox/MiddleSection/CenterContainer/PlanetDetails" instance=ExtResource("7_s0tdy")]
-visible = true
 layout_mode = 2
 size_flags_horizontal = 8
 
@@ -358,6 +358,12 @@ layout_mode = 2
 [node name="Popup" parent="." instance=ExtResource("10_j0cds")]
 position = Vector2i(560, 240)
 visible = false
+
+[node name="Panel" parent="." instance=ExtResource("17_10cx6")]
+offset_left = 582.08
+offset_top = 901.28
+offset_right = 1086.08
+offset_bottom = 925.28
 
 [connection signal="pressed" from="Hbox/LeftBorder/PanelContainer/OpButtonContainer/BuildMenu" to="." method="_on_build_menu_pressed"]
 [connection signal="pressed" from="Hbox/LeftBorder/PanelContainer/OpButtonContainer/Bore" to="." method="_on_bore_pressed"]

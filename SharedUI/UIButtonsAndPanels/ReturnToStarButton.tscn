@@ -1,4 +1,6 @@
-[gd_scene format=3 uid="uid://dm455vsv3u6cm"]
+[gd_scene load_steps=2 format=3 uid="uid://dm455vsv3u6cm"]
+
+[ext_resource type="PackedScene" uid="uid://qxmseuwkokrh" path="res://entities/star/StarScene.tscn" id="1_mtq7m"]
 
 [node name="Star" type="Button"]
 custom_minimum_size = Vector2(290, 60)
@@ -14,3 +16,8 @@ alignment = 1
 layout_mode = 2
 text = "Return to Star"
 horizontal_alignment = 1
+
+[node name="Node2D" parent="HBox" instance=ExtResource("1_mtq7m")]
+position = Vector2(45, 30)
+scale = Vector2(0.1, 0.1)
+star_active = false
