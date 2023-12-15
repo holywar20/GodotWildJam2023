@@ -20,6 +20,26 @@ horizontal_alignment = 1
 layout_mode = 2
 alignment = 1
 
-[node name="VSlider" type="VSlider" parent="VBox/Hbox"]
+[node name="Spacer" type="VBoxContainer" parent="VBox/Hbox"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SliderCont" type="HBoxContainer" parent="VBox/Hbox"]
+layout_mode = 2
+
+[node name="Slider" type="VSlider" parent="VBox/Hbox/SliderCont"]
 custom_minimum_size = Vector2(0, 400)
 layout_mode = 2
+
+[node name="PercentCont" type="VBoxContainer" parent="VBox/Hbox"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="Percent" type="Label" parent="VBox/Hbox/PercentCont"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "% 0"
+
+[connection signal="value_changed" from="VBox/Hbox/SliderCont/Slider" to="." method="_on_slider_value_changed"]

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Core/MainMenu/MainMenu.gd" id="1_a5c8r"]
 [ext_resource type="Shader" path="res://Assets/Star/StellarBackground.gdshader" id="1_sly6g"]
-[ext_resource type="PackedScene" uid="uid://s2euu2wxdg45" path="res://SharedUI/Star.tscn" id="3_u60vk"]
+[ext_resource type="PackedScene" uid="uid://s2euu2wxdg45" path="res://SharedUI/OldStar.tscn" id="3_u60vk"]
 [ext_resource type="PackedScene" uid="uid://ikkofa1dpt0l" path="res://SharedUI/MainMenuButtons/MainMenuButton.tscn" id="4_uph86"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5d5xc"]

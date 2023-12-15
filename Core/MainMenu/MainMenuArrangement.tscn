@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bk5yg6d2m0soy"]
 
-[ext_resource type="PackedScene" uid="uid://s2euu2wxdg45" path="res://SharedUI/Star.tscn" id="1_u8mhw"]
+[ext_resource type="PackedScene" uid="uid://s2euu2wxdg45" path="res://SharedUI/OldStar.tscn" id="1_u8mhw"]
 [ext_resource type="PackedScene" uid="uid://ikkofa1dpt0l" path="res://SharedUI/MainMenuButtons/MainMenuButton.tscn" id="2_ksqah"]
 
 [node name="VBoxContainer" type="VBoxContainer"]
