@@ -69,8 +69,6 @@ var _buildings_under_construction: Array = []
 var _num_dyson_swarms: int = 0:
 	get = get_num_dyson_swarms
 
-var _current_tick: int = 0
-
 
 func get_num_dyson_swarms() -> int:
 	return _num_dyson_swarms
