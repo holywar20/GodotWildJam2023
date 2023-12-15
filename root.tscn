@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://cnn2083d08byi"]
+[gd_scene load_steps=21 format=3 uid="uid://cnn2083d08byi"]
 
 [ext_resource type="Shader" path="res://entities/background/StellarBackground.gdshader" id="1_ece8b"]
 [ext_resource type="PackedScene" uid="uid://c1dcreph3lax5" path="res://Core/ui.tscn" id="1_qq3ke"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://c6t0tdq43a0s3" path="res://messaging/intro_panel.tscn" id="12_c1rvc"]
 [ext_resource type="Resource" uid="uid://un8y85jvdke1" path="res://entities/resources/precious_metal.tres" id="12_l13i1"]
 [ext_resource type="PackedScene" uid="uid://d3kbycc6q0xqa" path="res://messaging/pause_panel.tscn" id="13_36ufa"]
+[ext_resource type="PackedScene" uid="uid://c1o3ao1kkookr" path="res://entities/cloud/gas_cloud.tscn" id="13_41kmm"]
 [ext_resource type="PackedScene" uid="uid://cksacqby33ysk" path="res://messaging/stage_complete_panel.tscn" id="15_2cnmd"]
 [ext_resource type="PackedScene" uid="uid://ccsqcphban41y" path="res://messaging/event_panel.tscn" id="18_1isq2"]
 
@@ -134,6 +135,24 @@ orbit_num = 6
 orbital_speed = 0.05
 p_name = "Entropia"
 p_descript = "Ice Planet"
+
+[node name="Clouds" type="Node2D" parent="SolarSystem"]
+
+[node name="GasCloud" parent="SolarSystem/Clouds" instance=ExtResource("13_41kmm")]
+position = Vector2(-1540, -1734)
+hydrogen_remaining = 17500
+
+[node name="GasCloud2" parent="SolarSystem/Clouds" instance=ExtResource("13_41kmm")]
+position = Vector2(2941, -3076)
+hydrogen_remaining = 22000
+
+[node name="GasCloud3" parent="SolarSystem/Clouds" instance=ExtResource("13_41kmm")]
+position = Vector2(-2423, 5927)
+hydrogen_remaining = 15000
+
+[node name="GasCloud4" parent="SolarSystem/Clouds" instance=ExtResource("13_41kmm")]
+position = Vector2(10057, 3319)
+hydrogen_remaining = 20000
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("2_qfksb")

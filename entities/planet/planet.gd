@@ -46,7 +46,8 @@ var gas_mat : ShaderMaterial
 const RAND_SEED = 11111111
 var _rng = RandomNumberGenerator.new()
 
-var _planet_crackers: Array = []
+var _planet_crackers: Array = []:
+	get = get_planet_crackers
 
 # Mining percentages
 var _hydrogen_percentage: float = 0.33:
@@ -80,6 +81,9 @@ func remove_planet_cracker() -> void:
 
 func has_planet_crackers() -> bool:
 	return _planet_crackers.filter(func (c): return c.is_constructed()).size() > 0
+
+func get_planet_crackers() -> Array:
+	return _planet_crackers
 
 func get_hydrogen_percentage() -> float:
 	return _hydrogen_percentage

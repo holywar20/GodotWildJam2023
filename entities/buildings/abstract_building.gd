@@ -27,6 +27,15 @@ extends Node2D
 # Value: Number of resources per unit time to produce
 @export var produces: Dictionary
 
+var _is_operating: bool = true:
+	get = is_operating
+
+
+# the star scaffold that owns this building, if relevant
+var _star_scaffold: StarScaffold = null:
+	set = set_star_scaffold
+
+
 @onready var building_sprite = $Building
 
 var _build_speed_factor: float = 1.0:
@@ -55,12 +64,20 @@ func _set_nodes() -> void:
 	main_sprite.hide()
 
 
+func set_star_scaffold(value: StarScaffold) -> void:
+	_star_scaffold = value
+
+
 func set_build_speedup_factor(value: float) -> void:
 	_build_speed_factor = value
 
 
 func is_constructed() -> bool:
 	return _is_constructed
+
+
+func is_operating() -> bool:
+	return _is_operating
 
 
 func can_be_built_with(resource_bid: Dictionary) -> bool:
@@ -83,14 +100,37 @@ func _process(delta) -> void:
 			_build_progress = 0.0
 			_is_constructed = true
 			is_active = true
+			post_constructed()
 			signal_constructed()
 
 
 func _on_game_tick():
 	# Report on resource extraction/changes
 	if is_active:
+		# if the player doesn't have enough current resources to run this building,
+		# then skip any extraction
+		_is_operating = _can_operate()
+
+		if not _is_operating:
+			return
+
 		EventBus.resources_extracted.emit(next_extraction())
-		EventBus.operational_cost.emit(get_operational_cost())
+		EventBus.operational_cost_reported.emit(get_operational_cost())
+
+
+func _can_operate() -> bool:
+	if not _star_scaffold:
+		return true
+
+	var player_resources: Dictionary = _star_scaffold.current_resources
+	for resource in operational_costs:
+		if not player_resources.has(resource):
+			return false
+
+		if player_resources[resource] - operational_costs[resource] < 0:
+			return false
+
+	return true
 
 
 func signal_constructed():
@@ -109,6 +149,10 @@ func next_extraction() -> Dictionary:
 
 func get_operational_cost() -> Dictionary:
 	return operational_costs if operational_costs else {}
+
+
+func post_constructed() -> void:
+	pass
 
 
 func _on_tree_exited() -> void:

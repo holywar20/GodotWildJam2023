@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://c1o3ao1kkookr"]
+
+[ext_resource type="Script" path="res://entities/cloud/gas_cloud.gd" id="1_lsqsf"]
+[ext_resource type="Texture2D" uid="uid://d1tyajybnh64l" path="res://Assets/life_bar_fill_white.png" id="2_366cm"]
+
+[node name="GasCloud" type="Node2D"]
+script = ExtResource("1_lsqsf")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(2, 20)
+texture = ExtResource("2_366cm")

@@ -13,7 +13,8 @@ signal destroyed( building )
 signal dyson_construction_started()
 signal dyson_construction_finished()
 signal build_queue(buildings) # Array
-signal operational_cost(resources)
+signal operational_cost_reported(resources)
+signal magnetic_bore_constructed(building)
 
 
 # Resource signals

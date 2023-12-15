@@ -4,6 +4,7 @@ extends Node2D
 
 const MESSAGE_INSUFFICIENT_RESOURCES = "Insufficient resources to build!"
 const MESSAGE_INSUFFICIENT_SPACE = "No more space left for structures!"
+const MESSAGE_INSUFFICIENT_OPERATING_RESOURCES = "One or more structures can't produce due to insufficient resources!"
 
 const construction_sprite = preload("res://Assets/buildings/ConstructionPlaceholder.png")
 
@@ -68,6 +69,8 @@ var _buildings_under_construction: Array = []
 var _num_dyson_swarms: int = 0:
 	get = get_num_dyson_swarms
 
+var _current_tick: int = 0
+
 
 func get_num_dyson_swarms() -> int:
 	return _num_dyson_swarms
@@ -79,6 +82,7 @@ func _ready() -> void:
 	EventBus.constructed.connect(_on_constructed)
 	EventBus.construction_requested.connect(_construct)
 	EventBus.adjust_hydrogen.connect(_on_adjust_hydrogen)
+	EventBus.operational_cost_reported.connect(_on_operational_cost_reported)
 
 	_give_player_resources()
 	
@@ -89,6 +93,7 @@ func _ready() -> void:
 
 func _give_player_resources() -> void:
 	current_resources[Constants.BASE_METAL] = 150
+	current_resources[Constants.POWER] = 1000
 	#current_resources[Constants.HYDROGEN] = 50000
 
 
@@ -126,6 +131,8 @@ func _construct(building_type: String):
 
 		add_child( building_to_construct )
 
+	building_to_construct.set_star_scaffold(self)
+
 	EventBus.construction_started.emit(building_to_construct)
 
 
@@ -153,9 +160,24 @@ func _deduct_from_current_resources(resources_bid: Dictionary) -> void:
 
 func _on_game_tick() -> void:
 	EventBus.resources_reported.emit(current_resources)
-	
+
+	if _inoperable_buildings_exist():
+		EventBus.feedback_message.emit(MESSAGE_INSUFFICIENT_OPERATING_RESOURCES)
+
 	# TODO: Remove after testing.
 	#EventBus.star_hydrogen_updated.emit(current_resources[Constants.HYDROGEN], 1000)
+
+
+func _inoperable_buildings_exist() -> bool:
+	var planets_to_check: Array = get_tree().get_nodes_in_group("PLANET_SCENE").filter(func (p): return p.has_planet_crackers())
+	var structures_to_check: Array = []
+
+	for planet in planets_to_check:
+		structures_to_check.append_array(planet.get_planet_crackers())
+
+	structures_to_check.append_array(_buildings.values())
+
+	return structures_to_check.any(func (b): return b and not b.is_operating())
 
 
 func _on_resources_extracted(new_resources: Dictionary) -> void:
@@ -164,6 +186,10 @@ func _on_resources_extracted(new_resources: Dictionary) -> void:
 
 	if new_resources.has(Constants.HYDROGEN):
 		_send_hydrogen_to_star(new_resources[Constants.HYDROGEN])
+
+
+func _on_operational_cost_reported(resources: Dictionary) -> void:
+	_remove_resources(resources)
 
 
 func _check_tier_threshold() -> void:
@@ -175,6 +201,11 @@ func _check_tier_threshold() -> void:
 func _add_resources(new_resources: Dictionary) -> void:
 	for resource in new_resources:
 		current_resources[resource] += new_resources[resource]
+
+
+func _remove_resources(resources: Dictionary) -> void:
+	for resource in resources:
+		current_resources[resource] = max(current_resources[resource] - resources[resource], 0)
 
 
 func _send_hydrogen_to_star(actual_flow: int) -> void:

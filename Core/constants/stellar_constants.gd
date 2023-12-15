@@ -13,6 +13,8 @@ const TIER_STATES = {
 			'description' : """This dim star is a brown dwarf. It is not a star at all but rather on the boundary between planet and star. While still warm from its formation, it lacks the proper mass to ignite fusion on its own.
 
 	It is up to you to light this star, and bring illumination to a universe that is now dying to the pitiless cruelty of heat death.
+	
+	You will start with some Power and Base Metals to get you going, but use them wisely.
 	""",
 			'gradient' : preload("res://entities/star/gradients/t0.tres")
 		},
