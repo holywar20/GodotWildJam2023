@@ -290,7 +290,7 @@ alignment = 2
 
 [node name="SubMenuContainer" type="VBoxContainer" parent="Hbox/MiddleSection/CenterContainer"]
 layout_mode = 2
-size_flags_horizontal = 0
+size_flags_horizontal = 2
 mouse_filter = 2
 alignment = 2
 
