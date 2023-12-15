@@ -8,6 +8,7 @@ const ZOOM_OUT_FACTOR = Vector2(0.85, 0.85)
 
 
 var _is_mouse_pan: bool = false
+var _is_zoom_enabled: bool = false
 var _current_rel: Vector2
 var _pan_lock: bool = false
 var _movement_vector: Vector2
@@ -46,10 +47,11 @@ func _input(event: InputEvent) -> void:
 		return
 
 	if event is InputEventMouseButton:
-		if event.button_index == MOUSE_BUTTON_WHEEL_UP:
-			zoom *= ZOOM_IN_FACTOR
-		elif event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
-			zoom *= ZOOM_OUT_FACTOR
+		if event.ctrl_pressed:
+			if event.button_index == MOUSE_BUTTON_WHEEL_UP:
+				zoom *= ZOOM_IN_FACTOR
+			elif event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
+				zoom *= ZOOM_OUT_FACTOR
 
 
 func _process( _delta : float ):
