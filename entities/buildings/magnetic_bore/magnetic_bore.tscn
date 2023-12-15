@@ -6,7 +6,7 @@
 [ext_resource type="Resource" uid="uid://un8y85jvdke1" path="res://entities/resources/precious_metal.tres" id="4_2n5es"]
 [ext_resource type="Resource" uid="uid://i07mt6rgiele" path="res://entities/resources/hydrogen.tres" id="5_510g3"]
 [ext_resource type="Texture2D" uid="uid://ca8y4rl40yqgd" path="res://Assets/buildings/ConstructionPlaceholder.png" id="6_njqcc"]
-[ext_resource type="Texture2D" uid="uid://ckm0s8esujj8f" path="res://Assets/buildings/PlacedPlaceholder.png" id="6_tf4p1"]
+[ext_resource type="Texture2D" uid="uid://ds58ckuu4iukk" path="res://Assets/buildings/MagneticBore.png" id="7_rs0vb"]
 
 [node name="MagneticBore" type="Node2D"]
 scale = Vector2(4, 4)
@@ -29,7 +29,7 @@ texture = ExtResource("6_njqcc")
 
 [node name="Building" type="Sprite2D" parent="."]
 visible = false
-texture = ExtResource("6_tf4p1")
+texture = ExtResource("7_rs0vb")
 
 [node name="Button" type="Button" parent="."]
 modulate = Color(1, 1, 1, 0)

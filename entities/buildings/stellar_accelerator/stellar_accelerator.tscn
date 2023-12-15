@@ -6,7 +6,7 @@
 [ext_resource type="Resource" uid="uid://criguf1driv4" path="res://entities/resources/base_metal.tres" id="4_nks8x"]
 [ext_resource type="Resource" uid="uid://un8y85jvdke1" path="res://entities/resources/precious_metal.tres" id="5_k4ioi"]
 [ext_resource type="Texture2D" uid="uid://ca8y4rl40yqgd" path="res://Assets/buildings/ConstructionPlaceholder.png" id="6_4kx8b"]
-[ext_resource type="Texture2D" uid="uid://ckm0s8esujj8f" path="res://Assets/buildings/PlacedPlaceholder.png" id="7_bgtkg"]
+[ext_resource type="Texture2D" uid="uid://c0b3dwfmqaex8" path="res://Assets/buildings/StellarAccelerator.png" id="7_upefi"]
 
 [node name="StellarAccelerator" type="Node2D"]
 scale = Vector2(4, 4)
@@ -27,7 +27,7 @@ ExtResource("5_k4ioi"): 7500
 texture = ExtResource("6_4kx8b")
 
 [node name="Building" type="Sprite2D" parent="."]
-texture = ExtResource("7_bgtkg")
+texture = ExtResource("7_upefi")
 
 [node name="Button" type="Button" parent="."]
 modulate = Color(1, 1, 1, 0)
