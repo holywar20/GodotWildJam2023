@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://c1dcreph3lax5"]
+[gd_scene load_steps=18 format=3 uid="uid://c1dcreph3lax5"]
 
 [ext_resource type="Script" path="res://Core/ui.gd" id="1_e5olo"]
 [ext_resource type="PackedScene" uid="uid://cqf6e6u6vidip" path="res://SharedUI/UIButtonsAndPanels/UIExpandButton.tscn" id="2_cpkjk"]
@@ -19,8 +19,6 @@
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_truht"]
 bg_color = Color(0.6, 0.6, 0.6, 0.211765)
-
-[sub_resource type="Theme" id="Theme_lhrqm"]
 
 [node name="UI" type="CanvasLayer"]
 script = ExtResource("1_e5olo")
@@ -45,18 +43,17 @@ alignment = 1
 
 [node name="BuildMenu" parent="Hbox/LeftBorder/PanelContainer/OpButtonContainer" instance=ExtResource("2_cpkjk")]
 layout_mode = 2
-text = "Build
-Menu"
+text = "Structures"
 
 [node name="Bore" parent="Hbox/LeftBorder/PanelContainer/OpButtonContainer" instance=ExtResource("2_cpkjk")]
 layout_mode = 2
 text = "Bore 
-Control
-Menu"
+Control"
 
 [node name="MiddleSection" type="VBoxContainer" parent="Hbox"]
 custom_minimum_size = Vector2(1720, 0)
 layout_mode = 2
+size_flags_horizontal = 3
 mouse_filter = 2
 theme_override_constants/separation = 0
 alignment = 2
@@ -274,6 +271,17 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0, 0.988235, 0, 1)
 text = "x"
 
+[node name="Spacer" type="Control" parent="Hbox/MiddleSection/TopBorder/Panel/ResContainer"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+
+[node name="Exit" type="Button" parent="Hbox/MiddleSection/TopBorder/Panel/ResContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "X"
+
 [node name="CenterContainer" type="HBoxContainer" parent="Hbox/MiddleSection"]
 layout_mode = 2
 mouse_filter = 2
@@ -348,45 +356,10 @@ size_flags_horizontal = 8
 [node name="NavPanel" parent="Hbox/MiddleSection/CenterContainer/VBoxContainer" instance=ExtResource("9_ss6sf")]
 layout_mode = 2
 
-[node name="BottomBorder" type="VBoxContainer" parent="Hbox/MiddleSection"]
-custom_minimum_size = Vector2(1000, 100)
-layout_mode = 2
-size_flags_vertical = 8
-
-[node name="PanelContainer" type="PanelContainer" parent="Hbox/MiddleSection/BottomBorder"]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Hbox/MiddleSection/BottomBorder/PanelContainer"]
-layout_mode = 2
-
-[node name="RightBorder" type="VBoxContainer" parent="Hbox"]
-custom_minimum_size = Vector2(100, 0)
-layout_mode = 2
-theme = SubResource("Theme_lhrqm")
-
-[node name="PanelContainer" type="PanelContainer" parent="Hbox/RightBorder"]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Hbox/RightBorder/PanelContainer"]
-layout_mode = 2
-
-[node name="Spacer" type="Control" parent="Hbox/RightBorder/PanelContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 25)
-layout_mode = 2
-
-[node name="Exit" type="Button" parent="Hbox/RightBorder/PanelContainer/VBoxContainer"]
-custom_minimum_size = Vector2(50, 50)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-text = "X"
-
 [node name="Popup" parent="." instance=ExtResource("10_j0cds")]
 position = Vector2i(560, 240)
 visible = false
 
 [connection signal="pressed" from="Hbox/LeftBorder/PanelContainer/OpButtonContainer/BuildMenu" to="." method="_on_build_menu_pressed"]
 [connection signal="pressed" from="Hbox/LeftBorder/PanelContainer/OpButtonContainer/Bore" to="." method="_on_bore_pressed"]
-[connection signal="pressed" from="Hbox/RightBorder/PanelContainer/VBoxContainer/Exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="Hbox/MiddleSection/TopBorder/Panel/ResContainer/Exit" to="." method="_on_exit_pressed"]
