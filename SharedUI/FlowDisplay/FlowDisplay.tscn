@@ -52,13 +52,14 @@ text = "++
 horizontal_alignment = 1
 
 [node name="HBox" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 offset_right = 496.0
 offset_bottom = 16.0
 theme_override_constants/separation = 0
 
 [node name="ToLittle" type="ColorRect" parent="HBox"]
-custom_minimum_size = Vector2(100, 0)
+custom_minimum_size = Vector2(125, 0)
 layout_mode = 2
 color = Color(1, 0.278431, 0.278431, 1)
 
@@ -67,6 +68,6 @@ layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="ToMuch" type="ColorRect" parent="HBox"]
-custom_minimum_size = Vector2(100, 0)
+custom_minimum_size = Vector2(125, 0)
 layout_mode = 2
 color = Color(1, 0.278431, 0.278431, 1)
