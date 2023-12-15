@@ -14,8 +14,6 @@ const ORBIT_SIZE = 2000
 @onready var atmosphere : ColorRect = $Atmosphere
 @onready var gas_atmo : ColorRect = $GasAtmo
 
-@onready var enviroment = $WorldEnviroment
-
 var land_mat : ShaderMaterial
 var atmos_mat : ShaderMaterial
 var gas_mat : ShaderMaterial
