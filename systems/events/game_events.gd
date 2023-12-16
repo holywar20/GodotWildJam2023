@@ -32,7 +32,7 @@ func _on_tick() -> void:
 
 func _generate_event() -> void:
 	_current_events.append(EVENTS[randi_range(0, EVENTS.size() - 1)].new())
-	EventBus.event_happened.emit(_current_events.back())
+	EventBus.event_started.emit(_current_events.back())
 
 
 func _process_finished_events() -> void:
@@ -43,4 +43,5 @@ func _process_finished_events() -> void:
 
 	for event in events_to_erase:
 		_current_events.erase(event)
+		EventBus.event_concluded.emit(event)
 		event.free()
