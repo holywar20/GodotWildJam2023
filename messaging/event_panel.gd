@@ -6,7 +6,7 @@ extends Panel
 
 
 func _ready() -> void:
-	EventBus.event_happened.connect(_on_event_happened)
+	EventBus.event_started.connect(_on_event_started)
 
 
 func _gui_input(event):
@@ -17,7 +17,7 @@ func _gui_input(event):
 			get_viewport().set_input_as_handled()
 
 
-func _on_event_happened(event) -> void:
+func _on_event_started(event) -> void:
 	_description.text = event.description
 	EventBus.game_paused.emit(false)
 	show()

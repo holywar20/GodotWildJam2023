@@ -26,6 +26,8 @@ extends CanvasLayer
 @onready var antimatterAmount = $Hbox/MiddleSection/TopBorder/Panel/ResContainer/Antimatter/AntimatterContainer/Panel/Numbers/Amount
 @onready var antimatterChange = $Hbox/MiddleSection/TopBorder/Panel/ResContainer/Antimatter/AntimatterContainer/Panel/Numbers/Change
 
+@onready var currentEventLabel = $Hbox/MiddleSection/TopBorder/Panel/ResContainer/PanelContainer/VBoxContainer/CurrentEventLabel
+
 var feedbackMessage = preload("res://SharedUI/feedback_message_scene.tscn")
 var buildQueueItem = preload("res://SharedUI/BuildQueueItem.tscn")
 var selectedPlanetRef
@@ -42,6 +44,8 @@ func _ready():
 	EventBus.connect("return_to_star_pressed", Callable(self, "_on_EB_return_to_star_pressed"))
 	EventBus.connect("feedback_message", Callable(self, "_on_EB_feedback_message"))
 	EventBus.connect("building_pressed", Callable(self, "_on_EB_building_pressed"))
+	EventBus.connect("event_started", Callable(self, "_on_EB_event_started"))
+	EventBus.connect("event_concluded", Callable(self, "_on_EB_event_concluded"))
 
 	navPanel.updateUI()
 
@@ -189,3 +193,11 @@ func _on_bore_pressed():
 	if (buildMenu.isOpen):
 		buildMenu.openCloseNoTransition()
 	boreMenu.openClose()
+
+
+func _on_EB_event_started(event) -> void:
+	currentEventLabel.text = event.type
+
+
+func _on_EB_event_concluded(_event) -> void:
+	currentEventLabel.text = "NONE"

@@ -29,10 +29,11 @@ signal camera_move_to_planet_finished()
 
 
 # Event/effect signals
-signal event_happened(event)
+signal event_started(event)
+signal event_concluded(event)
 signal adjust_hydrogen(amount) # can be positive or negative amount
 signal adjust_dyson_swarm_output(amount) # can be positive or negative
-signal disable_random_buildings(number)
+signal emp_wave_happened(percent_chance_to_disable)
 
 
 # Star signals

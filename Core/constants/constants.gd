@@ -27,12 +27,12 @@ const ICONS = {
 	"PlanetCracker" : "res://Assets/buildings/PlanetCracker.png",
 	"Gigafactory" : "res://Assets/buildings/Factory.png",
 	"Fusion Reactor" : "res://Assets/buildings/FusionReactor.png" ,
-	"Celestial Extractor" : "res://Assets/Placeholder 50x50.png" ,
-	"Dyson Swarm" : "res://Assets/Placeholder 50x50.png" ,
+	"Celestial Extractor" : "res://Assets/buildings/CelestialExtractor.png" ,
+	"Dyson Swarm" : "res://Assets/buildings/DysonSwarmIcon.png" ,
 	"Magnetic Bore" : "res://Assets/buildings/MagneticBore.png" ,
 	"Antimatter Factory" : "res://Assets/Placeholder 50x50.png" ,
 	"Stellar Accelerator" : "res://Assets/buildings/StellarAccelerator.png" ,
-	"Starlifter" : "res://Assets/Placeholder 50x50.png"
+	"Starlifter" : "res://Assets/buildings/StarLifter.png"
 }
 
 # Resource types

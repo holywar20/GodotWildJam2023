@@ -1,5 +1,9 @@
 extends PanelContainer
 
+
+const MESSAGE_CANNOT_BE_ACTIVATED = "Structure cannot be activated at the moment!"
+
+
 @onready var enableButton = $VBox/HBoxContainer3/Enable
 @onready var disableButton = $VBox/HBoxContainer3/Disable
 
@@ -108,8 +112,7 @@ func _on_remove_pressed():
 
 
 func _on_disable_pressed():
-	buildingInfo.is_active = false
-	buildingInfo.modulate = Color(0.1, 0.1, 0.1, 1.0)
+	buildingInfo.set_is_active(false)
 	if (buildingInfo.is_active):
 		indicator.modulate = Color(0.1,1,0.1,1)
 	if !(buildingInfo.is_active):
@@ -119,8 +122,11 @@ func _on_disable_pressed():
 
 
 func _on_enable_pressed():
-	buildingInfo.is_active = true
-	buildingInfo.modulate = Color.WHITE
+	if not buildingInfo.can_be_activated():
+		EventBus.feedback_message.emit(MESSAGE_CANNOT_BE_ACTIVATED)
+		return
+		
+	buildingInfo.set_is_active(true)
 	if (buildingInfo.is_active):
 		indicator.modulate = Color(0.1,1,0.1,1)
 	if !(buildingInfo.is_active):

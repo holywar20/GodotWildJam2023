@@ -72,6 +72,7 @@ var _buildings: Dictionary = {
 }
 
 var _buildings_under_construction: Array = []
+var _buildings_disabled_by_event: Array = []
 
 var _num_dyson_swarms: int = 0:
 	get = get_num_dyson_swarms
@@ -90,6 +91,8 @@ func _ready() -> void:
 	EventBus.adjust_hydrogen.connect(_on_adjust_hydrogen)
 	EventBus.operational_cost_reported.connect(_on_operational_cost_reported)
 	EventBus.bore_control_updated.connect(_on_bore_control_updated)
+	EventBus.emp_wave_happened.connect(_on_emp_wave_happened)
+	EventBus.event_concluded.connect(_on_event_concluded)
 
 
 	EventBus.star_transitioned.connect( _on_star_transitioned )
@@ -303,6 +306,23 @@ func _on_adjust_hydrogen(amount: int) -> void:
 
 	if current_resources[Constants.HYDROGEN] < 0:
 		current_resources[Constants.HYDROGEN] = 0
+
+
+func _on_emp_wave_happened(percent_chance_to_disable) -> void:
+	var current_buildings: Array = _buildings.values().filter(func (b): return b != null)
+
+	for building in current_buildings:
+		if randf() > percent_chance_to_disable:
+			building.set_is_active(false)
+			building.set_can_be_activated(false)
+
+
+func _on_event_concluded(event) -> void:
+	if event.type == "EMP Wave":
+		var currently_affected_buildings: Array = _buildings.values().filter(func (b): return b != null and not b.can_be_activated())
+
+		for building in currently_affected_buildings:
+			building.set_can_be_activated(true)
 
 # On Star transition we may want to change some visual effects
 func _on_star_transitioned( tier_state ):
