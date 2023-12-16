@@ -19,7 +19,7 @@ signal operational_cost_reported(resources)
 # Resource signals
 signal resources_extracted(resources) # Dictionary keyed by resource with amounts as values
 signal gas_cloud_hovering(gas_cloud)
-signal gas_cloud_stop_hovering()
+signal gas_cloud_stop_hovering(gas_cloud)
 
 
 # Planet signals

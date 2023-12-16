@@ -1,5 +1,5 @@
 class_name GasCloud
-extends Node2D
+extends Control
 
 
 @export var hydrogen_remaining: int = 25000

@@ -186,25 +186,37 @@ p_class = "Ice Planet"
 [node name="Clouds" type="Node2D" parent="SolarSystem"]
 
 [node name="GasCloud" parent="SolarSystem/Clouds" instance=ExtResource("13_41kmm")]
-position = Vector2(5388, -2608)
+offset_left = 5388.0
+offset_top = -2608.0
+offset_right = 5388.0
+offset_bottom = -2608.0
 rotation = 0.66148
 scale = Vector2(5, 5)
 hydrogen_remaining = 17500
 
 [node name="GasCloud2" parent="SolarSystem/Clouds" instance=ExtResource("13_41kmm")]
-position = Vector2(13858, -4456)
+offset_left = 13858.0
+offset_top = -4456.0
+offset_right = 13858.0
+offset_bottom = -4456.0
 rotation = 2.44346
 scale = Vector2(10, 10)
 hydrogen_remaining = 22000
 
 [node name="GasCloud3" parent="SolarSystem/Clouds" instance=ExtResource("13_41kmm")]
-position = Vector2(1073, 2944)
+offset_left = 1073.0
+offset_top = 2944.0
+offset_right = 1073.0
+offset_bottom = 2944.0
 rotation = 0.349066
 scale = Vector2(3, 3)
 hydrogen_remaining = 10000
 
 [node name="GasCloud4" parent="SolarSystem/Clouds" instance=ExtResource("13_41kmm")]
-position = Vector2(9360, 2652)
+offset_left = 9360.0
+offset_top = 2652.0
+offset_right = 9360.0
+offset_bottom = 2652.0
 scale = Vector2(7, 5)
 hydrogen_remaining = 20000
 

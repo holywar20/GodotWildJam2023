@@ -30,6 +30,7 @@ extends CanvasLayer
 
 var feedbackMessage = preload("res://SharedUI/feedback_message_scene.tscn")
 var buildQueueItem = preload("res://SharedUI/BuildQueueItem.tscn")
+var gasCloudInfo = preload("res://SharedUI/gasCloudPopUp.tscn")
 var selectedPlanetRef
 var lastSelectedBuilding
 
@@ -46,6 +47,7 @@ func _ready():
 	EventBus.connect("building_pressed", Callable(self, "_on_EB_building_pressed"))
 	EventBus.connect("event_started", Callable(self, "_on_EB_event_started"))
 	EventBus.connect("event_concluded", Callable(self, "_on_EB_event_concluded"))
+	EventBus.connect("gas_cloud_hovering", Callable(self, "_on_EB_gas_cloud_hovering"))
 
 	navPanel.updateUI()
 
@@ -177,6 +179,12 @@ func _on_EB_feedback_message(text):
 	var mousePos = get_viewport().get_mouse_position()
 	add_child(newMessage)
 	newMessage.beginMessage(text, mousePos)
+
+func _on_EB_gas_cloud_hovering(gas_cloud):
+	var newMessage = gasCloudInfo.instantiate()
+	var mousePos = get_viewport().get_mouse_position()
+	add_child(newMessage)
+	newMessage.setupScene(gas_cloud, mousePos)
 
 func _on_build_menu_pressed():
 	if (boreMenu.isOpen):
