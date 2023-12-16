@@ -3,11 +3,11 @@ extends CanvasLayer
 # Buttons
 @onready var buildMenu = $Hbox/MiddleSection/CenterContainer/SubMenuContainer/BuildMenu
 @onready var boreMenu = $Hbox/MiddleSection/CenterContainer/SubMenuContainer/BoreMenu
-@onready var boreMenuButton = $Hbox/LeftBorder/PanelContainer/OpButtonContainer/Bore
+@onready var boreMenuButton = $OpButtonContainer/Bore
 
 # Panels
 @onready var navPanel = $Hbox/MiddleSection/CenterContainer/VBoxContainer/NavPanel
-@onready var buildQueue = $Hbox/MiddleSection/CenterContainer/VBoxContainer/BuildPanel/ScrollContainer/BuildQueue
+@onready var buildQueue = $Hbox/MiddleSection/CenterContainer/VBoxContainer/BuildPanel/VBoxContainer/ScrollContainer/BuildQueue
 @onready var planetDetailContainer = $Hbox/MiddleSection/CenterContainer/PlanetDetails
 @onready var planetDetailPanel = $Hbox/MiddleSection/CenterContainer/PlanetDetails/PlanetContainer
 @onready var planetCrackerPanel = $Hbox/MiddleSection/CenterContainer/PlanetDetails/CrackerMenu
@@ -137,8 +137,8 @@ func _on_EB_construction_started(building):
 	newBuildItem.setName(building.type)
 
 
-func _on_EB_constructed(building) -> void:
-	var queue_item_to_remove = buildQueue.get_children().filter(func (c): return c.building == building)
+func _on_EB_constructed(building) -> void:	
+	var queue_item_to_remove = buildQueue.get_children().filter( func (c): return c.building == building )
 
 	if queue_item_to_remove:
 		queue_item_to_remove[0].removeSelf()

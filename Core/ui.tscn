@@ -1,64 +1,75 @@
-[gd_scene load_steps=20 format=3 uid="uid://c1dcreph3lax5"]
+[gd_scene load_steps=26 format=3 uid="uid://c1dcreph3lax5"]
 
 [ext_resource type="Script" path="res://Core/ui.gd" id="1_e5olo"]
 [ext_resource type="PackedScene" uid="uid://cqf6e6u6vidip" path="res://SharedUI/UIButtonsAndPanels/UIExpandButton.tscn" id="2_cpkjk"]
+[ext_resource type="Theme" uid="uid://b78p2h4fvydr7" path="res://StarlifterBaseTheme.tres" id="2_xhv7a"]
 [ext_resource type="Texture2D" uid="uid://cwneqp5nheh1j" path="res://Assets/icons/PowerIcon.png" id="3_fr0sl"]
+[ext_resource type="StyleBox" uid="uid://cseq48wr1gglf" path="res://StylesAndLabels/Inner-Panel-Resources-RBorderOnly.tres" id="4_avsfd"]
 [ext_resource type="Texture2D" uid="uid://bwwgp4askqbv" path="res://Assets/icons/HydrogenIcon.png" id="4_biuj7"]
 [ext_resource type="Script" path="res://SharedUI/timescale_control.gd" id="4_wfklm"]
 [ext_resource type="Texture2D" uid="uid://4o2x723fimq1" path="res://Assets/icons/IronIcon.png" id="4_xmkav"]
 [ext_resource type="Texture2D" uid="uid://b3di2of4v8no4" path="res://Assets/icons/PreciousMetalIcon.png" id="5_7ms3v"]
 [ext_resource type="PackedScene" uid="uid://dih21h34x7by6" path="res://SharedUI/UIButtonsAndPanels/BuildPanel.tscn" id="5_r6hw1"]
+[ext_resource type="StyleBox" uid="uid://c5yflwtlmlymp" path="res://StylesAndLabels/Inner-Panel-Resources-NoBorder.tres" id="5_y55kk"]
 [ext_resource type="Texture2D" uid="uid://tdgybvpdlhda" path="res://Assets/icons/AntiMatterIcon.png" id="6_8fqn7"]
 [ext_resource type="PackedScene" uid="uid://bi6bvo3nmefgu" path="res://SharedUI/current_state_control.tscn" id="6_c83tx"]
+[ext_resource type="StyleBox" uid="uid://b6vq8kh3doml0" path="res://StylesAndLabels/Inner-Panel-Resources.tres" id="6_esped"]
 [ext_resource type="PackedScene" uid="uid://dvknl67r1rgib" path="res://SharedUI/UIButtonsAndPanels/BoreMenu.tscn" id="6_kcpw5"]
+[ext_resource type="LabelSettings" uid="uid://d01mbnxd6d3q1" path="res://StylesAndLabels/3rdRead-Resource-Val.tres" id="6_kpv7q"]
 [ext_resource type="PackedScene" uid="uid://dk5m622k28ce6" path="res://SharedUI/UIButtonsAndPanels/building_info.tscn" id="7_gvmy2"]
 [ext_resource type="PackedScene" uid="uid://8mk37v21ofpx" path="res://SharedUI/UIButtonsAndPanels/CrackerMenu.tscn" id="7_mqhwr"]
 [ext_resource type="PackedScene" uid="uid://qjlfp7nylr7y" path="res://SharedUI/UIButtonsAndPanels/planetDetail.tscn" id="7_s0tdy"]
 [ext_resource type="Texture2D" uid="uid://djbjlfwybsh7f" path="res://Assets/icons/TimeIcon.png" id="9_isvs8"]
 [ext_resource type="PackedScene" uid="uid://blsg03ijwetrt" path="res://SharedUI/UIButtonsAndPanels/nav_panel.tscn" id="9_ss6sf"]
 [ext_resource type="PackedScene" uid="uid://cih3s5dfqmx5" path="res://SharedUI/UIButtonsAndPanels/ExitConfirmPopup.tscn" id="10_j0cds"]
+[ext_resource type="LabelSettings" uid="uid://cvlyjmf5fwwj0" path="res://StylesAndLabels/3rdRead-Subtitle.tres" id="14_r5vns"]
 [ext_resource type="PackedScene" uid="uid://3xroj5m8nitt" path="res://SharedUI/FlowDisplay/FlowDisplay.tscn" id="17_10cx6"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_truht"]
-bg_color = Color(0.6, 0.6, 0.6, 0.211765)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ao2t6"]
+content_margin_bottom = 0.0
+bg_color = Color(0.243137, 0.12549, 0.490196, 1)
+border_width_left = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.105882, 0.8, 0.8, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+corner_detail = 1
 
 [node name="UI" type="CanvasLayer"]
 script = ExtResource("1_e5olo")
 
-[node name="Hbox" type="HBoxContainer" parent="."]
-offset_right = 1920.0
-offset_bottom = 1080.0
-mouse_filter = 2
-theme_override_constants/separation = 0
-
-[node name="LeftBorder" type="VBoxContainer" parent="Hbox"]
-layout_mode = 2
+[node name="OpButtonContainer" type="HBoxContainer" parent="."]
+offset_left = 432.0
+offset_top = 976.0
+offset_right = 636.0
+offset_bottom = 1076.0
 alignment = 1
 
-[node name="PanelContainer" type="PanelContainer" parent="Hbox/LeftBorder"]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="OpButtonContainer" type="VBoxContainer" parent="Hbox/LeftBorder/PanelContainer"]
-layout_mode = 2
-alignment = 1
-
-[node name="BuildMenu" parent="Hbox/LeftBorder/PanelContainer/OpButtonContainer" instance=ExtResource("2_cpkjk")]
+[node name="BuildMenu" parent="OpButtonContainer" instance=ExtResource("2_cpkjk")]
 layout_mode = 2
 text = "Structures"
 
-[node name="Bore" parent="Hbox/LeftBorder/PanelContainer/OpButtonContainer" instance=ExtResource("2_cpkjk")]
-visible = false
+[node name="Bore" parent="OpButtonContainer" instance=ExtResource("2_cpkjk")]
 layout_mode = 2
 text = "Bore 
 Control"
+
+[node name="Hbox" type="HBoxContainer" parent="."]
+offset_right = 1912.0
+offset_bottom = 1080.0
+mouse_filter = 2
+theme = ExtResource("2_xhv7a")
+theme_override_constants/separation = 0
 
 [node name="MiddleSection" type="VBoxContainer" parent="Hbox"]
 custom_minimum_size = Vector2(1720, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 2
-theme_override_constants/separation = 0
+theme_override_constants/separation = 8
 alignment = 2
 
 [node name="TopBorder" type="HBoxContainer" parent="Hbox/MiddleSection"]
@@ -72,13 +83,21 @@ size_flags_horizontal = 3
 
 [node name="ResContainer" type="HBoxContainer" parent="Hbox/MiddleSection/TopBorder/Panel"]
 layout_mode = 2
+theme_override_constants/separation = -4
+alignment = 2
+
+[node name="CurrentStateControl" parent="Hbox/MiddleSection/TopBorder/Panel/ResContainer" instance=ExtResource("6_c83tx")]
+layout_mode = 2
+size_flags_horizontal = 3
 
 [node name="Power" type="PanelContainer" parent="Hbox/MiddleSection/TopBorder/Panel/ResContainer"]
 layout_mode = 2
+theme_override_styles/panel = ExtResource("4_avsfd")
 
 [node name="PowerContainer" type="VBoxContainer" parent="Hbox/MiddleSection/TopBorder/Panel/ResContainer/Power"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
+theme_override_constants/separation = 10
 alignment = 2
 
 [node name="PowerIcon" type="TextureRect" parent="Hbox/MiddleSection/TopBorder/Panel/ResContainer/Power/PowerContainer"]
@@ -89,6 +108,7 @@ stretch_mode = 5
 
 [node name="Panel" type="PanelContainer" parent="Hbox/MiddleSection/TopBorder/Panel/ResContainer/Power/PowerContainer"]
 layout_mode = 2
+theme_override_styles/panel = ExtResource("6_esped")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Hbox/MiddleSection/TopBorder/Panel/ResContainer/Power/PowerContainer/Panel"]
 layout_mode = 2
@@ -98,6 +118,7 @@ alignment = 1
 layout_mode = 2
 text = "0
 "
+label_settings = ExtResource("6_kpv7q")
 
 [node name="Unit" type="Label" parent="Hbox/MiddleSection/TopBorder/Panel/ResContainer/Power/PowerContainer/Panel/HBoxContainer"]
 layout_mode = 2
@@ -105,13 +126,16 @@ text = "TW"
 
 [node name="Change" type="Label" parent="Hbox/MiddleSection/TopBorder/Panel/ResContainer/Power/PowerContainer/Panel/HBoxContainer"]
 layout_mode = 2
+text = "-xx"
 
 [node name="Hydrogen" type="PanelContainer" parent="Hbox/MiddleSection/TopBorder/Panel/ResContainer"]
 layout_mode = 2
+theme_override_styles/panel = ExtResource("4_avsfd")
 
 [node name="HydrogenContainer" type="VBoxContainer" parent="Hbox/MiddleSection/TopBorder/Panel/ResContainer/Hydrogen"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
+theme_override_constants/separation = 10
 alignment = 2
 
 [node name="HydrogenIcon" type="TextureRect" parent="Hbox/MiddleSection/TopBorder/Panel/ResContainer/Hydrogen/HydrogenContainer"]
@@ -122,6 +146,7 @@ stretch_mode = 5
 
 [node name="Panel" type="PanelContainer" parent="Hbox/MiddleSection/TopBorder/Panel/ResContainer/Hydrogen/HydrogenContainer"]
 layout_mode = 2
+theme_override_styles/panel = ExtResource("6_esped")
 
 [node name="Numbers" type="HBoxContainer" parent="Hbox/MiddleSection/TopBorder/Panel/ResContainer/Hydrogen/HydrogenContainer/Panel"]
 layout_mode = 2
@@ -140,10 +165,12 @@ layout_mode = 2
 
 [node name="BaseMetals" type="PanelContainer" parent="Hbox/MiddleSection/TopBorder/Panel/ResContainer"]
 layout_mode = 2
+theme_override_styles/panel = ExtResource("4_avsfd")
 
 [node name="BaseContainer" type="VBoxContainer" parent="Hbox/MiddleSection/TopBorder/Panel/ResContainer/BaseMetals"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
+theme_override_constants/separation = 10
 alignment = 2
 
 [node name="BaseIcon" type="TextureRect" parent="Hbox/MiddleSection/TopBorder/Panel/ResContainer/BaseMetals/BaseContainer"]
@@ -154,6 +181,7 @@ stretch_mode = 5
 
 [node name="Panel" type="PanelContainer" parent="Hbox/MiddleSection/TopBorder/Panel/ResContainer/BaseMetals/BaseContainer"]
 layout_mode = 2
+theme_override_styles/panel = ExtResource("6_esped")
 
 [node name="Numbers" type="HBoxContainer" parent="Hbox/MiddleSection/TopBorder/Panel/ResContainer/BaseMetals/BaseContainer/Panel"]
 layout_mode = 2
@@ -172,10 +200,12 @@ layout_mode = 2
 
 [node name="PreciousMetas" type="PanelContainer" parent="Hbox/MiddleSection/TopBorder/Panel/ResContainer"]
 layout_mode = 2
+theme_override_styles/panel = ExtResource("4_avsfd")
 
 [node name="PreciousContainer" type="VBoxContainer" parent="Hbox/MiddleSection/TopBorder/Panel/ResContainer/PreciousMetas"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
+theme_override_constants/separation = 10
 alignment = 2
 
 [node name="PreciousIcon" type="TextureRect" parent="Hbox/MiddleSection/TopBorder/Panel/ResContainer/PreciousMetas/PreciousContainer"]
@@ -186,6 +216,7 @@ stretch_mode = 5
 
 [node name="Panel" type="PanelContainer" parent="Hbox/MiddleSection/TopBorder/Panel/ResContainer/PreciousMetas/PreciousContainer"]
 layout_mode = 2
+theme_override_styles/panel = ExtResource("6_esped")
 
 [node name="Numbers" type="HBoxContainer" parent="Hbox/MiddleSection/TopBorder/Panel/ResContainer/PreciousMetas/PreciousContainer/Panel"]
 layout_mode = 2
@@ -204,10 +235,12 @@ layout_mode = 2
 
 [node name="Antimatter" type="PanelContainer" parent="Hbox/MiddleSection/TopBorder/Panel/ResContainer"]
 layout_mode = 2
+theme_override_styles/panel = ExtResource("4_avsfd")
 
 [node name="AntimatterContainer" type="VBoxContainer" parent="Hbox/MiddleSection/TopBorder/Panel/ResContainer/Antimatter"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
+theme_override_constants/separation = 10
 alignment = 2
 
 [node name="AntimatterIcon" type="TextureRect" parent="Hbox/MiddleSection/TopBorder/Panel/ResContainer/Antimatter/AntimatterContainer"]
@@ -218,6 +251,7 @@ stretch_mode = 5
 
 [node name="Panel" type="PanelContainer" parent="Hbox/MiddleSection/TopBorder/Panel/ResContainer/Antimatter/AntimatterContainer"]
 layout_mode = 2
+theme_override_styles/panel = ExtResource("6_esped")
 
 [node name="Numbers" type="HBoxContainer" parent="Hbox/MiddleSection/TopBorder/Panel/ResContainer/Antimatter/AntimatterContainer/Panel"]
 layout_mode = 2
@@ -236,11 +270,13 @@ layout_mode = 2
 
 [node name="TimeScale" type="PanelContainer" parent="Hbox/MiddleSection/TopBorder/Panel/ResContainer"]
 layout_mode = 2
+theme_override_styles/panel = ExtResource("5_y55kk")
 script = ExtResource("4_wfklm")
 
 [node name="TimeScaleContainer" type="VBoxContainer" parent="Hbox/MiddleSection/TopBorder/Panel/ResContainer/TimeScale"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
+theme_override_constants/separation = 10
 alignment = 2
 
 [node name="TimeScaleIcon" type="TextureRect" parent="Hbox/MiddleSection/TopBorder/Panel/ResContainer/TimeScale/TimeScaleContainer"]
@@ -251,6 +287,7 @@ stretch_mode = 5
 
 [node name="Panel" type="PanelContainer" parent="Hbox/MiddleSection/TopBorder/Panel/ResContainer/TimeScale/TimeScaleContainer"]
 layout_mode = 2
+theme_override_styles/panel = ExtResource("6_esped")
 
 [node name="Numbers" type="HBoxContainer" parent="Hbox/MiddleSection/TopBorder/Panel/ResContainer/TimeScale/TimeScaleContainer/Panel"]
 layout_mode = 2
@@ -271,9 +308,14 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0, 0.988235, 0, 1)
 text = "x"
 
+[node name="Control" type="Control" parent="Hbox/MiddleSection/TopBorder/Panel/ResContainer"]
+custom_minimum_size = Vector2(6, 0)
+layout_mode = 2
+
 [node name="PanelContainer" type="PanelContainer" parent="Hbox/MiddleSection/TopBorder/Panel/ResContainer"]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ao2t6")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Hbox/MiddleSection/TopBorder/Panel/ResContainer/PanelContainer"]
 layout_mode = 2
@@ -281,7 +323,11 @@ layout_mode = 2
 [node name="Label" type="Label" parent="Hbox/MiddleSection/TopBorder/Panel/ResContainer/PanelContainer/VBoxContainer"]
 layout_mode = 2
 text = "Current Events"
+label_settings = ExtResource("14_r5vns")
 horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="Hbox/MiddleSection/TopBorder/Panel/ResContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
 
 [node name="Control" type="Control" parent="Hbox/MiddleSection/TopBorder/Panel/ResContainer/PanelContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 25)
@@ -292,8 +338,8 @@ layout_mode = 2
 text = "NONE"
 horizontal_alignment = 1
 
-[node name="Spacer" type="Control" parent="Hbox/MiddleSection/TopBorder/Panel/ResContainer"]
-custom_minimum_size = Vector2(220, 0)
+[node name="Control2" type="Control" parent="Hbox/MiddleSection/TopBorder/Panel/ResContainer"]
+custom_minimum_size = Vector2(20, 0)
 layout_mode = 2
 
 [node name="Exit" type="Button" parent="Hbox/MiddleSection/TopBorder/Panel/ResContainer"]
@@ -306,7 +352,7 @@ text = "X"
 [node name="CenterContainer" type="HBoxContainer" parent="Hbox/MiddleSection"]
 layout_mode = 2
 mouse_filter = 2
-theme_override_constants/separation = 0
+theme_override_constants/separation = -10
 alignment = 2
 
 [node name="SubMenuContainer" type="VBoxContainer" parent="Hbox/MiddleSection/CenterContainer"]
@@ -336,8 +382,14 @@ alignment = 2
 visible = false
 layout_mode = 2
 
+[node name="ExpandingSpacer" type="Control" parent="Hbox/MiddleSection/CenterContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
 [node name="PlanetDetails" type="VBoxContainer" parent="Hbox/MiddleSection/CenterContainer"]
 visible = false
+custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 size_flags_horizontal = 10
 mouse_filter = 2
@@ -346,38 +398,70 @@ alignment = 2
 [node name="CrackerMenu" parent="Hbox/MiddleSection/CenterContainer/PlanetDetails" instance=ExtResource("7_mqhwr")]
 layout_mode = 2
 
+[node name="Control" type="Control" parent="Hbox/MiddleSection/CenterContainer/PlanetDetails"]
+custom_minimum_size = Vector2(0, 8)
+layout_mode = 2
+mouse_filter = 2
+
 [node name="PlanetContainer" parent="Hbox/MiddleSection/CenterContainer/PlanetDetails" instance=ExtResource("7_s0tdy")]
+custom_minimum_size = Vector2(300, 436)
 layout_mode = 2
 size_flags_horizontal = 8
+
+[node name="Spacer" type="Control" parent="Hbox/MiddleSection/CenterContainer/PlanetDetails"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Control" type="Control" parent="Hbox/MiddleSection/CenterContainer"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+mouse_filter = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Hbox/MiddleSection/CenterContainer"]
 layout_mode = 2
 size_flags_horizontal = 8
+theme_override_constants/separation = 8
 alignment = 2
 
 [node name="BuildPanel" type="PanelContainer" parent="Hbox/MiddleSection/CenterContainer/VBoxContainer"]
-custom_minimum_size = Vector2(300, 200)
+custom_minimum_size = Vector2(350, 450)
 layout_mode = 2
 size_flags_horizontal = 8
-theme_override_styles/panel = SubResource("StyleBoxFlat_truht")
 
-[node name="ScrollContainer" type="ScrollContainer" parent="Hbox/MiddleSection/CenterContainer/VBoxContainer/BuildPanel"]
-modulate = Color(1, 1, 1, 0.396078)
-self_modulate = Color(1, 1, 1, 0.47451)
+[node name="VBoxContainer" type="VBoxContainer" parent="Hbox/MiddleSection/CenterContainer/VBoxContainer/BuildPanel"]
 layout_mode = 2
+
+[node name="Label" type="Label" parent="Hbox/MiddleSection/CenterContainer/VBoxContainer/BuildPanel/VBoxContainer"]
+layout_mode = 2
+text = "Build Queue"
+label_settings = ExtResource("14_r5vns")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="Hbox/MiddleSection/CenterContainer/VBoxContainer/BuildPanel/VBoxContainer"]
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Hbox/MiddleSection/CenterContainer/VBoxContainer/BuildPanel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
 horizontal_scroll_mode = 0
 
-[node name="BuildQueue" type="VBoxContainer" parent="Hbox/MiddleSection/CenterContainer/VBoxContainer/BuildPanel/ScrollContainer"]
+[node name="BuildQueue" type="VBoxContainer" parent="Hbox/MiddleSection/CenterContainer/VBoxContainer/BuildPanel/VBoxContainer/ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="CurrentStateControl" parent="Hbox/MiddleSection/CenterContainer/VBoxContainer" instance=ExtResource("6_c83tx")]
-custom_minimum_size = Vector2(300, 265)
-layout_mode = 2
-size_flags_horizontal = 8
-
 [node name="NavPanel" parent="Hbox/MiddleSection/CenterContainer/VBoxContainer" instance=ExtResource("9_ss6sf")]
+custom_minimum_size = Vector2(350, 450)
+layout_mode = 2
+
+[node name="Control" type="Control" parent="Hbox/MiddleSection/CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+
+[node name="Spacer" type="Control" parent="Hbox/MiddleSection/CenterContainer"]
+custom_minimum_size = Vector2(10, 0)
 layout_mode = 2
 
 [node name="Popup" parent="." instance=ExtResource("10_j0cds")]
@@ -390,6 +474,6 @@ offset_top = 901.28
 offset_right = 1086.08
 offset_bottom = 925.28
 
-[connection signal="pressed" from="Hbox/LeftBorder/PanelContainer/OpButtonContainer/BuildMenu" to="." method="_on_build_menu_pressed"]
-[connection signal="pressed" from="Hbox/LeftBorder/PanelContainer/OpButtonContainer/Bore" to="." method="_on_bore_pressed"]
+[connection signal="pressed" from="OpButtonContainer/BuildMenu" to="." method="_on_build_menu_pressed"]
+[connection signal="pressed" from="OpButtonContainer/Bore" to="." method="_on_bore_pressed"]
 [connection signal="pressed" from="Hbox/MiddleSection/TopBorder/Panel/ResContainer/Exit" to="." method="_on_exit_pressed"]

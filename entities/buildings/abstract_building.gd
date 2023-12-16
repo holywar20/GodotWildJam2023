@@ -1,7 +1,6 @@
 class_name AbstractBuilding
 extends Node2D
 
-
 @export var type: String = ""
 @export var is_active: bool = false:
 	set = set_is_active
@@ -64,7 +63,6 @@ func _ready() -> void:
 		button.mouse_exited.connect(_on_mouse_exited)
 
 	_set_nodes()
-
 
 func _set_nodes() -> void:
 	main_sprite = $Building

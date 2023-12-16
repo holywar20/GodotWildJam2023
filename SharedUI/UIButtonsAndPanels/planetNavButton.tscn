@@ -6,19 +6,19 @@
 [node name="PlanetNavButton" type="Button"]
 custom_minimum_size = Vector2(290, 60)
 anchors_preset = -1
-anchor_right = 0.351
-anchor_bottom = 0.109
-offset_right = -383.92
-offset_bottom = -57.72
+anchor_right = 0.151
+anchor_bottom = 0.056
+offset_right = 0.0800171
+offset_bottom = -0.480011
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_8huxb")
 
 [node name="HBox" type="HBoxContainer" parent="."]
-custom_minimum_size = Vector2(290, 60)
+custom_minimum_size = Vector2(270, 60)
 layout_mode = 0
-offset_right = 288.0
-offset_bottom = 59.0
+offset_right = 270.0
+offset_bottom = 60.0
 alignment = 1
 
 [node name="PlanetIcon" type="Panel" parent="HBox"]
@@ -36,6 +36,6 @@ is_icon = true
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Planet"
-horizontal_alignment = 1
+horizontal_alignment = 2
 
 [connection signal="pressed" from="." to="." method="_on_pressed"]

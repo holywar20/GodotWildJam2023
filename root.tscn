@@ -51,6 +51,7 @@ script = ExtResource("2_fgrpl")
 [node name="Camera2D" type="Camera2D" parent="."]
 z_index = -10
 position = Vector2(2, 4)
+zoom = Vector2(0.5, 0.5)
 script = ExtResource("2_gcu2o")
 
 [node name="SolarSystem" type="Node2D" parent="."]

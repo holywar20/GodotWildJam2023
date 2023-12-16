@@ -2,4 +2,9 @@
 
 [node name="BuildMenu" type="Button"]
 custom_minimum_size = Vector2(100, 100)
+anchors_preset = -1
+anchor_right = 0.052
+anchor_bottom = 0.093
+offset_right = -99.84
+offset_bottom = -100.44
 text = "B"

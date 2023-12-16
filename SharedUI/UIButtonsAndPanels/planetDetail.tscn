@@ -1,10 +1,11 @@
 [gd_scene load_steps=3 format=3 uid="uid://qjlfp7nylr7y"]
 
+[ext_resource type="Theme" uid="uid://b78p2h4fvydr7" path="res://StarlifterBaseTheme.tres" id="1_jb5jk"]
 [ext_resource type="Script" path="res://SharedUI/UIButtonsAndPanels/planetDetail.gd" id="1_mgeqr"]
-[ext_resource type="Texture2D" uid="uid://12c7cu74lhqq" path="res://Assets/Placeholder 50x50.png" id="2_w71ej"]
 
 [node name="PlanetDetail" type="PanelContainer"]
-custom_minimum_size = Vector2(300, 500)
+custom_minimum_size = Vector2(300, 465)
+theme = ExtResource("1_jb5jk")
 script = ExtResource("1_mgeqr")
 
 [node name="VBox" type="VBoxContainer" parent="."]
@@ -81,11 +82,5 @@ horizontal_alignment = 1
 [node name="Desc" type="RichTextLabel" parent="VBox"]
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
-
-[node name="PlanetPlaceholder" type="TextureRect" parent="VBox"]
-layout_mode = 2
-size_flags_vertical = 3
-texture = ExtResource("2_w71ej")
-stretch_mode = 5
 
 [connection signal="hidden" from="." to="." method="_on_hidden"]

@@ -12,12 +12,18 @@ offset_right = 288.0
 offset_bottom = 57.0
 alignment = 1
 
+[node name="Panel" type="Panel" parent="HBox"]
+clip_contents = true
+custom_minimum_size = Vector2(60, 20)
+layout_mode = 2
+
+[node name="Node2D" parent="HBox/Panel" instance=ExtResource("1_mtq7m")]
+position = Vector2(36, 274)
+star_active = false
+
 [node name="Label" type="Label" parent="HBox"]
 layout_mode = 2
-text = "Return to Star"
-horizontal_alignment = 1
-
-[node name="Node2D" parent="HBox" instance=ExtResource("1_mtq7m")]
-position = Vector2(45, 30)
-scale = Vector2(0.1, 0.1)
-star_active = false
+size_flags_horizontal = 3
+text = "Return to Elysium   "
+horizontal_alignment = 2
+vertical_alignment = 1

@@ -39,18 +39,18 @@ var starbody_gradient
 @export var star_active : bool = true
 
 func _ready() -> void:
-	current_shader_props = StellarConstants.get_tier_state( tier_state )
-	
-	corona_mat = $Corona.get_material()
-	starbody_mat = $StarBody.get_material()
-
-	# Note - we want material/shader/gradient1d/gradienttexture - gradients in shaders are nested inside another resource 
-	starbody_gradient = starbody_mat.get_shader_parameter( "gradient" ).get_gradient()
-	
-	_init_data_write( current_shader_props )
-	_shader_data_write( current_shader_props )
-
 	if( star_active ):
+		current_shader_props = StellarConstants.get_tier_state( tier_state )
+		
+		corona_mat = $Corona.get_material()
+		starbody_mat = $StarBody.get_material()
+
+		# Note - we want material/shader/gradient1d/gradienttexture - gradients in shaders are nested inside another resource 
+		starbody_gradient = starbody_mat.get_shader_parameter( "gradient" ).get_gradient()
+		
+		_init_data_write( current_shader_props )
+		_shader_data_write( current_shader_props )
+
 		EventBus.connect( "resources_reported" , Callable(self, "_on_resources_reported") )
 
 func _on_resources_reported( resources : Dictionary ) -> void:
@@ -73,8 +73,9 @@ func _on_resources_reported( resources : Dictionary ) -> void:
 		current_shader_props = StellarConstants.get_tier_state( tier_state )
 		# And write the data to the shader
 
-		EventBus.emit_signal( "star_transitioned" , tier_state )
-		EventBus.emit_signal( "star_size_changed" , current_shader_props.interpolated_metadata )
+		if( star_active ):
+			EventBus.emit_signal( "star_transitioned" , tier_state )
+			EventBus.emit_signal( "star_size_changed" , current_shader_props.interpolated_metadata )
 
 		_shader_data_write( current_shader_props )
 		return
@@ -94,7 +95,9 @@ func _shader_data_write( data : Dictionary ) -> void:
 	temperature = data.interpolated_metadata.temperature
 	luminosity = data.interpolated_metadata.luminosity
 	mass = data.interpolated_metadata.mass
-	set_scale( Vector2( data.interpolated_metadata.scale , data.interpolated_metadata.scale ) )
+
+	if( star_active ):
+		set_scale( Vector2( data.interpolated_metadata.scale , data.interpolated_metadata.scale ) )
 
 	# Corona and star body
 	for prop in data.corona:

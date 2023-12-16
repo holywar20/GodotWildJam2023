@@ -1,25 +1,42 @@
-[gd_scene load_steps=2 format=3 uid="uid://bi6bvo3nmefgu"]
+[gd_scene load_steps=8 format=3 uid="uid://bi6bvo3nmefgu"]
 
 [ext_resource type="Script" path="res://SharedUI/current_state_control.gd" id="1_wlaij"]
+[ext_resource type="Theme" uid="uid://b78p2h4fvydr7" path="res://StarlifterBaseTheme.tres" id="1_ywwc4"]
+[ext_resource type="LabelSettings" uid="uid://btdtw8so2j1cf" path="res://StylesAndLabels/2ndRead-Standard.tres" id="2_kfdm5"]
+[ext_resource type="LabelSettings" uid="uid://dn4qx2dte6e4m" path="res://StylesAndLabels/3rdRead-DataProp.tres" id="3_fepxf"]
+[ext_resource type="StyleBox" uid="uid://be3c4swq6ntas" path="res://StylesAndLabels/InnerPanel-SingleLine.tres" id="4_h5k3b"]
+[ext_resource type="LabelSettings" uid="uid://6qkwoc7jcy0r" path="res://StylesAndLabels/3rdRead-Data-Value.tres" id="4_xyed3"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_agnfy"]
 
 [node name="CurrentStateControl" type="PanelContainer"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = -1
+anchor_right = 0.158
+anchor_bottom = 0.157
+offset_right = 0.639984
+offset_bottom = 0.439987
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_ywwc4")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_agnfy")
 script = ExtResource("1_wlaij")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 2
+theme_override_constants/separation = 0
 
 [node name="Label" type="Label" parent="VBoxContainer"]
 layout_mode = 2
-text = "Star Information"
+text = "Stellar Data"
+label_settings = ExtResource("2_kfdm5")
 horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer"]
+layout_mode = 2
 
 [node name="TemperatureContainer" type="PanelContainer" parent="VBoxContainer"]
 layout_mode = 2
+theme_override_styles/panel = ExtResource("4_h5k3b")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/TemperatureContainer"]
 layout_mode = 2
@@ -27,18 +44,20 @@ alignment = 1
 
 [node name="Stat" type="Label" parent="VBoxContainer/TemperatureContainer/HBoxContainer"]
 layout_mode = 2
-text = "Temperature:"
+size_flags_horizontal = 3
+text = "  Temperature"
+label_settings = ExtResource("3_fepxf")
 
 [node name="Value" type="Label" parent="VBoxContainer/TemperatureContainer/HBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 3
 text = "0"
-
-[node name="Units" type="Label" parent="VBoxContainer/TemperatureContainer/HBoxContainer"]
-layout_mode = 2
-text = "K"
+label_settings = ExtResource("4_xyed3")
+horizontal_alignment = 2
 
 [node name="LuminosityContainer" type="PanelContainer" parent="VBoxContainer"]
 layout_mode = 2
+theme_override_styles/panel = ExtResource("4_h5k3b")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/LuminosityContainer"]
 layout_mode = 2
@@ -46,18 +65,20 @@ alignment = 1
 
 [node name="Stat" type="Label" parent="VBoxContainer/LuminosityContainer/HBoxContainer"]
 layout_mode = 2
-text = "Luminosity:"
+size_flags_horizontal = 3
+text = "  Luminosity"
+label_settings = ExtResource("3_fepxf")
 
 [node name="Value" type="Label" parent="VBoxContainer/LuminosityContainer/HBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 3
 text = "0"
-
-[node name="Units" type="Label" parent="VBoxContainer/LuminosityContainer/HBoxContainer"]
-layout_mode = 2
-text = "sols"
+label_settings = ExtResource("4_xyed3")
+horizontal_alignment = 2
 
 [node name="MassContainer" type="PanelContainer" parent="VBoxContainer"]
 layout_mode = 2
+theme_override_styles/panel = ExtResource("4_h5k3b")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MassContainer"]
 layout_mode = 2
@@ -65,12 +86,13 @@ alignment = 1
 
 [node name="Stat" type="Label" parent="VBoxContainer/MassContainer/HBoxContainer"]
 layout_mode = 2
-text = "Mass:"
+size_flags_horizontal = 3
+text = "  Mass"
+label_settings = ExtResource("3_fepxf")
 
 [node name="Value" type="Label" parent="VBoxContainer/MassContainer/HBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 3
 text = "0"
-
-[node name="Units" type="Label" parent="VBoxContainer/MassContainer/HBoxContainer"]
-layout_mode = 2
-text = "solar masses"
+label_settings = ExtResource("4_xyed3")
+horizontal_alignment = 2

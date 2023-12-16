@@ -4,23 +4,27 @@
 [ext_resource type="PackedScene" uid="uid://bj7a2tnxouqd7" path="res://SharedUI/UIButtonsAndPanels/planetNavButton.tscn" id="2_aiel2"]
 [ext_resource type="PackedScene" uid="uid://dm455vsv3u6cm" path="res://SharedUI/UIButtonsAndPanels/ReturnToStarButton.tscn" id="2_rabnb"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wxkqd"]
-bg_color = Color(0.6, 0.6, 0.6, 0.152941)
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4s8v2"]
 
 [node name="NavPanel" type="PanelContainer"]
 custom_minimum_size = Vector2(300, 400)
 size_flags_horizontal = 8
 size_flags_vertical = 3
-theme_override_styles/panel = SubResource("StyleBoxFlat_wxkqd")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_4s8v2")
 script = ExtResource("1_x3r0d")
 
 [node name="VBox" type="VBoxContainer" parent="."]
 layout_mode = 2
 
+[node name="Spacer" type="Control" parent="VBox"]
+custom_minimum_size = Vector2(0, 4)
+layout_mode = 2
+
 [node name="Star" parent="VBox" instance=ExtResource("2_rabnb")]
 layout_mode = 2
 
-[node name="Control" type="Control" parent="VBox"]
+[node name="HSeparator" type="HSeparator" parent="VBox"]
+custom_minimum_size = Vector2(0, 4)
 layout_mode = 2
 
 [node name="NavContainer" type="VBoxContainer" parent="VBox"]
