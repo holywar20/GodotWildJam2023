@@ -1,11 +1,19 @@
-[gd_scene load_steps=3 format=3 uid="uid://c1o3ao1kkookr"]
+[gd_scene load_steps=5 format=3 uid="uid://c1o3ao1kkookr"]
 
 [ext_resource type="Script" path="res://entities/cloud/gas_cloud.gd" id="1_lsqsf"]
-[ext_resource type="Texture2D" uid="uid://d1tyajybnh64l" path="res://Assets/life_bar_fill_white.png" id="2_366cm"]
+[ext_resource type="Shader" path="res://entities/cloud/gas_cloud.gdshader" id="1_y55ug"]
+[ext_resource type="Texture2D" uid="uid://bl8t72q80uedt" path="res://entities/cloud/burnmark4.png" id="3_isqh3"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_i8tpb"]
+shader = ExtResource("1_y55ug")
+shader_parameter/color = Vector3(0.4, 0.6, 0.6)
+shader_parameter/octave = 4
+shader_parameter/fogginess = 1.0
+shader_parameter/base_texture = ExtResource("3_isqh3")
 
 [node name="GasCloud" type="Node2D"]
 script = ExtResource("1_lsqsf")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(2, 20)
-texture = ExtResource("2_366cm")
+material = SubResource("ShaderMaterial_i8tpb")
+texture = ExtResource("3_isqh3")

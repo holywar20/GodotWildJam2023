@@ -38,6 +38,7 @@ const BUILD_POS = {
 @export var current_resources: Dictionary = {}
 @export var star: StarScene
 
+@onready var animPlayer : AnimationPlayer = $AnimationPlayer
 
 var _buildings: Dictionary = {
 	Vector2(0,0) : null,
@@ -82,6 +83,11 @@ func _ready() -> void:
 	EventBus.adjust_hydrogen.connect(_on_adjust_hydrogen)
 	EventBus.operational_cost_reported.connect(_on_operational_cost_reported)
 	EventBus.bore_control_updated.connect(_on_bore_control_updated)
+
+
+	EventBus.star_transitioned.connect( _on_star_transitioned )
+
+	animPlayer.play("InnerRingRotation")
 
 	_give_player_resources()
 	
@@ -258,3 +264,19 @@ func _on_adjust_hydrogen(amount: int) -> void:
 
 	if current_resources[Constants.HYDROGEN] < 0:
 		current_resources[Constants.HYDROGEN] = 0
+
+# On Star transition we may want to change some visual effects
+func _on_star_transitioned( tier_state ):
+	var stateSpeed = 0.0
+	
+	match tier_state:
+		Constants.Tiers.TIER_0:
+			stateSpeed = 0.25
+		Constants.Tiers.TIER_1:
+			stateSpeed = 0.5
+		Constants.Tiers.TIER_2:
+			stateSpeed = 0.75
+		Constants.Tiers.TIER_3:
+			stateSpeed = 1.0
+
+	animPlayer.set_speed_scale( stateSpeed )
