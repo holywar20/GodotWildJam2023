@@ -6,10 +6,14 @@ extends PanelContainer
 @onready var base_metals_slider_control = cracker_controls.get_node("BaseMetalsSliderControl")
 @onready var precious_metals_slider_control = cracker_controls.get_node("PreciousMetalsSliderControl")
 
+@onready var baseCost = $VBoxContainer/BuyCracker/Buy/HBoxContainer/Base
+
 
 var _current_planet: Planet = null
 var _planet_view_init_phase: bool = false
 
+var buildingInfoArray = Info.BUILDING_INFO
+var crackerInfo
 
 func _ready():
 	EventBus.constructed.connect(_on_constructed)
@@ -20,6 +24,11 @@ func _ready():
 	hydrogen_slider_control.slider.value_changed.connect(_on_hydrogen_value_changed)
 	base_metals_slider_control.slider.value_changed.connect(_on_base_metals_value_changed)
 	precious_metals_slider_control.slider.value_changed.connect(_on_precious_metals_value_changed)
+	
+	for itemScene in buildingInfoArray:
+		if itemScene.type == Constants.BUILDING_PLANET_CRACKER:
+			crackerInfo = itemScene
+			break
 
 
 # TODO: See if planetRef is necessary; if _current_planet is already set beforehand, then it's safe
@@ -54,6 +63,7 @@ func _on_constructed(building) -> void:
 
 func _on_planet_selected(planet) -> void:
 	_current_planet = planet
+	baseCost.text = str(crackerInfo.building_costs[Constants.BASE_METAL])
 
 
 func _on_construction_started(building) -> void:

@@ -19,7 +19,7 @@ building_costs = {
 ExtResource("3_qnpey"): 100
 }
 produces = {
-ExtResource("4_o0b2t"): 10
+ExtResource("4_o0b2t"): 30
 }
 
 [node name="Building" type="Sprite2D" parent="."]

@@ -96,8 +96,8 @@ ExtResource("11_3sx44"): 500,
 ExtResource("12_l13i1"): 0
 }
 flow_rate_dict = {
-ExtResource("7_xxeen"): 10.0,
-ExtResource("11_3sx44"): 2.0,
+ExtResource("7_xxeen"): 15.0,
+ExtResource("11_3sx44"): 4.0,
 ExtResource("12_l13i1"): 0.0
 }
 pid = "P2"
@@ -134,7 +134,7 @@ ExtResource("11_3sx44"): 0,
 ExtResource("12_l13i1"): 0
 }
 flow_rate_dict = {
-ExtResource("7_xxeen"): 20.0,
+ExtResource("7_xxeen"): 40.0,
 ExtResource("11_3sx44"): 0.0,
 ExtResource("12_l13i1"): 0.0
 }
@@ -153,7 +153,7 @@ ExtResource("11_3sx44"): 0,
 ExtResource("12_l13i1"): 0
 }
 flow_rate_dict = {
-ExtResource("7_xxeen"): 30.0,
+ExtResource("7_xxeen"): 50.0,
 ExtResource("11_3sx44"): 0.0,
 ExtResource("12_l13i1"): 0.0
 }
