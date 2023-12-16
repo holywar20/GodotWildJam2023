@@ -41,6 +41,7 @@ const BUILD_POS = {
 @export var current_resources: Dictionary = {}
 @export var star: StarScene
 
+@onready var animPlayer : AnimationPlayer = $AnimationPlayer
 
 @onready var timer = $Timer
 
@@ -92,6 +93,11 @@ func _ready() -> void:
 	EventBus.bore_control_updated.connect(_on_bore_control_updated)
 	EventBus.emp_wave_happened.connect(_on_emp_wave_happened)
 	EventBus.event_concluded.connect(_on_event_concluded)
+
+
+	EventBus.star_transitioned.connect( _on_star_transitioned )
+
+	animPlayer.play("InnerRingRotation")
 
 	_give_player_resources()
 
@@ -317,3 +323,19 @@ func _on_event_concluded(event) -> void:
 
 		for building in currently_affected_buildings:
 			building.set_can_be_activated(true)
+
+# On Star transition we may want to change some visual effects
+func _on_star_transitioned( tier_state ):
+	var stateSpeed = 0.0
+	
+	match tier_state:
+		Constants.Tiers.TIER_0:
+			stateSpeed = 0.25
+		Constants.Tiers.TIER_1:
+			stateSpeed = 0.5
+		Constants.Tiers.TIER_2:
+			stateSpeed = 0.75
+		Constants.Tiers.TIER_3:
+			stateSpeed = 1.0
+
+	animPlayer.set_speed_scale( stateSpeed )
