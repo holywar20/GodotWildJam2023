@@ -92,6 +92,5 @@ void fragment(){
 	
 	float final = tiledFbm(coord + motion);
 	
-	//COLOR = vec4( color , final * fogginess * t_pixel.a * 2.0 );
 	COLOR = vec4( color , final * fogginess * t_pixel.a * alpha * 2.0 );
 }
