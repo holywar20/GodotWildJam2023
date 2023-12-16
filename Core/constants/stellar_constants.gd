@@ -54,7 +54,7 @@ const TIER_STATES = {
 			
 			It is a small, cool star that is very common in the universe. It is not very luminous, but it is very long lived. It is the most common type of star in the universe.
 			
-			More planets are now available for you to explore.""",
+			More planets are now available for you to explore, but events can now happent that may help or hinder you.""",
 			'gradient' : preload("res://entities/star/gradients/t1.tres")
 		},
 		'interpolated_metadata' : {
