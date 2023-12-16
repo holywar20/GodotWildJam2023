@@ -35,16 +35,10 @@ thickness = 2
 vertical = true
 
 [node name="Panel" type="Panel"]
-custom_minimum_size = Vector2(521, 32)
+custom_minimum_size = Vector2(521, 88)
 anchors_preset = -1
-anchor_left = 0.051
-anchor_top = 0.084
-anchor_right = 0.051
-anchor_bottom = 0.084
-offset_left = -97.92
-offset_top = -90.72
-offset_right = 423.08
-offset_bottom = -2.72
+offset_right = 521.0
+offset_bottom = 88.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_hym1f")
 script = ExtResource("1_g7ssn")
 
@@ -66,25 +60,26 @@ theme_override_styles/panel = ExtResource("2_cfyyf")
 layout_mode = 2
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -21.0
+offset_left = -22.0
 offset_top = 23.0
-offset_right = 24.0
-offset_bottom = 46.0
+offset_right = 23.0
+offset_bottom = 72.0
 text = "00
 Low"
 horizontal_alignment = 1
 
 [node name="VSeparator" type="VSeparator" parent="HBox/ToLittle/ToLittleLabel"]
+z_index = 10
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.422
-anchor_top = -0.783
-anchor_right = 0.422
-anchor_bottom = -0.783
-offset_left = 0.00999832
-offset_top = -3.991
-offset_right = 4.01
-offset_bottom = 20.009
+anchor_left = 0.467
+anchor_top = -0.449
+anchor_right = 0.467
+anchor_bottom = -0.449
+offset_left = -1.015
+offset_top = 0.00100136
+offset_right = 2.985
+offset_bottom = 24.001
 theme_override_styles/separator = SubResource("StyleBoxLine_3bc6u")
 
 [node name="JustRight" type="Panel" parent="HBox"]
@@ -109,7 +104,7 @@ horizontal_alignment = 1
 [node name="VSeparator" type="VSeparator" parent="HBox/JustRight/IdealLabel"]
 layout_mode = 0
 offset_left = 28.0
-offset_top = -9.0
+offset_top = -14.0
 offset_right = 32.0
 offset_bottom = 4.0
 theme_override_styles/separator = SubResource("StyleBoxLine_o2g5q")
@@ -121,10 +116,10 @@ theme_override_styles/panel = ExtResource("3_vjyjh")
 
 [node name="ToMuchLabel" type="Label" parent="HBox/ToMuch"]
 layout_mode = 2
-offset_left = -26.0
+offset_left = -25.0
 offset_top = 23.0
-offset_right = 27.0
-offset_bottom = 46.0
+offset_right = 28.0
+offset_bottom = 72.0
 text = "00
 High
 "
@@ -133,14 +128,14 @@ horizontal_alignment = 1
 [node name="VSeparator" type="VSeparator" parent="HBox/ToMuch/ToMuchLabel"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.422
-anchor_top = -0.783
-anchor_right = 0.422
-anchor_bottom = -0.783
-offset_left = 1.634
-offset_top = -3.991
-offset_right = 5.634
-offset_bottom = 21.009
+anchor_left = 0.509
+anchor_top = -0.449
+anchor_right = 0.509
+anchor_bottom = -0.449
+offset_left = -2.977
+offset_top = 0.00100136
+offset_right = 1.023
+offset_bottom = 25.001
 theme_override_styles/separator = SubResource("StyleBoxLine_3bc6u")
 
 [node name="FlowLabel" type="Label" parent="."]
@@ -157,7 +152,7 @@ layout_mode = 0
 offset_left = 29.0
 offset_top = 21.0
 offset_right = 33.0
-offset_bottom = 37.0
+offset_bottom = 38.0
 theme_override_styles/separator = SubResource("StyleBoxLine_o2g5q")
 
 [node name="Label" type="Label" parent="FlowLabel"]

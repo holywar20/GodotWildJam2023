@@ -469,10 +469,11 @@ position = Vector2i(560, 240)
 visible = false
 
 [node name="Panel" parent="." instance=ExtResource("17_10cx6")]
-offset_left = 582.08
-offset_top = 901.28
-offset_right = 1086.08
-offset_bottom = 925.28
+anchors_preset = 0
+offset_left = 616.0
+offset_top = 872.0
+offset_right = 1137.0
+offset_bottom = 960.0
 
 [connection signal="pressed" from="OpButtonContainer/BuildMenu" to="." method="_on_build_menu_pressed"]
 [connection signal="pressed" from="OpButtonContainer/Bore" to="." method="_on_bore_pressed"]
