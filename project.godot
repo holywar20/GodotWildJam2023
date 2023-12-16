@@ -10,11 +10,13 @@ config_version=5
 
 [application]
 
-config/name="GodotWildJamDec2023"
+config/name="Starlifter"
+config/version="1.0"
 run/main_scene="res://root.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 boot_splash/bg_color=Color(0, 0, 0, 1)
 config/icon="res://icon.svg"
+config/windows_native_icon="res://Assets/buildings/StarLifter.ico"
 
 [autoload]
 
