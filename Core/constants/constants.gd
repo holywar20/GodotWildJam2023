@@ -22,6 +22,16 @@ const BUILDING_ANTIMATTER_FACTORY = "Antimatter Factory"
 const BUILDING_STELLAR_ACCELERATOR = "Stellar Accelerator"
 const BUILDING_STARLIFTER = "Starlifter"
 
+# Building descriptions
+const BUILDING_PLANET_CRACKER_DESCRIPTION = "Harvests available hydrogen, base metals, and precious metals from a planet."
+const BUILDING_GIGAFACTORY_DESCRIPTION = "Speeds up build times of other structures. Effect is cumulative."
+const BUILDING_FUSION_REACTOR_DESCRIPTION = "Produces a small amount of power to drive structures."
+const BUILDING_CELESTIAL_EXTRACTOR_DESCRIPTION = "Pulls heavier elements out of the star for use as resources."
+const BUILDING_DYSON_SWARM_DESCRIPTION = "Extracts a large amount of power to drive structures. Can only build one."
+const BUILDING_MAGNETIC_BORE_DESCRIPTION = "Mines available gas clouds to fuel your star."
+const BUILDING_STELLAR_ACCELERATOR_DESCRIPTION = "Generates antimatter to power other, more complex structures."
+const BUILDING_STARLIFTER_DESCRIPTION = "The pinnacle of technology, allows you to extract the prize of having gestated a successful star: Unobtanium!"
+
 # Building icons
 const ICONS = {
 	"PlanetCracker" : "res://Assets/buildings/PlanetCracker.png",
@@ -42,3 +52,10 @@ const HYDROGEN = preload("res://entities/resources/hydrogen.tres")
 const POWER = preload("res://entities/resources/power.tres")
 const PRECIOUS_METAL = preload("res://entities/resources/precious_metal.tres")
 const UNOBTANIUM = preload("res://entities/resources/unobtanium.tres")
+
+const ANTIMATTER_LABEL = "Antimatter"
+const BASE_METAL_LABEL = "Base Metal"
+const HYDROGEN_LABEL = "Hydrogen"
+const POWER_LABEL = "Power"
+const PRECIOUS_METAL_LABEL = "Precious Metal"
+const UNOBTANIUM_LABEL = "Unobtanium"
