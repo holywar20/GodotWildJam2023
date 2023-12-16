@@ -35,14 +35,6 @@ var buildingInfo
 var buildingRef
 var buildingArray = Info.BUILDING_INFO
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta):
-	pass
 
 func setupScene(building):
 	buildingRef = building
@@ -117,20 +109,40 @@ func _on_remove_pressed():
 
 func _on_disable_pressed():
 	buildingInfo.is_active = false
+	buildingInfo.modulate = Color(0.1, 0.1, 0.1, 1.0)
 	if (buildingInfo.is_active):
 		indicator.modulate = Color(0.1,1,0.1,1)
 	if !(buildingInfo.is_active):
 		indicator.modulate = Color(1,0.1,0.1,1)
 	disableButton.hide()
 	enableButton.show()
-	
 
 
 func _on_enable_pressed():
 	buildingInfo.is_active = true
+	buildingInfo.modulate = Color.WHITE
 	if (buildingInfo.is_active):
 		indicator.modulate = Color(0.1,1,0.1,1)
 	if !(buildingInfo.is_active):
 		indicator.modulate = Color(1,0.1,0.1,1)
 	enableButton.hide()
 	disableButton.show()
+
+
+func _on_close_button_pressed():
+	close()
+
+
+func close():
+	var t = create_tween()
+	t.tween_property(self, "modulate", Color.TRANSPARENT, 0.25)
+	await t.finished
+	hide()
+
+
+func open():
+	var t = create_tween()
+	modulate = Color.TRANSPARENT
+	show()
+	t.tween_property(self, "modulate", Color.WHITE, 0.25)
+	await t.finished

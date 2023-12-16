@@ -143,10 +143,10 @@ func _on_EB_constructed(building) -> void:
 
 func _on_EB_building_pressed(building):
 	if lastSelectedBuilding == building and buildingInfo.is_visible_in_tree():
-		buildingInfo.hide()
+		buildingInfo.close()
 	else:
-		buildingInfo.show()
 		buildingInfo.setupScene(building)
+		buildingInfo.open()
 		lastSelectedBuilding = building
 
 func _on_EB_planet_nav_button_pressed(planetRef):
