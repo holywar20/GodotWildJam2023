@@ -6,6 +6,8 @@ uniform float fogginess = 0.25;
 
 uniform sampler2D base_texture;
 
+uniform float alpha = 1.0;
+
 
 float rand( vec2 coord ){
 	return fract(sin(dot(coord, vec2(12.9898, 78.233))) * 43758.5453);
@@ -90,5 +92,6 @@ void fragment(){
 	
 	float final = tiledFbm(coord + motion);
 	
-	COLOR = vec4( color , final * fogginess * t_pixel.a * 2.0 );
+	//COLOR = vec4( color , final * fogginess * t_pixel.a * 2.0 );
+	COLOR = vec4( color , final * fogginess * t_pixel.a * alpha * 2.0 );
 }

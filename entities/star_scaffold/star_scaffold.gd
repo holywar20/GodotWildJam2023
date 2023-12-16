@@ -72,7 +72,6 @@ var _buildings: Dictionary = {
 }
 
 var _buildings_under_construction: Array = []
-var _buildings_disabled_by_event: Array = []
 
 var _num_dyson_swarms: int = 0:
 	get = get_num_dyson_swarms
@@ -113,7 +112,7 @@ func _give_player_resources() -> void:
 	current_resources[Constants.POWER] = 1000
 
 	# TESTING VALUES
-	#current_resources[Constants.HYDROGEN] = 50000
+	#current_resources[Constants.HYDROGEN] = 5000
 	#current_resources[Constants.POWER] = 10000
 	#current_resources[Constants.BASE_METAL] = 50000
 	#current_resources[Constants.PRECIOUS_METAL] = 50000

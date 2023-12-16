@@ -5,10 +5,12 @@
 [ext_resource type="Texture2D" uid="uid://bl8t72q80uedt" path="res://entities/cloud/burnmark4.png" id="3_isqh3"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_i8tpb"]
+resource_local_to_scene = true
 shader = ExtResource("1_y55ug")
 shader_parameter/color = Vector3(0.4, 0.6, 0.6)
 shader_parameter/octave = 4
 shader_parameter/fogginess = 1.0
+shader_parameter/alpha = 1.0
 shader_parameter/base_texture = ExtResource("3_isqh3")
 
 [node name="GasCloud" type="Node2D"]
