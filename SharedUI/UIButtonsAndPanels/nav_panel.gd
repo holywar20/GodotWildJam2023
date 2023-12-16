@@ -14,9 +14,6 @@ const PLANET_TIER_GROUPS = {
 func _ready():
 	EventBus.star_transitioned.connect(_on_star_transitioned)
 
-	for planet_button in get_tree().get_nodes_in_group("TIER_1_PLANETS"):
-		planet_button.visible = true
-
 
 func updateUI():
 	var planetArray = get_tree().get_nodes_in_group( "PLANET_SCENE" )

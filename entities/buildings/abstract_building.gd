@@ -3,7 +3,9 @@ extends Node2D
 
 
 @export var type: String = ""
-@export var is_active: bool = false
+@export var is_active: bool = false:
+	set = set_is_active
+
 @export var tier: Constants.Tiers = Constants.Tiers.TIER_1
 
 # In seconds
@@ -30,6 +32,10 @@ extends Node2D
 var _is_operating: bool = true:
 	get = is_operating
 
+# used to modify buildings according to events, e.g. an EMP wave
+var _can_be_activated: bool = true:
+	get = can_be_activated,
+	set = set_can_be_activated
 
 # the star scaffold that owns this building, if relevant
 var _star_scaffold: StarScaffold = null:
@@ -64,6 +70,15 @@ func _set_nodes() -> void:
 	main_sprite.hide()
 
 
+func set_is_active(value: bool) -> void:
+	if value:
+		modulate = Color.WHITE
+	else:
+		modulate = Color(0.1, 0.1, 0.1, 1.0)
+
+	is_active = value
+
+
 func set_star_scaffold(value: StarScaffold) -> void:
 	_star_scaffold = value
 
@@ -78,6 +93,14 @@ func is_constructed() -> bool:
 
 func is_operating() -> bool:
 	return _is_operating
+
+
+func can_be_activated() -> bool:
+	return _can_be_activated
+
+
+func set_can_be_activated(value: bool) -> void:
+	_can_be_activated = value
 
 
 func can_be_built_with(resource_bid: Dictionary) -> bool:
@@ -99,7 +122,7 @@ func _process(delta) -> void:
 		if _build_progress >= build_time:
 			_build_progress = 0.0
 			_is_constructed = true
-			is_active = true
+			set_is_active(true)
 			post_constructed()
 			signal_constructed()
 

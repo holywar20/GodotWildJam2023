@@ -3,7 +3,8 @@ extends Node
 
 const EVENTS = [
 	preload("res://entities/events/coronal_mass_ejection_event.gd"),
-	preload("res://entities/events/comet_impact_event.gd")
+	preload("res://entities/events/comet_impact_event.gd"),
+	preload("res://entities/events/emp_wave_event.gd")
 ]
 
 
