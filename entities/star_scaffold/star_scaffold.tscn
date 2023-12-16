@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cboib6gk2ih2"]
+[gd_scene load_steps=13 format=3 uid="uid://cboib6gk2ih2"]
 
 [ext_resource type="Script" path="res://entities/star_scaffold/star_scaffold.gd" id="1_40stf"]
 [ext_resource type="Resource" uid="uid://bawqrs2x5k1ov" path="res://entities/resources/antimatter.tres" id="2_w4o67"]
@@ -8,6 +8,7 @@
 [ext_resource type="Resource" uid="uid://un8y85jvdke1" path="res://entities/resources/precious_metal.tres" id="6_65lbb"]
 [ext_resource type="Resource" uid="uid://bgl3fqja6q28p" path="res://entities/resources/unobtanium.tres" id="7_hiy1i"]
 [ext_resource type="Texture2D" uid="uid://bddb6mnut41gy" path="res://Assets/dysonring/Scaffolding.png" id="8_jokuy"]
+[ext_resource type="Texture2D" uid="uid://b05xid6gg7f3j" path="res://Assets/buildings/Dyson.png" id="8_oa1ih"]
 [ext_resource type="Texture2D" uid="uid://ddli74u2k7gh8" path="res://Assets/dysonring/ScaffoldPlacement.png" id="8_tas55"]
 
 [sub_resource type="Animation" id="Animation_blqma"]
@@ -43,6 +44,27 @@ ExtResource("6_65lbb"): 0,
 ExtResource("7_hiy1i"): 0
 }
 metadata/_edit_lock_ = true
+
+[node name="DysonSwarm" type="CPUParticles2D" parent="."]
+position = Vector2(-4, 0)
+scale = Vector2(4, 4)
+emitting = false
+amount = 1
+lifetime = 600.0
+draw_order = 1
+texture = ExtResource("8_oa1ih")
+emission_shape = 2
+emission_sphere_radius = 128.0
+direction = Vector2(0, 0)
+gravity = Vector2(0, 0)
+angular_velocity_min = -20.0
+angular_velocity_max = 20.0
+orbit_velocity_min = 0.05
+orbit_velocity_max = 0.05
+linear_accel_min = 10.0
+linear_accel_max = 10.0
+angle_min = 20.0
+angle_max = 20.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

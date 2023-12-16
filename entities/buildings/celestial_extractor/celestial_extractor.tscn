@@ -25,7 +25,6 @@ ExtResource("4_evv37"): 20
 
 [node name="Building" type="Sprite2D" parent="."]
 visible = false
-scale = Vector2(4, 4)
 texture = ExtResource("5_chwek")
 
 [node name="Construction" type="Sprite2D" parent="."]

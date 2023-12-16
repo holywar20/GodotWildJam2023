@@ -47,7 +47,7 @@ const BUILD_POS = {
 @onready var animPlayer : AnimationPlayer = $AnimationPlayer
 
 @onready var timer = $Timer
-
+@onready var dSwarm = $DysonSwarm
 
 var _buildings: Dictionary = {
 	Vector2(0,0) : null,
@@ -76,6 +76,8 @@ var _buildings: Dictionary = {
 
 var _buildings_under_construction: Array = []
 
+
+const SWARM_EMISSION_FACTOR = 20
 var _num_dyson_swarms: int = 0:
 	get = get_num_dyson_swarms
 
@@ -185,11 +187,15 @@ func _construct_dyson_swarm() -> void:
 	_deduct_from_current_resources(building_to_construct.building_costs)
 
 	_add_to_build_queue(building_to_construct) # might be moot...
-
+	
+	# Handle Dyson Swarm emission
 	_num_dyson_swarms += 1
+	var swarm_count = _num_dyson_swarms * SWARM_EMISSION_FACTOR
+	dSwarm.set_amount( swarm_count )
+	if( !dSwarm.is_emitting ):
+		dSwarm.set_emitting( true )
 
 	add_child( building_to_construct )
-
 	building_to_construct.set_star_scaffold(self)
 
 	EventBus.construction_started.emit(building_to_construct)
