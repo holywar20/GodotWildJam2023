@@ -35,8 +35,12 @@ const BUILD_POS = {
 	Vector2(3,5) : Vector2(814,113)
 }
 
+
 @export var current_resources: Dictionary = {}
 @export var star: StarScene
+
+
+@onready var timer = $Timer
 
 
 var _buildings: Dictionary = {
@@ -84,7 +88,9 @@ func _ready() -> void:
 	EventBus.bore_control_updated.connect(_on_bore_control_updated)
 
 	_give_player_resources()
-	
+
+	timer.timeout.connect(_on_timer_timeout)
+
 	# TODO: Remove after testing!
 	#EventBus.star_hydrogen_updated.emit(0, 1000)
 	###
@@ -92,7 +98,7 @@ func _ready() -> void:
 
 func _give_player_resources() -> void:
 	current_resources[Constants.BASE_METAL] = 150
-	current_resources[Constants.POWER] = 1000
+	#current_resources[Constants.POWER] = 1000
 
 	# TESTING VALUES
 	#current_resources[Constants.HYDROGEN] = 50000
@@ -171,11 +177,13 @@ func _deduct_from_current_resources(resources_bid: Dictionary) -> void:
 		current_resources[resource] -= resources_bid[resource]
 
 
-func _on_game_tick() -> void:
-	EventBus.resources_reported.emit(current_resources)
-
+func _on_timer_timeout() -> void:
 	if _inoperable_buildings_exist():
 		EventBus.feedback_message.emit(MESSAGE_INSUFFICIENT_OPERATING_RESOURCES)
+
+
+func _on_game_tick() -> void:
+	EventBus.resources_reported.emit(current_resources)
 
 	# TODO: Remove after testing.
 	#EventBus.star_hydrogen_updated.emit(current_resources[Constants.HYDROGEN], 1000)
