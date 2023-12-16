@@ -52,7 +52,9 @@ const TIER_STATES = {
 			'star_class' : "Red Dwarf",
 			'description' : """Thanks to your efforts, the star is now a red dwarf.
 			
-			It is a small, cool star that is very common in the universe. It is not very luminous, but it is very long lived. It is the most common type of star in the universe.""",
+			It is a small, cool star that is very common in the universe. It is not very luminous, but it is very long lived. It is the most common type of star in the universe.
+			
+			More planets are now available for you to explore.""",
 			'gradient' : preload("res://entities/star/gradients/t1.tres")
 		},
 		'interpolated_metadata' : {
@@ -88,6 +90,8 @@ const TIER_STATES = {
 		'metadata' : {
 			'star_class' : "Orange Dwarf",
 			'description' : """From a red dwarf, the star has become a glowing orange dwarf.
+			
+			More planets are also now available for you to explore.
 			
 			Stable and possibly capable of helping support life, this ball of gas continues to devour fuel like a growing adolescent. It isn't an adult yet, but 
 			it will be with your continued help.
