@@ -2,9 +2,11 @@ extends Node2D
 
 
 @onready var _clouds: Node2D = $SolarSystem/Clouds
+@onready var _ui = $UI
 
 
 func _ready() -> void:
+	#_ui.hide()
 	#get_tree().paused = true
 	EventBus.connect("planet_nav_button_pressed", Callable(self, "_on_EB_planet_nav_button_pressed"))
 	EventBus.connect("return_to_star_pressed", Callable(self, "_on_EB_return_to_star_pressed"))
