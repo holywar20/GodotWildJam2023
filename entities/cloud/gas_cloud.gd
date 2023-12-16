@@ -13,8 +13,6 @@ var _total_hydrogen: int
 
 
 func _ready() -> void:
-	connect("mouse_entered", Callable(self, "_on_mouse_entered"))
-	connect("mouse_exited", Callable(self, "_on_mouse_exited"))
 	_total_hydrogen = hydrogen_remaining
 
 
@@ -43,9 +41,10 @@ func has_hydrogen_remaining() -> bool:
 func _dissipate(percentage_left: float) -> void:
 	sprite.material.set("shader_parameter/alpha", percentage_left)
 
+
 func _on_mouse_entered():
-	EventBus.emit_signal("gas_cloud_hovering", self)
+	EventBus.gas_cloud_hovering.emit(self)
 
 
 func _on_mouse_exited():
-	EventBus.emit_signal("gas_cloud_stop_hovering", self)
+	EventBus.gas_cloud_stop_hovering.emit(self)

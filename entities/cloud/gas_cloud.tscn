@@ -19,3 +19,14 @@ script = ExtResource("1_lsqsf")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_i8tpb")
 texture = ExtResource("3_isqh3")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -220.0
+offset_top = -207.0
+offset_right = 225.0
+offset_bottom = 229.0
+
+[connection signal="mouse_entered" from="Control" to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Control" to="." method="_on_mouse_exited"]
