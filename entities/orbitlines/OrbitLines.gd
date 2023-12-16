@@ -4,8 +4,8 @@ const ARC_POINTS = 64
 const ARC_POINT_1 = 0
 const ARC_POINT_2 = 180
 const ARC_POINT_3 = 360
-const ORBIT_SIZE = 400 # in Pixels
-const STAR_SIZE = 1000 # in Pixels
+const ORBIT_SIZE = 2000 # in Pixels
+const STAR_SIZE = 1500 # in Pixels
 const LINE_WIDTH = 5
 
 const ORBIT_COLOR = Color8( 0 , 200 , 200 , 255 )
@@ -14,6 +14,14 @@ const PLANET_COUNT = 6
 
 func _ready():
 	queue_redraw()
+	
+	EventBus.connect('zoom_changed' , Callable( self , "_on_zoom_changed" ) )
+
+func _on_zoom_changed( zoom_level ):
+	if( zoom_level.x <= 0.5 ):
+		show()
+	else:
+		hide()
 
 func _draw():
 	for x in range( 0 , PLANET_COUNT ):

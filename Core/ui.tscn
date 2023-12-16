@@ -1,8 +1,8 @@
-[gd_scene load_steps=19 format=3 uid="uid://c1dcreph3lax5"]
+[gd_scene load_steps=20 format=3 uid="uid://c1dcreph3lax5"]
 
 [ext_resource type="Script" path="res://Core/ui.gd" id="1_e5olo"]
 [ext_resource type="PackedScene" uid="uid://cqf6e6u6vidip" path="res://SharedUI/UIButtonsAndPanels/UIExpandButton.tscn" id="2_cpkjk"]
-[ext_resource type="Texture2D" uid="uid://bi4oncw05b64i" path="res://Assets/PowerPlaceholder.png" id="3_gs2sa"]
+[ext_resource type="Texture2D" uid="uid://cwneqp5nheh1j" path="res://Assets/icons/PowerIcon.png" id="3_fr0sl"]
 [ext_resource type="Texture2D" uid="uid://bwwgp4askqbv" path="res://Assets/icons/HydrogenIcon.png" id="4_biuj7"]
 [ext_resource type="Script" path="res://SharedUI/timescale_control.gd" id="4_wfklm"]
 [ext_resource type="Texture2D" uid="uid://4o2x723fimq1" path="res://Assets/icons/IronIcon.png" id="4_xmkav"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://dk5m622k28ce6" path="res://SharedUI/UIButtonsAndPanels/building_info.tscn" id="7_gvmy2"]
 [ext_resource type="PackedScene" uid="uid://8mk37v21ofpx" path="res://SharedUI/UIButtonsAndPanels/CrackerMenu.tscn" id="7_mqhwr"]
 [ext_resource type="PackedScene" uid="uid://qjlfp7nylr7y" path="res://SharedUI/UIButtonsAndPanels/planetDetail.tscn" id="7_s0tdy"]
+[ext_resource type="Texture2D" uid="uid://djbjlfwybsh7f" path="res://Assets/icons/TimeIcon.png" id="9_isvs8"]
 [ext_resource type="PackedScene" uid="uid://blsg03ijwetrt" path="res://SharedUI/UIButtonsAndPanels/nav_panel.tscn" id="9_ss6sf"]
 [ext_resource type="PackedScene" uid="uid://cih3s5dfqmx5" path="res://SharedUI/UIButtonsAndPanels/ExitConfirmPopup.tscn" id="10_j0cds"]
 [ext_resource type="PackedScene" uid="uid://3xroj5m8nitt" path="res://SharedUI/FlowDisplay/FlowDisplay.tscn" id="17_10cx6"]
@@ -81,10 +82,10 @@ layout_mode = 2
 alignment = 2
 
 [node name="PowerIcon" type="TextureRect" parent="Hbox/MiddleSection/TopBorder/Panel/ResContainer/Power/PowerContainer"]
-custom_minimum_size = Vector2(50, 50)
+custom_minimum_size = Vector2(96, 96)
 layout_mode = 2
-texture = ExtResource("3_gs2sa")
-stretch_mode = 3
+texture = ExtResource("3_fr0sl")
+stretch_mode = 5
 
 [node name="Panel" type="PanelContainer" parent="Hbox/MiddleSection/TopBorder/Panel/ResContainer/Power/PowerContainer"]
 layout_mode = 2
@@ -243,9 +244,10 @@ layout_mode = 2
 alignment = 2
 
 [node name="TimeScaleIcon" type="TextureRect" parent="Hbox/MiddleSection/TopBorder/Panel/ResContainer/TimeScale/TimeScaleContainer"]
-custom_minimum_size = Vector2(50, 50)
+custom_minimum_size = Vector2(96, 96)
 layout_mode = 2
-stretch_mode = 3
+texture = ExtResource("9_isvs8")
+stretch_mode = 5
 
 [node name="Panel" type="PanelContainer" parent="Hbox/MiddleSection/TopBorder/Panel/ResContainer/TimeScale/TimeScaleContainer"]
 layout_mode = 2

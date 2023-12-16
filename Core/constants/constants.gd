@@ -24,8 +24,9 @@ const BUILDING_STARLIFTER = "Starlifter"
 
 # Building icons
 const ICONS = {
+	"PlanetCracker" : "res://Assets/buildings/PlanetCracker.png",
 	"Gigafactory" : "res://Assets/buildings/Factory.png",
-	"Fusion Reactor" : "res://Assets/Placeholder 50x50.png" ,
+	"Fusion Reactor" : "res://Assets/buildings/FusionReactor.png" ,
 	"Celestial Extractor" : "res://Assets/Placeholder 50x50.png" ,
 	"Dyson Swarm" : "res://Assets/Placeholder 50x50.png" ,
 	"Magnetic Bore" : "res://Assets/buildings/MagneticBore.png" ,

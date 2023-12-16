@@ -4,7 +4,7 @@
 [ext_resource type="Resource" uid="uid://di8768hxc0pfy" path="res://entities/resources/power.tres" id="2_fy42p"]
 [ext_resource type="Resource" uid="uid://criguf1driv4" path="res://entities/resources/base_metal.tres" id="3_t40gn"]
 [ext_resource type="Texture2D" uid="uid://ca8y4rl40yqgd" path="res://Assets/buildings/ConstructionPlaceholder.png" id="4_vpav1"]
-[ext_resource type="Texture2D" uid="uid://ckm0s8esujj8f" path="res://Assets/buildings/PlacedPlaceholder.png" id="4_wv0sv"]
+[ext_resource type="Texture2D" uid="uid://caay6bkacwoar" path="res://Assets/buildings/PlanetCracker.png" id="5_bun0i"]
 
 [node name="PlanetCracker" type="Node2D"]
 scale = Vector2(4, 4)
@@ -19,8 +19,8 @@ ExtResource("3_t40gn"): 50
 }
 
 [node name="Construction" type="Sprite2D" parent="."]
+visible = false
 texture = ExtResource("4_vpav1")
 
 [node name="Building" type="Sprite2D" parent="."]
-visible = false
-texture = ExtResource("4_wv0sv")
+texture = ExtResource("5_bun0i")

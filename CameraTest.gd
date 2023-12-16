@@ -52,6 +52,8 @@ func _input(event: InputEvent) -> void:
 				zoom *= ZOOM_IN_FACTOR
 			elif event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
 				zoom *= ZOOM_OUT_FACTOR
+				
+			EventBus.emit_signal( 'zoom_changed' , zoom )
 
 
 func _process( _delta : float ):
