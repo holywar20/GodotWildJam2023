@@ -1,6 +1,7 @@
 extends Button
 
 @onready var pName = $HBox/Planet
+@onready var pIcon = $HBox/PlanetIcon/Planet
 
 var planetRef = null
 
@@ -11,6 +12,10 @@ func _ready():
 func updateUI(nPlanet):
 	planetRef = nPlanet
 	pName.set_text(planetRef.p_name)
+	
+	var pid = planetRef.pid
+	
+	pIcon.set_as_icon( planetRef.pid )
 
 
 func _on_pressed():

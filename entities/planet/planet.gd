@@ -41,7 +41,7 @@ var gas_mat : ShaderMaterial
 @export var p_name : String = "Unamed Planet"
 @export var p_class : String = "Lava Planet"
 @export var p_descript : String = "" 
-
+@export var is_icon : bool = false
 
 
 const RAND_SEED = 11111111
@@ -66,12 +66,20 @@ var _precious_metals_percentage: float = 0.33:
 func _ready() -> void:
 	_rng.seed = RAND_SEED
 
-	set_scale( Vector2( p_scale , p_scale ) )
-	_calculate_init_orbit()
+	if( !is_icon ):
+		set_scale( Vector2( p_scale , p_scale ) )
+		_calculate_init_orbit()
 
-	# Get initial Parms by planet
-	var shaderParams = PlanetaryConstants.get_shader_params( pid )
-	decoratePlanet( shaderParams , true )
+		# Get initial Parms by planet
+		var shaderParams = PlanetaryConstants.get_shader_params( pid )
+		decoratePlanet( shaderParams , true )
+	else:
+		remove_from_group("PLANET_SCENE")
+		show()
+
+func set_as_icon( n_pid : String ) -> void:
+	var shaderParams = PlanetaryConstants.get_shader_params( n_pid )
+	forceDecorate( shaderParams , n_pid )
 
 func add_planet_cracker(planet_cracker) -> void:
 	add_child(planet_cracker)
@@ -145,6 +153,12 @@ func get_resource_abundance() -> Dictionary:
 
 # Shader methods
 
+# Bit of a hack so we can get icons to work without using export params
+func forceDecorate( paramsDict , n_pid : String ) -> void:
+	pid = n_pid
+	
+	decoratePlanet( paramsDict, true )
+
 func decoratePlanet( paramsDict , initLoad = false ):
 	var isGas = false
 	if( pid == PlanetaryConstants.PIDS.P4 || pid == PlanetaryConstants.PIDS.P5 ):
@@ -202,7 +216,6 @@ func decoratePlanet( paramsDict , initLoad = false ):
 
 		_update_landmass_shader( paramsDict )
 		_update_atmoshader_shader( paramsDict )
-		# _update_gasgiant_shader( paramsDict , null )
 
 func _update_landmass_shader( paramDict : Dictionary ):
 	for prop in paramDict['landMasses']:

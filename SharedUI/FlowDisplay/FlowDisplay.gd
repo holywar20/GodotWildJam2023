@@ -49,7 +49,3 @@ func _on_hydrogen_flow_updated( flow, ideal, min_f, max_f )-> void:
 	
 	# shiftTween.parellel().tween_property( idealLabel , 'position' , newIdealPos , 0.95 )
 	shiftTween.play()
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass

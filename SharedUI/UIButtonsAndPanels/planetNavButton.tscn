@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://bj7a2tnxouqd7"]
+[gd_scene load_steps=3 format=3 uid="uid://bj7a2tnxouqd7"]
 
 [ext_resource type="Script" path="res://SharedUI/UIButtonsAndPanels/planetNavButton.gd" id="1_8huxb"]
+[ext_resource type="PackedScene" uid="uid://dwv5s702q62ib" path="res://entities/planet/planet.tscn" id="2_vt3rh"]
 
 [node name="PlanetNavButton" type="Button"]
 custom_minimum_size = Vector2(290, 60)
@@ -25,9 +26,17 @@ custom_minimum_size = Vector2(60, 0)
 layout_mode = 2
 mouse_filter = 2
 
+[node name="Planet" parent="HBox/PlanetIcon" instance=ExtResource("2_vt3rh")]
+visible = false
+position = Vector2(29, 29)
+scale = Vector2(0.1, 0.1)
+is_icon = true
+
 [node name="Planet" type="Label" parent="HBox"]
 layout_mode = 2
+size_flags_horizontal = 3
 text = "Planet"
+horizontal_alignment = 2
 
 [node name="VBox" type="VBoxContainer" parent="HBox"]
 layout_mode = 2

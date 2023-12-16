@@ -2,7 +2,6 @@ extends Node2D
 
 
 @onready var _clouds: Node2D = $SolarSystem/Clouds
-@onready var _ui = $UI
 
 
 func _ready() -> void:
