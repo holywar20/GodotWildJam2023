@@ -9,7 +9,7 @@ var _gas_clouds: Array = []
 
 
 func _on_button_pressed():
-	EventBus.emit_signal("building_pressed", Constants.BUILDING_MAGNETIC_BORE)
+	EventBus.emit_signal("building_pressed", self)
 
 
 func set_extraction_rate(value: float) -> void:

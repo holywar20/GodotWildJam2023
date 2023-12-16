@@ -1,5 +1,8 @@
 extends PanelContainer
 
+@onready var enableButton = $VBox/HBoxContainer3/Enable
+@onready var disableButton = $VBox/HBoxContainer3/Disable
+
 @onready var buildingName = $VBox/HBox/BuildingName
 @onready var buildingIcon = $VBox/TextureRect
 @onready var description = $VBox/HBoxContainer2/Description
@@ -26,6 +29,7 @@ extends PanelContainer
 
 @onready var timeCont = $VBox/HBoxContainer/Produce/Time
 @onready var timeLabel = $VBox/HBoxContainer/Produce/Time/ProdTime
+@onready var indicator = $Indicator
 
 var buildingInfo
 var buildingRef
@@ -50,32 +54,34 @@ func setupScene(building):
 	prodBaseCont.hide()
 	prodPrecCont.hide()
 	prodPowerCont.hide()
-	match building:
-		"Gigafactory":
-			buildingInfo = buildingArray.filter(func (b): return b.type == Constants.BUILDING_GIGAFACTORY)[0]
-			timeCont.show()
-			timeLabel.text = str(snapped(buildingInfo.build_speedup_factor, 1)) + " x"
-		"Fusion Reactor":
-			buildingInfo = buildingArray.filter(func (b): return b.type == Constants.BUILDING_FUSION_REACTOR)[0]
-		"Celestial Extractor":
-			buildingInfo = buildingArray.filter(func (b): return b.type == Constants.BUILDING_CELESTIAL_EXTRACTOR)[0]
-		"Dyson Swarm":
-			buildingInfo = buildingArray.filter(func (b): return b.type == Constants.BUILDING_DYSON_SWARM)[0]
-		"Magnetic Bore":
-			buildingInfo = buildingArray.filter(func (b): return b.type == Constants.BUILDING_MAGNETIC_BORE)[0]
-		"Antimatter Factory":
-			buildingInfo = buildingArray.filter(func (b): return b.type == Constants.BUILDING_ANTIMATTER_FACTORY)[0]
-		"Stellar Accelerator":
-			buildingInfo = buildingArray.filter(func (b): return b.type == Constants.BUILDING_STELLAR_ACCELERATOR)[0]
-		"Starlifter":
-			buildingInfo = buildingArray.filter(func (b): return b.type == Constants.BUILDING_STARLIFTER)[0]
+	timeCont.hide()
+	buildingInfo = building
+	if buildingInfo.type == "Gigafactory":
+		buildingInfo = building #buildingArray.filter(func (b): return b.type == Constants.BUILDING_GIGAFACTORY)[0]
+		timeCont.show()
+		timeLabel.text = str(snapped(buildingInfo.build_speedup_factor, 1)) + " x"
 	
 	var buildCostDict = buildingInfo.operational_costs
 	var buildProdDict = buildingInfo.produces
 	
-	buildingName.text = building
-	buildingIcon.set_texture(load(Constants.ICONS[building]))
+	buildingName.text = building.type
+	buildingIcon.set_texture(load(Constants.ICONS[building.type]))
 	description.set_text(buildingInfo.description)
+	
+	if (buildingInfo.is_active):
+		indicator.modulate = Color(0.1,1,0.1,1)
+		disableButton.show()
+		enableButton.hide()
+		
+	if !(buildingInfo.is_active):
+		enableButton.show()
+		disableButton.hide()
+		indicator.modulate = Color(1,0.1,0.1,1)
+	
+	if !(buildingInfo.is_constructed()):
+		enableButton.disabled = true
+	if (buildingInfo.is_constructed()):
+		enableButton.disabled = false
 	
 	if buildCostDict.has(Constants.POWER):
 		costPowerCont.show()
@@ -107,3 +113,24 @@ func setupScene(building):
 func _on_remove_pressed():
 	EventBus.emit_signal("destroyed", buildingRef)
 	hide()
+
+
+func _on_disable_pressed():
+	buildingInfo.is_active = false
+	if (buildingInfo.is_active):
+		indicator.modulate = Color(0.1,1,0.1,1)
+	if !(buildingInfo.is_active):
+		indicator.modulate = Color(1,0.1,0.1,1)
+	disableButton.hide()
+	enableButton.show()
+	
+
+
+func _on_enable_pressed():
+	buildingInfo.is_active = true
+	if (buildingInfo.is_active):
+		indicator.modulate = Color(0.1,1,0.1,1)
+	if !(buildingInfo.is_active):
+		indicator.modulate = Color(1,0.1,0.1,1)
+	enableButton.hide()
+	disableButton.show()

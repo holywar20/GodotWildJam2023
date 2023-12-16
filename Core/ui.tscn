@@ -292,6 +292,7 @@ mouse_filter = 2
 alignment = 2
 
 [node name="BuildMenu" parent="Hbox/MiddleSection/CenterContainer/SubMenuContainer" instance=ExtResource("5_r6hw1")]
+visible = false
 custom_minimum_size = Vector2(400, 642)
 layout_mode = 2
 mouse_force_pass_scroll_events = false

@@ -50,6 +50,7 @@ grow_vertical = 2
 script = ExtResource("1_c2351")
 
 [node name="Label" type="Label" parent="."]
+visible = false
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 horizontal_alignment = 1
@@ -66,7 +67,6 @@ horizontal_alignment = 1
 [node name="ProgressBar" type="ProgressBar" parent="VBox"]
 custom_minimum_size = Vector2(285, 27)
 layout_mode = 2
-show_percentage = false
 
 [node name="BuildComplete" type="Label" parent="VBox"]
 visible = false
