@@ -98,7 +98,7 @@ func _ready() -> void:
 
 func _give_player_resources() -> void:
 	current_resources[Constants.BASE_METAL] = 150
-	#current_resources[Constants.POWER] = 1000
+	current_resources[Constants.POWER] = 1000
 
 	# TESTING VALUES
 	#current_resources[Constants.HYDROGEN] = 50000
