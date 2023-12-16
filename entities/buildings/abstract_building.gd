@@ -59,6 +59,13 @@ var construction_sprite
 func _ready() -> void:
 	tree_exited.connect(_on_tree_exited)
 	EventBus.tick.connect(_on_game_tick)
+
+	var button = get_node_or_null("Button")
+
+	if button:
+		button.mouse_entered.connect(_on_mouse_entered)
+		button.mouse_exited.connect(_on_mouse_exited)
+
 	_set_nodes()
 
 
@@ -182,6 +189,14 @@ func fade_out() -> Tween:
 	var t = create_tween()
 	t.tween_property(self, "modulate", Color.TRANSPARENT, 0.5)
 	return t
+
+
+func _on_mouse_entered() -> void:
+	modulate = Color(1.5, 1.5, 1.5, 1.0)
+
+
+func _on_mouse_exited() -> void:
+	modulate = Color.WHITE
 
 
 func _on_tree_exited() -> void:
