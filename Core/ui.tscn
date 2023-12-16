@@ -101,7 +101,7 @@ text = "0
 
 [node name="Unit" type="Label" parent="Hbox/MiddleSection/TopBorder/Panel/ResContainer/Power/PowerContainer/Panel/HBoxContainer"]
 layout_mode = 2
-text = "Gt"
+text = "TW"
 
 [node name="Change" type="Label" parent="Hbox/MiddleSection/TopBorder/Panel/ResContainer/Power/PowerContainer/Panel/HBoxContainer"]
 layout_mode = 2
@@ -257,6 +257,7 @@ layout_mode = 2
 alignment = 1
 
 [node name="Label" type="Label" parent="Hbox/MiddleSection/TopBorder/Panel/ResContainer/TimeScale/TimeScaleContainer/Panel/Numbers"]
+visible = false
 layout_mode = 2
 text = "Time Scale:"
 
