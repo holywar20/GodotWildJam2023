@@ -2,6 +2,8 @@ class_name StarScaffold
 extends Node2D
 
 
+const REFUND_PERCENTAGE = 0.5
+
 const MESSAGE_INSUFFICIENT_RESOURCES = "Insufficient resources to build!"
 const MESSAGE_INSUFFICIENT_SPACE = "No more space left for structures!"
 const MESSAGE_INSUFFICIENT_OPERATING_RESOURCES = "One or more structures can't produce due to insufficient resources!"
@@ -35,10 +37,14 @@ const BUILD_POS = {
 	Vector2(3,5) : Vector2(814,113)
 }
 
+
 @export var current_resources: Dictionary = {}
 @export var star: StarScene
 
 @onready var animPlayer : AnimationPlayer = $AnimationPlayer
+
+@onready var timer = $Timer
+
 
 var _buildings: Dictionary = {
 	Vector2(0,0) : null,
@@ -80,6 +86,7 @@ func _ready() -> void:
 	EventBus.resources_extracted.connect(_on_resources_extracted)
 	EventBus.constructed.connect(_on_constructed)
 	EventBus.construction_requested.connect(_construct)
+	EventBus.destroyed.connect(_on_destroyed)
 	EventBus.adjust_hydrogen.connect(_on_adjust_hydrogen)
 	EventBus.operational_cost_reported.connect(_on_operational_cost_reported)
 	EventBus.bore_control_updated.connect(_on_bore_control_updated)
@@ -90,7 +97,9 @@ func _ready() -> void:
 	animPlayer.play("InnerRingRotation")
 
 	_give_player_resources()
-	
+
+	timer.timeout.connect(_on_timer_timeout)
+
 	# TODO: Remove after testing!
 	#EventBus.star_hydrogen_updated.emit(0, 1000)
 	###
@@ -101,7 +110,7 @@ func _give_player_resources() -> void:
 	current_resources[Constants.POWER] = 1000
 
 	# TESTING VALUES
-	current_resources[Constants.HYDROGEN] = 50000
+	#current_resources[Constants.HYDROGEN] = 50000
 	#current_resources[Constants.POWER] = 10000
 	#current_resources[Constants.BASE_METAL] = 50000
 	#current_resources[Constants.PRECIOUS_METAL] = 50000
@@ -154,11 +163,39 @@ func _find_next_empty_slot():
 	return null
 
 
-# TODO: If we end up implementing this feature, this method will need to be changed
-# as buildings are indexed by its position on the scaffold.
-func destroy(building) -> void:
-	_buildings.erase(building)
+func _on_destroyed(building) -> void:
+	# only process the entire removal if the building was found
+	if not _remove_building(building):
+		return
+
+	_refund_resources(building)
+	await building.fade_out().finished
+
 	remove_child(building)
+
+
+func _remove_building(building) -> bool:
+	var building_found: bool = false
+	var building_key = -Vector2.ONE # default value that will never be found in the dictionary
+
+	for b in _buildings:
+		if _buildings[b] == building:
+			building_key = b
+			building_found = true
+			break
+
+	_buildings.erase(building_key)
+
+	return building_found
+
+
+func _refund_resources(building) -> void:
+	var refund_amounts: Dictionary = {}
+
+	for resource in building.building_costs:
+		refund_amounts[resource] = ceili(REFUND_PERCENTAGE * building.building_costs[resource])
+
+	_add_resources(refund_amounts)
 
 
 func _on_constructed(building) -> void:
@@ -177,11 +214,13 @@ func _deduct_from_current_resources(resources_bid: Dictionary) -> void:
 		current_resources[resource] -= resources_bid[resource]
 
 
-func _on_game_tick() -> void:
-	EventBus.resources_reported.emit(current_resources)
-
+func _on_timer_timeout() -> void:
 	if _inoperable_buildings_exist():
 		EventBus.feedback_message.emit(MESSAGE_INSUFFICIENT_OPERATING_RESOURCES)
+
+
+func _on_game_tick() -> void:
+	EventBus.resources_reported.emit(current_resources)
 
 	# TODO: Remove after testing.
 	#EventBus.star_hydrogen_updated.emit(current_resources[Constants.HYDROGEN], 1000)
@@ -196,7 +235,7 @@ func _inoperable_buildings_exist() -> bool:
 
 	structures_to_check.append_array(_buildings.values())
 
-	return structures_to_check.any(func (b): return b and not b.is_operating())
+	return structures_to_check.any(func (b): return b and b.is_active and not b.is_operating())
 
 
 func _on_resources_extracted(new_resources: Dictionary) -> void:

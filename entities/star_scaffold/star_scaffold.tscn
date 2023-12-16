@@ -108,3 +108,7 @@ position = Vector2(-374, 371)
 scale = Vector2(4, 4)
 texture = ExtResource("8_jokuy")
 flip_v = true
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true

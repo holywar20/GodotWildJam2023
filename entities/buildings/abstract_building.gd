@@ -155,5 +155,11 @@ func post_constructed() -> void:
 	pass
 
 
+func fade_out() -> Tween:
+	var t = create_tween()
+	t.tween_property(self, "modulate", Color.TRANSPARENT, 0.5)
+	return t
+
+
 func _on_tree_exited() -> void:
 	queue_free()

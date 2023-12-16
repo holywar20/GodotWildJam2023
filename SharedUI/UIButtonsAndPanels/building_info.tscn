@@ -20,8 +20,12 @@ alignment = 1
 [node name="BuildingName" type="Label" parent="VBox/HBox"]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "Building Name"
+text = "        Building Name"
 horizontal_alignment = 1
+
+[node name="CloseButton" type="Button" parent="VBox/HBox"]
+layout_mode = 2
+text = "X"
 
 [node name="TextureRect" type="TextureRect" parent="VBox"]
 custom_minimum_size = Vector2(100, 100)
@@ -179,27 +183,28 @@ alignment = 1
 
 [node name="Remove" type="Button" parent="VBox/HBoxContainer3"]
 self_modulate = Color(1, 0.266667, 0.278431, 1)
-custom_minimum_size = Vector2(125, 70)
+custom_minimum_size = Vector2(125, 50)
 layout_mode = 2
 size_flags_vertical = 10
 text = "Remove"
 
 [node name="Disable" type="Button" parent="VBox/HBoxContainer3"]
-custom_minimum_size = Vector2(125, 70)
+custom_minimum_size = Vector2(125, 50)
 layout_mode = 2
 text = "Disable"
 
 [node name="Enable" type="Button" parent="VBox/HBoxContainer3"]
 visible = false
-custom_minimum_size = Vector2(125, 70)
+custom_minimum_size = Vector2(125, 50)
 layout_mode = 2
 text = "Enable"
 
 [node name="Indicator" type="Sprite2D" parent="."]
-position = Vector2(287, 13)
+position = Vector2(12.9999, 14)
 scale = Vector2(0.85, 0.85)
 texture = ExtResource("5_wr165")
 
+[connection signal="pressed" from="VBox/HBox/CloseButton" to="." method="_on_close_button_pressed"]
 [connection signal="pressed" from="VBox/HBoxContainer3/Remove" to="." method="_on_remove_pressed"]
 [connection signal="pressed" from="VBox/HBoxContainer3/Disable" to="." method="_on_disable_pressed"]
 [connection signal="pressed" from="VBox/HBoxContainer3/Enable" to="." method="_on_enable_pressed"]
