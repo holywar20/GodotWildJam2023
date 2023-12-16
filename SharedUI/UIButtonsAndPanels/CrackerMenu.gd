@@ -80,6 +80,8 @@ func _on_camera_move_to_planet_finished() -> void:
 func _populate_resource_sliders() -> void:
 	_planet_view_init_phase = true
 
+	#if _current_planet.get_hydrogen_percentage() == 0:
+		#hydrogen_slider_control.
 	hydrogen_slider_control.set_init_value(_current_planet.get_hydrogen_percentage())
 	base_metals_slider_control.set_init_value(_current_planet.get_base_metals_percentage())
 	precious_metals_slider_control.set_init_value(_current_planet.get_precious_metals_percentage())

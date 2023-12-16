@@ -1,10 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://dk5m622k28ce6"]
+[gd_scene load_steps=8 format=3 uid="uid://dk5m622k28ce6"]
 
 [ext_resource type="Script" path="res://SharedUI/UIButtonsAndPanels/building_info.gd" id="1_82416"]
+[ext_resource type="Texture2D" uid="uid://cwneqp5nheh1j" path="res://Assets/icons/PowerIcon.png" id="2_gy5cs"]
 [ext_resource type="Texture2D" uid="uid://4o2x723fimq1" path="res://Assets/icons/IronIcon.png" id="2_n8daw"]
 [ext_resource type="Texture2D" uid="uid://b3di2of4v8no4" path="res://Assets/icons/PreciousMetalIcon.png" id="3_4e58d"]
 [ext_resource type="Texture2D" uid="uid://tdgybvpdlhda" path="res://Assets/icons/AntiMatterIcon.png" id="4_fhb27"]
 [ext_resource type="Texture2D" uid="uid://c32hjp728ii67" path="res://Assets/WhiteCircle.png" id="5_wr165"]
+[ext_resource type="Texture2D" uid="uid://djbjlfwybsh7f" path="res://Assets/icons/TimeIcon.png" id="6_4m304"]
 
 [node name="BuildingInfo" type="PanelContainer"]
 custom_minimum_size = Vector2(300, 400)
@@ -49,6 +51,7 @@ alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="VBox/HBoxContainer/Produce/Power"]
 layout_mode = 2
+texture = ExtResource("2_gy5cs")
 
 [node name="ProdPower" type="Label" parent="VBox/HBoxContainer/Produce/Power"]
 modulate = Color(0.0392157, 1, 0.0352941, 1)
@@ -100,6 +103,7 @@ alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="VBox/HBoxContainer/Produce/Time"]
 layout_mode = 2
+texture = ExtResource("6_4m304")
 
 [node name="ProdTime" type="Label" parent="VBox/HBoxContainer/Produce/Time"]
 modulate = Color(0.0392157, 1, 0.0352941, 1)
@@ -118,6 +122,7 @@ alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="VBox/HBoxContainer/Costs/Power"]
 layout_mode = 2
+texture = ExtResource("2_gy5cs")
 
 [node name="CostPower" type="Label" parent="VBox/HBoxContainer/Costs/Power"]
 modulate = Color(1, 0.0352941, 0.0509804, 1)

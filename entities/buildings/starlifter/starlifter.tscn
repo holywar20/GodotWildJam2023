@@ -15,7 +15,7 @@ type = "Starlifter"
 tier = 2
 build_time = 480
 operational_costs = {
-ExtResource("2_jkmmh"): 250,
+ExtResource("2_jkmmh"): 750,
 ExtResource("3_1gy1o"): 100
 }
 building_costs = {

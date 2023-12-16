@@ -92,8 +92,8 @@ p_descript = "Serves as initial source of Base Metals for the player. Has very l
 [node name="P2" parent="SolarSystem/Planets" instance=ExtResource("6_fk80q")]
 position = Vector2(258, -34)
 _resource_abundance = {
-ExtResource("7_xxeen"): 10000,
-ExtResource("11_3sx44"): 500,
+ExtResource("7_xxeen"): 20000,
+ExtResource("11_3sx44"): 1000,
 ExtResource("12_l13i1"): 0
 }
 flow_rate_dict = {
