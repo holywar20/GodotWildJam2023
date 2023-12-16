@@ -1,8 +1,41 @@
-[gd_scene load_steps=2 format=3 uid="uid://3xroj5m8nitt"]
+[gd_scene load_steps=9 format=3 uid="uid://3xroj5m8nitt"]
 
 [ext_resource type="Script" path="res://SharedUI/FlowDisplay/FlowDisplay.gd" id="1_g7ssn"]
+[ext_resource type="StyleBox" uid="uid://dbxww4ybkjov1" path="res://StylesAndLabels/RightStyleBox.tres" id="2_cfyyf"]
+[ext_resource type="StyleBox" uid="uid://dqfq7xin8215n" path="res://StylesAndLabels/StyleBoxRight.tres" id="3_vjyjh"]
+[ext_resource type="LabelSettings" uid="uid://cvlyjmf5fwwj0" path="res://StylesAndLabels/3rdRead-Subtitle.tres" id="4_bmnd5"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hym1f"]
+bg_color = Color(0.270588, 0.2, 0.321569, 0.72549)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+corner_detail = 1
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_3bc6u"]
+color = Color(1, 0.258824, 0.258824, 1)
+thickness = 2
+vertical = true
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_48hfk"]
+bg_color = Color(0.92549, 0.92549, 0.92549, 1)
+border_width_top = 2
+border_width_bottom = 2
+border_color = Color(0.227451, 0.964706, 0.921569, 1)
+border_blend = true
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_o2g5q"]
+color = Color(0.0117647, 1, 0.470588, 1)
+thickness = 2
+vertical = true
 
 [node name="Panel" type="Panel"]
+custom_minimum_size = Vector2(521, 32)
 anchors_preset = -1
 anchor_left = 0.051
 anchor_top = 0.084
@@ -10,27 +43,105 @@ anchor_right = 0.051
 anchor_bottom = 0.084
 offset_left = -97.92
 offset_top = -90.72
-offset_right = 406.08
-offset_bottom = -66.72
+offset_right = 423.08
+offset_bottom = -2.72
+theme_override_styles/panel = SubResource("StyleBoxFlat_hym1f")
 script = ExtResource("1_g7ssn")
 
-[node name="ToLittleLabel" type="Label" parent="."]
+[node name="HBox" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
-offset_left = 77.172
-offset_top = -22.064
-offset_right = 122.172
-offset_bottom = 0.936001
-text = "--"
+offset_left = 9.0
+offset_top = 8.0
+offset_right = 509.0
+offset_bottom = 24.0
+theme_override_constants/separation = 0
+
+[node name="ToLittle" type="Panel" parent="HBox"]
+custom_minimum_size = Vector2(125, 0)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("2_cfyyf")
+
+[node name="ToLittleLabel" type="Label" parent="HBox/ToLittle"]
+layout_mode = 2
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -21.0
+offset_top = 23.0
+offset_right = 24.0
+offset_bottom = 46.0
+text = "00
+Low"
 horizontal_alignment = 1
 
-[node name="IdealLabel" type="Label" parent="."]
+[node name="VSeparator" type="VSeparator" parent="HBox/ToLittle/ToLittleLabel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.422
+anchor_top = -0.783
+anchor_right = 0.422
+anchor_bottom = -0.783
+offset_left = 0.00999832
+offset_top = -3.991
+offset_right = 4.01
+offset_bottom = 20.009
+theme_override_styles/separator = SubResource("StyleBoxLine_3bc6u")
+
+[node name="JustRight" type="Panel" parent="HBox"]
 layout_mode = 2
-offset_left = 240.0
-offset_top = -48.0
-offset_right = 301.0
-offset_bottom = -25.0
-text = "00"
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_48hfk")
+
+[node name="IdealLabel" type="Label" parent="HBox/JustRight"]
+layout_mode = 2
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = 15.0
+offset_right = 41.0
+offset_bottom = 38.0
+text = "00
+Ideal"
 horizontal_alignment = 1
+
+[node name="VSeparator" type="VSeparator" parent="HBox/JustRight/IdealLabel"]
+layout_mode = 0
+offset_left = 28.0
+offset_top = -9.0
+offset_right = 32.0
+offset_bottom = 4.0
+theme_override_styles/separator = SubResource("StyleBoxLine_o2g5q")
+
+[node name="ToMuch" type="Panel" parent="HBox"]
+custom_minimum_size = Vector2(125, 0)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("3_vjyjh")
+
+[node name="ToMuchLabel" type="Label" parent="HBox/ToMuch"]
+layout_mode = 2
+offset_left = -26.0
+offset_top = 23.0
+offset_right = 27.0
+offset_bottom = 46.0
+text = "00
+High
+"
+horizontal_alignment = 1
+
+[node name="VSeparator" type="VSeparator" parent="HBox/ToMuch/ToMuchLabel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.422
+anchor_top = -0.783
+anchor_right = 0.422
+anchor_bottom = -0.783
+offset_left = 1.634
+offset_top = -3.991
+offset_right = 5.634
+offset_bottom = 21.009
+theme_override_styles/separator = SubResource("StyleBoxLine_3bc6u")
 
 [node name="FlowLabel" type="Label" parent="."]
 layout_mode = 2
@@ -41,33 +152,20 @@ offset_bottom = -1.0
 text = "00"
 horizontal_alignment = 1
 
-[node name="ToMuchLabel" type="Label" parent="."]
-layout_mode = 2
-offset_left = 381.172
-offset_top = -22.064
-offset_right = 434.172
-offset_bottom = 0.936001
-text = "++
-"
+[node name="VSeparator" type="VSeparator" parent="FlowLabel"]
+layout_mode = 0
+offset_left = 29.0
+offset_top = 21.0
+offset_right = 33.0
+offset_bottom = 37.0
+theme_override_styles/separator = SubResource("StyleBoxLine_o2g5q")
+
+[node name="Label" type="Label" parent="FlowLabel"]
+layout_mode = 0
+offset_left = -64.0
+offset_top = -34.0
+offset_right = 124.0
+offset_bottom = 2.0
+text = "Hydrogen Flow"
+label_settings = ExtResource("4_bmnd5")
 horizontal_alignment = 1
-
-[node name="HBox" type="HBoxContainer" parent="."]
-custom_minimum_size = Vector2(500, 0)
-layout_mode = 2
-offset_right = 496.0
-offset_bottom = 16.0
-theme_override_constants/separation = 0
-
-[node name="ToLittle" type="ColorRect" parent="HBox"]
-custom_minimum_size = Vector2(125, 0)
-layout_mode = 2
-color = Color(1, 0.278431, 0.278431, 1)
-
-[node name="JustRight" type="ColorRect" parent="HBox"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="ToMuch" type="ColorRect" parent="HBox"]
-custom_minimum_size = Vector2(125, 0)
-layout_mode = 2
-color = Color(1, 0.278431, 0.278431, 1)

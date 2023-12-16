@@ -7,14 +7,14 @@ const TWEEN_LENGTH = 0.95 # Length of animation in seconds. Meant to be slightly
 const IDEAL_SIZE = 125
 const FLOW_WIDGET_SIZE = 500
 
-@onready var toLittleLabel : Label = $ToLittleLabel
+@onready var toLittleLabel : Label = $HBox/ToLittle/ToLittleLabel
 @onready var flowLabel : Label = $FlowLabel
-@onready var toMuchLabel : Label = $ToMuchLabel
-@onready var idealLabel : Label = $IdealLabel
+@onready var toMuchLabel : Label = $HBox/ToMuch/ToMuchLabel
+@onready var idealLabel : Label = $HBox/JustRight/IdealLabel
 
-@onready var toLittle: ColorRect = $HBox/ToLittle
-@onready var justRight : ColorRect = $HBox/JustRight
-@onready var toMuch : ColorRect = $HBox/ToMuch
+@onready var toLittle: Panel = $HBox/ToLittle
+@onready var justRight : Panel = $HBox/JustRight
+@onready var toMuch : Panel = $HBox/ToMuch
 
 var prev_flow : int = 0
 var prev_ideal : int = 0
@@ -24,8 +24,12 @@ var prev_little : int = 0
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	EventBus.connect("hydrogen_flow_updated" , Callable( self , "_on_hydrogen_flow_updated" ) )
+	
+	hide() # Hide flow control until you start getting Hydrogen
 
 func _on_hydrogen_flow_updated( flow, ideal, min_f, max_f )-> void:
+	show()
+	
 	flowLabel.set_text( str( flow ) )
 	idealLabel.set_text( str( ideal ) )
 	toMuchLabel.set_text( str( max_f ) )
