@@ -76,7 +76,7 @@ func _process( _delta : float ):
 
 
 func move_camera(direction):
-	global_position += direction * CAM_SPEED * get_process_delta_time()
+	global_position += direction * CAM_SPEED * (1 / zoom.x) * get_process_delta_time()
 	EventBus.emit_signal('camera_moved' , global_position )
 	# Limit the camera movement within your game boundaries if needed
 	# Example: global_position = global_position.clamped( game_area_rect.position , game_area_rect.end )
