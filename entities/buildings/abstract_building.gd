@@ -41,9 +41,6 @@ var _can_be_activated: bool = true:
 var _star_scaffold: StarScaffold = null:
 	set = set_star_scaffold
 
-
-@onready var building_sprite = $Building
-
 var _build_speed_factor: float = 1.0:
 	set = set_build_speedup_factor
 
@@ -164,8 +161,10 @@ func _can_operate() -> bool:
 
 
 func signal_constructed():
+	# end of game jam design curse
 	if type == Constants.BUILDING_DYSON_SWARM:
-		EventBus.dyson_construction_finished.emit()
+		#EventBus.dyson_construction_finished.emit()
+		EventBus.constructed.emit(self)
 	else:
 		EventBus.constructed.emit(self)
 		

@@ -7,6 +7,9 @@ const REFUND_PERCENTAGE = 0.5
 const MESSAGE_INSUFFICIENT_RESOURCES = "Insufficient resources to build!"
 const MESSAGE_INSUFFICIENT_SPACE = "No more space left for structures!"
 const MESSAGE_INSUFFICIENT_OPERATING_RESOURCES = "One or more structures can't produce due to insufficient resources!"
+const MESSAGE_MAX_DYSON_SWARMS_REACHED = "You can only have one Dyson Swarm!"
+
+const MAX_DYSON_SWARMS = 1
 
 const construction_sprite = preload("res://Assets/buildings/ConstructionPlaceholder.png")
 
@@ -112,13 +115,17 @@ func _give_player_resources() -> void:
 	current_resources[Constants.POWER] = 1000
 
 	# TESTING VALUES
-	#current_resources[Constants.HYDROGEN] = 5000
-	#current_resources[Constants.POWER] = 10000
-	#current_resources[Constants.BASE_METAL] = 50000
-	#current_resources[Constants.PRECIOUS_METAL] = 50000
+	current_resources[Constants.HYDROGEN] = 5000
+	current_resources[Constants.POWER] = 10000
+	current_resources[Constants.BASE_METAL] = 50000
+	current_resources[Constants.PRECIOUS_METAL] = 50000
 
 
 func _construct(building_type: String):
+	if building_type == Constants.BUILDING_DYSON_SWARM:
+		_construct_dyson_swarm()
+		return
+
 	var next_slot = _find_next_empty_slot()
 
 	if next_slot == null:
@@ -157,6 +164,37 @@ func _construct(building_type: String):
 	EventBus.construction_started.emit(building_to_construct)
 
 
+func _construct_dyson_swarm() -> void:
+	# end of game jam curse: design suffers, with Dyson Swarms being an exception to buildings
+	if get_num_dyson_swarms() + 1 > MAX_DYSON_SWARMS:
+		EventBus.feedback_message.emit(MESSAGE_MAX_DYSON_SWARMS_REACHED)
+		return
+
+	var building_to_construct = BuildingFactory.create_building(Constants.BUILDING_DYSON_SWARM)
+
+	if not building_to_construct:
+		return
+
+	if not building_to_construct.can_be_built_with(current_resources):
+		building_to_construct.queue_free()
+		EventBus.feedback_message.emit(MESSAGE_INSUFFICIENT_RESOURCES)
+		return
+
+	building_to_construct.set_build_speedup_factor(_calculate_building_speedup_factor())
+
+	_deduct_from_current_resources(building_to_construct.building_costs)
+
+	_add_to_build_queue(building_to_construct) # might be moot...
+
+	_num_dyson_swarms += 1
+
+	add_child( building_to_construct )
+
+	building_to_construct.set_star_scaffold(self)
+
+	EventBus.construction_started.emit(building_to_construct)
+
+
 func _find_next_empty_slot():
 	for pos in _buildings:
 		if( _buildings[pos] == null ):
@@ -177,6 +215,10 @@ func _on_destroyed(building) -> void:
 
 
 func _remove_building(building) -> bool:
+	if building.type == Constants.BUILDING_DYSON_SWARM:
+		_num_dyson_swarms -= 1
+		return true
+
 	var building_found: bool = false
 	var building_key = -Vector2.ONE # default value that will never be found in the dictionary
 
