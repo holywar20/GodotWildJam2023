@@ -36,15 +36,19 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="3" parent="VBox/NavContainer" groups=["TIER_2_PLANETS"] instance=ExtResource("2_aiel2")]
+visible = false
 layout_mode = 2
 
 [node name="4" parent="VBox/NavContainer" groups=["TIER_2_PLANETS"] instance=ExtResource("2_aiel2")]
+visible = false
 layout_mode = 2
 
 [node name="5" parent="VBox/NavContainer" groups=["TIER_3_PLANETS"] instance=ExtResource("2_aiel2")]
+visible = false
 layout_mode = 2
 
 [node name="6" parent="VBox/NavContainer" groups=["TIER_3_PLANETS"] instance=ExtResource("2_aiel2")]
+visible = false
 layout_mode = 2
 
 [connection signal="pressed" from="VBox/Star" to="." method="_on_star_pressed"]
