@@ -2,10 +2,7 @@ class_name PlanetCracker
 extends AbstractBuilding
 
 
-const RESOURCES_PER_EXTRACTION = 100
-
-
-@onready var _planet: Planet = get_node("/root/ROOT/SolarSystem/Planets/P1"):
+var _planet: Planet:
 	set = assign_to,
 	get = get_assigned_planet
 
@@ -24,9 +21,9 @@ func get_assigned_planet() -> Planet:
 
 
 func next_extraction() -> Dictionary:
-	var hydrogen_extracted = _planet.extract_resource(Constants.HYDROGEN, int(RESOURCES_PER_EXTRACTION * _planet.get_hydrogen_percentage()))
-	var base_metals_extracted = _planet.extract_resource(Constants.BASE_METAL, int(RESOURCES_PER_EXTRACTION * _planet.get_base_metals_percentage()))
-	var precious_metals_extracted = _planet.extract_resource(Constants.PRECIOUS_METAL, int(RESOURCES_PER_EXTRACTION * _planet.get_precious_metals_percentage()))
+	var hydrogen_extracted = _planet.extract_resource(Constants.HYDROGEN)
+	var base_metals_extracted = _planet.extract_resource(Constants.BASE_METAL)
+	var precious_metals_extracted = _planet.extract_resource(Constants.PRECIOUS_METAL)
 
 	return {
 		Constants.HYDROGEN: hydrogen_extracted,

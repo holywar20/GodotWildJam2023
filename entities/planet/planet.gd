@@ -113,14 +113,31 @@ func _calculate_init_orbit():
 
 # Utility Methods
 # Returns the amount extracted, if any.
-func extract_resource(resource: UsableResource, amount_requested: int) -> int:
-	if _resource_abundance[resource] < amount_requested:
+func extract_resource(resource: UsableResource) -> int:
+	if not flow_rate_dict[resource]:
+		return 0
+
+	var amount_to_extract: int = roundi(_get_resource_percentage(resource) * flow_rate_dict[resource])
+
+	if _resource_abundance[resource] < amount_to_extract:
 		var amount_extracted: int = _resource_abundance[resource]
 		_resource_abundance[resource] = 0
 		return amount_extracted
 
-	_resource_abundance[resource] -= amount_requested
-	return amount_requested
+	_resource_abundance[resource] -= amount_to_extract
+	return amount_to_extract
+
+
+func _get_resource_percentage(resource: UsableResource) -> float:
+	match resource:
+		Constants.HYDROGEN:
+			return get_hydrogen_percentage()
+		Constants.BASE_METAL:
+			return get_base_metals_percentage()
+		Constants.PRECIOUS_METAL:
+			return get_precious_metals_percentage()
+
+	return 1.0
 
 
 func get_resource_abundance() -> Dictionary:
