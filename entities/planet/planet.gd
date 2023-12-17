@@ -10,6 +10,8 @@ const MAX_RESOURCE_NUMBER = 1000000 # In Gigatons?
 const STAR_SIZE = 1500 # In Pixels , max star size, including scaffolding
 const ORBIT_SIZE = 2000
 
+const MAX_PLANET_CRACKERS = 5
+
 var radians72 = 72.0 * PI / 180.0
 var cracker_placements = {
    0: 0.0,
@@ -119,6 +121,9 @@ func has_planet_crackers() -> bool:
 
 func get_planet_crackers() -> Array:
 	return _planet_crackers
+
+func has_room_for_crackers() -> bool:
+	return get_planet_crackers().size() < MAX_PLANET_CRACKERS
 
 func get_hydrogen_percentage() -> float:
 	return _hydrogen_percentage
