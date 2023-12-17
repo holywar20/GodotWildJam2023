@@ -203,7 +203,7 @@ func _construct_dyson_swarm() -> void:
 
 func _find_next_empty_slot():
 	for pos in _buildings:
-		if( _buildings[pos] == null ):
+		if( not is_instance_valid(_buildings[pos]) ):
 			return pos
 
 	return null
