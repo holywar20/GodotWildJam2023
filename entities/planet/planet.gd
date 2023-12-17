@@ -91,7 +91,7 @@ func _ready() -> void:
 		show()
 
 func fire_laser() -> void:
-
+	pass
 
 func set_as_icon( n_pid : String ) -> void:
 	var shaderParams = PlanetaryConstants.get_shader_params( n_pid )

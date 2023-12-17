@@ -21,6 +21,11 @@ var current_ideal : int = 0
 var current_min_f : int = 0
 var current_max_f : int = 0
 
+
+var DANGER_TO_END_GAME : int = 5
+var danger_count : int = 0
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	EventBus.connect("hydrogen_flow_updated" , Callable( self , "_on_hydrogen_flow_updated" ) )
