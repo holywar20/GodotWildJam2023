@@ -16,40 +16,49 @@ const FLOW_WIDGET_SIZE = 500
 @onready var justRight : Panel = $HBox/JustRight
 @onready var toMuch : Panel = $HBox/ToMuch
 
-var prev_flow : int = 0
-var prev_ideal : int = 0
-var prev_much : int = 0
-var prev_little : int = 0
+var prev_hydro : int = 0
+var current_ideal : int = 0
+var current_min_f : int = 0
+var current_max_f : int = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	EventBus.connect("hydrogen_flow_updated" , Callable( self , "_on_hydrogen_flow_updated" ) )
+	EventBus.connect("resources_reported" , Callable( self , "_on_resources_reported" ) )
 	
 	hide() # Hide flow control until you start getting Hydrogen
 
-func _on_hydrogen_flow_updated( flow, ideal, min_f, max_f )-> void:
-	show()
-	
-	flowLabel.set_text( str( flow ) )
-	idealLabel.set_text( str( ideal ) )
-	toMuchLabel.set_text( str( max_f ) )
-	toLittleLabel.set_text( str( min_f ) )
-	
+func _on_resources_reported( resources ) -> void:
+	if( !is_visible() ): # Control is paused until you gain your first bit of Hydrogen
+		return
 
-	var percentFlow : float = ( float(flow) - float(min_f) ) / ( float(max_f) - float(min_f) )
+	var this_hydro = resources[Constants.HYDROGEN]
+
+	var flow = this_hydro - prev_hydro
+	prev_hydro = this_hydro
+
+	flowLabel.set_text( str( flow ) )
+
+	idealLabel.set_text( str( current_ideal ) )
+	toMuchLabel.set_text( str( current_min_f ) )
+	toLittleLabel.set_text( str( current_max_f ) )
+	
+	var percentFlow : float = ( float(flow) - float(current_min_f) ) / ( float(current_max_f) - float(current_min_f) )
 	# Right hand side should be at the center at 100%, and invisible when at 0%.
 	# Left hand side should be at the center at 0% and invisible when at 100%.
-	var rightHandSize = ( FLOW_WIDGET_SIZE * 0.5 ) * percentFlow
-	var leftHandSize = ( FLOW_WIDGET_SIZE * 0.5 ) * ( 1.0 - percentFlow )
+	var leftHandSize = ( FLOW_WIDGET_SIZE * 0.5 ) * percentFlow
+	var rightHandSize = ( FLOW_WIDGET_SIZE * 0.5 ) * ( 1.0 - percentFlow )
 	var centerBarSize = FLOW_WIDGET_SIZE - ( rightHandSize + leftHandSize )
 	
 	var shiftTween = create_tween()
 	shiftTween.parallel().tween_property( toLittle , 'custom_minimum_size' , Vector2( leftHandSize , 0 ) , TWEEN_LENGTH )
 	shiftTween.parallel().tween_property( toMuch , 'custom_minimum_size', Vector2( rightHandSize , 0 ) , TWEEN_LENGTH )
 	
-	# var currentIdealPos = idealLabel.get_position()
-	# var centerBarPos = justRight.get_position()
-	# var newIdealPos = centerBarPos + ( Vector2( centerBarSize.x * 0.5 , centerBarPos.y - 50 ) )
-	
-	# shiftTween.parellel().tween_property( idealLabel , 'position' , newIdealPos , 0.95 )
 	shiftTween.play()
+
+func _on_hydrogen_flow_updated( _flow, ideal, min_f, max_f )-> void:
+	show()
+
+	current_ideal = ideal
+	current_min_f = min_f
+	current_max_f = max_f

@@ -55,12 +55,12 @@ script = ExtResource("2_gcu2o")
 
 [node name="SolarSystem" type="Node2D" parent="."]
 
-[node name="StarScaffold" parent="SolarSystem" node_paths=PackedStringArray("star") instance=ExtResource("8_p7ro6")]
-star = NodePath("../Star")
-
 [node name="Star" parent="SolarSystem" instance=ExtResource("1_wmdo0")]
 position = Vector2(-2, 0)
 scale = Vector2(0.5, 0.5)
+
+[node name="StarScaffold" parent="SolarSystem" node_paths=PackedStringArray("star") instance=ExtResource("8_p7ro6")]
+star = NodePath("../Star")
 
 [node name="Planets" type="Node2D" parent="SolarSystem"]
 
@@ -89,7 +89,7 @@ ExtResource("11_3sx44"): 1000,
 ExtResource("12_l13i1"): 0
 }
 flow_rate_dict = {
-ExtResource("7_xxeen"): 15.0,
+ExtResource("7_xxeen"): 25.0,
 ExtResource("11_3sx44"): 4.0,
 ExtResource("12_l13i1"): 0.0
 }
@@ -127,7 +127,7 @@ ExtResource("11_3sx44"): 0,
 ExtResource("12_l13i1"): 0
 }
 flow_rate_dict = {
-ExtResource("7_xxeen"): 40.0,
+ExtResource("7_xxeen"): 60.0,
 ExtResource("11_3sx44"): 0.0,
 ExtResource("12_l13i1"): 0.0
 }

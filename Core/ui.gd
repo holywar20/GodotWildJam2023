@@ -116,7 +116,7 @@ func _on_EB_resources_reported(resourcesDict):
 	var newBase = resourcesDict[Constants.BASE_METAL]
 	var newPrecious = resourcesDict[Constants.PRECIOUS_METAL]
 	var newAntimatter = resourcesDict[Constants.ANTIMATTER]
-	
+
 	powerChange.set_text(str(int(newPower)-int(oldPower)))
 	hydrogenChange.set_text(str(int(newHydrogen)-int(oldHydrogen)))
 	baseChange.set_text(str(int(newBase)-int(oldBase)))

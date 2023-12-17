@@ -15,6 +15,9 @@ func assign_to(planet: Planet) -> void:
 	_planet = planet
 	_planet.add_planet_cracker(self)
 
+	# offset so it doesn't jack up the pixel art
+	set_scale( Vector2( 4, 4 ) * 1 / planet.p_scale )
+
 
 func get_assigned_planet() -> Planet:
 	return _planet

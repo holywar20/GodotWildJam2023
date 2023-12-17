@@ -36,7 +36,6 @@ vertical = true
 
 [node name="Panel" type="Panel"]
 custom_minimum_size = Vector2(521, 88)
-anchors_preset = -1
 offset_right = 521.0
 offset_bottom = 88.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_hym1f")

@@ -204,10 +204,13 @@ static func calculate_target_flow(current_hydrogen: int, star_tier: int) -> int:
 
 	match star_tier:
 		Constants.Tiers.TIER_0:
-			func_value = sqrt(x) + 50
+			func_value = sqrt(x) * 0.5
 		Constants.Tiers.TIER_1:
-			func_value = sin(x) * 100
-		# TODO: Fill in other tiers
+			func_value = sqrt(x) * 0.6
+		Constants.Tiers.TIER_2:
+			func_value = sqrt(x) * 0.8
+		Constants.Tiers.TIER_3:
+			func_value = sqrt(x) * 1.0
 
 	return int(func_value)
 

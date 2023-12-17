@@ -489,7 +489,6 @@ position = Vector2i(560, 240)
 visible = false
 
 [node name="Panel" parent="." instance=ExtResource("17_10cx6")]
-anchors_preset = 0
 offset_left = 616.0
 offset_top = 872.0
 offset_right = 1137.0

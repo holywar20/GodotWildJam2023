@@ -109,18 +109,18 @@ func _ready() -> void:
 
 	# TODO: Remove after testing!
 	#EventBus.star_hydrogen_updated.emit(0, 1000)
-	###
+	###aa
 
 
 func _give_player_resources() -> void:
-	current_resources[Constants.BASE_METAL] = 200
+	current_resources[Constants.BASE_METAL] = 300
 	current_resources[Constants.POWER] = 1000
 
 	# TESTING VALUES
-	current_resources[Constants.HYDROGEN] = 50000
-	#current_resources[Constants.POWER] = 10000
+	current_resources[Constants.HYDROGEN] = 5000
+	current_resources[Constants.POWER] = 10000
 	current_resources[Constants.BASE_METAL] = 50000
-	#current_resources[Constants.PRECIOUS_METAL] = 50000
+	current_resources[Constants.PRECIOUS_METAL] = 50000
 
 
 func _construct(building_type: String):
@@ -192,7 +192,8 @@ func _construct_dyson_swarm() -> void:
 	_num_dyson_swarms += 1
 	var swarm_count = _num_dyson_swarms * SWARM_EMISSION_FACTOR
 	dSwarm.set_amount( swarm_count )
-	if( !dSwarm.is_emitting ):
+	print( "Swarm!", dSwarm.is_emitting() , " - ", swarm_count)
+	if( !dSwarm.is_emitting() ):
 		dSwarm.set_emitting( true )
 
 	add_child( building_to_construct )
@@ -295,6 +296,7 @@ func _on_resources_extracted(new_resources: Dictionary) -> void:
 	_check_tier_threshold()
 
 	if new_resources.has(Constants.HYDROGEN):
+		print( Time.get_ticks_msec() , " "  , new_resources[Constants.HYDROGEN] )
 		_send_hydrogen_to_star(new_resources[Constants.HYDROGEN])
 
 
