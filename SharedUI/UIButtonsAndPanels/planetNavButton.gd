@@ -20,3 +20,7 @@ func updateUI(nPlanet):
 
 func _on_pressed():
 	EventBus.planet_nav_button_pressed.emit(planetRef)
+
+
+func _on_mouse_entered():
+	AudioManager.play_sfx("HOVER_BUTTON")

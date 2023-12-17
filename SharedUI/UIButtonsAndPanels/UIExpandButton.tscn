@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://cqf6e6u6vidip"]
+[gd_scene load_steps=6 format=3 uid="uid://cqf6e6u6vidip"]
 
 [ext_resource type="StyleBox" uid="uid://d3o77w77lg1nu" path="res://GlobalStyles/ButtonNormal.tres" id="1_ne3bt"]
 [ext_resource type="StyleBox" uid="uid://bbtgulbpse7ba" path="res://GlobalStyles/ButtonHover.tres" id="2_36arq"]
 [ext_resource type="StyleBox" uid="uid://ja8sxk2js2w7" path="res://GlobalStyles/ButtonPressed.tres" id="3_h7six"]
 [ext_resource type="StyleBox" uid="uid://h8qm4p52xr5h" path="res://GlobalStyles/ButtonDisabled.tres" id="4_d7m81"]
+[ext_resource type="Script" path="res://SharedUI/UIButtonsAndPanels/UIExpandButton.gd" id="5_rajfy"]
 
 [node name="BuildMenu" type="Button"]
 custom_minimum_size = Vector2(100, 100)
@@ -17,3 +18,6 @@ theme_override_styles/hover = ExtResource("2_36arq")
 theme_override_styles/pressed = ExtResource("3_h7six")
 theme_override_styles/disabled = ExtResource("4_d7m81")
 text = "B"
+script = ExtResource("5_rajfy")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]

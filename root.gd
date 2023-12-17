@@ -13,6 +13,8 @@ func _ready() -> void:
 	EventBus.new_game.connect(_on_new_game)
 	EventBus.constructed.connect(_on_constructed)
 	#AudioManager.play_music(AudioManager.MUSIC_TRACK_TITLE)
+	
+	AudioManager.play_sfx("CLOSE_MENU")
 
 func _on_EB_planet_nav_button_pressed(planetRef):
 	var moveTween = create_tween()

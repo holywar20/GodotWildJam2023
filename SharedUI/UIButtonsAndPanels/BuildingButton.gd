@@ -128,3 +128,7 @@ func setupStats(buildDict):
 
 func _on_pressed():
 	EventBus.emit_signal("construction_requested", buildingRef)
+
+
+func _on_mouse_entered():
+	AudioManager.play_sfx("HOVER_BUTTON")

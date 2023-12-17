@@ -12,9 +12,13 @@ script = ExtResource("1_jj52k")
 [node name="SFX" type="Node2D" parent="."]
 
 [node name="SFXPlayer1" type="AudioStreamPlayer" parent="SFX"]
+volume_db = -10.587
 
 [node name="SFXPlayer2" type="AudioStreamPlayer" parent="SFX"]
+volume_db = -10.587
 
 [node name="SFXPlayer3" type="AudioStreamPlayer" parent="SFX"]
+volume_db = -10.587
 
 [node name="SFXPlayer4" type="AudioStreamPlayer" parent="SFX"]
+volume_db = -10.587

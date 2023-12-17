@@ -12,7 +12,8 @@ func _on_danger_count( danger_count : int ) -> void:
 	if( danger_count == 0 ):
 		hide()
 		return
-		
+	
+	AudioManager.play_sfx("DANGER_WARNING")
 	show()
 	label.text = DANGER_FSTRING % ( Constants.DANGER_TIME - danger_count )
 

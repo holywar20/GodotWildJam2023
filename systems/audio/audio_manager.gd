@@ -29,14 +29,15 @@ var music_tracks = {
 }
 
 var sfx_tracks = {
-	#"": preload("")
+	'DANGER_WARNING' : preload("res://Assets/sounds/warning.wav"),
+	'HOVER_BUTTON' : preload("res://Assets/sounds/Hover.wav")
 }
 
-var _sfx_players = [
-	sfx_player_1,
-	sfx_player_2,
-	sfx_player_3,
-	sfx_player_4
+@onready var _sfx_players = [
+	$SFX/SFXPlayer1,
+	$SFX/SFXPlayer2,
+	$SFX/SFXPlayer3,
+	$SFX/SFXPlayer4
 ]
 
 
