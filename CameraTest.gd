@@ -13,10 +13,12 @@ var _current_rel: Vector2
 var _pan_lock: bool = false
 var _movement_vector: Vector2
 var _original_cam_pos: Vector2
+var _original_zoom_level
 
 
 func _ready() -> void:
 	_original_cam_pos = global_position
+	_original_zoom_level = zoom
 
 
 func _should_pan_lock() -> bool:
@@ -61,7 +63,7 @@ func _process( _delta : float ):
 		_is_mouse_pan = true
 	elif Input.is_action_just_pressed("CAMERA_RECENTER"):
 		global_position = _original_cam_pos
-		zoom = Vector2.ONE
+		zoom = _original_zoom_level
 	else:
 		_is_mouse_pan = false
 		_movement_vector = Vector2(
