@@ -1,9 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://c6t0tdq43a0s3"]
+[gd_scene load_steps=6 format=3 uid="uid://c6t0tdq43a0s3"]
 
 [ext_resource type="Theme" uid="uid://d1sjl81lo5my0" path="res://messaging/messaging.tres" id="1_k181i"]
 [ext_resource type="Script" path="res://messaging/intro_panel.gd" id="2_bohxj"]
 [ext_resource type="LabelSettings" uid="uid://dvrp43egoiu5c" path="res://StylesAndLabels/BigText.tres" id="3_0rrj4"]
 [ext_resource type="PackedScene" uid="uid://cwhce3gpdn7t7" path="res://entities/star/StarSceneIntro.tscn" id="4_16sf8"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_fiyg6"]
+font_size = 25
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
 
 [node name="IntroPanel" type="Panel"]
 anchors_preset = 15
@@ -14,43 +19,98 @@ grow_vertical = 2
 theme = ExtResource("1_k181i")
 script = ExtResource("2_bohxj")
 
+[node name="Left" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+offset_left = 60.0
+offset_top = 270.0
+offset_right = 560.0
+offset_bottom = 866.0
+
+[node name="Label" type="Label" parent="Left"]
+layout_mode = 2
+text = "Premise"
+label_settings = ExtResource("3_0rrj4")
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="Left"]
+layout_mode = 2
+
+[node name="Description" type="Label" parent="Left"]
+custom_minimum_size = Vector2(0, 500)
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "Starlifter is a game about Stellar Engineering. Your role is to build structures upon a dyson ring around a dead brown dwarf star and start fusion reactions within it.
+
+It is up to you to light this star, and bring illumination to a universe that is now dying to the pitiless cruelty of heat death.
+	
+You will start with some Power and Base Metals to get you going, but use them wisely."
+label_settings = SubResource("LabelSettings_fiyg6")
+autowrap_mode = 2
+
+[node name="Right" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 1330.0
+offset_top = 140.0
+offset_right = 1830.0
+offset_bottom = 972.0
+
+[node name="Label2" type="Label" parent="Right"]
+layout_mode = 2
+text = "Controls"
+label_settings = ExtResource("3_0rrj4")
+horizontal_alignment = 1
+
+[node name="HSeparator3" type="HSeparator" parent="Right"]
+layout_mode = 2
+
+[node name="Controls" type="Label" parent="Right"]
+custom_minimum_size = Vector2(500, 100)
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "
+Zoom : Mouse Wheel
+Pan : Control + Middle Mouse Button"
+label_settings = SubResource("LabelSettings_fiyg6")
+autowrap_mode = 2
+
+[node name="Control2" type="Control" parent="Right"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Right"]
+layout_mode = 2
+text = "Gameplay"
+label_settings = ExtResource("3_0rrj4")
+horizontal_alignment = 1
+
+[node name="HSeparator2" type="HSeparator" parent="Right"]
+layout_mode = 2
+
+[node name="Gameplay" type="Label" parent="Right"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "Build structures like Dyson Swarms, Planet Crackers and Celestial Extractors to increase your resources.
+
+Stars are made with Hydrogen. However you cannot let Hydrogen grow too fast, or the star will explode. If you let it accumulate to slow, the star will collapse and the project will fail.
+
+Starlifter is a game of balance. Maintain that balance and you'll liberate billions. Fail and civilization as you know it will end ..."
+label_settings = SubResource("LabelSettings_fiyg6")
+autowrap_mode = 2
+
 [node name="Node2D" parent="." instance=ExtResource("4_16sf8")]
 position = Vector2(958, 574)
 star_active = false
+metadata/_edit_lock_ = true
 
-[node name="Control" type="Control" parent="."]
-anchors_preset = 0
-offset_left = 857.0
-offset_top = 48.0
-offset_right = 897.0
-offset_bottom = 88.0
-
-[node name="Label" type="Label" parent="Control"]
+[node name="Label" type="Label" parent="."]
 layout_mode = 0
-offset_left = -73.0
-offset_top = -7.0
-offset_right = 346.0
-offset_bottom = 48.0
+offset_left = 760.0
+offset_top = 54.0
+offset_right = 1179.0
+offset_bottom = 109.0
 text = "Welcome to Starlifter!"
 label_settings = ExtResource("3_0rrj4")
-
-[node name="Control2" type="Control" parent="."]
-anchors_preset = 0
-offset_left = 643.0
-offset_top = 147.0
-offset_right = 683.0
-offset_bottom = 187.0
-
-[node name="Description" type="Label" parent="Control2"]
-layout_mode = 0
-offset_left = -224.0
-offset_top = -18.0
-offset_right = 924.0
-offset_bottom = 153.0
-theme_override_font_sizes/font_size = 25
-text = "Mine resources from planets and build giant structures to turn a dying brown dwarf into a main-sequence star."
-label_settings = ExtResource("3_0rrj4")
-autowrap_mode = 2
 
 [node name="Control3" type="Control" parent="."]
 anchors_preset = 0
