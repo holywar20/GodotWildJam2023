@@ -123,7 +123,7 @@ p_class = "Barren Planet"
 [node name="P4" parent="SolarSystem/Planets" instance=ExtResource("6_fk80q")]
 position = Vector2(-89, -191)
 _resource_abundance = {
-ExtResource("7_xxeen"): 50000,
+ExtResource("7_xxeen"): 100000,
 ExtResource("11_3sx44"): 0,
 ExtResource("12_l13i1"): 0
 }
@@ -142,7 +142,7 @@ p_class = "Gas Giant"
 [node name="P5" parent="SolarSystem/Planets" instance=ExtResource("6_fk80q")]
 position = Vector2(-293, 6)
 _resource_abundance = {
-ExtResource("7_xxeen"): 100000,
+ExtResource("7_xxeen"): 150000,
 ExtResource("11_3sx44"): 0,
 ExtResource("12_l13i1"): 0
 }
@@ -163,7 +163,7 @@ position = Vector2(-207, 182)
 _resource_abundance = {
 ExtResource("7_xxeen"): 25000,
 ExtResource("11_3sx44"): 25000,
-ExtResource("12_l13i1"): 10000
+ExtResource("12_l13i1"): 15000
 }
 flow_rate_dict = {
 ExtResource("7_xxeen"): 15.0,

@@ -22,7 +22,6 @@ func _process(_delta):
 func updateUI(planetRef):
 	EventBus.planet_selected.emit(planetRef)
 	currentPlanet = planetRef
-	var resourceDict = currentPlanet.get_resource_abundance()
 	planetName.set_text(planetRef.p_name)
 	planetType.set_text(planetRef.p_class)
 	desc.set_text(planetRef.p_descript)

@@ -47,7 +47,7 @@ var gas_mat : ShaderMaterial
 @export_subgroup("Display Params")
 @export_enum( "P1" , "P2" , "P3" , "P4" , "P5" , "P6" ) var pid : String = "P1"
 @export var p_scale : float = 1.0
-@export var orbit_num : int = 1.0
+@export var orbit_num : int = 1
 @export var orbital_speed : float = 1.0
 @export var p_name : String = "Unamed Planet"
 @export var p_class : String = "Lava Planet"
@@ -109,8 +109,8 @@ func add_planet_cracker(planet_cracker) -> void:
 	planet_cracker.set_rotation( radians )
 	var unit_circle = Vector2( cos(radians),  sin(radians) )
 	# Since planets are already scaled, just need to set local coordinates to half planet size ( radius ) , an offset to make it all line up.
-	var position = unit_circle * ( 250 + 100 )
-	planet_cracker.set_position( position )
+	var nPosition = unit_circle * ( 250 + 100 )
+	planet_cracker.set_position( nPosition )
 
 	add_child(planet_cracker)
 

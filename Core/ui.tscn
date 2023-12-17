@@ -388,9 +388,14 @@ custom_minimum_size = Vector2(30, 0)
 layout_mode = 2
 mouse_filter = 2
 
+[node name="ExpandingSpacer" type="Control" parent="Hbox/MiddleSection/CenterContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
 [node name="BuildingInfo" type="VBoxContainer" parent="Hbox/MiddleSection/CenterContainer"]
 layout_mode = 2
-size_flags_horizontal = 2
+size_flags_horizontal = 10
 mouse_filter = 2
 alignment = 2
 
@@ -402,16 +407,11 @@ layout_mode = 2
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 
-[node name="ExpandingSpacer" type="Control" parent="Hbox/MiddleSection/CenterContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-mouse_filter = 2
-
 [node name="PlanetDetails" type="VBoxContainer" parent="Hbox/MiddleSection/CenterContainer"]
 visible = false
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
-size_flags_horizontal = 10
+size_flags_horizontal = 8
 mouse_filter = 2
 alignment = 2
 

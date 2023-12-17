@@ -24,7 +24,7 @@ signal gas_cloud_stop_hovering(gas_cloud)
 
 # Planet signals
 signal planet_empty( planet )
-signal planet_depletion(planet)
+signal planet_depletion(planet) # Used to fire warning when planet has 1000 or less hydrogen
 signal planet_cracker_vals_changed( val_array ) # Dictionary with 3 values
 signal planet_selected(planet)
 signal zoom_changed( zoom_level )
