@@ -8,6 +8,7 @@ script = ExtResource("1_jj52k")
 [node name="Music" type="Node2D" parent="."]
 
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="Music"]
+volume_db = -9.341
 
 [node name="SFX" type="Node2D" parent="."]
 

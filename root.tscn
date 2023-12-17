@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://cnn2083d08byi"]
+[gd_scene load_steps=23 format=3 uid="uid://cnn2083d08byi"]
 
 [ext_resource type="Shader" path="res://entities/background/StellarBackground.gdshader" id="1_ece8b"]
 [ext_resource type="PackedScene" uid="uid://c1dcreph3lax5" path="res://Core/ui.tscn" id="1_qq3ke"]
@@ -20,7 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://cksacqby33ysk" path="res://messaging/stage_complete_panel.tscn" id="15_2cnmd"]
 [ext_resource type="PackedScene" uid="uid://c401sri4tfhat" path="res://SharedUI/DangerDisplay/danger.tscn" id="15_gsxpk"]
 [ext_resource type="PackedScene" uid="uid://ccsqcphban41y" path="res://messaging/event_panel.tscn" id="18_1isq2"]
-[ext_resource type="PackedScene" uid="uid://dlnrb1qrsoakq" path="res://messaging/FailState.tscn" id="20_47v50"]
+[ext_resource type="PackedScene" path="res://messaging/FailState.tscn" id="20_47v50"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1y724"]
 shader = ExtResource("1_ece8b")
