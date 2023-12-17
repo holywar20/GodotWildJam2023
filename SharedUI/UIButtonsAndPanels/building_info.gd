@@ -16,6 +16,7 @@ const MESSAGE_CANNOT_BE_ACTIVATED = "Structure cannot be activated at the moment
 @onready var prodPrec = $VBox/HBoxContainer/Produce/Prec/ProdPrec
 @onready var prodAnti = $VBox/HBoxContainer/Produce/Anti/ProdAnti
 
+@onready var costHydro = $VBox/HBoxContainer/Costs/Hydro/CostHydro
 @onready var costPower = $VBox/HBoxContainer/Costs/Power/CostPower
 @onready var costBase = $VBox/HBoxContainer/Costs/Base/CostBase
 @onready var costPrec = $VBox/HBoxContainer/Costs/Prec/CostPrec
@@ -26,6 +27,7 @@ const MESSAGE_CANNOT_BE_ACTIVATED = "Structure cannot be activated at the moment
 @onready var prodPrecCont = $VBox/HBoxContainer/Produce/Prec
 @onready var prodAntiCont = $VBox/HBoxContainer/Produce/Anti
 
+@onready var costHydroCont = $VBox/HBoxContainer/Costs/Hydro
 @onready var costPowerCont = $VBox/HBoxContainer/Costs/Power
 @onready var costBaseCont = $VBox/HBoxContainer/Costs/Base
 @onready var costPrecCont = $VBox/HBoxContainer/Costs/Prec
@@ -39,6 +41,8 @@ var buildingInfo
 var buildingRef
 var buildingArray = Info.BUILDING_INFO
 
+func _ready():
+	EventBus.connect("planet_nav_button_pressed", Callable(self, "_on_EB_planet_nav_button_pressed"))
 
 func setupScene(building):
 	buildingRef = building
@@ -79,6 +83,9 @@ func setupScene(building):
 	if (buildingInfo.is_constructed()):
 		enableButton.disabled = false
 	
+	if buildCostDict.has(Constants.HYDROGEN):
+		costHydroCont.show()
+		costHydro.text = str(buildCostDict[Constants.HYDROGEN])
 	if buildCostDict.has(Constants.POWER):
 		costPowerCont.show()
 		costPower.text = str(buildCostDict[Constants.POWER])
@@ -134,6 +141,8 @@ func _on_enable_pressed():
 	enableButton.hide()
 	disableButton.show()
 
+func _on_EB_planet_nav_button_pressed(_planet_ref):
+	hide()
 
 func _on_close_button_pressed():
 	close()

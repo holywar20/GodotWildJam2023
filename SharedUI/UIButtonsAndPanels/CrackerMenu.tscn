@@ -17,7 +17,6 @@ script = ExtResource("1_vb25h")
 layout_mode = 2
 
 [node name="CrackerControls" type="VBoxContainer" parent="VBoxContainer"]
-visible = false
 layout_mode = 2
 
 [node name="HydrogenSliderControl" parent="VBoxContainer/CrackerControls" instance=ExtResource("2_nustn")]

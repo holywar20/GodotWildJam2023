@@ -9,7 +9,7 @@ const MESSAGE_INSUFFICIENT_SPACE = "No more space left for structures!"
 const MESSAGE_INSUFFICIENT_OPERATING_RESOURCES = "One or more structures can't produce due to insufficient resources!"
 const MESSAGE_MAX_DYSON_SWARMS_REACHED = "You can only have one Dyson Swarm!"
 
-const MAX_DYSON_SWARMS = 1
+const MAX_DYSON_SWARMS = 100
 
 const construction_sprite = preload("res://Assets/buildings/ConstructionPlaceholder.png")
 
@@ -113,7 +113,7 @@ func _ready() -> void:
 
 
 func _give_player_resources() -> void:
-	current_resources[Constants.BASE_METAL] = 150
+	current_resources[Constants.BASE_METAL] = 200
 	current_resources[Constants.POWER] = 1000
 
 	# TESTING VALUES

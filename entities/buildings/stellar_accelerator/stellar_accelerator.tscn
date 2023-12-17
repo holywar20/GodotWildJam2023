@@ -15,12 +15,15 @@ type = "Stellar Accelerator"
 tier = 2
 build_time = 360
 operational_costs = {
-ExtResource("2_fkwe2"): 100,
-ExtResource("3_qcefi"): 50
+ExtResource("2_fkwe2"): 500,
+ExtResource("3_qcefi"): null
 }
 building_costs = {
 ExtResource("4_nks8x"): 10000,
 ExtResource("5_k4ioi"): 7500
+}
+produces = {
+ExtResource("3_qcefi"): 50
 }
 
 [node name="Construction" type="Sprite2D" parent="."]
