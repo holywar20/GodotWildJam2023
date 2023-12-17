@@ -34,8 +34,6 @@ func _ready():
 
 func _on_EB_star_transitioned(_state):
 	currentTier = _state + 1
-	print(_state)
-	print("Tier " + str(currentTier))
 	if currentTier == 2:
 		CelestialExtractorButton.show()
 		DysonSwarmButton.show()
@@ -43,6 +41,7 @@ func _on_EB_star_transitioned(_state):
 	if currentTier == 3:
 		#AntimatterFactoryButton.show()
 		StellarAcceleratorButton.show()
+	if currentTier == 4:
 		StarlifterButton.show()
 
 func openClose():

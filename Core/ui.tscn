@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://c1dcreph3lax5"]
+[gd_scene load_steps=27 format=3 uid="uid://c1dcreph3lax5"]
 
 [ext_resource type="Script" path="res://Core/ui.gd" id="1_e5olo"]
 [ext_resource type="PackedScene" uid="uid://cqf6e6u6vidip" path="res://SharedUI/UIButtonsAndPanels/UIExpandButton.tscn" id="2_cpkjk"]
@@ -24,6 +24,7 @@
 [ext_resource type="PackedScene" uid="uid://cih3s5dfqmx5" path="res://SharedUI/UIButtonsAndPanels/ExitConfirmPopup.tscn" id="10_j0cds"]
 [ext_resource type="LabelSettings" uid="uid://cvlyjmf5fwwj0" path="res://StylesAndLabels/3rdRead-Subtitle.tres" id="14_r5vns"]
 [ext_resource type="PackedScene" uid="uid://3xroj5m8nitt" path="res://SharedUI/FlowDisplay/FlowDisplay.tscn" id="17_10cx6"]
+[ext_resource type="PackedScene" uid="uid://d3rm2kek5hcxx" path="res://SharedUI/warning_text.tscn" id="25_00fif"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ao2t6"]
 content_margin_bottom = 0.0
@@ -493,6 +494,8 @@ offset_left = 616.0
 offset_top = 872.0
 offset_right = 1137.0
 offset_bottom = 960.0
+
+[node name="Warning" parent="." instance=ExtResource("25_00fif")]
 
 [connection signal="pressed" from="OpButtonContainer/BuildMenu" to="." method="_on_build_menu_pressed"]
 [connection signal="pressed" from="OpButtonContainer/Bore" to="." method="_on_bore_pressed"]

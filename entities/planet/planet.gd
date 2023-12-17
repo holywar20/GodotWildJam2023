@@ -169,6 +169,9 @@ func extract_resource(resource: UsableResource) -> int:
 		_resource_abundance[resource] = 0
 		return amount_extracted
 
+	if resource == Constants.HYDROGEN and _resource_abundance[resource] <= 1000 and _resource_abundance[resource] != 0:
+		EventBus.emit_signal("planet_depletion",  self)
+
 	_resource_abundance[resource] -= amount_to_extract
 	return amount_to_extract
 

@@ -27,6 +27,7 @@ extends CanvasLayer
 @onready var antimatterChange = $Hbox/MiddleSection/TopBorder/Panel/ResContainer/Antimatter/AntimatterContainer/Panel/Numbers/Change
 
 @onready var currentEventLabel = $Hbox/MiddleSection/TopBorder/Panel/ResContainer/PanelContainer/VBoxContainer/CurrentEventLabel
+@onready var resourceWarning = $Warning
 
 var feedbackMessage = preload("res://SharedUI/feedback_message_scene.tscn")
 var buildQueueItem = preload("res://SharedUI/BuildQueueItem.tscn")
@@ -49,7 +50,7 @@ func _ready():
 	EventBus.connect("event_started", Callable(self, "_on_EB_event_started"))
 	EventBus.connect("event_concluded", Callable(self, "_on_EB_event_concluded"))
 	EventBus.connect("gas_cloud_hovering", Callable(self, "_on_EB_gas_cloud_hovering"))
-
+	EventBus.connect("planet_depletion", Callable(self, "_on_EB_planet_depletion"))
 	navPanel.updateUI()
 
 
@@ -186,6 +187,9 @@ func _on_EB_gas_cloud_hovering(gas_cloud):
 	var mousePos = get_viewport().get_mouse_position()
 	add_child(newMessage)
 	newMessage.setupScene(gas_cloud, mousePos)
+
+func _on_EB_planet_depletion(planet):
+	resourceWarning.playWarning(planet)
 
 func _on_build_menu_pressed():
 	if (boreMenu.isOpen):
