@@ -56,6 +56,8 @@ signal building_pressed(building)
 signal planet_nav_button_pressed(planetRef)
 signal return_to_star_pressed()
 signal bore_control_updated(value)
+signal show_intro()
+signal show_credits()
 
 
 # Misc. game signals

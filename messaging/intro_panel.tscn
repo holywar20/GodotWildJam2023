@@ -69,8 +69,9 @@ custom_minimum_size = Vector2(500, 100)
 layout_mode = 2
 theme_override_font_sizes/font_size = 25
 text = "
-Zoom : Mouse Wheel
-Pan : Control + Middle Mouse Button"
+Zoom: CTRL + Mouse Wheel, or [ and ]
+Pan: Hold Middle Mouse Button or WASD
+Reset Camera: Tab"
 label_settings = SubResource("LabelSettings_fiyg6")
 autowrap_mode = 2
 
@@ -92,7 +93,7 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 25
 text = "Build structures like Dyson Swarms, Planet Crackers and Celestial Extractors to increase your resources.
 
-Stars are made with Hydrogen. However you cannot let Hydrogen grow too fast, or the star will explode. If you let it accumulate to slow, the star will collapse and the project will fail.
+Stars are made with accumulated Hydrogen. However you cannot let hydrogen flow grow too fast, or the star will explode. If you let it accumulate too slowly, the star will collapse and the project will fail.
 
 Starlifter is a game of balance. Maintain that balance and you'll liberate billions. Fail and civilization as you know it will end ..."
 label_settings = SubResource("LabelSettings_fiyg6")
@@ -132,4 +133,18 @@ offset_right = 218.003
 offset_bottom = 63.012
 text = "New Game"
 
+[node name="CreditsButton" type="Button" parent="Control3"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.257
+anchor_top = 3.162
+anchor_right = -0.257
+anchor_bottom = 3.162
+offset_left = 0.00299987
+offset_top = 105.012
+offset_right = 218.003
+offset_bottom = 168.012
+text = "Credits"
+
 [connection signal="pressed" from="Control3/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="Control3/CreditsButton" to="." method="_on_credits_button_pressed"]
