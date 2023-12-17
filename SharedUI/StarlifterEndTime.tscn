@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://bs6i00bcseylp"]
+
+[ext_resource type="StyleBox" uid="uid://ddntcu16ssfif" path="res://StylesAndLabels/FloatingPanel.tres" id="1_0bok7"]
+[ext_resource type="Script" path="res://SharedUI/StarlifterTime.gd" id="1_ncxbd"]
+
+[node name="StarlifterTime" type="Panel"]
+offset_right = 704.0
+offset_bottom = 119.0
+theme_override_styles/panel = ExtResource("1_0bok7")
+script = ExtResource("1_ncxbd")
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+layout_mode = 0
+offset_left = 55.0
+offset_top = 35.0
+offset_right = 640.0
+offset_bottom = 72.0
+max_value = 30.0
+step = 1.0

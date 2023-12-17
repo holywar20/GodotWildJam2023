@@ -13,7 +13,7 @@ scale = Vector2(4, 4)
 script = ExtResource("1_68wcj")
 type = "Starlifter"
 tier = 2
-build_time = 480
+build_time = 1
 operational_costs = {
 ExtResource("2_jkmmh"): 250,
 ExtResource("3_1gy1o"): 100
@@ -24,7 +24,7 @@ ExtResource("4_eo8ke"): 20000,
 ExtResource("3_1gy1o"): 5000
 }
 
-[node name="Constructed" type="Sprite2D" parent="."]
+[node name="Construction" type="Sprite2D" parent="."]
 texture = ExtResource("6_74vrl")
 
 [node name="Building" type="Sprite2D" parent="."]

@@ -16,11 +16,11 @@
 [ext_resource type="Resource" uid="uid://un8y85jvdke1" path="res://entities/resources/precious_metal.tres" id="12_l13i1"]
 [ext_resource type="PackedScene" uid="uid://d3kbycc6q0xqa" path="res://messaging/pause_panel.tscn" id="13_36ufa"]
 [ext_resource type="PackedScene" uid="uid://c1o3ao1kkookr" path="res://entities/cloud/gas_cloud.tscn" id="13_41kmm"]
-[ext_resource type="Script" path="res://StarlifterTime.gd" id="15_00avq"]
 [ext_resource type="PackedScene" uid="uid://cksacqby33ysk" path="res://messaging/stage_complete_panel.tscn" id="15_2cnmd"]
 [ext_resource type="PackedScene" uid="uid://c401sri4tfhat" path="res://SharedUI/DangerDisplay/danger.tscn" id="15_gsxpk"]
+[ext_resource type="PackedScene" uid="uid://bs6i00bcseylp" path="res://SharedUI/StarlifterEndTime.tscn" id="15_xuwh5"]
 [ext_resource type="PackedScene" uid="uid://ccsqcphban41y" path="res://messaging/event_panel.tscn" id="18_1isq2"]
-[ext_resource type="PackedScene" path="res://messaging/FailState.tscn" id="20_47v50"]
+[ext_resource type="PackedScene" uid="uid://dlnrb1qrsoakq" path="res://messaging/FailState.tscn" id="20_47v50"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1y724"]
 shader = ExtResource("1_ece8b")
@@ -222,10 +222,11 @@ environment = ExtResource("2_qfksb")
 [node name="Messaging" type="CanvasLayer" parent="."]
 script = ExtResource("12_37mgj")
 
-[node name="StarlifterTime" type="Panel" parent="Messaging"]
-offset_right = 40.0
-offset_bottom = 40.0
-script = ExtResource("15_00avq")
+[node name="StarlifterTime" parent="Messaging" instance=ExtResource("15_xuwh5")]
+offset_left = 535.0
+offset_top = 175.0
+offset_right = 1239.0
+offset_bottom = 294.0
 
 [node name="Danger" parent="Messaging" instance=ExtResource("15_gsxpk")]
 visible = false

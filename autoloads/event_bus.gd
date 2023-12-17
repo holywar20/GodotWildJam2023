@@ -64,3 +64,4 @@ signal game_unpaused
 signal new_game
 signal feedback_message(message)
 signal game_restart()
+signal game_won()
