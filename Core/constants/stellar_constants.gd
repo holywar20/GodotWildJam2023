@@ -54,7 +54,7 @@ const TIER_STATES = {
 			
 			It is a small, cool star that is very common in the universe. It is not very luminous, but it is very long lived. It is the most common type of star in the universe.
 			
-			More planets are now available for you to explore, but events can now happent that may help or hinder you.""",
+			More planets are now available for you to explore, but events can now happen that may help or hinder you.""",
 			'gradient' : preload("res://entities/star/gradients/t1.tres")
 		},
 		'interpolated_metadata' : {
@@ -91,10 +91,10 @@ const TIER_STATES = {
 			'star_class' : "Orange Dwarf",
 			'description' : """From a red dwarf, the star has become a glowing orange dwarf.
 			
-			More planets are also now available for you to explore.
-			
 			Stable and possibly capable of helping support life, this ball of gas continues to devour fuel like a growing adolescent. It isn't an adult yet, but 
 			it will be with your continued help.
+			
+			More planets are also now available for you to explore.
 			
 			Just be sure to keep an eye on your new teenager.""",
 			'gradient' : preload("res://entities/star/gradients/t2.tres")
@@ -133,7 +133,7 @@ const TIER_STATES = {
 			'star_class' : "Yellow Dwarf",
 			'description' : """Another Sol has emerged from what was once a cold, dead celestial body.
 			
-			The star's voracious appetite has only accelerated, although its warmth and luminosity make the possibility of life on orbiting planet a very distinct 
+			The star's voracious appetite has only accelerated, although its warmth and luminosity make the possibility of life on an orbiting planet a very distinct 
 			posibility.
 			
 			Will your new sun be the saving grace of the universe? Or will it run amok, greedily fusing anything it can get its hands on until it becomes too big to support itself?""",
