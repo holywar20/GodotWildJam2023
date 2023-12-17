@@ -1,6 +1,7 @@
 extends Resource
 class_name Constants
 
+const DANGER_TIME = 5
 
 # Building tiers
 enum Tiers {

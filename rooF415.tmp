@@ -221,7 +221,6 @@ environment = ExtResource("2_qfksb")
 script = ExtResource("12_37mgj")
 
 [node name="Danger" parent="Messaging" instance=ExtResource("15_gsxpk")]
-visible = false
 offset_left = 513.0
 offset_top = 678.0
 offset_right = 1220.0

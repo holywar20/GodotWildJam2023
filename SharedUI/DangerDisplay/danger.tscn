@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://c401sri4tfhat"]
+
+[ext_resource type="StyleBox" uid="uid://ddntcu16ssfif" path="res://StylesAndLabels/FloatingPanel.tres" id="1_b5abf"]
+[ext_resource type="Script" path="res://SharedUI/DangerDisplay/danger.gd" id="2_pshje"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_city6"]
+font_size = 22
+font_color = Color(0.941176, 0.254902, 0.254902, 1)
+
+[node name="Danger" type="Panel"]
+offset_right = 707.0
+offset_bottom = 124.0
+theme_override_styles/panel = ExtResource("1_b5abf")
+script = ExtResource("2_pshje")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 30.0
+offset_right = 670.0
+offset_bottom = 90.0
+text = "Flow out of Tolerance ... %s seconds to catastrophe!"
+label_settings = SubResource("LabelSettings_city6")
+horizontal_alignment = 1
+vertical_alignment = 1

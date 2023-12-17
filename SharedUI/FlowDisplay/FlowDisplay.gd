@@ -57,11 +57,16 @@ func _on_resources_reported( resources ) -> void:
 
 	leftHandSize = clamp( leftHandSize , 0 , FLOW_WIDGET_SIZE )
 	rightHandSize = clamp( rightHandSize , 0 , FLOW_WIDGET_SIZE )
-	
+
 	var shiftTween = create_tween()
 	shiftTween.parallel().tween_property( toLittle , 'custom_minimum_size' , Vector2( leftHandSize , 0 ) , TWEEN_LENGTH )
 	shiftTween.parallel().tween_property( toMuch , 'custom_minimum_size', Vector2( rightHandSize , 0 ) , TWEEN_LENGTH )
-	
+
+	if( flow > current_max_f  || flow < current_min_f ):
+		danger_count += 1
+
+	EventBus.emit_signal( "danger_count" , danger_count )
+
 	shiftTween.play()
 
 func _on_hydrogen_flow_updated( _flow, ideal, min_f, max_f )-> void:
