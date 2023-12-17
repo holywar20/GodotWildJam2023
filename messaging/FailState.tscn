@@ -1,0 +1,49 @@
+[gd_scene load_steps=3 format=3 uid="uid://dlnrb1qrsoakq"]
+
+[ext_resource type="Theme" uid="uid://d1sjl81lo5my0" path="res://messaging/messaging.tres" id="1_fsx0h"]
+[ext_resource type="Script" path="res://messaging/FailState.gd" id="2_tw6dn"]
+
+[node name="FailState" type="Panel"]
+process_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_fsx0h")
+script = ExtResource("2_tw6dn")
+
+[node name="Control" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 502.0
+offset_top = 162.0
+offset_right = 1147.0
+offset_bottom = 399.0
+
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 207.0
+offset_top = 15.0
+offset_right = 566.0
+offset_bottom = 78.0
+text = "Game Over"
+horizontal_alignment = 1
+
+[node name="Description" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = -165.0
+offset_top = 134.0
+offset_right = 930.0
+offset_bottom = 305.0
+theme_override_font_sizes/font_size = 25
+autowrap_mode = 2
+
+[node name="Button" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = -15.0
+offset_top = 666.0
+offset_right = 831.0
+offset_bottom = 786.0
+text = "Try Again"
+
+[connection signal="pressed" from="Control/Button" to="." method="_on_button_pressed"]

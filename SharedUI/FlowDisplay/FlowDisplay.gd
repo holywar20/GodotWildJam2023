@@ -24,6 +24,7 @@ var current_max_f : int = 0
 
 var DANGER_TO_END_GAME : int = 5
 var danger_count : int = 0
+var failDir
 
 
 # Called when the node enters the scene tree for the first time.
@@ -64,10 +65,14 @@ func _on_resources_reported( resources ) -> void:
 
 	if( flow > current_max_f  || flow < current_min_f ):
 		danger_count += 1
+		if (flow > current_max_f):
+			failDir = "high"
+		if (flow < current_min_f):
+			failDir = "low"
 	if( flow < current_max_f  && flow > current_min_f ):
 		danger_count = 0
 
-	EventBus.emit_signal( "danger_count" , danger_count )
+	EventBus.emit_signal( "danger_count" , danger_count, failDir )
 
 	shiftTween.play()
 
