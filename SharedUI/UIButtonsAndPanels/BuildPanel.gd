@@ -23,6 +23,7 @@ var currentTier = 1
 func _ready():
 	# Joe this code breaks on star_transitioned
 	EventBus.connect("star_transitioned", Callable(self, "_on_EB_star_transitioned"))
+	EventBus.connect("game_restart", Callable(self, "_on_EB_game_restart"))
 	GigafactoryButton.tooltip_text = Constants.BUILDING_GIGAFACTORY_DESCRIPTION
 	FusionReactorButton.tooltip_text = Constants.BUILDING_FUSION_REACTOR_DESCRIPTION
 	CelestialExtractorButton.tooltip_text = Constants.BUILDING_CELESTIAL_EXTRACTOR_DESCRIPTION
@@ -31,6 +32,12 @@ func _ready():
 	StellarAcceleratorButton.tooltip_text = Constants.BUILDING_STELLAR_ACCELERATOR_DESCRIPTION
 	StarlifterButton.tooltip_text = Constants.BUILDING_STARLIFTER_DESCRIPTION
 
+func _on_EB_game_restart():
+	CelestialExtractorButton.hide()
+	DysonSwarmButton.hide()
+	MagneticBoreButton.hide()
+	StellarAcceleratorButton.hide()
+	StarlifterButton.hide()
 
 func _on_EB_star_transitioned(_state):
 	currentTier = _state + 1

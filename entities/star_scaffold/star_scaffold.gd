@@ -128,11 +128,11 @@ func _give_player_resources() -> void:
 	current_resources[Constants.ANTIMATTER] = 0
 
 	# TESTING VALUES
-	current_resources[Constants.HYDROGEN] = 100000
-	current_resources[Constants.POWER] = 10000
-	current_resources[Constants.BASE_METAL] = 50000
-	current_resources[Constants.PRECIOUS_METAL] = 50000
-	current_resources[Constants.ANTIMATTER] = 10000
+	# current_resources[Constants.HYDROGEN] = 100000
+	# current_resources[Constants.POWER] = 10000
+	# current_resources[Constants.BASE_METAL] = 50000
+	# current_resources[Constants.PRECIOUS_METAL] = 50000
+	# current_resources[Constants.ANTIMATTER] = 10000
 
 
 func _construct(building_type: String):

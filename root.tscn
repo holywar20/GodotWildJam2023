@@ -223,6 +223,7 @@ environment = ExtResource("2_qfksb")
 script = ExtResource("12_37mgj")
 
 [node name="StarlifterTime" parent="Messaging" instance=ExtResource("15_xuwh5")]
+visible = false
 offset_left = 535.0
 offset_top = 175.0
 offset_right = 1239.0
@@ -237,7 +238,6 @@ offset_bottom = 802.0
 
 [node name="IntroPanel" parent="Messaging" instance=ExtResource("12_c1rvc")]
 process_mode = 3
-visible = false
 
 [node name="PausePanel" parent="Messaging" instance=ExtResource("13_36ufa")]
 visible = false
