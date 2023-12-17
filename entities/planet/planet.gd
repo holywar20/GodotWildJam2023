@@ -166,6 +166,9 @@ func reset_resources():
 	for key in _resource_abundance:
 		_resource_abundance[key] = resource_backup[key]
 	
+	for cracker in _planet_crackers:
+		remove_child(cracker)
+
 	_planet_crackers = []
 
 # Utility Methods

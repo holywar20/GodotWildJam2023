@@ -76,11 +76,13 @@ var _buildings: Dictionary = {
 
 var _buildings_under_construction: Array = []
 
+var _dyson_swarms: Array = []
 
 const SWARM_EMISSION_FACTOR = 20
+
+# TODO: At some point, just use the array and its size.
 var _num_dyson_swarms: int = 0:
 	get = get_num_dyson_swarms
-
 
 func get_num_dyson_swarms() -> int:
 	return _num_dyson_swarms
@@ -98,7 +100,6 @@ func _ready() -> void:
 	EventBus.emp_wave_happened.connect(_on_emp_wave_happened)
 	EventBus.event_concluded.connect(_on_event_concluded)
 
-
 	EventBus.star_transitioned.connect( _on_star_transitioned )
 
 	animPlayer.play("InnerRingRotation")
@@ -113,12 +114,27 @@ func _ready() -> void:
 
 	EventBus.connect('game_restart' , Callable( self, '_on_game_restart') )
 
+
 func _on_game_restart():
+	_clear_dyson_swarm()
 	_give_player_resources()
 	for BUILD_POS in _buildings:
 		if _buildings[BUILD_POS] != null:
-			_buildings[BUILD_POS].queue_free()
+			remove_child(_buildings[BUILD_POS])
 			_buildings[BUILD_POS] = null
+
+
+func _clear_dyson_swarm() -> void:
+	_num_dyson_swarms = 0
+
+	dSwarm.set_emitting(false)
+	dSwarm.set_amount(1)
+
+	for swarm in _dyson_swarms:
+		remove_child(swarm)
+
+	_dyson_swarms.clear()
+
 
 func _give_player_resources() -> void:
 	current_resources[Constants.BASE_METAL] = 300
@@ -195,6 +211,7 @@ func _construct_dyson_swarm() -> void:
 		return
 
 	building_to_construct.set_build_speedup_factor(_calculate_building_speedup_factor())
+	building_to_construct.set_star_scaffold(self)
 
 	_deduct_from_current_resources(building_to_construct.building_costs)
 
@@ -209,7 +226,7 @@ func _construct_dyson_swarm() -> void:
 		dSwarm.set_emitting( true )
 
 	add_child( building_to_construct )
-	building_to_construct.set_star_scaffold(self)
+	_dyson_swarms.append(building_to_construct)
 
 	EventBus.construction_started.emit(building_to_construct)
 

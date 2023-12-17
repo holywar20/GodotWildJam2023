@@ -13,7 +13,12 @@ var _total_hydrogen: int
 
 
 func _ready() -> void:
+	EventBus.game_restart.connect(_on_game_restart)
 	_total_hydrogen = hydrogen_remaining
+
+
+func _on_game_restart() -> void:
+	hydrogen_remaining = _total_hydrogen
 
 
 # percentage: decimal between 0.0 and 1.0
