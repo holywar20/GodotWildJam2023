@@ -49,6 +49,9 @@ func _on_resources_reported( resources ) -> void:
 	var leftHandSize = ( FLOW_WIDGET_SIZE * 0.5 ) * percentFlow
 	var rightHandSize = ( FLOW_WIDGET_SIZE * 0.5 ) * ( 1.0 - percentFlow )
 	var centerBarSize = FLOW_WIDGET_SIZE - ( rightHandSize + leftHandSize )
+
+	leftHandSize = clamp( leftHandSize , 0 , FLOW_WIDGET_SIZE )
+	rightHandSize = clamp( rightHandSize , 0 , FLOW_WIDGET_SIZE )
 	
 	var shiftTween = create_tween()
 	shiftTween.parallel().tween_property( toLittle , 'custom_minimum_size' , Vector2( leftHandSize , 0 ) , TWEEN_LENGTH )

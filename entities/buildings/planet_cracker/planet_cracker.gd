@@ -1,15 +1,12 @@
 class_name PlanetCracker
 extends AbstractBuilding
 
-
 var _planet: Planet:
 	set = assign_to,
 	get = get_assigned_planet
 
-
 func _ready():
 	super()
-
 
 func assign_to(planet: Planet) -> void:
 	_planet = planet
@@ -18,10 +15,8 @@ func assign_to(planet: Planet) -> void:
 	# offset so it doesn't jack up the pixel art
 	set_scale( Vector2( 4, 4 ) * 1 / planet.p_scale )
 
-
 func get_assigned_planet() -> Planet:
 	return _planet
-
 
 func next_extraction() -> Dictionary:
 	var hydrogen_extracted = _planet.extract_resource(Constants.HYDROGEN)

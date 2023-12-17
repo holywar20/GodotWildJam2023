@@ -55,6 +55,8 @@ var gas_mat : ShaderMaterial
 @export var is_icon : bool = false
 
 
+var has_lasers : bool = false
+
 const RAND_SEED = 11111111
 var _rng = RandomNumberGenerator.new()
 
@@ -88,6 +90,9 @@ func _ready() -> void:
 		remove_from_group("PLANET_SCENE")
 		show()
 
+func fire_laser() -> void:
+
+
 func set_as_icon( n_pid : String ) -> void:
 	var shaderParams = PlanetaryConstants.get_shader_params( n_pid )
 	forceDecorate( shaderParams , n_pid )
@@ -103,7 +108,8 @@ func add_planet_cracker(planet_cracker) -> void:
 
 	planet_cracker.set_rotation( radians )
 	var unit_circle = Vector2( cos(radians),  sin(radians) )
-	var position = unit_circle * ( ( 250 * p_scale ) + 100 )
+	# Since planets are already scaled, just need to set local coordinates to half planet size ( radius ) , an offset to make it all line up.
+	var position = unit_circle * ( 250 + 100 )
 	planet_cracker.set_position( position )
 
 	add_child(planet_cracker)
