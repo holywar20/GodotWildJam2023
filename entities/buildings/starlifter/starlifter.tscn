@@ -5,7 +5,7 @@
 [ext_resource type="Resource" uid="uid://bawqrs2x5k1ov" path="res://entities/resources/antimatter.tres" id="3_1gy1o"]
 [ext_resource type="Resource" uid="uid://criguf1driv4" path="res://entities/resources/base_metal.tres" id="3_3w1sa"]
 [ext_resource type="Resource" uid="uid://un8y85jvdke1" path="res://entities/resources/precious_metal.tres" id="4_eo8ke"]
-[ext_resource type="Texture2D" uid="uid://ca8y4rl40yqgd" path="res://Assets/buildings/ConstructionPlaceholder.png" id="6_uk0ns"]
+[ext_resource type="Texture2D" uid="uid://b5pimptewko5i" path="res://Assets/buildings/Construction.png" id="6_74vrl"]
 [ext_resource type="Texture2D" uid="uid://c2033vf6c1our" path="res://Assets/buildings/StarLifter.png" id="7_gge5a"]
 
 [node name="Starlifter" type="Node2D"]
@@ -15,7 +15,7 @@ type = "Starlifter"
 tier = 2
 build_time = 480
 operational_costs = {
-ExtResource("2_jkmmh"): 750,
+ExtResource("2_jkmmh"): 250,
 ExtResource("3_1gy1o"): 100
 }
 building_costs = {
@@ -25,7 +25,7 @@ ExtResource("3_1gy1o"): 5000
 }
 
 [node name="Constructed" type="Sprite2D" parent="."]
-texture = ExtResource("6_uk0ns")
+texture = ExtResource("6_74vrl")
 
 [node name="Building" type="Sprite2D" parent="."]
 texture = ExtResource("7_gge5a")

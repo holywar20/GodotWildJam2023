@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://entities/buildings/gigafactory/gigafactory.gd" id="1_y3466"]
 [ext_resource type="Resource" uid="uid://di8768hxc0pfy" path="res://entities/resources/power.tres" id="2_8qk54"]
 [ext_resource type="Resource" uid="uid://criguf1driv4" path="res://entities/resources/base_metal.tres" id="3_2c1m4"]
-[ext_resource type="Texture2D" uid="uid://ca8y4rl40yqgd" path="res://Assets/buildings/ConstructionPlaceholder.png" id="4_ybrqo"]
+[ext_resource type="Texture2D" uid="uid://b5pimptewko5i" path="res://Assets/buildings/Construction.png" id="4_8xq74"]
 [ext_resource type="Texture2D" uid="uid://bjok0a6x2nli3" path="res://Assets/buildings/Factory.png" id="5_qkmrx"]
 
 [node name="Gigafactory" type="Node2D"]
@@ -19,7 +19,7 @@ ExtResource("3_2c1m4"): 75
 }
 
 [node name="Construction" type="Sprite2D" parent="."]
-texture = ExtResource("4_ybrqo")
+texture = ExtResource("4_8xq74")
 
 [node name="Building" type="Sprite2D" parent="."]
 texture = ExtResource("5_qkmrx")

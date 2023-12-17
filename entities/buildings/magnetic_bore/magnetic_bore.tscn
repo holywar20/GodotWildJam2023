@@ -5,7 +5,7 @@
 [ext_resource type="Resource" uid="uid://criguf1driv4" path="res://entities/resources/base_metal.tres" id="3_d172c"]
 [ext_resource type="Resource" uid="uid://un8y85jvdke1" path="res://entities/resources/precious_metal.tres" id="4_2n5es"]
 [ext_resource type="Resource" uid="uid://i07mt6rgiele" path="res://entities/resources/hydrogen.tres" id="5_510g3"]
-[ext_resource type="Texture2D" uid="uid://ca8y4rl40yqgd" path="res://Assets/buildings/ConstructionPlaceholder.png" id="6_njqcc"]
+[ext_resource type="Texture2D" uid="uid://b5pimptewko5i" path="res://Assets/buildings/Construction.png" id="6_q4y2n"]
 [ext_resource type="Texture2D" uid="uid://ds58ckuu4iukk" path="res://Assets/buildings/MagneticBore.png" id="7_rs0vb"]
 
 [node name="MagneticBore" type="Node2D"]
@@ -25,7 +25,7 @@ ExtResource("5_510g3"): 500
 }
 
 [node name="Construction" type="Sprite2D" parent="."]
-texture = ExtResource("6_njqcc")
+texture = ExtResource("6_q4y2n")
 
 [node name="Building" type="Sprite2D" parent="."]
 visible = false

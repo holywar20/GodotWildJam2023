@@ -5,7 +5,7 @@
 [ext_resource type="Resource" uid="uid://bawqrs2x5k1ov" path="res://entities/resources/antimatter.tres" id="3_qcefi"]
 [ext_resource type="Resource" uid="uid://criguf1driv4" path="res://entities/resources/base_metal.tres" id="4_nks8x"]
 [ext_resource type="Resource" uid="uid://un8y85jvdke1" path="res://entities/resources/precious_metal.tres" id="5_k4ioi"]
-[ext_resource type="Texture2D" uid="uid://ca8y4rl40yqgd" path="res://Assets/buildings/ConstructionPlaceholder.png" id="6_4kx8b"]
+[ext_resource type="Texture2D" uid="uid://b5pimptewko5i" path="res://Assets/buildings/Construction.png" id="6_wgw2y"]
 [ext_resource type="Texture2D" uid="uid://c0b3dwfmqaex8" path="res://Assets/buildings/StellarAccelerator.png" id="7_upefi"]
 
 [node name="StellarAccelerator" type="Node2D"]
@@ -15,19 +15,17 @@ type = "Stellar Accelerator"
 tier = 2
 build_time = 360
 operational_costs = {
-ExtResource("2_fkwe2"): 500,
-ExtResource("3_qcefi"): null
+ExtResource("2_fkwe2"): 100,
+ExtResource("3_qcefi"): 50
 }
 building_costs = {
 ExtResource("4_nks8x"): 10000,
 ExtResource("5_k4ioi"): 7500
 }
-produces = {
-ExtResource("3_qcefi"): 50
-}
 
 [node name="Construction" type="Sprite2D" parent="."]
-texture = ExtResource("6_4kx8b")
+visible = false
+texture = ExtResource("6_wgw2y")
 
 [node name="Building" type="Sprite2D" parent="."]
 texture = ExtResource("7_upefi")

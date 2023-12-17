@@ -5,7 +5,7 @@
 [ext_resource type="Resource" uid="uid://criguf1driv4" path="res://entities/resources/base_metal.tres" id="3_hbylq"]
 [ext_resource type="Resource" uid="uid://un8y85jvdke1" path="res://entities/resources/precious_metal.tres" id="4_evv37"]
 [ext_resource type="Texture2D" uid="uid://btox4cmtxi0cv" path="res://Assets/buildings/CelestialExtractor.png" id="5_chwek"]
-[ext_resource type="Texture2D" uid="uid://ca8y4rl40yqgd" path="res://Assets/buildings/ConstructionPlaceholder.png" id="6_ta652"]
+[ext_resource type="Texture2D" uid="uid://b5pimptewko5i" path="res://Assets/buildings/Construction.png" id="6_stbq4"]
 
 [node name="CelestialExtractor" type="Node2D"]
 scale = Vector2(4, 4)
@@ -28,7 +28,7 @@ visible = false
 texture = ExtResource("5_chwek")
 
 [node name="Construction" type="Sprite2D" parent="."]
-texture = ExtResource("6_ta652")
+texture = ExtResource("6_stbq4")
 
 [node name="Button" type="Button" parent="."]
 modulate = Color(1, 1, 1, 0)

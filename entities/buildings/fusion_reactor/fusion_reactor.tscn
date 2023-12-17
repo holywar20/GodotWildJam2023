@@ -5,7 +5,7 @@
 [ext_resource type="Resource" uid="uid://criguf1driv4" path="res://entities/resources/base_metal.tres" id="3_qnpey"]
 [ext_resource type="Resource" uid="uid://di8768hxc0pfy" path="res://entities/resources/power.tres" id="4_o0b2t"]
 [ext_resource type="Texture2D" uid="uid://c7ecpi23q4541" path="res://Assets/buildings/FusionReactor.png" id="6_1d2c0"]
-[ext_resource type="Texture2D" uid="uid://ca8y4rl40yqgd" path="res://Assets/buildings/ConstructionPlaceholder.png" id="6_jf4f2"]
+[ext_resource type="Texture2D" uid="uid://b5pimptewko5i" path="res://Assets/buildings/Construction.png" id="6_vvtt3"]
 
 [node name="FusionReactor" type="Node2D"]
 scale = Vector2(4, 4)
@@ -26,7 +26,7 @@ ExtResource("4_o0b2t"): 30
 texture = ExtResource("6_1d2c0")
 
 [node name="Construction" type="Sprite2D" parent="."]
-texture = ExtResource("6_jf4f2")
+texture = ExtResource("6_vvtt3")
 
 [node name="Button" type="Button" parent="."]
 modulate = Color(1, 1, 1, 0)
