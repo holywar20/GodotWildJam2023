@@ -49,21 +49,27 @@ func _input(event: InputEvent) -> void:
 		return
 
 	if event is InputEventMouseButton:
-		if event.ctrl_pressed:
+		if event.command_or_control_autoremap:
 			if event.button_index == MOUSE_BUTTON_WHEEL_UP:
 				zoom *= ZOOM_IN_FACTOR
 			elif event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
 				zoom *= ZOOM_OUT_FACTOR
-				
-			EventBus.emit_signal( 'zoom_changed' , zoom )
 
+			EventBus.emit_signal( 'zoom_changed' , zoom )
+	
 
 func _process( _delta : float ):
-	if Input.is_mouse_button_pressed(MOUSE_BUTTON_MIDDLE):
+	if Input.is_mouse_button_pressed(MOUSE_BUTTON_MIDDLE) or Input.is_action_pressed("ui_pan"):
 		_is_mouse_pan = true
 	elif Input.is_action_just_pressed("CAMERA_RECENTER"):
 		global_position = _original_cam_pos
 		zoom = _original_zoom_level
+	elif Input.is_action_just_pressed("ui_zoom_in"):
+		zoom *= ZOOM_IN_FACTOR
+		EventBus.emit_signal( 'zoom_changed' , zoom )
+	elif Input.is_action_just_pressed("ui_zoom_out"):
+		zoom *= ZOOM_OUT_FACTOR
+		EventBus.emit_signal( 'zoom_changed' , zoom )
 	else:
 		_is_mouse_pan = false
 		_movement_vector = Vector2(
