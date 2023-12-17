@@ -4,8 +4,7 @@ extends HBoxContainer
 
 
 func beginMessage(nText, pos):
-	messageBox.text = nText
-	set_position(pos)
+	showMessage(nText, pos)
 
 	# Have the text "rise"
 	var tween = create_tween()
@@ -14,3 +13,12 @@ func beginMessage(nText, pos):
 
 	# Have the text fade out
 	create_tween().tween_property(self, "modulate", Color.TRANSPARENT, 1.0)
+
+
+func showMessage(text, pos) -> void:
+	messageBox.text = text
+	set_position(pos)
+
+
+func hideMessage() -> void:
+	hide()

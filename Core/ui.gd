@@ -34,6 +34,7 @@ var gasCloudInfo = preload("res://SharedUI/gasCloudPopUp.tscn")
 var selectedPlanetRef
 var lastSelectedBuilding
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	EventBus.connect("construction_requested", Callable(self, "_on_EB_construction_requested"))
@@ -209,3 +210,4 @@ func _on_EB_event_started(event) -> void:
 
 func _on_EB_event_concluded(_event) -> void:
 	currentEventLabel.text = "NONE"
+

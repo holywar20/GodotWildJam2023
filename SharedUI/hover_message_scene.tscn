@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3 uid="uid://cc24rr2lnycye"]
+
+[ext_resource type="Script" path="res://SharedUI/feedback_message_scene.gd" id="1_u1ifo"]
+
+[node name="HBoxContainer" type="HBoxContainer"]
+top_level = true
+custom_minimum_size = Vector2(300, 40)
+offset_right = 356.0
+offset_bottom = 40.0
+mouse_filter = 2
+alignment = 1
+script = ExtResource("1_u1ifo")
+
+[node name="Control" type="RichTextLabel" parent="."]
+clip_contents = false
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+text = "Placeholder Text"
+fit_content = true
+scroll_active = false
