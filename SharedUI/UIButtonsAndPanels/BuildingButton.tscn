@@ -57,6 +57,7 @@ alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="HBox/HBox/VBox/HBoxContainer/Power"]
 layout_mode = 2
+size_flags_horizontal = 4
 texture = ExtResource("3_nrf4d")
 stretch_mode = 2
 
@@ -70,6 +71,7 @@ alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="HBox/HBox/VBox/HBoxContainer/Base"]
 layout_mode = 2
+size_flags_horizontal = 4
 texture = ExtResource("3_ttqgi")
 stretch_mode = 2
 
@@ -83,6 +85,7 @@ alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="HBox/HBox/VBox/HBoxContainer/Prec"]
 layout_mode = 2
+size_flags_horizontal = 4
 texture = ExtResource("4_tab0w")
 stretch_mode = 2
 
@@ -96,6 +99,7 @@ alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="HBox/HBox/VBox/HBoxContainer/Antimatter"]
 layout_mode = 2
+size_flags_horizontal = 4
 texture = ExtResource("5_hnaln")
 stretch_mode = 2
 
