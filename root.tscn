@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://cnn2083d08byi"]
+[gd_scene load_steps=23 format=3 uid="uid://cnn2083d08byi"]
 
 [ext_resource type="Shader" path="res://entities/background/StellarBackground.gdshader" id="1_ece8b"]
 [ext_resource type="PackedScene" uid="uid://c1dcreph3lax5" path="res://Core/ui.tscn" id="1_qq3ke"]
@@ -236,7 +236,6 @@ offset_bottom = 802.0
 
 [node name="IntroPanel" parent="Messaging" instance=ExtResource("12_c1rvc")]
 process_mode = 3
-visible = false
 
 [node name="PausePanel" parent="Messaging" instance=ExtResource("13_36ufa")]
 visible = false

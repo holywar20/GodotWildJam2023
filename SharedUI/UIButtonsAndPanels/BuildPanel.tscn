@@ -10,7 +10,6 @@ custom_minimum_size = Vector2(400, 500)
 size_flags_horizontal = 0
 theme_override_styles/panel = ExtResource("1_mmxpq")
 script = ExtResource("1_thxis")
-theme_override_styles/panel = ExtResource("1_mmxpq")
 
 [node name="VBox" type="VBoxContainer" parent="."]
 layout_mode = 2

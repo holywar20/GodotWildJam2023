@@ -2,11 +2,12 @@ extends Node2D
 
 
 @onready var _clouds: Node2D = $SolarSystem/Clouds
+@onready var _ui = $UI
 
 
 func _ready() -> void:
-	#_ui.hide()
-	#get_tree().paused = true
+	_ui.hide()
+	get_tree().paused = true
 	EventBus.connect("planet_nav_button_pressed", Callable(self, "_on_EB_planet_nav_button_pressed"))
 	EventBus.connect("return_to_star_pressed", Callable(self, "_on_EB_return_to_star_pressed"))
 	EventBus.connect("danger_fail", Callable(self, "_on_EB_danger_fail"))
@@ -30,6 +31,7 @@ func _on_EB_return_to_star_pressed():
 
 func _on_new_game() -> void:
 	AudioManager.play_music(AudioManager.MUSIC_TRACK_GAME_1)
+	_ui.show()
 	EventBus.game_unpaused.emit()
 
 
