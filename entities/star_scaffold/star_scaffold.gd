@@ -236,7 +236,7 @@ func _remove_building(building) -> bool:
 			building_found = true
 			break
 
-	_buildings.erase(building_key)
+	_buildings[building_key] = null
 
 	return building_found
 
