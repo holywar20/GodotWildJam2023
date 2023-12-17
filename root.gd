@@ -11,6 +11,7 @@ func _ready() -> void:
 	EventBus.connect("planet_nav_button_pressed", Callable(self, "_on_EB_planet_nav_button_pressed"))
 	EventBus.connect("return_to_star_pressed", Callable(self, "_on_EB_return_to_star_pressed"))
 	EventBus.connect("danger_fail", Callable(self, "_on_EB_danger_fail"))
+	EventBus.connect("game_restart", Callable(self, "_on_EB_game_restart"))
 	EventBus.new_game.connect(_on_new_game)
 	EventBus.constructed.connect(_on_constructed)
 	AudioManager.play_music(AudioManager.MUSIC_TRACK_TITLE)
@@ -34,6 +35,9 @@ func _on_new_game() -> void:
 	_ui.show()
 	EventBus.game_unpaused.emit()
 
+func _on_EB_game_restart():
+	for planet in get_tree().get_nodes_in_group( "PLANET_SCENE" ):
+		planet.reset_resources()
 
 func _on_constructed(building) -> void:
 	if building.type != Constants.BUILDING_MAGNETIC_BORE:

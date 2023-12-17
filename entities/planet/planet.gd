@@ -38,6 +38,8 @@ var gas_mat : ShaderMaterial
 }:
 	get = get_resource_abundance
 
+var resource_backup
+
 @export var flow_rate_dict : Dictionary = {
 	Constants.HYDROGEN : 1.0,
 	Constants.BASE_METAL : 1.0,
@@ -78,6 +80,10 @@ var _precious_metals_percentage: float = 0.33:
 
 func _ready() -> void:
 	_rng.seed = RAND_SEED
+	resource_backup = {}
+	for key in _resource_abundance:
+		var value = _resource_abundance[key]
+		resource_backup[key] = value
 
 	if( !is_icon ):
 		set_scale( Vector2( p_scale , p_scale ) )
@@ -155,6 +161,12 @@ func _calculate_init_orbit():
 	var pos = Vector2( cos( angle) , sin( angle) ) * dist
 
 	set_global_position( pos )
+
+func reset_resources():
+	for key in _resource_abundance:
+		_resource_abundance[key] = resource_backup[key]
+	
+	_planet_crackers = []
 
 # Utility Methods
 # Returns the amount extracted, if any.
