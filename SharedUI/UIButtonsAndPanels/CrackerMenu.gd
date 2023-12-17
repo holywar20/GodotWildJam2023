@@ -44,6 +44,7 @@ func updateUI(planetRef: Planet):
 		precious_metals_slider_control.set_init_value(planetRef.get_precious_metals_percentage())
 	else:
 		cracker_controls.hide()
+		
 
 
 func _on_buy_pressed():
@@ -52,6 +53,7 @@ func _on_buy_pressed():
 
 	if not _current_planet.has_room_for_crackers():
 		EventBus.feedback_message.emit(MESSAGE_MAX_CRACKERS_REACHED)
+		return
 
 	EventBus.construction_requested.emit(Constants.BUILDING_PLANET_CRACKER)
 
