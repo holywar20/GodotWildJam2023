@@ -1,0 +1,42 @@
+[gd_scene load_steps=2 format=3 uid="uid://d03jo0c4o72go"]
+
+[ext_resource type="Texture2D" uid="uid://cqixgiytqiem" path="res://Assets/flags/canada.png" id="1_awtau"]
+
+[node name="Credit" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -597.0
+offset_bottom = -934.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PersonName" type="Label" parent="."]
+layout_mode = 2
+offset_left = 25.0
+offset_top = 56.0
+offset_right = 384.0
+offset_bottom = 125.0
+theme_override_font_sizes/font_size = 30
+text = "Duncan Brown"
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 2
+offset_left = 377.0
+offset_top = 54.0
+offset_right = 1577.0
+offset_bottom = 654.0
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("1_awtau")
+
+[node name="Socials" type="Label" parent="."]
+layout_mode = 2
+offset_left = 584.0
+offset_top = 40.0
+offset_right = 1273.0
+offset_bottom = 130.0
+theme_override_font_sizes/font_size = 20
+text = "Mastodon: @DevOrionGames@mastodon.social
+
+Itch.io: devorion.itch.io"

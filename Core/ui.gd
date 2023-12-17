@@ -230,4 +230,3 @@ func _on_game_restart() -> void:
 
 	boreMenuButton.hide()
 	currentEventLabel.text = "NONE"
-
