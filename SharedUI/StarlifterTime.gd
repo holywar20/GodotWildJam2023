@@ -26,7 +26,6 @@ func _on_constructed( building ) -> void:
 	if( building.type != Constants.BUILDING_STARLIFTER ):
 		return
 	
-	print("Build!")
 	has_starlifter = true
 	test_start_countdown()
 	
@@ -34,7 +33,6 @@ func _on_star_transitioned( tier ) -> void:
 	if( tier != Constants.Tiers.TIER_3 ):
 		return
 	
-	print("star!")
 	star_is_tier_3 = true
 	test_start_countdown()
 	

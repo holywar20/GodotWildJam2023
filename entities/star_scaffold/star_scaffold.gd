@@ -308,7 +308,6 @@ func _on_resources_extracted(new_resources: Dictionary) -> void:
 	_check_tier_threshold()
 
 	if new_resources.has(Constants.HYDROGEN):
-		print( Time.get_ticks_msec() , " "  , new_resources[Constants.HYDROGEN] )
 		_send_hydrogen_to_star(new_resources[Constants.HYDROGEN])
 
 
