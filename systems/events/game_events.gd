@@ -18,6 +18,7 @@ var _current_events: Array = []
 func _ready():
 	EventBus.star_transitioned.connect(_on_star_transitioned)
 	EventBus.tick.connect(_on_tick)
+	EventBus.game_restart.connect(_on_game_restart)
 
 
 func set_event_chance(value: float) -> void:
@@ -55,3 +56,10 @@ func _process_finished_events() -> void:
 func _on_star_transitioned(tier) -> void:
 	if tier > 0:
 		_is_active = true
+
+
+func _on_game_restart() -> void:
+	for event in _current_events:
+		event.free()
+
+	_current_events.clear()

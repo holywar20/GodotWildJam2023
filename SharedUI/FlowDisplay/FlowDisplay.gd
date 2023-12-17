@@ -31,8 +31,10 @@ var failDir
 func _ready():
 	EventBus.connect("hydrogen_flow_updated" , Callable( self , "_on_hydrogen_flow_updated" ) )
 	EventBus.connect("resources_reported" , Callable( self , "_on_resources_reported" ) )
+	EventBus.game_restart.connect(_on_game_restart)
 	
 	hide() # Hide flow control until you start getting Hydrogen
+
 
 func _on_resources_reported( resources ) -> void:
 	if( !is_visible() ): # Control is paused until you gain your first bit of Hydrogen
@@ -76,9 +78,26 @@ func _on_resources_reported( resources ) -> void:
 
 	shiftTween.play()
 
+
 func _on_hydrogen_flow_updated( _flow, ideal, min_f, max_f )-> void:
 	show()
 
 	current_ideal = ideal
 	current_min_f = min_f
 	current_max_f = max_f
+
+
+func _on_game_restart() -> void:
+	hide()
+	_reset_values()
+
+
+func _reset_values() -> void:
+	current_ideal = 0
+	current_min_f = 0
+	current_max_f = 0
+	prev_hydro = 0
+	DANGER_TO_END_GAME = 5
+	danger_count = 0
+	failDir = ""
+

@@ -51,6 +51,7 @@ func _ready():
 	EventBus.connect("event_concluded", Callable(self, "_on_EB_event_concluded"))
 	EventBus.connect("gas_cloud_hovering", Callable(self, "_on_EB_gas_cloud_hovering"))
 	EventBus.connect("planet_depletion", Callable(self, "_on_EB_planet_depletion"))
+	EventBus.game_restart.connect(_on_game_restart)
 	navPanel.updateUI()
 
 
@@ -213,5 +214,20 @@ func _on_EB_event_started(event) -> void:
 
 
 func _on_EB_event_concluded(_event) -> void:
+	currentEventLabel.text = "NONE"
+
+
+func _on_game_restart() -> void:
+	if boreMenu.isOpen:
+		boreMenu.openClose()
+
+	if buildMenu.isOpen:
+		buildMenu.openClose()
+
+	for item in buildQueue.get_children():
+		buildQueue.remove_child(item)
+		item.queue_free()
+
+	boreMenuButton.hide()
 	currentEventLabel.text = "NONE"
 

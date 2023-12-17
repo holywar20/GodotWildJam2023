@@ -52,6 +52,13 @@ func _ready() -> void:
 		_shader_data_write( current_shader_props )
 
 		EventBus.connect( "resources_reported" , Callable(self, "_on_resources_reported") )
+		EventBus.game_restart.connect(_on_game_restart)
+
+
+func _on_game_restart() -> void:
+	current_shader_props = StellarConstants.get_tier_state( Constants.Tiers.TIER_0 )
+	EventBus.emit_signal( "star_size_changed" , current_shader_props.interpolated_metadata )
+
 
 func _on_resources_reported( resources : Dictionary ) -> void:
 	if( tier_state == Constants.Tiers.TIER_3 ):
