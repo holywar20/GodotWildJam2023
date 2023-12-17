@@ -204,7 +204,7 @@ func _construct_dyson_swarm() -> void:
 	_num_dyson_swarms += 1
 	var swarm_count = _num_dyson_swarms * SWARM_EMISSION_FACTOR
 	dSwarm.set_amount( swarm_count )
-	print( "Swarm!", dSwarm.is_emitting() , " - ", swarm_count)
+	#print( "Swarm!", dSwarm.is_emitting() , " - ", swarm_count)
 	if( !dSwarm.is_emitting() ):
 		dSwarm.set_emitting( true )
 
