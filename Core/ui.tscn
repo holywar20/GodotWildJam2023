@@ -42,24 +42,24 @@ corner_detail = 1
 script = ExtResource("1_e5olo")
 
 [node name="OpButtonContainer" type="HBoxContainer" parent="."]
-offset_left = 432.0
-offset_top = 976.0
-offset_right = 636.0
-offset_bottom = 1076.0
-alignment = 1
+offset_left = 8.0
+offset_top = 168.0
+offset_right = 212.0
+offset_bottom = 268.0
 
 [node name="BuildMenu" parent="OpButtonContainer" instance=ExtResource("2_cpkjk")]
 layout_mode = 2
 text = "Structures"
 
 [node name="Bore" parent="OpButtonContainer" instance=ExtResource("2_cpkjk")]
+visible = false
 layout_mode = 2
 text = "Bore 
 Control"
 
 [node name="Hbox" type="HBoxContainer" parent="."]
-offset_right = 1912.0
-offset_bottom = 1080.0
+offset_right = 1920.0
+offset_bottom = 1100.0
 mouse_filter = 2
 theme = ExtResource("2_xhv7a")
 theme_override_constants/separation = 0
@@ -355,6 +355,11 @@ mouse_filter = 2
 theme_override_constants/separation = -10
 alignment = 2
 
+[node name="FarLeftSpacer" type="Control" parent="Hbox/MiddleSection/CenterContainer"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+mouse_filter = 2
+
 [node name="SubMenuContainer" type="VBoxContainer" parent="Hbox/MiddleSection/CenterContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
@@ -372,6 +377,16 @@ visible = false
 custom_minimum_size = Vector2(400, 642)
 layout_mode = 2
 
+[node name="Spacer" type="Control" parent="Hbox/MiddleSection/CenterContainer/SubMenuContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="MidLeftSpacer" type="Control" parent="Hbox/MiddleSection/CenterContainer"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+mouse_filter = 2
+
 [node name="BuildingInfo" type="VBoxContainer" parent="Hbox/MiddleSection/CenterContainer"]
 layout_mode = 2
 size_flags_horizontal = 2
@@ -380,6 +395,10 @@ alignment = 2
 
 [node name="BuildingInfo" parent="Hbox/MiddleSection/CenterContainer/BuildingInfo" instance=ExtResource("7_gvmy2")]
 visible = false
+layout_mode = 2
+
+[node name="Control" type="Control" parent="Hbox/MiddleSection/CenterContainer/BuildingInfo"]
+custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 
 [node name="ExpandingSpacer" type="Control" parent="Hbox/MiddleSection/CenterContainer"]
@@ -413,7 +432,7 @@ custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 mouse_filter = 2
 
-[node name="Control" type="Control" parent="Hbox/MiddleSection/CenterContainer"]
+[node name="MidRightSpacer" type="Control" parent="Hbox/MiddleSection/CenterContainer"]
 custom_minimum_size = Vector2(30, 0)
 layout_mode = 2
 mouse_filter = 2
@@ -460,9 +479,10 @@ layout_mode = 2
 custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
 
-[node name="Spacer" type="Control" parent="Hbox/MiddleSection/CenterContainer"]
+[node name="FarRightSpacer" type="Control" parent="Hbox/MiddleSection/CenterContainer"]
 custom_minimum_size = Vector2(10, 0)
 layout_mode = 2
+mouse_filter = 2
 
 [node name="Popup" parent="." instance=ExtResource("10_j0cds")]
 position = Vector2i(560, 240)

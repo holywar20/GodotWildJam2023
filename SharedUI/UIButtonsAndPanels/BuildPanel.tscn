@@ -1,11 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://dih21h34x7by6"]
+[gd_scene load_steps=5 format=3 uid="uid://dih21h34x7by6"]
 
 [ext_resource type="Script" path="res://SharedUI/UIButtonsAndPanels/BuildPanel.gd" id="1_thxis"]
+[ext_resource type="StyleBox" uid="uid://dtk3dw0net8fx" path="res://StylesAndLabels/Inner-Panel-StellarData.tres" id="1_uk2h5"]
+[ext_resource type="LabelSettings" uid="uid://cvlyjmf5fwwj0" path="res://StylesAndLabels/3rdRead-Subtitle.tres" id="2_8w7cr"]
 [ext_resource type="PackedScene" uid="uid://c3kplm0etxp0p" path="res://SharedUI/UIButtonsAndPanels/BuildingButton.tscn" id="2_nr33l"]
 
 [node name="SubMenu" type="PanelContainer"]
 custom_minimum_size = Vector2(400, 500)
 size_flags_horizontal = 0
+theme_override_styles/panel = ExtResource("1_uk2h5")
 script = ExtResource("1_thxis")
 
 [node name="VBox" type="VBoxContainer" parent="."]
@@ -14,7 +17,11 @@ layout_mode = 2
 [node name="MenuName" type="Label" parent="VBox"]
 layout_mode = 2
 text = "Building Production"
+label_settings = ExtResource("2_8w7cr")
 horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="VBox"]
+layout_mode = 2
 
 [node name="ScrollContainer" type="ScrollContainer" parent="VBox"]
 layout_mode = 2

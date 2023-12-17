@@ -3,32 +3,34 @@ extends Button
 @export var buildingRef : String = ""
 
 @onready var buildingName = $HBox/HBox/VBox/BuildingName
-@onready var buildingIcon = $HBox/TextureRect
+@onready var buildingIcon = $HBox/Panel/TextureRect
 
-@onready var powerContainer = $HBox/HBox/VBox/HBoxContainer/Power
-@onready var baseContainer = $HBox/HBox/VBox/HBoxContainer/Base
-@onready var precContainer = $HBox/HBox/VBox/HBoxContainer/Prec
-@onready var antimatterContainer = $HBox/HBox/VBox/HBoxContainer/Antimatter
+# Build Costs
+@onready var powerContainer = $HBox/HBox/VBox/Build/Power
+@onready var baseContainer = $HBox/HBox/VBox/Build/Base
+@onready var precContainer = $HBox/HBox/VBox/Build/Prec
+@onready var antimatterContainer = $HBox/HBox/VBox/Build/Antimatter
 
-@onready var opHydroContainer = $HBox/Operationals/Hydro
-@onready var opPowerContainer = $HBox/Operationals/Power
-@onready var opBaseContainer = $HBox/Operationals/Base
-@onready var opPrecContainer = $HBox/Operationals/Prec
-@onready var opAntimatterContainer = $HBox/Operationals/Antimatter
+@onready var powerLabel = $HBox/HBox/VBox/Build/Power/PowerCost
+@onready var baseLabel = $HBox/HBox/VBox/Build/Base/BaseCost
+@onready var precLabel = $HBox/HBox/VBox/Build/Prec/PrecCost
+@onready var antimatterLabel = $HBox/HBox/VBox/Build/Antimatter/AntimatterCost
 
-@onready var powerLabel = $HBox/HBox/VBox/HBoxContainer/Power/PowerCost
-@onready var baseLabel = $HBox/HBox/VBox/HBoxContainer/Base/BaseCost
-@onready var precLabel = $HBox/HBox/VBox/HBoxContainer/Prec/PrecCost
-@onready var antimatterLabel = $HBox/HBox/VBox/HBoxContainer/Antimatter/AntimatterCost
+# Operational Costs
+@onready var opHydroContainer = $HBox/HBox/VBox/Operationals/Hydro
+@onready var opPowerContainer = $HBox/HBox/VBox/Operationals/Power
+@onready var opBaseContainer = $HBox/HBox/VBox/Operationals/Base
+@onready var opPrecContainer = $HBox/HBox/VBox/Operationals/Prec
+@onready var opAntimatterContainer = $HBox/HBox/VBox/Operationals/Antimatter
 
-@onready var opHydroLabel = $HBox/Operationals/Hydro/Hydro
-@onready var opPowerLabel = $HBox/Operationals/Power/Power
-@onready var opBaseLabel = $HBox/Operationals/Base/Base
-@onready var opPrecLabel = $HBox/Operationals/Prec/Prec
-@onready var opAntimatterLabel = $HBox/Operationals/Antimatter/Antimatter
+@onready var opHydroLabel = $HBox/HBox/VBox/Operationals/Hydro/Hydro
+@onready var opPowerLabel = $HBox/HBox/VBox/Operationals/Power/Power
+@onready var opBaseLabel = $HBox/HBox/VBox/Operationals/Base/Base
+@onready var opPrecLabel = $HBox/HBox/VBox/Operationals/Prec/Prec
+@onready var opAntimatterLabel = $HBox/HBox/VBox/Operationals/Antimatter/Antimatter
 
-@onready var timeContainer = $HBox/Operationals/Time
-@onready var timeLabel = $HBox/Operationals/Time/Time
+@onready var timeContainer = $HBox/HBox/VBox/Operationals/Time
+@onready var timeLabel = $HBox/HBox/VBox/Operationals/Time/Time
 
 var buildingArray = Info.BUILDING_INFO
 var building 
@@ -125,5 +127,4 @@ func setupStats(buildDict):
 		timeLabel.modulate = (Color(0.1,1,0.1,1))
 
 func _on_pressed():
-	print(buildCostDict)
 	EventBus.emit_signal("construction_requested", buildingRef)

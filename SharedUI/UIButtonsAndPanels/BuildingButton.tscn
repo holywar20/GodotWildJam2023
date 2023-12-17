@@ -1,36 +1,56 @@
-[gd_scene load_steps=9 format=3 uid="uid://c3kplm0etxp0p"]
+[gd_scene load_steps=14 format=3 uid="uid://c3kplm0etxp0p"]
 
 [ext_resource type="Script" path="res://SharedUI/UIButtonsAndPanels/BuildingButton.gd" id="1_0x1v2"]
+[ext_resource type="StyleBox" uid="uid://d3o77w77lg1nu" path="res://GlobalStyles/ButtonNormal.tres" id="1_5f7kr"]
+[ext_resource type="StyleBox" uid="uid://bbtgulbpse7ba" path="res://GlobalStyles/ButtonHover.tres" id="2_l51f4"]
 [ext_resource type="Texture2D" uid="uid://12c7cu74lhqq" path="res://Assets/Placeholder 50x50.png" id="2_mfgu6"]
+[ext_resource type="StyleBox" uid="uid://ja8sxk2js2w7" path="res://GlobalStyles/ButtonPressed.tres" id="3_505gv"]
 [ext_resource type="Texture2D" uid="uid://cwneqp5nheh1j" path="res://Assets/icons/PowerIcon.png" id="3_nrf4d"]
 [ext_resource type="Texture2D" uid="uid://4o2x723fimq1" path="res://Assets/icons/IronIcon.png" id="3_ttqgi"]
+[ext_resource type="StyleBox" uid="uid://h8qm4p52xr5h" path="res://GlobalStyles/ButtonDisabled.tres" id="4_7b2qm"]
+[ext_resource type="LabelSettings" uid="uid://drahqkxf0n5so" path="res://StylesAndLabels/3rdRead-BuildPanel-ResourceVals.tres" id="4_r17l4"]
 [ext_resource type="Texture2D" uid="uid://b3di2of4v8no4" path="res://Assets/icons/PreciousMetalIcon.png" id="4_tab0w"]
 [ext_resource type="Texture2D" uid="uid://tdgybvpdlhda" path="res://Assets/icons/AntiMatterIcon.png" id="5_hnaln"]
 [ext_resource type="Texture2D" uid="uid://bwwgp4askqbv" path="res://Assets/icons/HydrogenIcon.png" id="6_40ycp"]
 [ext_resource type="Texture2D" uid="uid://djbjlfwybsh7f" path="res://Assets/icons/TimeIcon.png" id="8_dktgt"]
 
 [node name="BuildingButton" type="Button"]
-custom_minimum_size = Vector2(350, 100)
+custom_minimum_size = Vector2(350, 130)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_right = -1570.0
-offset_bottom = -980.0
+offset_bottom = -950.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/normal = ExtResource("1_5f7kr")
+theme_override_styles/hover = ExtResource("2_l51f4")
+theme_override_styles/pressed = ExtResource("3_505gv")
+theme_override_styles/disabled = ExtResource("4_7b2qm")
 script = ExtResource("1_0x1v2")
 
 [node name="HBox" type="HBoxContainer" parent="."]
 custom_minimum_size = Vector2(300, 60)
 layout_mode = 0
-offset_right = 348.0
-offset_bottom = 100.0
+offset_right = 350.0
+offset_bottom = 130.0
 mouse_filter = 2
 
-[node name="TextureRect" type="TextureRect" parent="HBox"]
+[node name="Panel" type="Panel" parent="HBox"]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="HBox/Panel"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+offset_left = 10.0
+offset_top = 23.0
+offset_right = 90.0
+offset_bottom = 103.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
 texture = ExtResource("2_mfgu6")
+expand_mode = 3
 
 [node name="HBox" type="HBoxContainer" parent="HBox"]
 custom_minimum_size = Vector2(200, 0)
@@ -40,157 +60,198 @@ size_flags_horizontal = 3
 [node name="VBox" type="VBoxContainer" parent="HBox/HBox"]
 layout_mode = 2
 size_flags_horizontal = 3
-alignment = 2
 
 [node name="BuildingName" type="Label" parent="HBox/HBox/VBox"]
 layout_mode = 2
 text = "Building Name"
+horizontal_alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="HBox/HBox/VBox"]
+[node name="Build" type="HBoxContainer" parent="HBox/HBox/VBox"]
+custom_minimum_size = Vector2(0, 45)
 layout_mode = 2
-size_flags_vertical = 3
 
-[node name="Power" type="VBoxContainer" parent="HBox/HBox/VBox/HBoxContainer"]
+[node name="Label" type="Label" parent="HBox/HBox/VBox/Build"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "  Build Cost"
+vertical_alignment = 1
+
+[node name="Antimatter" type="VBoxContainer" parent="HBox/HBox/VBox/Build"]
 visible = false
 layout_mode = 2
 alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="HBox/HBox/VBox/HBoxContainer/Power"]
-layout_mode = 2
-size_flags_horizontal = 4
-texture = ExtResource("3_nrf4d")
-stretch_mode = 2
-
-[node name="PowerCost" type="Label" parent="HBox/HBox/VBox/HBoxContainer/Power"]
-layout_mode = 2
-
-[node name="Base" type="VBoxContainer" parent="HBox/HBox/VBox/HBoxContainer"]
-visible = false
-layout_mode = 2
-alignment = 1
-
-[node name="TextureRect" type="TextureRect" parent="HBox/HBox/VBox/HBoxContainer/Base"]
-layout_mode = 2
-size_flags_horizontal = 4
-texture = ExtResource("3_ttqgi")
-stretch_mode = 2
-
-[node name="BaseCost" type="Label" parent="HBox/HBox/VBox/HBoxContainer/Base"]
-layout_mode = 2
-
-[node name="Prec" type="VBoxContainer" parent="HBox/HBox/VBox/HBoxContainer"]
-visible = false
-layout_mode = 2
-alignment = 1
-
-[node name="TextureRect" type="TextureRect" parent="HBox/HBox/VBox/HBoxContainer/Prec"]
-layout_mode = 2
-size_flags_horizontal = 4
-texture = ExtResource("4_tab0w")
-stretch_mode = 2
-
-[node name="PrecCost" type="Label" parent="HBox/HBox/VBox/HBoxContainer/Prec"]
-layout_mode = 2
-
-[node name="Antimatter" type="VBoxContainer" parent="HBox/HBox/VBox/HBoxContainer"]
-visible = false
-layout_mode = 2
-alignment = 1
-
-[node name="TextureRect" type="TextureRect" parent="HBox/HBox/VBox/HBoxContainer/Antimatter"]
+[node name="TextureRect" type="TextureRect" parent="HBox/HBox/VBox/Build/Antimatter"]
 layout_mode = 2
 size_flags_horizontal = 4
 texture = ExtResource("5_hnaln")
 stretch_mode = 2
 
-[node name="AntimatterCost" type="Label" parent="HBox/HBox/VBox/HBoxContainer/Antimatter"]
+[node name="AntimatterCost" type="Label" parent="HBox/HBox/VBox/Build/Antimatter"]
 layout_mode = 2
+text = "00"
+label_settings = ExtResource("4_r17l4")
+horizontal_alignment = 1
 
-[node name="Operationals" type="VBoxContainer" parent="HBox"]
-layout_mode = 2
-size_flags_horizontal = 10
-alignment = 1
-
-[node name="Hydro" type="HBoxContainer" parent="HBox/Operationals"]
+[node name="Power" type="VBoxContainer" parent="HBox/HBox/VBox/Build"]
 visible = false
 layout_mode = 2
 alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="HBox/Operationals/Hydro"]
+[node name="TextureRect" type="TextureRect" parent="HBox/HBox/VBox/Build/Power"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("3_nrf4d")
+stretch_mode = 2
+
+[node name="PowerCost" type="Label" parent="HBox/HBox/VBox/Build/Power"]
+layout_mode = 2
+text = "00"
+label_settings = ExtResource("4_r17l4")
+horizontal_alignment = 1
+
+[node name="Base" type="VBoxContainer" parent="HBox/HBox/VBox/Build"]
+visible = false
+layout_mode = 2
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="HBox/HBox/VBox/Build/Base"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("3_ttqgi")
+stretch_mode = 2
+
+[node name="BaseCost" type="Label" parent="HBox/HBox/VBox/Build/Base"]
+layout_mode = 2
+text = "00"
+label_settings = ExtResource("4_r17l4")
+horizontal_alignment = 1
+
+[node name="Prec" type="VBoxContainer" parent="HBox/HBox/VBox/Build"]
+visible = false
+layout_mode = 2
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="HBox/HBox/VBox/Build/Prec"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("4_tab0w")
+stretch_mode = 2
+
+[node name="PrecCost" type="Label" parent="HBox/HBox/VBox/Build/Prec"]
+layout_mode = 2
+text = "00"
+label_settings = ExtResource("4_r17l4")
+horizontal_alignment = 1
+
+[node name="Operationals" type="HBoxContainer" parent="HBox/HBox/VBox"]
+custom_minimum_size = Vector2(0, 45)
+layout_mode = 2
+
+[node name="OperationalLabel" type="Label" parent="HBox/HBox/VBox/Operationals"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "  Per Second"
+vertical_alignment = 1
+
+[node name="Hydro" type="VBoxContainer" parent="HBox/HBox/VBox/Operationals"]
+visible = false
+layout_mode = 2
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="HBox/HBox/VBox/Operationals/Hydro"]
 layout_mode = 2
 texture = ExtResource("6_40ycp")
 stretch_mode = 2
 
-[node name="Hydro" type="Label" parent="HBox/Operationals/Hydro"]
+[node name="Hydro" type="Label" parent="HBox/HBox/VBox/Operationals/Hydro"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 8
+text = "00"
+label_settings = ExtResource("4_r17l4")
+horizontal_alignment = 1
 
-[node name="Power" type="HBoxContainer" parent="HBox/Operationals"]
+[node name="Power" type="VBoxContainer" parent="HBox/HBox/VBox/Operationals"]
 visible = false
 layout_mode = 2
 alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="HBox/Operationals/Power"]
+[node name="TextureRect" type="TextureRect" parent="HBox/HBox/VBox/Operationals/Power"]
 layout_mode = 2
 texture = ExtResource("3_nrf4d")
 stretch_mode = 2
 
-[node name="Power" type="Label" parent="HBox/Operationals/Power"]
+[node name="Power" type="Label" parent="HBox/HBox/VBox/Operationals/Power"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 8
+text = "00"
+label_settings = ExtResource("4_r17l4")
+horizontal_alignment = 1
 
-[node name="Base" type="HBoxContainer" parent="HBox/Operationals"]
+[node name="Base" type="VBoxContainer" parent="HBox/HBox/VBox/Operationals"]
 visible = false
 layout_mode = 2
 alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="HBox/Operationals/Base"]
+[node name="TextureRect" type="TextureRect" parent="HBox/HBox/VBox/Operationals/Base"]
 layout_mode = 2
 texture = ExtResource("3_ttqgi")
 stretch_mode = 2
 
-[node name="Base" type="Label" parent="HBox/Operationals/Base"]
+[node name="Base" type="Label" parent="HBox/HBox/VBox/Operationals/Base"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 8
+text = "00"
+label_settings = ExtResource("4_r17l4")
+horizontal_alignment = 1
 
-[node name="Prec" type="HBoxContainer" parent="HBox/Operationals"]
+[node name="Prec" type="VBoxContainer" parent="HBox/HBox/VBox/Operationals"]
 visible = false
 layout_mode = 2
 alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="HBox/Operationals/Prec"]
+[node name="TextureRect" type="TextureRect" parent="HBox/HBox/VBox/Operationals/Prec"]
 layout_mode = 2
 texture = ExtResource("4_tab0w")
 
-[node name="Prec" type="Label" parent="HBox/Operationals/Prec"]
+[node name="Prec" type="Label" parent="HBox/HBox/VBox/Operationals/Prec"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 8
+text = "00"
+label_settings = ExtResource("4_r17l4")
+horizontal_alignment = 1
 
-[node name="Antimatter" type="HBoxContainer" parent="HBox/Operationals"]
+[node name="Antimatter" type="VBoxContainer" parent="HBox/HBox/VBox/Operationals"]
 visible = false
 layout_mode = 2
 alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="HBox/Operationals/Antimatter"]
+[node name="TextureRect" type="TextureRect" parent="HBox/HBox/VBox/Operationals/Antimatter"]
 layout_mode = 2
 texture = ExtResource("5_hnaln")
 
-[node name="Antimatter" type="Label" parent="HBox/Operationals/Antimatter"]
+[node name="Antimatter" type="Label" parent="HBox/HBox/VBox/Operationals/Antimatter"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 8
+text = "00"
+label_settings = ExtResource("4_r17l4")
+horizontal_alignment = 1
 
-[node name="Time" type="HBoxContainer" parent="HBox/Operationals"]
+[node name="Time" type="VBoxContainer" parent="HBox/HBox/VBox/Operationals"]
 visible = false
 layout_mode = 2
 alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="HBox/Operationals/Time"]
+[node name="TextureRect" type="TextureRect" parent="HBox/HBox/VBox/Operationals/Time"]
 layout_mode = 2
 texture = ExtResource("8_dktgt")
 
-[node name="Time" type="Label" parent="HBox/Operationals/Time"]
+[node name="Time" type="Label" parent="HBox/HBox/VBox/Operationals/Time"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 8
+text = "00"
+label_settings = ExtResource("4_r17l4")
+horizontal_alignment = 1
 
 [node name="Spacer" type="Control" parent="HBox"]
 custom_minimum_size = Vector2(5, 0)

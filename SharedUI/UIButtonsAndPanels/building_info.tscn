@@ -217,6 +217,10 @@ custom_minimum_size = Vector2(125, 50)
 layout_mode = 2
 text = "Enable"
 
+[node name="Spacer" type="Control" parent="VBox"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
 [node name="Indicator" type="Sprite2D" parent="."]
 position = Vector2(12.9999, 14)
 scale = Vector2(0.85, 0.85)
