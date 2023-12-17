@@ -64,6 +64,8 @@ func _on_resources_reported( resources ) -> void:
 
 	if( flow > current_max_f  || flow < current_min_f ):
 		danger_count += 1
+	if( flow < current_max_f  && flow > current_min_f ):
+		danger_count = 0
 
 	EventBus.emit_signal( "danger_count" , danger_count )
 
