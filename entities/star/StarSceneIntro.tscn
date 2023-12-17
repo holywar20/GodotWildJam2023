@@ -1,0 +1,474 @@
+[gd_scene load_steps=9 format=3 uid="uid://cwhce3gpdn7t7"]
+
+[ext_resource type="Script" path="res://entities/star/StarScene.gd" id="1_7hoxk"]
+[ext_resource type="Environment" uid="uid://n8asi34u4tt8" path="res://enviroment/Enviroment.tres" id="5_j0ugq"]
+
+[sub_resource type="Shader" id="Shader_7dx84"]
+code = "shader_type canvas_item;
+
+uniform sampler2D gradient;
+
+uniform float rotationSpeed : hint_range( 0.1 , 1.0 ) = 0.1;
+
+// Controls the cells and the layers
+uniform float cellSize : hint_range( 5.0, 55.0 , 0.1 ) = 5.0;
+uniform float wormCellSize : hint_range( 0.1 , 10.0 , 0.1 ) = 1.0;
+
+uniform float vorCellSize : hint_range( 0.1 , 10.0 , 0.1 ) = 1.0;
+
+uniform float convectionSpeed : hint_range( 0.05 , 5.0 , 0.05) = 1.0;
+uniform float stretchFactor : hint_range( 0.1 , 5.0 ) = 1.8;
+uniform float starSeed : hint_range( 0.1 , 10.0 ) = 1.0;
+uniform float flowFactor : hint_range (0.01 , 1.0 , .01 ) = 0.1;
+
+// If numbers get super big, you'll get banding. Best to keep coordinates very small for use of this function.
+vec2 rand_vec_2( vec2 coord ) {	
+	// prevents randomness decreasing from coordinates too large
+	coord = mod(coord, 100.0);
+	// returns \"random\" vec2 with x and y between 0 and 1
+    return fract(sin( vec2( dot(coord,vec2(127.1,311.7)), dot(coord,vec2(269.5,183.3)) ) ) * 143758.5453 * starSeed);
+}
+
+
+float vornoi_noise( vec2 coord ){
+	vec2 i = floor( coord );
+	vec2 f = fract( coord );
+	
+	// Check the space around the chosen coordinate
+	// Note this will check inside 9 squares
+	
+	float minDist = 2.0;
+	for( float x = -1.0; x <= 1.0; x++){
+		for( float y = -1.0; y <= 1.0; y++){
+			// Generate a random point within that square.
+			vec2 node = rand_vec_2( i + vec2( x, y )) + vec2(x , y );		
+			// Now we get the distance between that point and the current point
+			float dist = sqrt((f - node).x * (f - node).x + (f - node).y * (f - node).y );
+			minDist = min( minDist, dist );
+		}
+	}
+	return minDist;
+}
+
+float rand(vec2 coord){
+	// prevents randomness decreasing from coordinates too large
+	coord = mod( coord, 100.0 );
+		// returns \"random\" vec2 with x and y between 0 and 1
+	return fract(sin(dot(coord, vec2(12.9898, 78.233))) * 43758.545312 * starSeed);
+}
+
+float noise(vec2 coord){
+	vec2 i = floor(coord);
+	vec2 f = fract(coord);
+		
+	float a = rand(i);
+	float b = rand(i + vec2(1.0, 0.0));
+	float c = rand(i + vec2(0.0, 1.0));
+	float d = rand(i + vec2(1.0, 1.0));
+
+	vec2 cubic = f * f * (3.0 - 2.0 * f);
+
+	return mix(a, b, cubic.x) + (c - a) * cubic.y * (1.0 - cubic.x) + (d - b) * cubic.x * cubic.y;
+}
+
+vec2 gradn(vec2 p)
+{
+	float ep = .09;
+	float gradx = noise(vec2(p.x+ep,p.y))-noise(vec2(p.x-ep,p.y));
+	float grady = noise(vec2(p.x,p.y+ep))-noise(vec2(p.x,p.y-ep));
+	return vec2(gradx,grady);
+}
+
+mat2 makem2( in float theta ){
+	float c = cos(theta);
+	float s = sin(theta);
+	return mat2(vec2(c,-s),vec2(s,c));
+}
+
+float wormNoise(vec2 p){
+	// Create a very slow extra rotation in the wormy bits
+    const float kF = 3.0;  // make 6 to see worms
+    
+    vec2 i = floor(p);
+	vec2 f = fract(p);
+    f = f*f*(3.0-2.0*f);
+    return mix(mix(sin(kF*dot(p,rand_vec_2(i+vec2(0,0)))),
+               	   sin(kF*dot(p,rand_vec_2(i+vec2(1,0)))),f.x),
+               mix(sin(kF*dot(p,rand_vec_2(i+vec2(0,1)))),
+               	   sin(kF*dot(p,rand_vec_2(i+vec2(1,1)))),f.x),f.y);
+}
+
+float vornoiFbm( vec2 coord ){
+	float normalize_factor = 0.0;
+	float value = 0.0;
+	float scale = 0.5;
+	
+	normalize_factor += scale;
+	value += vornoi_noise( coord ) * scale;
+	coord *= 2.0;
+	scale *= 0.5;
+	
+	normalize_factor += scale;
+	value += vornoi_noise( coord ) * scale;
+	coord *= 2.0;
+	scale *= 0.5;
+	
+	normalize_factor += scale;
+	value += vornoi_noise( coord ) * scale;
+	coord *= 2.0;
+	scale *= 0.5;
+	
+	normalize_factor += scale;
+	value += vornoi_noise( coord ) * scale;
+	coord *= 2.0;
+	scale *= 0.5;
+	
+	
+	return value / normalize_factor;
+}
+
+float flow(in vec2 p){
+	float z=2.;
+	float rz = 0.;
+	vec2 bp = p;
+	
+	float time = TIME * -flowFactor;
+	
+	for (float i= 1.;i < 5.0;i++ )
+	{
+		//primary flow speed
+		p += vec2( time * 0.1 , 0 );
+		
+		//secondary flow speed (speed of the perceived flow)
+		bp += time * 0.1;
+		
+		//bp += vec2( bp.x * time * 2.0  , bp.y );
+		
+		//displacement field (try changing time multiplier)
+		vec2 gr = gradn(i*p*0.4+time * convectionSpeed );
+		
+		//rotation of the displacement field
+		gr *= makem2( time * 5.0 -(0.1*p.x+0.03*p.y) *40. );
+		
+		//displace the system
+		p += vec2( gr.x , gr.y );
+		
+		//add noise octave
+		rz+= (cos(noise(p)* 7.0)*0.5+0.5)/z;
+		
+		//blend factor (blending displaced system with base system)
+		//you could call this advection factor (.5 being low, .95 being high)
+		p = mix(bp,p,.77);
+		
+		//intensity scaling
+		z *= 1.4;
+		//octave scaling
+		p *= 2.;
+		bp *= 1.9;
+	}
+	return rz;	
+}
+
+float movingVornoi( vec2 uv ){
+	
+	float m = 0.0;
+	float minDist = 100.0;
+	float t = TIME * convectionSpeed + 2.0;
+	vec2 pos = vec2(0);
+	
+	vec2 grid = uv * 5.0;
+	vec2 gridUv = fract(grid) - 0.5;
+	vec2 id = floor(grid);
+	
+	for( float y = -1.0; y<=1.0; y++ ){
+		for( float x = -1.0; x <= 1.0; x++){
+			vec2 offset = vec2( x , y );
+			vec2 r = rand_vec_2( id + offset );
+			float randOffset = rand( id + offset );
+			
+			// Adding R again here to prevent a display error when T is near zero.
+			pos = offset + sin( r * t * 10.0 + randOffset ) * 0.5;
+			// Euclidian ( As the bird flies ) Distance
+			float ed = distance( gridUv + r * 0.1 , pos );
+			
+			// Manhatten Distance - Creates a weird crystalized effect
+			//pos -= gridUv;
+			//float md = abs( pos.x ) + abs( pos.y );
+			
+			//float d = mix( ed , md , 0.0 );
+			float d = ed;
+			
+			if( d < minDist ){
+				minDist = d;
+			}
+		}
+	} 
+	
+	return minDist;
+}
+
+float noise2(vec2 p){
+    vec2 ip = floor(p);
+    vec2 u = fract(p);
+    u = u*u*(3.0-2.0*u);
+
+    float res = mix(
+        mix(rand(ip),rand(ip+vec2(1.0,0.0)),u.x),
+        mix(rand(ip+vec2(0.0,1.0)),rand(ip+vec2(1.0,1.0)),u.x),u.y);
+    return res*res;
+}
+
+float wormFbm( vec2 coord ){
+	int OCTAVES = 4;
+	
+	float normalize_factor = 0.0;
+	float value = 0.0;
+	float scale = 0.5;
+	
+	for(int i = 0; i < OCTAVES; i++){
+		
+		normalize_factor += scale;
+		value += wormNoise( coord ) * scale;
+ 
+		coord *= 2.5;
+		scale *= 0.6;
+	}
+	
+	return value / normalize_factor;
+}
+
+float wormPattern( vec2 p ){
+	return wormFbm( p + noise( p + noise( p * 2.0 ) * 1.5 ) );
+}
+
+void fragment(){
+	float a = 0.0;
+	
+	// Making time smaller to make the time based transitions nicer
+	float time	= TIME * 0.1;
+	vec2 uv = UV * 1.0;
+	float radius	= 0.248;
+	float invRadius = 1.0 / radius;
+
+	// Center the area first.
+	vec2 p = -0.5 + uv;
+	
+	// Calculate this pixel's distance from center.
+	float dist = length( p );
+	vec3 starSphere = vec3( 0.0 );
+	
+	// Spherize the UVs
+	vec2 sp = -1.0 + 2.0 * uv;
+	sp *= ( 2.0 );
+	float r = dot(sp,sp);
+	float f = (1.0-sqrt(abs(1.0-r)))/(r);
+	
+	vec2 newUv = vec2(sp.x * f , sp.y * f);
+	vec4 starSurface = vec4( 0 , 0 , 0, 0 );
+	
+	if( dist <= radius ){
+		// # UV Rotation
+		float offset = time * rotationSpeed;
+		vec2 starUV = newUv + vec2( offset , 0.0 );
+		// Adding 0.5 on the X axis to deal with an equtorial
+		starUV.y *= stretchFactor;
+		starUV *= cellSize;
+
+		//float flow = flow( starUV );
+		float flowyness = flow( starUV * wormCellSize ) * 0.9;
+		float wormyness = wormPattern( starUV * wormCellSize ) * 0.9;
+		wormyness = clamp( 0.0, 1.0 , wormyness);
+		float noisyness = vornoiFbm( uv * 2.0 ) * 0.5;
+		
+		float vFbm = movingVornoi( starUV * vorCellSize );
+		
+		// Now cross mix all the surfaces so transitions aren't so jarring
+
+		float tOffset = noise2( sin( cos( TIME * starUV * 0.01 ) ) ) * 1.0;
+		float surface = mix( ( wormyness + tOffset - sin(vFbm) ) * 0.5, mix( flowyness, noisyness , vFbm ), flowyness + vFbm );
+
+		vec4 baseTint = texture( gradient  , vec2( surface , 0.0 ) );
+
+		starSphere = baseTint.rgb;
+		a = 1.0;
+	} else {
+		discard;
+	}
+	
+	// Calculate edge darking & multiply the brightness a bit.
+	vec4 limbDarkening = vec4( 0 , 0 , 0 , 1 ) * dist * dist;
+	
+	vec3 color = mix( starSphere , limbDarkening.rgb , limbDarkening.a );
+	
+	COLOR = vec4( color , a );
+}
+"
+
+[sub_resource type="Gradient" id="Gradient_dlcqe"]
+offsets = PackedFloat32Array(0, 0.559172, 0.784024, 0.949704, 1)
+colors = PackedColorArray(0.000477551, 1.80851e-05, 0.00119228, 1, 0.84, 0.5068, 0.126, 1, 0.96, 0.84984, 0.1824, 1, 0.96, 0.96, 0.96, 1, 0.96, 0.94704, 0.1824, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_3pcu1"]
+gradient = SubResource("Gradient_dlcqe")
+use_hdr = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_t8ors"]
+shader = SubResource("Shader_7dx84")
+shader_parameter/rotationSpeed = 0.348
+shader_parameter/cellSize = 5.0
+shader_parameter/wormCellSize = 2.4
+shader_parameter/vorCellSize = 2.5
+shader_parameter/convectionSpeed = 0.8
+shader_parameter/stretchFactor = 1.398
+shader_parameter/starSeed = 1.0
+shader_parameter/flowFactor = 0.39
+shader_parameter/gradient = SubResource("GradientTexture1D_3pcu1")
+
+[sub_resource type="Shader" id="Shader_4nk72"]
+code = "shader_type canvas_item;
+
+uniform vec3 color : source_color = vec3( 0.8, 0.65, 0.3 );
+uniform float colorBalance : hint_range( 0.1 , 0.9 ) = 0.1;
+uniform float timeFactor : hint_range( 0.01 , 1.00 , 0.01 ) = 0.1;
+
+// Deals with primary corona shape
+uniform float flareAmount : hint_range( 10 , 50.0 , 1.0 ) = 10.0; // Must be integer value, causes shader to crystalize without.
+uniform float size : hint_range( 1.0 , 10.0 , 0.1 ) = 1.0;
+uniform float spiky : hint_range( 0.1 , 50.0 , 0.1 ) = 50.0;
+uniform float gas : hint_range( 0.1 , 5.0  , 0.1 ) = 1.0; 
+uniform float starSeed : hint_range( 0.1 , 10.0 )  = 1.0;
+
+// If numbers get super big, you'll get banding. Best to keep coordinates very small for use of this function.
+float rand(vec2 coord){
+	// prevents randomness decreasing from coordinates too large
+	coord = mod( coord, 10000.0 );
+		// returns \"random\" vec2 with x and y between 0 and 1
+	return fract(sin(dot(coord, vec2(12.9898, 78.233))) * 43758.5453 * starSeed);
+}
+
+float snoise(vec3 uv, float res)
+{
+	const vec3 s = vec3(1e0, 1e2, 1e3);
+	
+	uv *= res;
+	
+	vec3 uv0 = floor(mod(uv, res))*s;
+	vec3 uv1 = floor(mod(uv+vec3(1.), res))*s;
+	
+	vec3 f = fract(uv); f = f*f*(3.0-2.0*f);
+
+	vec4 v = vec4(uv0.x+uv0.y+uv0.z, uv1.x+uv0.y+uv0.z,
+		      	  uv0.x+uv1.y+uv0.z, uv1.x+uv1.y+uv0.z);
+
+	vec4 r = fract(sin(v*1e-1)*1e3);
+	float r0 = mix(mix(r.x, r.y, f.x), mix(r.z, r.w, f.x), f.y);
+	
+	r = fract(sin((v + uv1.z - uv0.z)*1e-1)*1e3);
+	float r1 = mix(mix(r.x, r.y, f.x), mix(r.z, r.w, f.x), f.y);
+	
+	return mix(r0, r1, f.z)*2.-1.;
+}
+
+float noise(vec2 coord){
+	vec2 i = floor(coord);
+	vec2 f = fract(coord);
+		
+	float a = rand(i);
+	float b = rand(i + vec2(1.0, 0.0));
+	float c = rand(i + vec2(0.0, 1.0));
+	float d = rand(i + vec2(1.0, 1.0));
+
+	vec2 cubic = f * f * (3.0 - 2.0 * f);
+
+	return mix(a, b, cubic.x) + (c - a) * cubic.y * (1.0 - cubic.x) + (d - b) * cubic.x * cubic.y;
+}
+
+vec2 spherify(vec2 uv) {
+	vec2 centered = uv *2.0-1.0;
+	float z = sqrt(1.0 - dot(centered.xy, centered.xy));
+	vec2 sphere = centered/(z + 1.0);
+	
+	return sphere * 0.5+0.5;
+}
+
+float ring( vec2 uv ){
+    float r = 0.125;   								// radius
+    float dr = 0.01; 								// delta radius (thickness)
+    						
+    float d = length(uv);							// distance of this pixel from origin
+    float c = smoothstep(0.0, dr / 2.0, abs(d - r)); 	// ring parameters
+    return c;
+	
+	// To invert, call like float glow = 1.0 - ring( UV - vec2(0.5) );
+}
+
+
+
+void fragment(){
+	float a = 0.0;
+	float time		= TIME * timeFactor;
+	
+	// Always white. This is meant to be the center color each column.
+	vec3 coronaColor = vec3( 1.0 , 1.0 , 1.0 );
+	
+	vec2 uv = spherify( UV );
+	vec2 p = uv - 0.50;
+	
+	float dist = length(p);
+	float radius = 0.0625;// Hardcoded to match the edge of the star.
+	float angle		= atan( p.x, p.y ) / 6.2832;
+	
+	// Provides a semi-random gradiant varient, that when it gets very large rapidly accelerates parts of the corona
+	float reverberationNoise =  noise( sin( uv + -time * 0.05 + angle) ) * 0.0;
+
+	// vec3 ( rotation , zoom )
+	// Use of negative time noise will make it appear to 'push' stuff out.
+	vec3 coord = vec3( 0 , length(p)*.4, .5) * spiky;
+	vec3 cFlow = vec3( -angle * 1.0 , -time * 0.1 + reverberationNoise , -time * 0.1 + reverberationNoise );
+	
+	// Controls flow direction and speed
+	float coronaTiming	= abs(snoise( cFlow + coord * 0.07, flareAmount ) ) * gas;
+	float coronaTiming2 = abs(snoise( cFlow + coord * 0.03, flareAmount ) ) * gas;
+	float corona	= pow(1.0 - ( coronaTiming * 0.1 + coronaTiming2 * 0.3 ), 6.0 );
+	corona			-= abs(dist * 1.0 - radius ) * size * 10.0; // Trim both in the negative and positive direction, the amount of glow
+	
+	coronaColor.rgb = mix( color.rgb , coronaColor.rgb, colorBalance );
+	float glow = ( 1.0 - ring( ( UV - vec2(0.5) ) ) ) * 0.5;
+	
+	a = clamp( corona + glow  , 0.0 , 1.0 ) - radius / 1.0;
+	COLOR = vec4( coronaColor + (coronaColor * glow ) , a );
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fikgo"]
+shader = SubResource("Shader_4nk72")
+shader_parameter/color = Color(1.50196, 1, 0, 1)
+shader_parameter/colorBalance = 0.605
+shader_parameter/timeFactor = 0.17
+shader_parameter/flareAmount = 24.0
+shader_parameter/size = 3.8
+shader_parameter/spiky = 50.0
+shader_parameter/gas = 0.6
+shader_parameter/starSeed = 1.0
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_7hoxk")
+
+[node name="StarBody" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_t8ors")
+offset_left = -500.0
+offset_top = -500.0
+offset_right = 500.0
+offset_bottom = 500.0
+mouse_filter = 2
+
+[node name="Corona" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_fikgo")
+offset_left = -1000.0
+offset_top = -1000.0
+offset_right = 1000.0
+offset_bottom = 1000.0
+mouse_filter = 2
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("5_j0ugq")

@@ -1,0 +1,34 @@
+[gd_scene load_steps=3 format=3 uid="uid://3y6aabk1i1ny"]
+
+[ext_resource type="Script" path="res://SharedUI/EndState.gd" id="1_w1i0v"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_eqyf3"]
+font_size = 32
+
+[node name="EndState" type="Panel"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_w1i0v")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 410.0
+offset_top = 150.0
+offset_right = 1517.0
+offset_bottom = 503.0
+text = "Congratulations! You have successfully engineered a Star. The Brown Dwarf `Elysium` is now A G-Class Main Sequence Star. It is now ready to power an entire civilization, providing light and warmth to billions! "
+label_settings = SubResource("LabelSettings_eqyf3")
+autowrap_mode = 3
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 0
+offset_left = 400.0
+offset_top = 560.0
+offset_right = 1507.0
+offset_bottom = 913.0
+text = "Also with the successful construction of a Starlifter, it will now be possible to bring illumination to other stellar corpses across the cosmos!"
+label_settings = SubResource("LabelSettings_eqyf3")
+autowrap_mode = 3

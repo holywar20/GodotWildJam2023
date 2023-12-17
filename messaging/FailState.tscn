@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://dlnrb1qrsoakq"]
+[gd_scene load_steps=4 format=3 uid="uid://dlnrb1qrsoakq"]
 
 [ext_resource type="Theme" uid="uid://d1sjl81lo5my0" path="res://messaging/messaging.tres" id="1_fsx0h"]
 [ext_resource type="Script" path="res://messaging/FailState.gd" id="2_tw6dn"]
+[ext_resource type="LabelSettings" uid="uid://dvrp43egoiu5c" path="res://StylesAndLabels/BigText.tres" id="3_yh2nv"]
 
 [node name="FailState" type="Panel"]
 process_mode = 3
@@ -21,12 +22,18 @@ offset_right = 1147.0
 offset_bottom = 399.0
 
 [node name="Label" type="Label" parent="Control"]
-layout_mode = 0
-offset_left = 207.0
-offset_top = 15.0
-offset_right = 566.0
-offset_bottom = 78.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.601
+anchor_top = -0.684
+anchor_right = 0.601
+anchor_bottom = -0.684
+offset_left = -179.645
+offset_top = 340.108
+offset_right = 179.355
+offset_bottom = 403.108
 text = "Game Over"
+label_settings = ExtResource("3_yh2nv")
 horizontal_alignment = 1
 
 [node name="Description" type="Label" parent="Control"]
@@ -40,10 +47,10 @@ autowrap_mode = 2
 
 [node name="Button" type="Button" parent="Control"]
 layout_mode = 0
-offset_left = -15.0
-offset_top = 666.0
-offset_right = 831.0
-offset_bottom = 786.0
+offset_left = -22.0
+offset_top = 638.0
+offset_right = 824.0
+offset_bottom = 758.0
 text = "Try Again"
 
 [connection signal="pressed" from="Control/Button" to="." method="_on_button_pressed"]
