@@ -1,11 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://qjlfp7nylr7y"]
+[gd_scene load_steps=5 format=3 uid="uid://qjlfp7nylr7y"]
 
 [ext_resource type="Theme" uid="uid://b78p2h4fvydr7" path="res://StarlifterBaseTheme.tres" id="1_jb5jk"]
 [ext_resource type="Script" path="res://SharedUI/UIButtonsAndPanels/planetDetail.gd" id="1_mgeqr"]
+[ext_resource type="StyleBox" uid="uid://ddntcu16ssfif" path="res://StylesAndLabels/FloatingPanel.tres" id="2_ntmfq"]
+[ext_resource type="LabelSettings" uid="uid://cvlyjmf5fwwj0" path="res://StylesAndLabels/3rdRead-Subtitle.tres" id="4_d0u6q"]
 
 [node name="PlanetDetail" type="PanelContainer"]
 custom_minimum_size = Vector2(300, 465)
 theme = ExtResource("1_jb5jk")
+theme_override_styles/panel = ExtResource("2_ntmfq")
 script = ExtResource("1_mgeqr")
 
 [node name="VBox" type="VBoxContainer" parent="."]
@@ -14,7 +17,11 @@ layout_mode = 2
 [node name="Label" type="Label" parent="VBox"]
 layout_mode = 2
 text = "Planet Name"
+label_settings = ExtResource("4_d0u6q")
 horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="VBox"]
+layout_mode = 2
 
 [node name="PlanetType" type="HBoxContainer" parent="VBox"]
 layout_mode = 2

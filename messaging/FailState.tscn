@@ -53,4 +53,5 @@ offset_right = 824.0
 offset_bottom = 758.0
 text = "Try Again"
 
+[connection signal="mouse_entered" from="Control/Button" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="Control/Button" to="." method="_on_button_pressed"]

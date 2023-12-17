@@ -23,3 +23,7 @@ func _on_EB_danger_fail(dir):
 func _on_button_pressed():
 	EventBus.emit_signal("game_restart")
 	hide()
+
+
+func _on_button_mouse_entered():
+	AudioManager.play_sfx("HOVER_BUTTON")

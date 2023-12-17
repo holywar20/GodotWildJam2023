@@ -265,7 +265,6 @@ theme = ExtResource("16_cgjy6")
 
 [node name="EndState" parent="Messaging" instance=ExtResource("22_py1fb")]
 visible = false
-theme = ExtResource("16_cgjy6")
 
 [editable path="SolarSystem/Planets/P1"]
 [editable path="SolarSystem/Planets/P2"]
