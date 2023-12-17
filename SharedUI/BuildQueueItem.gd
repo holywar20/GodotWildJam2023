@@ -1,7 +1,7 @@
 extends PanelContainer
 
 @onready var buildingName = $VBox/Label
-@onready var progressBar = $VBox/ProgressBar
+@onready var progressBar = $VBox/HBoxContainer/ProgressBar
 @onready var buildComplete = $VBox/BuildComplete
 @onready var animationPlayer = $AnimationPlayer
 @onready var timerLabel = $Label

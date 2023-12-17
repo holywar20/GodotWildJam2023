@@ -92,7 +92,6 @@ size_flags_horizontal = 3
 
 [node name="Power" type="PanelContainer" parent="Hbox/MiddleSection/TopBorder/Panel/ResContainer"]
 layout_mode = 2
-tooltip_text = "Power"
 theme_override_styles/panel = ExtResource("4_avsfd")
 
 [node name="PowerContainer" type="VBoxContainer" parent="Hbox/MiddleSection/TopBorder/Panel/ResContainer/Power"]
@@ -131,7 +130,6 @@ text = "-xx"
 
 [node name="Hydrogen" type="PanelContainer" parent="Hbox/MiddleSection/TopBorder/Panel/ResContainer"]
 layout_mode = 2
-tooltip_text = "Hydrogen"
 theme_override_styles/panel = ExtResource("4_avsfd")
 
 [node name="HydrogenContainer" type="VBoxContainer" parent="Hbox/MiddleSection/TopBorder/Panel/ResContainer/Hydrogen"]
@@ -167,7 +165,6 @@ layout_mode = 2
 
 [node name="BaseMetals" type="PanelContainer" parent="Hbox/MiddleSection/TopBorder/Panel/ResContainer"]
 layout_mode = 2
-tooltip_text = "Base Metal"
 theme_override_styles/panel = ExtResource("4_avsfd")
 
 [node name="BaseContainer" type="VBoxContainer" parent="Hbox/MiddleSection/TopBorder/Panel/ResContainer/BaseMetals"]
@@ -203,7 +200,6 @@ layout_mode = 2
 
 [node name="PreciousMetas" type="PanelContainer" parent="Hbox/MiddleSection/TopBorder/Panel/ResContainer"]
 layout_mode = 2
-tooltip_text = "Precious Metals"
 theme_override_styles/panel = ExtResource("4_avsfd")
 
 [node name="PreciousContainer" type="VBoxContainer" parent="Hbox/MiddleSection/TopBorder/Panel/ResContainer/PreciousMetas"]
@@ -239,7 +235,6 @@ layout_mode = 2
 
 [node name="Antimatter" type="PanelContainer" parent="Hbox/MiddleSection/TopBorder/Panel/ResContainer"]
 layout_mode = 2
-tooltip_text = "Antimatter"
 theme_override_styles/panel = ExtResource("4_avsfd")
 
 [node name="AntimatterContainer" type="VBoxContainer" parent="Hbox/MiddleSection/TopBorder/Panel/ResContainer/Antimatter"]
@@ -275,7 +270,6 @@ layout_mode = 2
 
 [node name="TimeScale" type="PanelContainer" parent="Hbox/MiddleSection/TopBorder/Panel/ResContainer"]
 layout_mode = 2
-tooltip_text = "Time Scale"
 theme_override_styles/panel = ExtResource("5_y55kk")
 script = ExtResource("4_wfklm")
 
@@ -503,6 +497,4 @@ offset_bottom = 960.0
 
 [connection signal="pressed" from="OpButtonContainer/BuildMenu" to="." method="_on_build_menu_pressed"]
 [connection signal="pressed" from="OpButtonContainer/Bore" to="." method="_on_bore_pressed"]
-[connection signal="mouse_entered" from="Hbox/MiddleSection/TopBorder/Panel/ResContainer/Power/PowerContainer" to="." method="_on_power_container_mouse_entered"]
-[connection signal="mouse_exited" from="Hbox/MiddleSection/TopBorder/Panel/ResContainer/Power/PowerContainer" to="." method="_on_EB_close_hover_message"]
 [connection signal="pressed" from="Hbox/MiddleSection/TopBorder/Panel/ResContainer/Exit" to="." method="_on_exit_pressed"]

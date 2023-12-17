@@ -37,6 +37,7 @@ const MESSAGE_CANNOT_BE_ACTIVATED = "Structure cannot be activated at the moment
 @onready var timeLabel = $VBox/HBoxContainer/Produce/Time/ProdTime
 @onready var indicator = $Indicator
 
+
 var buildingInfo
 var buildingRef
 var buildingArray = Info.BUILDING_INFO
@@ -66,7 +67,7 @@ func setupScene(building):
 	
 	buildingName.text = building.type
 	buildingIcon.set_texture(load(Constants.ICONS[building.type]))
-	description.set_text(buildingInfo.description)
+	description.set_text( Constants.get_building_description( building.type ) )
 	
 	if (buildingInfo.is_active):
 		indicator.modulate = Color(0.1,1,0.1,1)

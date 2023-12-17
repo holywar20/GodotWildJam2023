@@ -1,5 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://b25xr6qejo8gx"]
+[gd_scene load_steps=6 format=3 uid="uid://b25xr6qejo8gx"]
 
+[ext_resource type="StyleBox" uid="uid://dtk3dw0net8fx" path="res://StylesAndLabels/Inner-Panel-StellarData.tres" id="1_42h7e"]
 [ext_resource type="Script" path="res://SharedUI/BuildQueueItem.gd" id="1_c2351"]
 
 [sub_resource type="Animation" id="Animation_wwdoq"]
@@ -47,6 +48,7 @@ offset_right = -1630.0
 offset_bottom = -1020.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = ExtResource("1_42h7e")
 script = ExtResource("1_c2351")
 
 [node name="Label" type="Label" parent="."]
@@ -64,8 +66,20 @@ layout_mode = 2
 text = "Building Name"
 horizontal_alignment = 1
 
-[node name="ProgressBar" type="ProgressBar" parent="VBox"]
-custom_minimum_size = Vector2(285, 27)
+[node name="HBoxContainer" type="HBoxContainer" parent="VBox"]
+layout_mode = 2
+
+[node name="Control" type="Control" parent="VBox/HBoxContainer"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+
+[node name="ProgressBar" type="ProgressBar" parent="VBox/HBoxContainer"]
+custom_minimum_size = Vector2(0, 27)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Control2" type="Control" parent="VBox/HBoxContainer"]
+custom_minimum_size = Vector2(20, 0)
 layout_mode = 2
 
 [node name="BuildComplete" type="Label" parent="VBox"]
@@ -82,4 +96,4 @@ libraries = {
 
 [node name="Timer" type="Timer" parent="."]
 
-[connection signal="value_changed" from="VBox/ProgressBar" to="." method="_on_progress_bar_value_changed"]
+[connection signal="value_changed" from="VBox/HBoxContainer/ProgressBar" to="." method="_on_progress_bar_value_changed"]

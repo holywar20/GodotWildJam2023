@@ -23,14 +23,14 @@ const BUILDING_STELLAR_ACCELERATOR = "Stellar Accelerator"
 const BUILDING_STARLIFTER = "Starlifter"
 
 # Building descriptions
-const BUILDING_PLANET_CRACKER_DESCRIPTION = "Harvests available hydrogen, base metals, and precious metals from a planet."
-const BUILDING_GIGAFACTORY_DESCRIPTION = "Speeds up build times of other structures. Effect is cumulative."
-const BUILDING_FUSION_REACTOR_DESCRIPTION = "Produces a small amount of power to drive structures."
-const BUILDING_CELESTIAL_EXTRACTOR_DESCRIPTION = "Pulls heavier elements out of the star for use as resources."
-const BUILDING_DYSON_SWARM_DESCRIPTION = "Extracts a large amount of power to drive structures. Can only build one."
-const BUILDING_MAGNETIC_BORE_DESCRIPTION = "Mines available gas clouds to fuel your star."
-const BUILDING_STELLAR_ACCELERATOR_DESCRIPTION = "Generates antimatter to power other, more complex structures."
-const BUILDING_STARLIFTER_DESCRIPTION = "The pinnacle of technology, allows you to extract the prize of having gestated a successful star: Unobtanium!"
+const BUILDING_PLANET_CRACKER_DESCRIPTION = "[center]Harvests available hydrogen, base metals, and precious metals from a planet.[/center]"
+const BUILDING_GIGAFACTORY_DESCRIPTION = "[center]Speeds up build times of other structures. Effect is cumulative.[/center]"
+const BUILDING_FUSION_REACTOR_DESCRIPTION = "[center]Produces a small amount of power to drive structures.[/center]"
+const BUILDING_CELESTIAL_EXTRACTOR_DESCRIPTION = "[center]Pulls heavier elements out of the star for use as resources.[/center]"
+const BUILDING_DYSON_SWARM_DESCRIPTION = "[center]Extracts a large amount of power to drive structures. Can only build one.[/center]"
+const BUILDING_MAGNETIC_BORE_DESCRIPTION = "[center]Mines available gas clouds to fuel your star.[/center]"
+const BUILDING_STELLAR_ACCELERATOR_DESCRIPTION = "[center]Generates antimatter to power other, more complex structures.[/center]"
+const BUILDING_STARLIFTER_DESCRIPTION = "[center]The pinnacle of technology, allows you to extract the prize of having gestated a successful star: Unobtanium![/center]"
 
 # Building icons
 const ICONS = {
@@ -59,3 +59,22 @@ const HYDROGEN_LABEL = "Hydrogen"
 const POWER_LABEL = "Power"
 const PRECIOUS_METAL_LABEL = "Precious Metal"
 const UNOBTANIUM_LABEL = "Unobtanium"
+
+static func get_building_description( b_type : String ):
+	match b_type:
+		BUILDING_PLANET_CRACKER:
+			return BUILDING_PLANET_CRACKER_DESCRIPTION
+		BUILDING_GIGAFACTORY:
+			return BUILDING_GIGAFACTORY_DESCRIPTION
+		BUILDING_FUSION_REACTOR:
+			return BUILDING_FUSION_REACTOR_DESCRIPTION
+		BUILDING_CELESTIAL_EXTRACTOR:
+			return BUILDING_CELESTIAL_EXTRACTOR_DESCRIPTION
+		BUILDING_DYSON_SWARM:
+			return BUILDING_DYSON_SWARM_DESCRIPTION
+		BUILDING_MAGNETIC_BORE:
+			return BUILDING_MAGNETIC_BORE_DESCRIPTION
+		BUILDING_STELLAR_ACCELERATOR:
+			return BUILDING_STELLAR_ACCELERATOR_DESCRIPTION
+		BUILDING_STARLIFTER:
+			return BUILDING_STARLIFTER_DESCRIPTION
