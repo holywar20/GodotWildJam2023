@@ -42,11 +42,11 @@ signal emp_wave_happened(percent_chance_to_disable)
 # Star signals
 signal star_transitioned( star_state ) # Fired by Star Scene
 signal star_size_changed( star_metadata ) # Fired by Star Scene
-signal hydrogen_flow_updated(actual_flow, ideal_target_flow, min_target_flow, max_target_flow)
+signal hydrogen_flow_updated( actual_flow, ideal_target_flow, min_target_flow, max_target_flow )
 
 
 signal danger_count( count , dir ) # Fired by flow display. Lets you know when things are about to get bad.
-signal danger_fail(direction) # fired by flow display. You've exceeded the danger threshold and the star is going to explode.
+signal danger_fail( direction ) # fired by flow display. You've exceeded the danger threshold and the star is going to explode.
 
 # UI signals
 signal resources_reported(resources) # Dictionary keyed by resource with amounts as values

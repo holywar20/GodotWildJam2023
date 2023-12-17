@@ -111,10 +111,20 @@ func _ready() -> void:
 	#EventBus.star_hydrogen_updated.emit(0, 1000)
 	###aa
 
+	EventBus.connect('game_restart' , Callable( self, '_on_game_restart') )
+
+func _on_game_restart():
+	_give_player_resources()
+	for BUILD_POS in _buildings:
+		if _buildings[BUILD_POS] != null:
+			_buildings[BUILD_POS].queue_free()
+			_buildings[BUILD_POS] = null
 
 func _give_player_resources() -> void:
 	current_resources[Constants.BASE_METAL] = 300
 	current_resources[Constants.POWER] = 1000
+	current_resources[Constants.PRECIOUS_METAL] = 0
+	current_buildings[Constants.HYDROGEN] = 0
 
 	# TESTING VALUES
 	#current_resources[Constants.HYDROGEN] = 20000
