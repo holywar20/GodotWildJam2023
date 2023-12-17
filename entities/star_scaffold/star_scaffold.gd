@@ -119,7 +119,7 @@ func _give_player_resources() -> void:
 	# TESTING VALUES
 	#current_resources[Constants.HYDROGEN] = 5000
 	#current_resources[Constants.POWER] = 10000
-	#current_resources[Constants.BASE_METAL] = 50000
+	current_resources[Constants.BASE_METAL] = 50000
 	#current_resources[Constants.PRECIOUS_METAL] = 50000
 
 

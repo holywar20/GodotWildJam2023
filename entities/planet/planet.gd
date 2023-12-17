@@ -10,6 +10,15 @@ const MAX_RESOURCE_NUMBER = 1000000 # In Gigatons?
 const STAR_SIZE = 1500 # In Pixels , max star size, including scaffolding
 const ORBIT_SIZE = 2000
 
+var radians72 = 72.0 * PI / 180.0
+var cracker_placements = {
+   0: 0.0,
+   1: 72.0 * radians72,
+   2: 144.0 * radians72,
+   3: 216.0 * radians72,
+   4: 288.0 * radians72
+}
+
 @onready var land_masses : ColorRect = $LandMasses
 @onready var atmosphere : ColorRect = $Atmosphere
 @onready var gas_atmo : ColorRect = $GasAtmo
@@ -82,11 +91,28 @@ func set_as_icon( n_pid : String ) -> void:
 	forceDecorate( shaderParams , n_pid )
 
 func add_planet_cracker(planet_cracker) -> void:
+	var cracker_count = _planet_crackers.size()
+	
+	# This is a bug, shouldnt' be callable, but just so the interface doesn't break.
+	if( cracker_count >= 5 ):
+		return
+
+	var radians = cracker_placements[cracker_count]
+
+	planet_cracker.set_rotation( radians )
+	var unit_circle = Vector2( cos(radians),  sin(radians) )
+	var position = unit_circle * ( ( 250 * p_scale ) + 100 )
+	planet_cracker.set_position( position )
+
 	add_child(planet_cracker)
+
 	_planet_crackers.append(planet_cracker)
 
 func remove_planet_cracker() -> void:
-	remove_child(_planet_crackers.pop_back())
+	var this_cracker = _planet_crackers.pop_back()
+
+	remove_child(this_cracker)
+	this_cracker.queue_free()
 
 func has_planet_crackers() -> bool:
 	return _planet_crackers.filter(func (c): return c.is_constructed()).size() > 0

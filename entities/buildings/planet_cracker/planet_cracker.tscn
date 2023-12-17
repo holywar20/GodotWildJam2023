@@ -23,4 +23,5 @@ visible = false
 texture = ExtResource("4_vpav1")
 
 [node name="Building" type="Sprite2D" parent="."]
+rotation = 1.5708
 texture = ExtResource("5_bun0i")
