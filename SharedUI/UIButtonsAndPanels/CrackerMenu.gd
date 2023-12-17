@@ -1,6 +1,9 @@
 extends PanelContainer
 
 
+const MESSAGE_MAX_CRACKERS_REACHED = "Maximum number of crackers for this planet reached!"
+
+
 @onready var cracker_controls = $VBoxContainer/CrackerControls
 @onready var hydrogen_slider_control = cracker_controls.get_node("HydrogenSliderControl")
 @onready var base_metals_slider_control = cracker_controls.get_node("BaseMetalsSliderControl")
@@ -46,6 +49,9 @@ func updateUI(planetRef: Planet):
 func _on_buy_pressed():
 	if not _current_planet:
 		return
+
+	if not _current_planet.has_room_for_crackers():
+		EventBus.feedback_message.emit(MESSAGE_MAX_CRACKERS_REACHED)
 
 	EventBus.construction_requested.emit(Constants.BUILDING_PLANET_CRACKER)
 
