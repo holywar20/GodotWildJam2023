@@ -15,6 +15,10 @@ func _on_danger_count( danger_count : int , dir ) -> void:
 		EventBus.emit_signal( "danger_fail", dir )
 		return
 	
+	if (danger_count == 0):
+		hide()
+		return
+	
 	AudioManager.play_sfx("DANGER_WARNING")
 	show()
 	label.text = DANGER_FSTRING % ( Constants.DANGER_TIME - danger_count )
