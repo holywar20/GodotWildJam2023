@@ -18,7 +18,7 @@ func _on_tick() -> void:
 	if( progress_count >= 30 ):
 		EventBus.emit_signal("game_won")
 
-func _on_danger_count() -> void:
+func _on_danger_count( count ) -> void:
 	progress_count = 0
 	progressBar.set_value( progress_count )
 
