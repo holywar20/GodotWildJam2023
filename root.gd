@@ -9,6 +9,7 @@ func _ready() -> void:
 	#get_tree().paused = true
 	EventBus.connect("planet_nav_button_pressed", Callable(self, "_on_EB_planet_nav_button_pressed"))
 	EventBus.connect("return_to_star_pressed", Callable(self, "_on_EB_return_to_star_pressed"))
+	EventBus.connect("danger_fail", Callable(self, "_on_EB_danger_fail"))
 	EventBus.new_game.connect(_on_new_game)
 	EventBus.constructed.connect(_on_constructed)
 	#AudioManager.play_music(AudioManager.MUSIC_TRACK_TITLE)
@@ -27,6 +28,9 @@ func _on_EB_return_to_star_pressed():
 	moveTween.tween_property($Camera2D,'position', Vector2(0, 0), 1.0)
 	moveTween.play()
 
+func _on_EB_danger_fail():
+	print("Fail State")
+	pass
 
 func _on_new_game() -> void:
 	#AudioManager.play_music(AudioManager.MUSIC_TRACK_GAME_1)
