@@ -269,6 +269,8 @@ visible = false
 
 [node name="CreditsPanel" parent="Messaging" instance=ExtResource("25_vqb7t")]
 visible = false
+self_modulate = Color(1, 1, 1, 0)
+theme = ExtResource("16_cgjy6")
 
 [editable path="SolarSystem/Planets/P1"]
 [editable path="SolarSystem/Planets/P2"]

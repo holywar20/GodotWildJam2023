@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://c2oq4vxag6fk5" path="res://Assets/flags/usa.png" id="5_pks6x"]
 
 [node name="CreditsPanel" type="Panel"]
+process_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0

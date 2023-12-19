@@ -1,6 +1,5 @@
-[gd_scene load_steps=6 format=3 uid="uid://c6t0tdq43a0s3"]
+[gd_scene load_steps=5 format=3 uid="uid://c6t0tdq43a0s3"]
 
-[ext_resource type="Theme" uid="uid://d1sjl81lo5my0" path="res://messaging/messaging.tres" id="1_k181i"]
 [ext_resource type="Script" path="res://messaging/intro_panel.gd" id="2_bohxj"]
 [ext_resource type="LabelSettings" uid="uid://dvrp43egoiu5c" path="res://StylesAndLabels/BigText.tres" id="3_0rrj4"]
 [ext_resource type="PackedScene" uid="uid://cwhce3gpdn7t7" path="res://entities/star/StarSceneIntro.tscn" id="4_16sf8"]
@@ -16,7 +15,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("1_k181i")
 script = ExtResource("2_bohxj")
 
 [node name="Left" type="VBoxContainer" parent="."]
