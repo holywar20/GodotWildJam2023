@@ -49,7 +49,7 @@ func _input(event: InputEvent) -> void:
 		return
 
 	if event is InputEventMouseButton:
-		if event.command_or_control_autoremap:
+		if event.is_command_or_control_pressed():
 			if event.button_index == MOUSE_BUTTON_WHEEL_UP:
 				zoom *= ZOOM_IN_FACTOR
 			elif event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
@@ -66,7 +66,7 @@ func _process( _delta : float ):
 		zoom = _original_zoom_level
 	elif Input.is_action_just_pressed("ui_zoom_in"):
 		zoom *= ZOOM_IN_FACTOR
-		EventBus.emit_signal( 'zoom_changed' , zoom )
+		#EventBus.emit_signal( 'zoom_changed' , zoom )
 	elif Input.is_action_just_pressed("ui_zoom_out"):
 		zoom *= ZOOM_OUT_FACTOR
 		EventBus.emit_signal( 'zoom_changed' , zoom )
