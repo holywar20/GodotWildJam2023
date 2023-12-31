@@ -4,6 +4,7 @@ extends Control
 
 const COMMAND_NAME_INDEX = 0
 const COMMAND_SET_RESOURCE = "set_resource"
+const CONSOLE_KEY = "`"
 
 
 @onready var _console_display = $VBoxContainer/ConsoleDisplay
@@ -18,8 +19,21 @@ func _ready() -> void:
 
 
 func _on_show_debug_console() -> void:
-	_command_entry.grab_focus()
 	visible = not visible
+
+	if visible:
+		_command_entry.grab_focus()
+		_set_command_entry_caret_to_end()
+	else:
+		if _command_entry.text.ends_with(CONSOLE_KEY):
+			_command_entry.text = _command_entry.text.rstrip(CONSOLE_KEY)
+
+		_command_entry.release_focus()
+
+
+func _set_command_entry_caret_to_end() -> void:
+	if not _command_entry.text.is_empty():
+		_command_entry.caret_column = _command_entry.text.length()
 
 
 func _on_command_entry_text_submitted(new_text: String):
