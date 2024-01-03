@@ -71,7 +71,9 @@ var _buildings: Dictionary = {
 	Vector2(3,0) : null,
 	Vector2(3,1) : null,
 	Vector2(3,2) : null,
-	Vector2(3,3) : null
+	Vector2(3,3) : null,
+	Vector2(3,4) : null,
+	Vector2(3,5) : null
 }
 
 var _buildings_under_construction: Array = []
