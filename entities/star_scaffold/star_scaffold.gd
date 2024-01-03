@@ -111,10 +111,6 @@ func _ready() -> void:
 
 	timer.timeout.connect(_on_timer_timeout)
 
-	# TODO: Remove after testing!
-	#EventBus.star_hydrogen_updated.emit(0, 1000)
-	###aa
-
 	EventBus.connect('game_restart' , Callable( self, '_on_game_restart') )
 
 
