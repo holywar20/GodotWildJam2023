@@ -21,6 +21,7 @@ signal resources_extracted(resources) # Dictionary keyed by resource with amount
 signal gas_cloud_hovering(gas_cloud)
 signal gas_cloud_stop_hovering(gas_cloud)
 signal set_resource(resource_id, amount)
+signal set_all_resources(amount)
 
 
 # Planet signals

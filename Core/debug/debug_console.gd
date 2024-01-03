@@ -4,6 +4,7 @@ extends Control
 
 const COMMAND_NAME_INDEX = 0
 const COMMAND_SET_RESOURCE = "set_resource"
+const COMMAND_SET_ALL_RESOURCES = "set_all_resources"
 const CONSOLE_KEY = "`"
 
 
@@ -47,6 +48,10 @@ func _parse_command(command_details: Array) -> void:
 			if command_details.size() != 3:
 				return
 			EventBus.set_resource.emit(command_details[1], int(command_details[2]))
+		COMMAND_SET_ALL_RESOURCES:
+			if command_details.size() != 2:
+				return
+			EventBus.set_all_resources.emit(int(command_details[1]))
 
 
 func _update_console_display(next_text: String) -> void:

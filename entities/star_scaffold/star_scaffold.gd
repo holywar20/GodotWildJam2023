@@ -104,6 +104,7 @@ func _ready() -> void:
 
 	# debug methods
 	EventBus.set_resource.connect(_on_set_resource)
+	EventBus.set_all_resources.connect(_on_set_all_resources)
 
 	animPlayer.play("InnerRingRotation")
 
@@ -155,6 +156,11 @@ func _on_set_resource(resource_id: String, amount: int) -> void:
 
 	if selected_resource:
 		current_resources[selected_resource[0]] = amount
+
+
+func _on_set_all_resources(amount: int) -> void:
+	for resource in current_resources.keys():
+		current_resources[resource] = amount
 
 
 func _construct(building_type: String):
