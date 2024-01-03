@@ -208,7 +208,6 @@ self_modulate = Color(1, 0.266667, 0.278431, 1)
 custom_minimum_size = Vector2(125, 50)
 layout_mode = 2
 size_flags_vertical = 10
-disabled = true
 text = "Remove"
 
 [node name="Disable" type="Button" parent="VBox/HBoxContainer3"]

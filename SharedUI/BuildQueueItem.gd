@@ -3,6 +3,7 @@ extends PanelContainer
 @onready var buildingName = $VBox/Label
 @onready var progressBar = $VBox/HBoxContainer/ProgressBar
 @onready var buildComplete = $VBox/BuildComplete
+@onready var build_cancelled = $VBox/BuildCancelled
 @onready var animationPlayer = $AnimationPlayer
 @onready var timerLabel = $Label
 @onready var timer = $Timer
@@ -13,6 +14,7 @@ var building
 
 func _ready() -> void:
 	EventBus.tick.connect(_on_tick)
+	EventBus.destroyed.connect(_on_destroyed)
 
 
 func setName(nName):
@@ -35,6 +37,7 @@ func updateUI():
 	progressBar.set_value(accPercent)
 	timerLabel.set_text(str(round(timer.time_left)) + " s")
 
+
 func removeSelf():
 	EventBus.tick.disconnect(_on_tick)
 	var vanishTween = create_tween()
@@ -46,3 +49,19 @@ func removeSelf():
 	await animationPlayer.animation_finished
 	queue_free()
 
+
+func _on_destroyed(building_ref) -> void:
+	if building == building_ref:
+		_cancel_self()
+
+
+func _cancel_self() -> void:
+	EventBus.tick.disconnect(_on_tick)
+	var vanishTween = create_tween()
+	progressBar.hide()
+	timerLabel.hide()
+	build_cancelled.show()
+	animationPlayer.play("BUILDING_CANCELLED")
+	vanishTween.tween_property(buildingName.owner, 'position', Vector2(300,self.position.y), 1)
+	await animationPlayer.animation_finished
+	queue_free()

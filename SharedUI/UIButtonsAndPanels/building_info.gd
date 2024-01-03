@@ -76,7 +76,6 @@ func setupScene(building):
 
 	if buildingInfo.is_constructed():
 		disableButton.disabled = false
-		removeButton.disabled = false
 		enableButton.disabled = false
 
 		if (buildingInfo.is_active):
@@ -90,7 +89,6 @@ func setupScene(building):
 
 	else:
 		disableButton.disabled = true
-		removeButton.disabled = true
 		enableButton.disabled = true
 		disableButton.show()
 		enableButton.hide()
