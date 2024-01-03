@@ -143,13 +143,6 @@ func _give_player_resources() -> void:
 	current_resources[Constants.HYDROGEN] = 0
 	current_resources[Constants.ANTIMATTER] = 0
 
-	# TESTING VALUES
-	# current_resources[Constants.HYDROGEN] = 100000
-	# current_resources[Constants.POWER] = 10000
-	# current_resources[Constants.BASE_METAL] = 50000
-	# current_resources[Constants.PRECIOUS_METAL] = 50000
-	# current_resources[Constants.ANTIMATTER] = 10000
-
 
 func _on_set_resource(resource_id: String, amount: int) -> void:
 	var selected_resource = current_resources.keys().filter(func (res): return res.id.to_lower() == resource_id.to_lower())
@@ -233,7 +226,7 @@ func _construct_dyson_swarm() -> void:
 	_num_dyson_swarms += 1
 	var swarm_count = _num_dyson_swarms * SWARM_EMISSION_FACTOR
 	dSwarm.set_amount( swarm_count )
-	#print( "Swarm!", dSwarm.is_emitting() , " - ", swarm_count)
+
 	if( !dSwarm.is_emitting() ):
 		dSwarm.set_emitting( true )
 
@@ -301,7 +294,7 @@ func _on_bore_control_updated(value: float) -> void:
 
 	for bore in magnetic_bores:
 		bore.set_extraction_rate(value)
-	
+
 
 func _deduct_from_current_resources(resources_bid: Dictionary) -> void:
 	for resource in resources_bid:
@@ -315,9 +308,6 @@ func _on_timer_timeout() -> void:
 
 func _on_game_tick() -> void:
 	EventBus.resources_reported.emit(current_resources)
-
-	# TODO: Remove after testing.
-	#EventBus.star_hydrogen_updated.emit(current_resources[Constants.HYDROGEN], 1000)
 
 
 func _inoperable_buildings_exist() -> bool:
@@ -334,7 +324,6 @@ func _inoperable_buildings_exist() -> bool:
 
 func _on_resources_extracted(new_resources: Dictionary) -> void:
 	_add_resources(new_resources)
-	_check_tier_threshold()
 
 	if new_resources.has(Constants.HYDROGEN):
 		_send_hydrogen_to_star(new_resources[Constants.HYDROGEN])
@@ -342,12 +331,6 @@ func _on_resources_extracted(new_resources: Dictionary) -> void:
 
 func _on_operational_cost_reported(resources: Dictionary) -> void:
 	_remove_resources(resources)
-
-
-func _check_tier_threshold() -> void:
-	if current_resources[Constants.HYDROGEN] >= StellarConstants.get_tier_threshold(star.tier_state):
-		pass
-		#EventBus.star_transitioned.emit(star.tier_state + 1)
 
 
 func _add_resources(new_resources: Dictionary) -> void:
@@ -414,6 +397,7 @@ func _on_event_concluded(event) -> void:
 
 		for building in currently_affected_buildings:
 			building.set_can_be_activated(true)
+
 
 # On Star transition we may want to change some visual effects
 func _on_star_transitioned( tier_state ):
