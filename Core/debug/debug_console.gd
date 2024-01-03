@@ -34,18 +34,18 @@ func _set_command_entry_caret_to_end() -> void:
 
 
 func _on_command_entry_text_submitted(new_text: String):
-	_parse_command(new_text.split(" ")) # possibly split parsing and execution? fine as-is for now
+	_parse_command(new_text.split(" ")) # possibly separate parsing and execution? fine as-is for now
 	_update_console_display(new_text)
 	_command_entry.text = ""
 
 
 func _parse_command(command_details: Array) -> void:
-	# TODO: Parse/process the command in a separate method. Just need something quick and dirty.
-	# Also need to do some basic error handling.
 	var command_name: String = command_details[COMMAND_NAME_INDEX]
 
 	match command_name:
 		COMMAND_SET_RESOURCE:
+			if command_details.size() != 3:
+				return
 			EventBus.set_resource.emit(command_details[1], int(command_details[2]))
 
 
