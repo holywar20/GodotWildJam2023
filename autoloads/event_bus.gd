@@ -20,6 +20,7 @@ signal operational_cost_reported(resources)
 signal resources_extracted(resources) # Dictionary keyed by resource with amounts as values
 signal gas_cloud_hovering(gas_cloud)
 signal gas_cloud_stop_hovering(gas_cloud)
+signal set_resource(resource_id, amount)
 
 
 # Planet signals
@@ -48,6 +49,7 @@ signal hydrogen_flow_updated( actual_flow, ideal_target_flow, min_target_flow, m
 signal danger_count( count , dir ) # Fired by flow display. Lets you know when things are about to get bad.
 signal danger_fail( direction ) # fired by flow display. You've exceeded the danger threshold and the star is going to explode.
 
+
 # UI signals
 signal resources_reported(resources) # Dictionary keyed by resource with amounts as values
 signal camera_moved( camera_pos ) # Vector2
@@ -58,6 +60,7 @@ signal return_to_star_pressed()
 signal bore_control_updated(value)
 signal show_intro()
 signal show_credits()
+signal show_debug_console()
 
 
 # Misc. game signals

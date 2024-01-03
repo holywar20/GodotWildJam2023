@@ -1,0 +1,40 @@
+[gd_scene load_steps=2 format=3 uid="uid://derio26gywiol"]
+
+[ext_resource type="Script" path="res://Core/debug/debug_console.gd" id="1_k8nje"]
+
+[node name="DebugConsole" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_k8nje")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/separation = 5
+
+[node name="ConsoleDisplay" type="TextEdit" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+editable = false
+wrap_mode = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = ">"
+
+[node name="CommandEntry" type="LineEdit" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+caret_blink = true
+caret_force_displayed = true
+
+[connection signal="text_submitted" from="VBoxContainer/HBoxContainer/CommandEntry" to="." method="_on_command_entry_text_submitted"]

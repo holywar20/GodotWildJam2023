@@ -102,6 +102,9 @@ func _ready() -> void:
 
 	EventBus.star_transitioned.connect( _on_star_transitioned )
 
+	# debug methods
+	EventBus.set_resource.connect(_on_set_resource)
+
 	animPlayer.play("InnerRingRotation")
 
 	_give_player_resources()
@@ -149,6 +152,13 @@ func _give_player_resources() -> void:
 	# current_resources[Constants.BASE_METAL] = 50000
 	# current_resources[Constants.PRECIOUS_METAL] = 50000
 	# current_resources[Constants.ANTIMATTER] = 10000
+
+
+func _on_set_resource(resource_id: String, amount: int) -> void:
+	var selected_resource = current_resources.keys().filter(func (res): return res.id.to_lower() == resource_id.to_lower())
+
+	if selected_resource:
+		current_resources[selected_resource[0]] = amount
 
 
 func _construct(building_type: String):

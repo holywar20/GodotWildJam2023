@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://cnn2083d08byi"]
+[gd_scene load_steps=28 format=3 uid="uid://cnn2083d08byi"]
 
 [ext_resource type="Shader" path="res://entities/background/StellarBackground.gdshader" id="1_ece8b"]
 [ext_resource type="PackedScene" uid="uid://c1dcreph3lax5" path="res://Core/ui.tscn" id="1_qq3ke"]
@@ -25,6 +25,7 @@
 [ext_resource type="PackedScene" uid="uid://dlnrb1qrsoakq" path="res://messaging/FailState.tscn" id="20_47v50"]
 [ext_resource type="PackedScene" uid="uid://3y6aabk1i1ny" path="res://SharedUI/EndState.tscn" id="22_py1fb"]
 [ext_resource type="PackedScene" uid="uid://b7p4emapc4n7a" path="res://messaging/credits_panel.tscn" id="25_vqb7t"]
+[ext_resource type="PackedScene" uid="uid://derio26gywiol" path="res://Core/debug/debug_console.tscn" id="26_s84g8"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1y724"]
 shader = ExtResource("1_ece8b")
@@ -272,9 +273,27 @@ visible = false
 self_modulate = Color(1, 1, 1, 0)
 theme = ExtResource("16_cgjy6")
 
+[node name="DebugLayer" type="CanvasLayer" parent="."]
+
+[node name="DebugConsole" parent="DebugLayer" instance=ExtResource("26_s84g8")]
+visible = false
+size_flags_horizontal = 3
+
+[node name="VBoxContainer" parent="DebugLayer/DebugConsole" index="0"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_right = 0.0
+offset_bottom = 44.0
+grow_horizontal = 2
+
+[node name="CommandEntry" parent="DebugLayer/DebugConsole/VBoxContainer/HBoxContainer" index="1"]
+size_flags_horizontal = 3
+
 [editable path="SolarSystem/Planets/P1"]
 [editable path="SolarSystem/Planets/P2"]
 [editable path="SolarSystem/Planets/P3"]
 [editable path="SolarSystem/Planets/P4"]
 [editable path="SolarSystem/Planets/P5"]
 [editable path="SolarSystem/Planets/P6"]
+[editable path="DebugLayer/DebugConsole"]
