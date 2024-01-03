@@ -11,9 +11,6 @@ const CONSOLE_KEY = "`"
 @onready var _command_entry = $VBoxContainer/HBoxContainer/CommandEntry
 
 
-var _command_regex = RegEx.new()
-
-
 func _ready() -> void:
 	EventBus.show_debug_console.connect(_on_show_debug_console)
 
@@ -37,20 +34,23 @@ func _set_command_entry_caret_to_end() -> void:
 
 
 func _on_command_entry_text_submitted(new_text: String):
-	var command_entry_split = new_text.split(" ")
-
-	# TODO: Parse/process the command in a separate method. Just need something quick and dirty.
-	# Also need to do some basic error handling.
-	if command_entry_split[COMMAND_NAME_INDEX] == COMMAND_SET_RESOURCE:
-		EventBus.set_resource.emit(command_entry_split[1], int(command_entry_split[2]))
-	
+	_parse_command(new_text.split(" ")) # possibly split parsing and execution? fine as-is for now
+	_update_console_display(new_text)
 	_command_entry.text = ""
 
+
+func _parse_command(command_details: Array) -> void:
+	# TODO: Parse/process the command in a separate method. Just need something quick and dirty.
+	# Also need to do some basic error handling.
+	var command_name: String = command_details[COMMAND_NAME_INDEX]
+
+	match command_name:
+		COMMAND_SET_RESOURCE:
+			EventBus.set_resource.emit(command_details[1], int(command_details[2]))
+
+
+func _update_console_display(next_text: String) -> void:
 	if _console_display.get_line_count() == 1:
-		_console_display.insert_line_at(0, new_text)
+		_console_display.insert_line_at(0, next_text)
 	else:
-		_console_display.insert_line_at(_console_display.get_line_count() - 1, new_text)
-
-
-func _parse_command(command: String) -> void:
-	pass
+		_console_display.insert_line_at(_console_display.get_line_count() - 1, next_text)
