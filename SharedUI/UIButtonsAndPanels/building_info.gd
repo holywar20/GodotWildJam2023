@@ -6,6 +6,7 @@ const MESSAGE_CANNOT_BE_ACTIVATED = "Structure cannot be activated at the moment
 
 @onready var enableButton = $VBox/HBoxContainer3/Enable
 @onready var disableButton = $VBox/HBoxContainer3/Disable
+@onready var removeButton = $VBox/HBoxContainer3/Remove
 
 @onready var buildingName = $VBox/HBox/BuildingName
 @onready var buildingIcon = $VBox/TextureRect
@@ -42,10 +43,14 @@ var buildingInfo
 var buildingRef
 var buildingArray = Info.BUILDING_INFO
 
+
 func _ready():
 	EventBus.connect("planet_nav_button_pressed", Callable(self, "_on_EB_planet_nav_button_pressed"))
+	EventBus.constructed.connect(_on_constructed)
+
 
 func setupScene(building):
+	# TODO: Consider building "reset UI" method since this scene is shared.
 	buildingRef = building
 	costAntiCont.hide()
 	costBaseCont.hide()
@@ -68,22 +73,29 @@ func setupScene(building):
 	buildingName.text = building.type
 	buildingIcon.set_texture(load(Constants.ICONS[building.type]))
 	description.set_text( Constants.get_building_description( building.type ) )
-	
-	if (buildingInfo.is_active):
-		indicator.modulate = Color(0.1,1,0.1,1)
+
+	if buildingInfo.is_constructed():
+		disableButton.disabled = false
+		removeButton.disabled = false
+		enableButton.disabled = false
+
+		if (buildingInfo.is_active):
+			indicator.modulate = Color(0.1,1,0.1,1)
+			disableButton.show()
+			enableButton.hide()
+		else:
+			enableButton.show()
+			disableButton.hide()
+			indicator.modulate = Color(1,0.1,0.1,1)
+
+	else:
+		disableButton.disabled = true
+		removeButton.disabled = true
+		enableButton.disabled = true
 		disableButton.show()
 		enableButton.hide()
-		
-	if !(buildingInfo.is_active):
-		enableButton.show()
-		disableButton.hide()
-		indicator.modulate = Color(1,0.1,0.1,1)
-	
-	if !(buildingInfo.is_constructed()):
-		enableButton.disabled = true
-	if (buildingInfo.is_constructed()):
-		enableButton.disabled = false
-	
+		indicator.modulate = Color.WHITE
+
 	if buildCostDict.has(Constants.HYDROGEN):
 		costHydroCont.show()
 		costHydro.text = str(buildCostDict[Constants.HYDROGEN])
@@ -162,3 +174,8 @@ func open():
 	show()
 	t.tween_property(self, "modulate", Color.WHITE, 0.25)
 	await t.finished
+
+
+func _on_constructed(building) -> void:
+	if building == buildingRef:
+		setupScene(building)
