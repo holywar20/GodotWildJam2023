@@ -24,13 +24,29 @@ func _ready():
 	# Joe this code breaks on star_transitioned
 	EventBus.connect("star_transitioned", Callable(self, "_on_EB_star_transitioned"))
 	EventBus.connect("game_restart", Callable(self, "_on_EB_game_restart"))
-	GigafactoryButton.tooltip_text = Constants.BUILDING_GIGAFACTORY_DESCRIPTION
-	FusionReactorButton.tooltip_text = Constants.BUILDING_FUSION_REACTOR_DESCRIPTION
-	CelestialExtractorButton.tooltip_text = Constants.BUILDING_CELESTIAL_EXTRACTOR_DESCRIPTION
-	DysonSwarmButton.tooltip_text = Constants.BUILDING_DYSON_SWARM_DESCRIPTION
-	MagneticBoreButton.tooltip_text = Constants.BUILDING_MAGNETIC_BORE_DESCRIPTION
-	StellarAcceleratorButton.tooltip_text = Constants.BUILDING_STELLAR_ACCELERATOR_DESCRIPTION
-	StarlifterButton.tooltip_text = Constants.BUILDING_STARLIFTER_DESCRIPTION
+
+	GigafactoryButton.tooltip_text = _make_control_tooltip_friendly(Constants.BUILDING_GIGAFACTORY_DESCRIPTION)
+	FusionReactorButton.tooltip_text = _make_control_tooltip_friendly(Constants.BUILDING_FUSION_REACTOR_DESCRIPTION)
+	CelestialExtractorButton.tooltip_text = _make_control_tooltip_friendly(Constants.BUILDING_CELESTIAL_EXTRACTOR_DESCRIPTION)
+	DysonSwarmButton.tooltip_text = _make_control_tooltip_friendly(Constants.BUILDING_DYSON_SWARM_DESCRIPTION)
+	MagneticBoreButton.tooltip_text = _make_control_tooltip_friendly(Constants.BUILDING_MAGNETIC_BORE_DESCRIPTION)
+	StellarAcceleratorButton.tooltip_text = _make_control_tooltip_friendly(Constants.BUILDING_STELLAR_ACCELERATOR_DESCRIPTION)
+	StarlifterButton.tooltip_text = _make_control_tooltip_friendly(Constants.BUILDING_STARLIFTER_DESCRIPTION)
+
+
+func _make_control_tooltip_friendly(content: String) -> String:
+	const TO_REPLACE: Array = [
+		"[center]",
+		"[/center]",
+	]
+
+	var to_return: String = content
+
+	for replacing in TO_REPLACE:
+		to_return = to_return.replace(replacing, "")
+
+	return to_return
+
 
 func _on_EB_game_restart():
 	CelestialExtractorButton.hide()
